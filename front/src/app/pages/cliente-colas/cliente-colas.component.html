@@ -1,41 +1,82 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="pregunta">
+    <h3>¿Cómo van mis colas?</h3>
+</div>
 
-<section class="container">
+<section class="container">    
 
-    <article class="col">
+    <article class="col-3 col1">
+        
+        <div class="sobreFoto">
 
-        <div class="">hijo1
+            <h2 class="nombre">EMPRESA</h2>
 
         </div>
 
+        <img class="img" src="./assets/gym2.png" alt="gym">
     </article>
 
-    <article class="col">
+    <article class="col-3 col2"> 
 
-        <div class="row">
-            <div class="row">hijo2A
+        <div class="fila">
 
-            </div>
-    
-            <div class="row">hijo2B
-    
-            </div>
+            <i class="fas fa-male person"></i>
+            <i class="fas fa-male person"></i>
+            <i class="fas fa-male person"></i>
+            <i class="fas fa-male person colorPerson"></i>
+            <i class="fas fa-male person"></i>
+
         </div>       
              
     </article>
 
-    <article class="hijo3">
+    <article class="col-3 col2"> 
 
-        <div class="">
-            <div class="">
+        <div class="fila">
 
-            </div>
+            <i class="fas fa-male person"></i>
+            <i class="fas fa-male person"></i>
+            <i class="fas fa-male person"></i>
+            <i class="fas fa-male person"></i>
+            <i class="fas fa-male person"></i>
+
+        </div>       
+             
+    </article>
+
+    <article class="col-3 col3">
+
+        <div>
+            <h6 class="tiempo">Tiempo Estimado</h6>
+            <p class="parrafo">25 minutos</p>
         </div>
 
-        <div class="">
-            <div class="">
+        <div>
+            <button class="boton" data-toggle="modal" data-target="#exampleModal">Cancelar</button>
+        </div>
 
-            </div>
+            <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea salir de la cola?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <!-- <div class="modal-body" id="desplegable"></div> -->
+                        <div class="modal-footer">
+
+                        <button type="button" class="boton" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="boton2" data-dismiss="modal">Confirmar Cancelar</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                
         </div>
 
     </article>

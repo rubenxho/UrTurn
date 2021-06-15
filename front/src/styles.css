@@ -4,5 +4,9 @@ body {
     background-image: url(./assets/fondoPantalla.png);
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: scroll;
     margin: 0;
+    font-family: 'Titillium Web', sans-serif;;
 }
+
