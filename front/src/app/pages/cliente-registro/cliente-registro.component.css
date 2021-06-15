@@ -1,0 +1,165 @@
+.centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+}
+
+.logo   {
+    margin-top:15px;
+    font-family: Abril Fatface;
+    font-size:50px;
+}
+
+.recuadro   {
+    position:absolute;
+    border-radius:20px;
+}
+
+.programetas    {
+    top:120px;
+    left:100px;
+    height:125px;
+    width:300px;
+    background-image:url("../../../assets/programetas.jpg");
+   	background-repeat:no-repeat;
+   	background-size:100% 100%;
+}
+
+.bg-warning {
+    top:270px;
+    left:200px;
+    width:200px;
+    height:200px;
+}
+
+.reclamo    {
+    color:white;
+    font-weight:900;
+    font-size:25px;
+}
+
+.bg-success {
+    top:120px;
+    left:430px;
+    height:425px;
+    width:555px;
+}
+
+.login   {
+    justify-content:center;
+    text-align:center;
+    align-items:center;
+}
+
+.input-group    {
+    width:60%;
+}
+
+.btn-dark   {
+    width:40%;
+    border-radius:30px;
+    color:white;
+    font-weight:900;
+}
+
+.rosa   {
+    top:395px;
+    left:430px;
+    height:150px;
+    width:225px;
+    background-color:#ff4081;
+    display:none;
+}
+
+.titulo_registro    {
+    margin-top:15px;
+}
+
+.p_registro {
+    text-align:justify;
+    color:white;
+}
+
+.azulado    {
+    width:300px;
+    height:185px;
+    top:395px;
+    left:685px;
+    background-color:#6C5CE7;
+    display:none;
+}
+
+.carnoso    {
+    top:395px;
+    left:1015px;
+    height:150px;
+    width:225px;
+    background-color:rgb(230, 93, 93);
+}
+
+.violeta    {
+    top:195px;
+    left:860px;
+    height:175px;
+    width:150px;
+    background-color:#e040fb;
+    display:none;
+}
+
+.zapatilla  {
+    top:245px;
+    left:1040px;
+    height:125px;
+    width:200px;
+    background-image:url("../../../assets/zapatilla.jpg");
+   	background-repeat:no-repeat;
+   	background-size:100% 100%;
+}
+
+.carnoso:hover{
+    transform: scale(1.2);
+}
+
+.rosa:hover{
+    transform: scale(1.2);
+}
+
+@media screen and (max-width:475px) {
+    .programetas    {
+        display:none;
+    }
+
+    .bg-warning {
+        display:none;
+    }
+
+    .bg-success {
+        left:70px;
+        width:70%;;
+    }
+
+    .rosa   {
+        margin-top:20px;
+        left:70px;
+        width:35%;
+    }
+
+    .carnoso    {
+        margin-top:20px;
+        left:250px;
+        width:35%;
+    }
+
+    .p_registro {
+        font-size:12px;
+    }
+
+    .carnoso:hover{
+        transform: scale(1.1);
+    }
+    
+    .rosa:hover{
+        transform: scale(1.1);
+    }
+}
