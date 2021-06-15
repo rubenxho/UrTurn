@@ -9,9 +9,25 @@
             <h2 class="nombre">EMPRESA</h2> 
 
             <div class="botones">
+
                 <button href="#" class="boton" routerLink="/cliente-colas">Hacer cola</button>
-                <button class="fas fa-heart boton2" routerLink="/cliente-favoritos"></button>
+
             </div>
+
+            <div class="corazonGris boton2" [ngClass]="{corazonRed: favorito}">
+
+                <i class="fas fa-heart showtoas" routerLink="/cliente-favoritos" (click)="fav()"></i>
+
+            </div>
+
+            <!--toast de hacer favorito-->
+            <!-- <div aria-live="polite" aria-atomic="true">
+                <div class="toast">
+                    <div class="toast-body">
+                        <p style="font-weight: 600;"> {{this.frase}}</p> &nbsp;&nbsp;<i class="far fa-thumbs-up"></i>
+                    </div>
+                </div>
+            </div> -->
 
         </div>
 

@@ -7,7 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientePerfilEmpresaComponent implements OnInit {
 
-  constructor() { }
+  public favorito: boolean;
+  public frase: string;
+
+  constructor() { 
+
+    this.favorito = false;
+    this.frase = "";
+
+  }
+
+  fav() {
+    console.log(this.favorito);
+    this.favorito = !this.favorito;
+    if (this.frase === 'Has guardado este lugar a favorito!') {
+      this.frase = 'Has cancelado el favorito';
+    } else {
+      this.frase = 'Has guardado este lugar a favorito!';
+    }
+  }
 
   ngOnInit(): void {
   }
