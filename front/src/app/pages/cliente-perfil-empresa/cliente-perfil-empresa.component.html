@@ -10,15 +10,16 @@
 
             <div class="botones">
 
-                <button href="#" class="boton" routerLink="/cliente-colas">Hacer cola</button>
+                <button href="#" class="boton">Hacer cola</button>
+
+                <span class="corazonGris" [ngClass]="{corazonRed: favorito}"><!--como meter algo en un vacío-->
+
+                    <i class="fas fa-heart showtoas boton2" (click)="fav()"></i>
+    
+                </span>
 
             </div>
 
-            <div class="corazonGris boton2" [ngClass]="{corazonRed: favorito}">
-
-                <i class="fas fa-heart showtoas" routerLink="/cliente-favoritos" (click)="fav()"></i>
-
-            </div>
 
             <!--toast de hacer favorito-->
             <!-- <div aria-live="polite" aria-atomic="true">
@@ -74,7 +75,9 @@
             
         </div> 
                     
-    </article>
+    </article>    
 
 </section>
+
+<app-empresa-opiniones></app-empresa-opiniones>
 

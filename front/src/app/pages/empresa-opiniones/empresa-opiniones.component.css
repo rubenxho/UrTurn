@@ -1,9 +1,11 @@
 /* Desktop */
 .group{
     background-color: #6c5ce7;
-    width: 90%;
+    /* width: 90%; */
+    max-width: min(720px, calc(100vw - 40px));
     height: 50%;
     border-radius: 20px;
+    margin-bottom: 35px;
 }
 
 .user-name{
