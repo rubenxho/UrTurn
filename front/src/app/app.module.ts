@@ -21,6 +21,7 @@ import { EmpresaPerfilComponent } from './pages/empresa-perfil/empresa-perfil.co
 import { EmpresaOpinionesComponent } from './pages/empresa-opiniones/empresa-opiniones.component';
 import { EmpresaOpinionesPaginaComponent } from './pages/empresa-opiniones-pagina/empresa-opiniones-pagina.component';
 import { ClienteBuscadorComponent } from './pages/cliente-buscador/cliente-buscador.component';
+import { HeaderEmpresaComponent } from './pages/header-empresa/header-empresa.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ClienteBuscadorComponent } from './pages/cliente-buscador/cliente-busca
     EmpresaPerfilComponent,
     EmpresaOpinionesComponent,
     EmpresaOpinionesPaginaComponent,
-    ClienteBuscadorComponent
+    ClienteBuscadorComponent,
+    HeaderEmpresaComponent
   ],
   imports: [
     BrowserModule,

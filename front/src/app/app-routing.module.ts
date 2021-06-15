@@ -1,6 +1,5 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// import { combineLatest } from 'rxjs';
 import { ClientePerfilEmpresaComponent } from './pages/cliente-perfil-empresa/cliente-perfil-empresa.component';
 import { ClienteColasComponent } from './pages/cliente-colas/cliente-colas.component';
 import { ClienteFavoritosComponent } from './pages/cliente-favoritos/cliente-favoritos.component';
@@ -15,7 +14,7 @@ import { EmpresaPerfilComponent } from './pages/empresa-perfil/empresa-perfil.co
 const routes: Routes = [
 
   {path: "cliente-perfil-empresa", component: ClientePerfilEmpresaComponent },
-  {path: "cliente-colas", component: ClienteColasComponent },
+  // {path: "cliente-colas", component: ClienteColasComponent },
   {path:"clienteHome", component: ClienteHomeComponent },
   {path:"empresaHome", component:EmpresaHomeComponent },
   {path:"clienteColas", component:ClienteColasComponent },
@@ -24,7 +23,7 @@ const routes: Routes = [
   {path:"clienteOpiniones", component:ClienteOpinionesComponent },
   {path:"clienteFav", component:ClienteFavoritosComponent },
   {path:"empresaPerfil", component:EmpresaPerfilComponent },
-  {path:"clientePerfil", component:ClientePerfilComponent },
+  {path:"clientePerfil", component:ClientePerfilComponent }
 ];
 
 @NgModule({

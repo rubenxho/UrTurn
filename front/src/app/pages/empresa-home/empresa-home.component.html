@@ -1,1 +1,111 @@
-<p>empresa-home works!</p>
+<!-- Web -->
+<div class="container vistaweb" style="margin-top: 90px;">
+    
+    <div class="row" >
+        <!-- Cuadro izquierda -->
+        <div class="col">
+            <div class="col izq">
+                <p class="header">Nombre empresa</p>
+                <div class="cuadros">
+                    <p class="cuadros-texto" >Personas en Cola:</p>
+                    <p class="cuadros-texto">9</p>
+                </div>
+                <div class="cuadros">
+                    <p class="cuadros-texto">Numero de Cliente:</p>
+                    <p class="cuadros-texto">8</p>
+                </div>
+                <div class="cuadros" style="margin-bottom: 50px;">
+                    <p class="cuadros-texto">Clientes Atendidos:</p>
+                    <p class="cuadros-texto">5</p>
+                </div>
+            </div>
+        </div>
+        <!-- Cuadro derecha -->
+        <div class="col der vistaMovil" >
+            <!-- Derecha 1 -->
+            <div class="izq">
+                <form class="formulario"> 
+                    <label for="fname" class="texto-input" >Tiempo de espera por cliente</label>
+                    <input class="texto-input" placeholder="20 minutos/persona" type="text" id="user" style="text-align: center;">
+                <!-- Button trigger modal -->
+                <button type="button" onclick="mostrarCompra()" class=" boton1 btn btn-primary carrito" data-toggle="modal" data-target="#exampleModal">
+                    Modificar
+                </button>
+                  <!-- Modal -->
+                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-body" id="desplegable">
+                                  <p style="text-align: center; font-size: 20px;"> Confirmar el nuevo tiempo de espera</p>
+                             </div>
+                             <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary showtoast" data-dismiss="modal">Confirmar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button> 
+                             </div>
+                           </div>
+                      </div>
+                   </div>
+            <!-- Fin de modal  -->
+               </form>
+            </div>
+
+            <!-- Derecha 2 -->
+            <div class="col der2" style="margin-bottom: 20px;">
+                <!-- Button trigger modal -->
+                <div class="col der2" *ngIf="cola">
+                <button type="button"  class=" boton2 btn btn-primary carrito" data-toggle="modal" data-target="#exampleModal2">
+                    Iniciar
+                </button>
+                </div>
+                <div class="col der2" *ngIf="!cola">
+                <button type="button"  class=" boton3 btn btn-danger carrito" data-toggle="modal" data-target="#exampleModal3">
+                    Detener
+                </button>
+                </div>
+                
+                  <!-- Modal -->
+                   <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-body" id="desplegable">
+                                  <p style="text-align: center; font-size: 30px;"> Confirmar inicio de cola</p>
+                             </div>
+                             <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary " data-dismiss="modal" (click)="estadoCola('dos')">Confirmar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button> 
+                             </div>
+                           </div>
+                      </div>
+                   </div>
+            <!-- Fin de modal  -->
+
+                   <!-- Modal detener-->
+                   <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                            <div class="modal-body" id="desplegable">
+                                <p style="text-align: center; font-size: 30px;"> Confirmar inicio de cola</p>
+                           </div>
+                           <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary " data-dismiss="modal" (click)="estadoCola('uno')">Confirmar</button>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button> 
+                           </div>
+                         </div>
+                    </div>
+                 </div>
+            <!-- Fin de modal  -->
+            </div>
+        </div>
+
+    </div>  
+    
+    
+
+</div>
+
+<!-- toast -->
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; top: 115px; right: 0px; background-color: rgba(16, 243, 16, 0.329); ">
+    <div class="toast-body" style="text-align: center;">
+      Se han guardo sus cambios! <i class="far fa-thumbs-up" style="color: rgb(83, 83, 223) "></i>
+    </div>
+</div>
