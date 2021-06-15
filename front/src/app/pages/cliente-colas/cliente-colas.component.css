@@ -1,0 +1,16 @@
+/****************************estilos***************************/
+
+.container {
+    background-color: rgb(114, 235, 1);
+    /* background-color: rgba(242, 241, 237, 1); */
+    /* border-width: 15px;
+    border-color: rgba(242, 241, 237, 1);
+    border-radius: 15px;
+    box-shadow: 2px 0px 2px 0px; */
+    display: flex;
+    
+    width: 770px;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: 50px;
+}

@@ -1,0 +1,192 @@
+/*****Estilos*****/
+
+.padre {
+    background-color: rgba(242, 241, 237, 1);
+    border-width: 15px;
+    border-color: rgba(242, 241, 237, 1);
+    border-radius: 15px;
+    box-shadow: 2px 0px 2px 0px;
+    display: flex;
+    flex-direction: column;
+    max-width: 720px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+/*******************imagen*****************************/
+
+.img-tarjeta {
+    max-height: 180px;
+    min-height: 180px;
+    overflow-y: hidden;
+}
+
+.imagenD {
+    width: 100%;
+    max-height: 100%;
+    min-height: 100px;
+    min-width: 720px;
+    border-radius: 15px;    
+}
+
+@media screen and (max-width: 600px) {
+    .imagenD {
+        width: 100%;
+        max-height: 100%;
+        min-height: 100px;
+        min-width: 320px;
+        border-radius: 15px;        
+    }
+}
+
+/**********************************boton, corazon y nombre********************************/
+
+.sobreFoto {
+    position: sticky;
+    top: 155px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 0px;   
+}
+
+.nombre {
+    background-color: rgba(0, 0, 0, .1);
+    height: fit-content;/*ajusta el tamaño al contenido de la caja*/
+    padding: 10px 20px;
+    color: #ffff;
+    font-size: 22px;
+}
+
+.botones {
+    background-color: rgba(0, 0, 0, .1);
+    height: fit-content;
+    padding: 10px;
+}
+
+.boton {
+    background-color: rgba(108, 92, 231, 1);
+    border-style: none;
+    margin: auto 20px;
+    border-radius: 10px;
+    color: white;
+    width: 175px;
+}
+
+@media screen and (max-width: 600px) {
+    .boton {
+        margin: auto 2px;
+        width: 100px;
+    }
+}
+
+.boton2 {
+    color: rgba(239, 58, 58, 1);
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: auto 20px;
+    border-radius: 10px;
+    border-style: none;
+    font-size: 25px;
+}
+
+@media screen and (max-width: 600px) {
+    .boton2 {
+        margin-top: 15px;
+        margin-bottom: 45px;
+        font-size: 45px;        
+    }
+}
+
+/*****************************Texto tarjeta*********************************/
+
+.agrupado {
+    display: flex;    
+    justify-content:space-between;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+@media screen and (max-width: 320px) {
+    .agrupado {
+        display: flex; 
+        flex-direction: column;   
+        justify-content: center;
+        align-items: center;
+        margin: auto 20px;
+        padding: 10px 0px;
+        column-count: 1;
+    }
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    margin: auto 20px;
+}
+
+.lineaLista {
+    font-weight: bold;
+}
+
+.horario {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 300px;
+}
+
+@media screen and (max-width: 320px) {
+    .horario {
+        display: flex;
+        flex-direction: column;   
+        justify-content: center;
+        align-items: center;     
+    }
+}
+
+.lineaHorario {
+    font-weight: bold;
+}
+
+.parrafoHora {
+    font-weight:lighter;
+}
+
+@media screen and (max-width: 320px) {
+    .parrafoHora {
+        margin: auto 20px;        
+    }
+}
+
+.descripcion {
+    display: flex;    
+    justify-content:flex-start;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.titulo {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: auto 20px;
+}
+
+.parrafo {
+    margin: 10px 20px 10px 20px;
+    font-weight:lighter;
+}
+
+
+
+
+
+
+
+
+
+
+
