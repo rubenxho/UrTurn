@@ -29,3 +29,14 @@
 .bot:hover{
     color: black;
 }
+
+.responsive{
+    display: none;
+}
+
+@media screen and (max-width:475px){
+    
+    .responsive{
+        display: contents;
+    }
+}
