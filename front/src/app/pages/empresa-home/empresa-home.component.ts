@@ -7,7 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpresaHomeComponent implements OnInit {
 
-  constructor() { }
+  public cola:boolean;
+
+  constructor() {
+
+    this.cola=true;
+   }
+
+  estadoCola(op:string){
+    
+    console.log("Prueba")
+    if(op=="uno"){
+      this.cola=true;
+    }
+    else{
+      this.cola=false;
+    }
+  }
 
   ngOnInit(): void {
   }
