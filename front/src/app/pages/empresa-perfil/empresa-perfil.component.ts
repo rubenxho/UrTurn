@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpresaPerfilComponent implements OnInit {
 
-  constructor() { }
+  public empresaPerfil: string [];
+
+  constructor() { 
+
+    this.empresaPerfil = ["modalModificar","¿Seguro que desea enviar su perfil?", "Sí", "No", "Perfil enviado, gracias"];
+
+  }
 
   ngOnInit(): void {
   }

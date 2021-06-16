@@ -9,11 +9,13 @@ export class ClientePerfilEmpresaComponent implements OnInit {
 
   public favorito: boolean;
   public frase: string;
+  public clienteCola: string [];
 
   constructor() { 
 
     this.favorito = false;
     this.frase = "";
+    this.clienteCola = ["modalModificar","¿Seguro que desea salir de la cola?", "Salir", "Permanecer"];
 
   }
 

@@ -10,7 +10,9 @@
 
             <div class="botones">
 
-                <button href="#" class="boton">Hacer cola</button>
+                <button class="boton" data-toggle="modal" data-target="#modalModificar">Hacer cola</button>
+
+               
 
                 <span class="corazonGris" [ngClass]="{corazonRed: favorito}"><!--como meter algo en un vacío-->
 
@@ -19,16 +21,6 @@
                 </span>
 
             </div>
-
-
-            <!--toast de hacer favorito-->
-            <!-- <div aria-live="polite" aria-atomic="true">
-                <div class="toast">
-                    <div class="toast-body">
-                        <p style="font-weight: 600;"> {{this.frase}}</p> &nbsp;&nbsp;<i class="far fa-thumbs-up"></i>
-                    </div>
-                </div>
-            </div> -->
 
         </div>
 
@@ -81,3 +73,4 @@
 
 <app-empresa-opiniones></app-empresa-opiniones>
 
+<app-modal [mensajeModal]="clienteCola"></app-modal>

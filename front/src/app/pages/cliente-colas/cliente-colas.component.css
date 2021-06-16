@@ -32,6 +32,7 @@
     justify-content: center;
     margin-top: 50px;
     font-weight: bold;
+    font-family: Abril Fatface;
 }
 
 .col1 {
@@ -74,6 +75,7 @@
     padding: 5px 10px;
     color: #ffff;
     font-size: 22px;
+    font-family: Abril Fatface;
 }
 
 @media screen and (max-width: 600px) {
