@@ -23,6 +23,7 @@ import { EmpresaOpinionesPaginaComponent } from './pages/empresa-opiniones-pagin
 import { ClienteBuscadorComponent } from './pages/cliente-buscador/cliente-buscador.component';
 import { HeaderEmpresaComponent } from './pages/header-empresa/header-empresa.component';
 import { ModalComponent } from './pages/modal/modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { ModalComponent } from './pages/modal/modal.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

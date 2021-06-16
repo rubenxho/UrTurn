@@ -3,96 +3,98 @@
     font-weight: 900;
 }
 
+.global{
+    padding: 50px;
+}
+
 .foto{
-    /* border-style: solid; */
+    border-style: solid;
     justify-content: center;
     border-radius: 50%;
     overflow: hidden;
-    
+    border-color: #009ee1;
 }
 
 .imagen{
     display: flex;
     width: 200px;
-    height: 190px;
-    margin-bottom: -15px;
+    height: 200px;
 }
 
 .body-perfil{
-    margin: 1%;
     /* border-style: solid; */
+    flex-direction: column;
+    border-color: #009ee1;
+    border-radius: 10px;
+    margin: 1%;
     display: flex;
-    flex-direction: row;
-    justify-content: center; 
+    flex-direction: column;
+    justify-content: center;
+    border-style: solid;
 }
 
 .pic-perfil{
-    margin-top: 90px;
+    margin-top: 5%;
     display: flex;
     justify-content: center;
-    /* border-style: solid; */
 }
 
 .caja{
     display: flex;
-    flex-direction: row;
+    /* border: solid; */
+    border-width: 2px;
     justify-content: center;
     text-align: center;
-    /* border-style: solid; */
-    width: 80%;
-    height: 20%;
-    /* margin-bottom: 20%; */
+    /* margin-bottom: 5%; */
     background-color: #faf8f875;
 }
 
-.familia-input{
-    text-align: center;
-    font-size: 100%;
-    margin: 5% auto;
-    /* border-style: solid; */
-    width: 20%;
-    height: 80%;
-}
-
-input{
-    /* border-style: solid; */
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 200%;
-    margin-top: 10%;
-    margin-left: -50%;
-    background-color: #d4d1d1a1;
-    height: 10%;
-    border-style: none;
-    border-radius: 3px;
+.in{
+    display: flex;
+    margin-top: 5%;
+    width: 500px;
+    height: 35px;
+    background-color: #ffffff;
+    border-color: #009ee1;
+    border-radius: 5px;
 }
 
 .areaBoton{
-    font-size: 100%;
-    /* border-style: solid; */
-    margin: 10%;
-    height: 10%;
-
+    text-align: center;
+    margin-left: -18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-button{
+
+.bGuardar{
     background-color: #6c5ce7;
     color: white;
-    width: 200%;
-    height: 120%;
-    margin-left: -50%;
-    border-radius: 20px;
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
     border: none;
 }
 
 @media screen and (max-width: 475px){
 
-    .familia-input{
-        width: 50%
-    }
 
-    input{
+    .in{
         margin-top: 5%;
+        width: 250px;
         margin-bottom: 10%;
+    }
+    .imagen{
+        width: 150px;
+        height: 150px;
+    }
+    .bGuardar{
+        width: 100px;
+        margin-left: 10px;
+    }
+    .in{
+        width: 190px;
     }    
+    .body-perfil{
+        margin-top: 15px;
+    }
 }
