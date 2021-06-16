@@ -22,6 +22,7 @@ import { EmpresaOpinionesComponent } from './pages/empresa-opiniones/empresa-opi
 import { EmpresaOpinionesPaginaComponent } from './pages/empresa-opiniones-pagina/empresa-opiniones-pagina.component';
 import { ClienteBuscadorComponent } from './pages/cliente-buscador/cliente-buscador.component';
 import { HeaderEmpresaComponent } from './pages/header-empresa/header-empresa.component';
+import { ModalComponent } from './pages/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { HeaderEmpresaComponent } from './pages/header-empresa/header-empresa.co
     EmpresaOpinionesComponent,
     EmpresaOpinionesPaginaComponent,
     ClienteBuscadorComponent,
-    HeaderEmpresaComponent
+    HeaderEmpresaComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
