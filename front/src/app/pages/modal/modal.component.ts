@@ -10,9 +10,6 @@ export class ModalComponent implements OnInit {
   @Input() mensajeModal: string[];
   @Output() eventoCola = new EventEmitter<boolean>();
 
-  @Input() mensajeModal: string[];
-  @Output() eventoCola = new EventEmitter<boolean>();
-
   constructor(private toastr: ToastrService) {
     // Array mensajeModal(pos0: etiqueta modal, pos2: op1 pregunta, pos3:op2 pregunta, siguientes posiciones eventos)
     this.mensajeModal = [];

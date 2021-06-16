@@ -1,11 +1,10 @@
-<!--Pincha la imagen para obtener mas info del lugar, esta en otro componente-->
 <div class="container myrow">
     <div class="row">
         <div class="col">
             <div class="card" style="width: 18rem;">
-                <img src="{{foto}}" class="card-img-top" alt="">
+                <img src="{{foto}}" class="card-img-top" alt="" routerLink="/cliente-perfil-empresa">
                 <div class="card-body">
-                    <h4 class="card-title">{{nombreLugar}}</h4>
+                    <h4 class="card-title">{{nombre}}</h4>
                     <p class="card-text">Tiempo Aprox: {{tiempoAprox}} Mins</p>
                     <!--la estrella no se mueve
                     <p class="estrella">
@@ -31,10 +30,7 @@
                     <div>
                         <button type="button" onclick="confirmarCola()" class="btn btn-primary" data-toggle="modal"
                             data-target="#colaModal">{{boton}}</button>&nbsp;&nbsp;
-
                         <!-- Modal boton hacer la cola -->
-                        <app-modal [mensajeModal]='mensajeModal'></app-modal>
-
                         <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
                             <i class="fas fa-heart showtoast" (click)="fav()"></i>
                         </span>
@@ -44,50 +40,6 @@
         </div>
     </div>
 </div>
-<!--modal de hacer la cola
-<div class="modal fade" id="colaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="desplegable">
-                <h5 class="modal-title" id="exampleModalLabel">¿Confirmas hacer la cola?</h5>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="comfimadoModal()"
-                    data-toggle="modal" data-target="#comfimadoModal">Sí</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
-<!--modal de confirmado la cola
-<div class="modal fade" id="comfimadoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="desplegable">
-                <h5 class="modal-title" id="exampleModalLabel">Estás en la cola, numero 5.</h5>
-            </div>
-        </div>
-    </div>
-</div>-->
 
-<!--toast de hacer favorito
-<div aria-live="polite" aria-atomic="true">
-    <div class="toast">
-        <div class="toast-body">
-            <p style="font-weight: 600;"> {{this.frase}}</p> &nbsp;&nbsp;<i class="far fa-thumbs-up"></i>
-        </div>
-    </div>
-</div>-->
+<!--Mantiene esta abajo de todo html, si no , el modal no sale bien!-->
+<app-modal [mensajeModal]='mensajeModal'></app-modal>

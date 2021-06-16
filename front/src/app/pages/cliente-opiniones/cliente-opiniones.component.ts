@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-cliente-opiniones',
   templateUrl: './cliente-opiniones.component.html',
@@ -13,7 +13,7 @@ export class ClienteOpinionesComponent implements OnInit {
   public mensajeModal: string[];
   public mensajeModalEnviar: any[];
 
-  constructor() {
+  constructor(private toastr: ToastrService) {
     // atributo para el corazon de favorito
     this.favorito = false;
     this.frase = '';
@@ -32,9 +32,14 @@ export class ClienteOpinionesComponent implements OnInit {
     this.favorito = !this.favorito;
     if (this.frase === 'Has guardado este lugar a favorito!') {
       this.frase = 'Has cancelado el favorito';
+      this.showSuccess();
     } else {
       this.frase = 'Has guardado este lugar a favorito!';
+      this.showSuccess();
     }
+  }
+  showSuccess() {
+    this.toastr.success(this.frase);
   }
 
   ngOnInit(): void {}
