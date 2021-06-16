@@ -3,11 +3,10 @@
     <div class="row">
         <div class="col">
             <div class="card" style="width: 18rem;">
-                <img src="https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg"
-                    class="card-img-top" alt="">
+                <img src="{{foto}}" class="card-img-top" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">Sobrino de Botín</h4>
-                    <p class="card-text">Tiempo Aprox: 20 Mins</p>
+                    <h4 class="card-title">{{nombreLugar}}</h4>
+                    <p class="card-text">Tiempo Aprox: {{tiempoAprox}} Mins</p>
                     <!--la estrella no se mueve
                     <p class="estrella">
                         <i class="fas fa-star"></i>
@@ -31,18 +30,21 @@
                     </div>
                     <div>
                         <button type="button" onclick="confirmarCola()" class="btn btn-primary" data-toggle="modal"
-                            data-target="#colaModal">Hacer la cola</button>&nbsp;&nbsp;
+                            data-target="#colaModal">{{boton}}</button>&nbsp;&nbsp;
+
+                        <!-- Modal boton hacer la cola -->
+                        <app-modal [mensajeModal]='mensajeModal'></app-modal>
+
                         <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
                             <i class="fas fa-heart showtoast" (click)="fav()"></i>
                         </span>
                     </div>
-                    <!--<app-cliente-perfil-empresa></app-cliente-perfil-empresa>-->
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!--modal de hacer la cola-->
+<!--modal de hacer la cola
 <div class="modal fade" id="colaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -63,8 +65,8 @@
         </div>
     </div>
 </div>
-
-<!--modal de confirmado la cola-->
+-->
+<!--modal de confirmado la cola
 <div class="modal fade" id="comfimadoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -79,13 +81,13 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
-<!--toast de hacer favorito-->
+<!--toast de hacer favorito
 <div aria-live="polite" aria-atomic="true">
     <div class="toast">
         <div class="toast-body">
             <p style="font-weight: 600;"> {{this.frase}}</p> &nbsp;&nbsp;<i class="far fa-thumbs-up"></i>
         </div>
     </div>
-</div>
+</div>-->
