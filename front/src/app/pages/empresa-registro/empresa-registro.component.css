@@ -1,0 +1,390 @@
+input[type='number']    {
+    -webkit-appearance: textfield !important;
+    margin: 0;
+    -moz-appearance:textfield !important;
+    }
+    
+    .centrado {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align:center;
+    }
+    
+    .logo   {
+        margin-top:15px;
+        font-family: Abril Fatface;
+        font-size:50px;
+        color:#343a40;
+    }
+    
+    .recuadro   {
+        position:absolute;
+        border-radius:20px;
+    }
+    
+    .programetas    {
+        top:120px;
+        left:100px;
+        height:125px;
+        width:300px;
+        background-image:url("../../../assets/programetas.jpg");
+        background-repeat:no-repeat;
+        background-size:100% 100%;
+    }
+    
+    .bg-warning {
+        top:270px;
+        left:200px;
+        width:200px;
+        height:200px;
+    }
+    
+    .reclamo    {
+        color:white;
+        font-weight:900;
+        font-size:25px;
+    }
+    
+    .bg-success {
+        top:120px;
+        left:430px;
+        height:425px;
+        width:555px;
+        text-align:center;
+    }
+    
+    .login   {
+        justify-content:center;
+        text-align:center;
+        align-items:center;
+        height:14.28%;
+        padding:4px;
+    }
+    
+    .input-group    {
+        width:60%;
+    }
+    
+    .btn-dark   {
+        width:40%;
+        border-radius:30px;
+        color:white;
+        font-weight:900;
+    }
+    
+    .rosa   {
+        top:395px;
+        left:430px;
+        height:150px;
+        width:225px;
+        background-color:#ff4081;
+        display:none;
+    }
+    
+    .titulo_registro    {
+        margin-top:15px;
+    }
+    
+    .p_registro {
+        text-align:justify;
+        color:white;
+    }
+    
+    .azulado    {
+        width:300px;
+        height:185px;
+        top:395px;
+        left:685px;
+        background-color:#6C5CE7;
+        display:none;
+    }
+    
+    .carnoso    {
+        top:395px;
+        left:1015px;
+        height:150px;
+        width:225px;
+        background-color:rgb(230, 93, 93);
+    }
+    
+    .violeta    {
+        top:485px;
+        left:250px;
+        height:60px;
+        width:150px;
+        background-color:#e040fb;
+    }
+    
+    .zapatilla  {
+        top:245px;
+        left:1040px;
+        height:125px;
+        width:200px;
+        background-image:url("../../../assets/zapatilla.jpg");
+        background-repeat:no-repeat;
+        background-size:100% 100%;
+    }
+    
+    .carnoso:hover{
+        transform: scale(1.2);
+    }
+    
+    .rosa:hover{
+        transform: scale(1.2);
+    }
+
+    .violeta:hover{
+        transform: scale(1.2);
+    }
+
+    .error  {
+        font-size: small;
+        color:red;
+    }
+
+    @media screen and (max-width:1235px) {
+        .zapatilla  {
+            display:none;
+        }
+
+        .bg-warning {
+            top:175px;
+            width:300px;
+            left:100px;
+        }
+
+        .carnoso    {
+            width:130px;
+            top:485px;
+            left:270px;
+            height:60px;
+        }
+
+        .violeta    {
+            width:130px;
+            left:100px;
+        }
+
+        .flecha {
+            margin-top:13px;
+        }
+
+        .descripcion    {
+            display:none;
+        }
+
+        .programetas    {
+            display:none;
+        }
+    }
+
+    @media screen and (max-width:1235px) {
+        .bg-warning {
+            display:none;
+        }
+
+        .bg-success {
+            left:300px;
+        }
+
+        .violeta    {
+            width:23%;
+            top:570px;
+            left:300px;
+        }
+
+        .carnoso    {
+            width:23%;
+            top:570px;
+            left:595px;
+        }
+    }
+
+    @media screen and (max-width:1060px) {
+        .bg-success {
+            left:250px;
+        }
+
+        .carnoso    {
+            left:545px;
+            width:260px;
+        }
+
+        .violeta    {
+            left:250px;
+            width:260px;
+        }
+    }
+
+    @media screen and (max-width:1000px) {
+        .bg-success {
+            left:200px;
+        }
+
+        .carnoso    {
+            left:495px;
+        }
+
+        .violeta    {
+            left:200px;
+        }
+    }
+
+    @media screen and (max-width:850px) {
+        .bg-success {
+            left:150px;
+        }
+
+        .carnoso    {
+            left:445px;
+        }
+
+        .violeta    {
+            left:150px;
+        }
+    }
+
+    @media screen and (max-width:800px) {
+        .bg-success {
+            left:100px;
+        }
+
+        .carnoso    {
+            left:395px;
+        }
+
+        .violeta    {
+            left:100px;
+        }
+    }
+
+    @media screen and (max-width:730px) {
+        .bg-success {
+            left:80px;
+        }
+
+        .carnoso    {
+            left:375px;
+        }
+
+        .violeta    {
+            left:80px;
+        }
+    }
+
+    @media screen and (max-width:690px) {
+        .bg-success {
+            left:50px;
+        }
+
+        .carnoso    {
+            left:345px;
+        }
+
+        .violeta    {
+            left:50px;
+        }
+    }
+
+    @media screen and (max-width:625px) {
+        .bg-success {
+            width:500px;
+            left:50px;
+        }
+
+        .carnoso    {
+            left:345px;
+            width:205px;
+        }
+
+        .violeta    {
+            left:50px;
+            width:205px;
+        }
+    }
+
+    @media screen and (max-width:575px) {
+        .bg-success {
+            width:450px;
+            left:50px;
+        }
+
+        .carnoso    {
+            left:325px;
+            width:175px;
+        }
+
+        .violeta    {
+            left:50px;
+            width:175px;
+        }
+    }
+    
+    @media screen and (max-width:475px) {
+        .programetas    {
+            display:none;
+        }
+    
+        .bg-warning {
+            display:none;
+        }
+    
+        .bg-success {
+            top:100px;
+            height:70%;
+            left:70px;
+            width:70%;;
+        }
+
+        .login   {
+            height:14.28%;
+            padding:5px;
+        }
+
+        .labelTipo  {
+            margin-bottom:20px;
+        }
+    
+        .rosa   {
+            margin-top:20px;
+            left:70px;
+            width:35%;
+        }
+    
+        .carnoso    {
+            height:66px;
+            margin-top:20px;
+            top:570px;
+            left:240px;
+            width:32%;
+        }
+
+        .violeta    {
+            height:66px;
+            margin-top:20px;
+            top:570px;
+            left:80px;
+            width:32%;
+        }
+    
+        .p_registro {
+            font-size:12px;
+        }
+    
+        .carnoso:hover{
+            transform: scale(1.1);
+        }
+        
+        .rosa:hover{
+            transform: scale(1.1);
+        }
+
+        .violeta:hover{
+            transform: scale(1.1);
+        }
+
+        .flecha {
+            margin-top:7px;
+        }
+    }

@@ -9,6 +9,7 @@
     margin-top:15px;
     font-family: Abril Fatface;
     font-size:50px;
+    color:#343a40;
 }
 
 .recuadro   {
@@ -44,6 +45,7 @@
     left:430px;
     height:250px;
     width:400px;
+    text-align:center;
 }
 
 .login   {
@@ -123,7 +125,12 @@
     transform: scale(1.2);
 }
 
-@media screen and (max-width:475px) {
+.error  {
+    font-size: small;
+    color:red;
+}
+
+@media screen and (max-width:602px) {
     .programetas    {
         display:none;
     }
@@ -151,6 +158,18 @@
 
     .p_registro {
         font-size:12px;
+    }
+
+    .zapatilla  {
+        display:none;
+    }
+
+    .violeta    {
+        display:none;
+    }
+
+    .azulado    {
+        display:none;
     }
 
     .carnoso:hover{
