@@ -1,0 +1,84 @@
+.card-text .btn-primary {
+  font-family: Titillium Web;
+  font-weight: bolder;
+}
+.card-title {
+  font-family: Abril Fatface;
+  font-size: 30px;
+  position: absolute;
+  top: 120px;
+  color: white;
+}
+.title {
+  text-align: center;
+  margin-top: 290px;
+  font-family: Abril Fatface;
+}
+
+.myrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+  transition: all 0.5s linear;
+  font-family: "Titillium Web" sans-serif border;
+}
+.myrow:hover {
+  transform: scale(1.05);
+  border-radius: 10px;
+}
+
+/* la estrella*/
+.valoracion {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.valoracion input {
+  position: absolute;
+  top: -100px;
+}
+.valoracion label {
+  float: right;
+  color: #c1b8b8;
+  font-size: 30px;
+}
+.valoracion label:hover,
+.valoracion label:hover ~ label,
+.valoracion input:checked ~ label {
+  color: #ffff00;
+}
+
+/* la corazon*/
+.corazonGris {
+  font-size: 35px;
+  color: #c1b8b8;
+}
+
+.corazonRed {
+  font-size: 35px;
+  color: rgb(216, 8, 42);
+}
+
+/* un like de guardar a favorito*/
+.fa-thumbs-up {
+  color: rgb(83, 83, 223);
+}
+/* position de toast */
+.toast {
+  position: absolute;
+  top: 115px;
+  right: 0px;
+  background-color: rgba(16, 243, 16, 0.329);
+}
+
+@media screen and (max-width: 475px) {
+  .card-img-top {
+    size: 20px;
+  }
+
+  .col {
+    margin-left: 17%;
+    margin-bottom: 30px;
+  }
+}
