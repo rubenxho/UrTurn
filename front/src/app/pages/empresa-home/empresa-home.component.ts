@@ -7,22 +7,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpresaHomeComponent implements OnInit {
 
-  public cola:boolean;
+  public mensajeModal: string[]
+  public mensajeModalIniciar: any[]
+  public mensajeModalDetener: any[]
+  public estadoCola:boolean
 
   constructor() {
-
-    this.cola=true;
+    this.estadoCola=true
+    this.mensajeModal=["modalModificar","Confirmar si esta de acuerdo","Confirmar","No"]
+    // Array(pos0: etiqueta modal, pos1: pregunta, pos2: op1 pregunta, pos3:op2 pregunta, pos4: estadocola, pos5: flag para pos4)
+    this.mensajeModalIniciar=["modalIniciar","Confirmar si desea iniciar la cola","Confirmar","Cancelar",this.estadoCola,"1"]
+    this.mensajeModalDetener=["modalDetener","Confirmar si desea detener la cola","Confirmar","Cancelar",this.estadoCola,"1"]
+    
+    
    }
 
-  estadoCola(op:string){
-    
-    console.log("Prueba")
-    if(op=="uno"){
-      this.cola=true;
+ 
+  botonIniciarDetener(cola:boolean){
+    if(cola==true){
+      this.estadoCola=false
+      this.mensajeModalIniciar[4]=this.estadoCola
+      this.mensajeModalDetener[4]=this.estadoCola
+
     }
     else{
-      this.cola=false;
+      this.estadoCola=true
+      this.mensajeModalIniciar[4]=this.estadoCola
+      this.mensajeModalDetener[4]=this.estadoCola
     }
+    
   }
 
   ngOnInit(): void {

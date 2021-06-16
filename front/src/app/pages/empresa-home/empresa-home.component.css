@@ -160,8 +160,8 @@ button{
     }
 
     .izq{
-        width: 380px;
-        margin-left: 38px;
+        width: 350px;
+        margin-left: 60px;
     }
     
     .vistaMovil{
@@ -198,4 +198,71 @@ button{
     }
 }
 
+@media screen and (max-width:450px){
+    
+    .izq{
+        margin-left: 40px;
+        
+    }
+    
+}
 
+@media screen and (max-width:420px){
+    
+    .izq{
+        margin-left: 25px;
+    }
+    
+}
+
+@media screen and (max-width:405px){
+    
+    .izq{
+        margin-left: 15px;
+    }
+    
+}
+
+@media screen and (max-width:390px){
+    
+    .izq{
+        width: 330px;
+    }
+    
+}
+
+@media screen and (max-width:376px){
+    
+    .izq{
+        margin-left: 12px;
+        
+    }
+    
+}
+
+@media screen and (max-width:370px){
+    
+    .izq{
+        width: 320px;
+        
+    }
+    
+}
+
+@media screen and (max-width:360px){
+    
+    .izq{
+        width: 310px;
+        
+    }
+    
+}
+
+@media screen and (max-width:360px){
+    
+    .izq{
+        width: 310px;
+        
+    }
+    
+}
