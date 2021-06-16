@@ -1,1 +1,140 @@
-<p>empresa-registro works!</p>
+<div class='container-fluid'>
+    <div class='row centrado'>
+        <h1 class='logo'>UrTurn</h1>
+    </div>
+
+    <div class='recuadro programetas'>
+            
+    </div>
+
+    <div class='recuadro centrado bg-warning'>
+        <label class='reclamo'>Hacer cola nunca fue tan facil</label>
+    </div>
+
+    <div class='recuadro bg-success'>
+        <div class='row login labelTipo'>
+            <label class='reclamo' for="login">Regístrate como Empresa</label>
+        </div>
+
+        <form [formGroup]='myForm'>
+            <div class='row login'>
+                <div class="input-group mb-3">
+                    <input  type="text" 
+                            formControlName='rsocial'
+                            class="form-control" 
+                            placeholder="Razón social" 
+                            aria-label="rsocial" 
+                            aria-describedby="basic-addon1" 
+                            [ngClass]="{'is-invalid':!rsocialValid}"
+                            on-keyup = validarUsername()/>
+                </div>
+            </div>
+
+            <div class='row login'>
+                <div class="input-group mb-3">
+                    <input  type="email" 
+                            formControlName='email'
+                            class="form-control"
+                            ngModel email="true" 
+                            placeholder="Email" 
+                            aria-label="Username" 
+                            aria-describedby="basic-addon1"
+                            [ngClass]="{'is-invalid':!emailValid}"
+                            on-keyup = validarEmail()/>
+                </div>
+            </div>
+
+            <div class='row login'>
+                <div class="input-group mb-3">
+                    <input  type="number" 
+                            formControlName='telefono'
+                            class="form-control" 
+                            placeholder="Teléfono" 
+                            aria-label="Username" 
+                            aria-describedby="basic-addon1" 
+                            [ngClass]="{'is-invalid':!telefonoValid}"
+                            on-keyup = validarTelefono()/>
+                </div>
+            </div>
+
+            <div class='row login'>
+                <div class="input-group mb-3">
+                    <input  type="password" 
+                            #password
+                            formControlName='password'
+                            class="form-control" 
+                            placeholder="Password" 
+                            aria-label="Username" 
+                            aria-describedby="basic-addon1"
+                            [ngClass]=
+                                "{'is-invalid':passValid==false}"
+                            on-keyup = validarPassword()/>
+                </div>
+            </div>
+
+            <div class='row login'>
+                <div class="input-group mb-3">
+                    <input  type="password" 
+                            #repPassword
+                            class="form-control" 
+                            placeholder="Repeat password" 
+                            aria-label="Username" 
+                            aria-describedby="basic-addon1"
+                            [ngClass]=
+                                "{'is-invalid':!validarRep(password.value, repPassword.value)}"
+                            on-keyup = "validarRep(password.value, repPassword.value)"/>
+                </div>
+            </div>
+
+            <div class='row login'>
+                <button type="button" class="btn btn-dark" on-click='validar()'>Sign In</button>
+            </div>
+        </form>
+
+        <label *ngIf='!rsocialValid' class='error'>
+            El campo usuario es obligatorio
+        </label>
+
+        <label *ngIf='rsocialValid && !emailValid' class='error'>
+            No has introducido un email válido
+        </label>
+
+        <label *ngIf='rsocialValid && emailValid && !telefonoValid' class='error'>
+            El teléfono debe contener 9 números
+        </label>
+
+        <label *ngIf='rsocialValid && emailValid && telefonoValid && !passValid' class='error'>
+            El password debe tener como mínimo 6 carateres
+        </label>
+    </div>
+
+    <div class='recuadro rosa'>
+        <div class='row centrado titulo_registro'>
+            <label for="recuadro rosa" class='reclamo'>Empresa</label>
+        </div>
+
+        <div class="row centrado p_registro">
+            <p>Regístrate como empresa<br/>y gestiona los turnos<br/>de espera en tu negocio</p>
+        </div>
+    </div>
+
+    <div class='recuadro azulado centrado'>
+        <label for="registrate" class='reclamo'>Regístrate</label>
+    </div>
+
+    <div class='recuadro carnoso' on-click="redirigir('cliente')">
+        <div class='row centrado titulo_registro'>
+            <label for="recuadro carnoso" class='reclamo'>Cliente</label>
+        </div>
+
+        <div class="row centrado p_registro descripcion">
+            <p>Regístrate como cliente<br/>y aprovecha tu tiempo<br/>fácilmente</p>
+        </div>
+    </div>
+
+    <div class='recuadro violeta centrado' on-click="redirigir('')">
+        <label for="pideTurno" class='reclamo flecha'><i class="fas fa-arrow-left"></i> Volver</label>
+    </div>
+
+    <div class='recuadro zapatilla'></div>
+</div>

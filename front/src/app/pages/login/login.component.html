@@ -3,9 +3,7 @@
         <h1 class='logo'>UrTurn</h1>
     </div>
 
-    <div class='recuadro programetas'>
-            
-    </div>
+    <div class='recuadro programetas'></div>
 
     <div class='recuadro centrado bg-warning'>
         <label class='reclamo'>Hacer cola nunca fue tan facil</label>
@@ -16,34 +14,46 @@
             <label class='reclamo' for="login">Login</label>
         </div>
 
-        <div class='row login'>
-            <div class="input-group mb-3">
-                <input  type="text" 
-                        class="form-control" 
-                        placeholder="Username" 
-                        aria-label="Username" 
-                        aria-describedby="basic-addon1" 
-                        required>
+        <form [formGroup]='myForm'>
+            <div class='row login'>
+                <div class="input-group mb-3">
+                    <input  type="text" 
+                            formControlName='username'
+                            class="form-control" 
+                            placeholder="Username" 
+                            aria-label="Username" 
+                            aria-describedby="basic-addon1"
+                            [ngClass]="{'is-invalid':usernameValid==false}"
+                            on-keyup = validarUsername();/>
+                </div>
             </div>
-        </div>
 
-        <div class='row login'>
-            <div class="input-group mb-3">
-                <input  type="text" 
-                        class="form-control" 
-                        placeholder="Password" 
-                        aria-label="Username" 
-                        aria-describedby="basic-addon1" 
-                        required>
+            <div class='row login'>
+                <div class="input-group mb-3">
+                    <input  type="password" 
+                            formControlName='password'
+                            class="form-control" 
+                            placeholder="Password" 
+                            aria-label="Username" 
+                            aria-describedby="basic-addon1" 
+                            [ngClass]=
+                                "{'is-invalid':passValid==false}"
+                            on-keyup = validarPassword();/>
+                </div>
             </div>
-        </div>
 
-        <div class='row login'>
-            <button type="button" class="btn btn-dark">Sign In</button>
-        </div>
+            <div class='row login'>
+                <button type="button" class="btn btn-dark" on-click='validar()'>Sign In</button>
+            </div>
+        </form>
+
+        <label *ngIf='!usernameValid' class='error'>El campo usuario es obligatorio</label>
+        <label *ngIf='usernameValid && !passValid' class='error'>
+            El password debe tener como mínimo 6 carateres
+        </label>
     </div>
 
-    <div class='recuadro rosa'>
+    <div class='recuadro rosa' on-click='redirigir("empresa")'>
         <div class='row centrado titulo_registro'>
             <label for="recuadro rosa" class='reclamo'>Empresa</label>
         </div>
@@ -57,9 +67,9 @@
         <label for="registrate" class='reclamo'>Regístrate</label>
     </div>
 
-    <div class='recuadro carnoso'>
+    <div class='recuadro carnoso' on-click='redirigir("cliente")'>
         <div class='row centrado titulo_registro'>
-            <label for="recuadro rosa" class='reclamo'>Cliente</label>
+            <label for="recuadro carnoso" class='reclamo'>Cliente</label>
         </div>
 
         <div class="row centrado p_registro">
