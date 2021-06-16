@@ -13,17 +13,17 @@ import { EmpresaPerfilComponent } from './pages/empresa-perfil/empresa-perfil.co
 
 const routes: Routes = [
 
-  {path: "cliente-perfil-empresa", component: ClientePerfilEmpresaComponent },
-  // {path: "cliente-colas", component: ClienteColasComponent },
-  {path:"clienteHome", component: ClienteHomeComponent },
-  {path:"empresaHome", component:EmpresaHomeComponent },
-  {path:"clienteColas", component:ClienteColasComponent },
-  {path:"empresaCola", component:EmpresaColaComponent },
-  {path:"empresaOpiniones", component:EmpresaOpinionesPaginaComponent },
-  {path:"clienteOpiniones", component:ClienteOpinionesComponent },
-  {path:"clienteFav", component:ClienteFavoritosComponent },
-  {path:"empresaPerfil", component:EmpresaPerfilComponent },
-  {path:"clientePerfil", component:ClientePerfilComponent }
+  { path: "cliente-perfil-empresa", component: ClientePerfilEmpresaComponent },
+  { path:"clienteHome", component: ClienteHomeComponent },
+  { path:"empresaHome", component:EmpresaHomeComponent },
+  { path:"clienteColas", component:ClienteColasComponent },
+  { path:"empresaCola", component:EmpresaColaComponent },
+  { path:"empresaOpiniones", component:EmpresaOpinionesPaginaComponent },
+  { path:"clienteOpiniones", component:ClienteOpinionesComponent },
+  { path:"clienteFav", component:ClienteFavoritosComponent },
+  { path:"empresaPerfil", component:EmpresaPerfilComponent },
+  { path:"clientePerfil", component:ClientePerfilComponent }
+
 ];
 
 @NgModule({

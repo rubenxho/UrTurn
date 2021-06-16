@@ -1,0 +1,129 @@
+/***********estilos***************/
+
+.global {
+    /* margin: 50px; */
+    padding:50px
+}
+
+.contenedor {
+    background-color: rgba(255, 255, 255, 1);
+    border-width: 15px;
+    border-color: rgba(0, 158, 225, 1);
+    border-radius: 15px;
+    box-shadow: 2px 0px 2px 0px rgba(0, 158, 225, 1);
+    display: flex;
+    flex-direction: column;
+    max-width: min(650px, calc(100vw - 40px));
+    margin: 50px auto 0px auto;
+}
+
+@media screen and (max-width: 600px) {
+    .contenedor {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+        min-width: max-content;   
+        /* width: 355px; */
+        height: auto;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+}
+
+.titulo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+    font-family: Abril Fatface;
+    font-size: 50px;
+}
+
+@media screen and (max-width: 600px) {
+    .titulo {
+        margin-top: 25px;
+        font-size: 25px;
+    }
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin-top: 50px;
+}
+
+.completa {
+    border-color: rgba(0, 158, 225, 1);
+    border-radius: 5px;
+    box-shadow: 0px .5px .5px 0px rgba(0, 158, 225, 1);
+    margin: -15px;
+    padding: 5px;
+    width: 500px;
+    height: 35px;
+    /* font-family: Abril Fatface; */
+}
+
+@media screen and (max-width: 600px) {
+    .completa {
+        border-radius: 5px;
+        margin: -7px;
+        margin-right: 10px;
+        margin-left: 10px;
+        padding: 2px;
+        width: 220px;
+        height: 35px;
+    }
+}
+
+.descripcion {
+    border-color: rgba(0, 158, 225, 1);
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 0px rgba(0, 158, 225, 1);
+    margin: -15px;
+    padding: 5px;
+    width: 500px;
+    height: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .descripcion {
+        border-radius: 5px;
+        margin: -7px;
+        margin-right: 10px;
+        margin-left: 10px;
+        padding: 2px;
+        width: 220px;
+        height: auto;
+    }
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.boton {    
+    margin-top: 50px;
+    background-color: rgba(108, 92, 231, 1);
+    margin: auto 20px;
+    border-radius: 10px;
+    color: white;
+    width: 300px;
+    height: 35px;
+    margin-bottom: 15px;
+    border-style: none;    
+}
+
+@media screen and (max-width: 600px) {
+    .boton {
+        border-radius: 5px;
+        width: 75px;
+        margin-bottom: 80px;
+    }
+}
