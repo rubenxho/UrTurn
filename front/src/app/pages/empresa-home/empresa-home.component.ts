@@ -14,10 +14,10 @@ export class EmpresaHomeComponent implements OnInit {
 
   constructor() {
     this.estadoCola=true
-    this.mensajeModal=["modalModificar","Confirmar si esta de acuerdo","Confirmar","No"]
+    this.mensajeModal=["modalModificar","Confirmar si esta de acuerdo","Confirmar","No","Se ha guardado con exito"]
     // Array(pos0: etiqueta modal, pos1: pregunta, pos2: op1 pregunta, pos3:op2 pregunta, pos4: estadocola, pos5: flag para pos4)
-    this.mensajeModalIniciar=["modalIniciar","Confirmar si desea iniciar la cola","Confirmar","Cancelar",this.estadoCola,"1"]
-    this.mensajeModalDetener=["modalDetener","Confirmar si desea detener la cola","Confirmar","Cancelar",this.estadoCola,"1"]
+    this.mensajeModalIniciar=["modalIniciar","Confirmar si desea iniciar la cola","Confirmar","Cancelar","Se ha iniciado la cola",this.estadoCola,"1"]
+    this.mensajeModalDetener=["modalDetener","Confirmar si desea detener la cola","Confirmar","Cancelar","Se ha detenido la cola",this.estadoCola,"1"]
     
     
    }
@@ -26,14 +26,14 @@ export class EmpresaHomeComponent implements OnInit {
   botonIniciarDetener(cola:boolean){
     if(cola==true){
       this.estadoCola=false
-      this.mensajeModalIniciar[4]=this.estadoCola
-      this.mensajeModalDetener[4]=this.estadoCola
+      this.mensajeModalIniciar[5]=this.estadoCola
+      this.mensajeModalDetener[5]=this.estadoCola
 
     }
     else{
       this.estadoCola=true
-      this.mensajeModalIniciar[4]=this.estadoCola
-      this.mensajeModalDetener[4]=this.estadoCola
+      this.mensajeModalIniciar[5]=this.estadoCola
+      this.mensajeModalDetener[5]=this.estadoCola
     }
     
   }
