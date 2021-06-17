@@ -85,7 +85,8 @@ export class EmpresaRegistroComponent implements OnInit {
     this.validarTelefono();
 
     if(this.myForm.valid) {
-      this.redirigir(`${tipoUsuario}Home`);
+      alert('guardar usuario empresa');
+      // this.redirigir(`${tipoUsuario}Home`);
     }
   }
 
