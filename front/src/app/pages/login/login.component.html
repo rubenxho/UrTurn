@@ -17,7 +17,8 @@
         <form [formGroup]='myForm'>
             <div class='row login'>
                 <div class="input-group mb-3">
-                    <input  type="text" 
+                    <input  type="text"
+                            #username 
                             formControlName='username'
                             class="form-control" 
                             placeholder="Username" 
@@ -43,7 +44,7 @@
             </div>
 
             <div class='row login'>
-                <button type="button" class="btn btn-dark" on-click='validar()'>Sign In</button>
+                <button type="button" class="btn btn-dark" on-click='validar(username.value)'>Sign In</button>
             </div>
         </form>
 
@@ -53,12 +54,12 @@
         </label>
     </div>
 
-    <div class='recuadro rosa' on-click='redirigir("empresa")'>
+    <div class='recuadro rosa' on-click='redirigir("empresa-registro")'>
         <div class='row centrado titulo_registro'>
             <label for="recuadro rosa" class='reclamo'>Empresa</label>
         </div>
 
-        <div class="row centrado p_registro">
+        <div class="row centrado p_registro descripcion">
             <p>Regístrate como empresa<br/>y gestiona los turnos<br/>de espera en tu negocio</p>
         </div>
     </div>
@@ -67,12 +68,12 @@
         <label for="registrate" class='reclamo'>Regístrate</label>
     </div>
 
-    <div class='recuadro carnoso' on-click='redirigir("cliente")'>
+    <div class='recuadro carnoso' on-click='redirigir("cliente-registro")'>
         <div class='row centrado titulo_registro'>
             <label for="recuadro carnoso" class='reclamo'>Cliente</label>
         </div>
 
-        <div class="row centrado p_registro">
+        <div class="row centrado p_registro descripcion">
             <p>Regístrate como cliente<br/>y aprovecha tu tiempo<br/>fácilmente</p>
         </div>
     </div>

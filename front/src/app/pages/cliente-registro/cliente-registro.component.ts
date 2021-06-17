@@ -78,15 +78,19 @@ export class ClienteRegistroComponent implements OnInit {
     }
   }
 
-  public validar()  {
+  public validar(tipoUsuario:string)  {
     this.validarUsername();
     this.validarPassword();
     this.validarEmail();
     this.validarTelefono();
+
+    if(this.myForm.valid) {
+      this.redirigir(`${tipoUsuario}Home`);
+    }
   }
 
-  redirigir(tipoUsuario:string) {
-    this.navigation.navigate([`${tipoUsuario}-registro`]);
+  redirigir(componente:string) {
+    this.navigation.navigate([componente]);
   }
 
   ngOnInit(): void {

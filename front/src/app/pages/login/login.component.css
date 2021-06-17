@@ -8,8 +8,8 @@
 .logo   {
     margin-top:15px;
     font-family: Abril Fatface;
-    font-size:50px;
-    color:#343a40;
+    font-size:70px;
+    color:#6c757d;
 }
 
 .recuadro   {
@@ -130,8 +130,19 @@
     color:red;
 }
 
-@media screen and (max-width:602px) {
-    .programetas    {
+@media screen and (max-width:1235px) {
+    button  {
+        margin-top:15px;
+    }
+
+    .input-group    {
+        padding:10px;
+    }
+    .zapatilla  {
+        display:none;
+    }
+
+    .azulado    {
         display:none;
     }
 
@@ -139,37 +150,202 @@
         display:none;
     }
 
-    .bg-success {
-        left:70px;
-        width:70%;;
+    .carnoso    {
+        top:400px;
+        left:180px;
+        width:190px;
     }
 
     .rosa   {
-        margin-top:20px;
-        left:70px;
-        width:35%;
+        width:190px;
+        left:400px;
+        top:400px;
     }
 
-    .carnoso    {
-        margin-top:20px;
-        left:250px;
-        width:35%;
+    .bg-success {
+        top:150px;
+        left:625px;
+        height:400px;
+        width:400px;
     }
 
-    .p_registro {
-        font-size:12px;
-    }
-
-    .zapatilla  {
-        display:none;
+    .programetas    {
+        width:410px;
+        height:220px;
+        top:150px;
+        left:180px;
     }
 
     .violeta    {
         display:none;
     }
 
-    .azulado    {
+    .flecha {
+        margin-top:13px;
+    }
+}
+
+@media screen and (max-width:1160px) {
+    .carnoso    {
+        top:400px;
+        left:130px;
+    }
+
+    .rosa   {
+        left:350px;
+        top:400px;
+    }
+
+    .programetas    {
+        left:130px;
+    }
+
+    .bg-success {
+        left:575px;
+        width:400px;
+    }
+}
+
+@media screen and (max-width:1060px) {
+    .bg-success {
+        left:525px;
+    }
+
+    .carnoso    {
+        left:80px;
+    }
+
+    .rosa    {
+        left:300px;
+    }
+
+    .programetas    {
+        left:80px;
+    }
+}
+
+@media screen and (max-width:990px) {
+    .bg-success {
+        left:270px;
+    }
+
+    .carnoso    {
+        top:575px;
+        left:270px;
+    }
+
+    .rosa    {
+        top:575px;
+        left:480px;
+    }
+
+    .programetas    {
         display:none;
+    }
+}
+
+@media screen and (max-width:890px) {
+    .bg-success {
+        height:350px;
+        left:465px;
+    }
+
+    .carnoso    {
+        left:270px;
+        top:525px;
+    }
+
+    .rosa    {
+        left:480px;
+        top:525px;
+    }
+
+    .programetas    {
+        left:50px;
+    }
+}
+
+@media screen and (max-width:940px) {
+    .programetas    {
+        display:none;
+    }
+
+    .bg-success {
+        left:270px;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .bg-success {
+        left:200px;
+    }
+
+    .carnoso    {
+        left:200px;
+    }
+
+    .rosa    {
+        left:410px;
+    }
+}
+
+@media screen and (max-width:730px) {
+    .bg-success {
+        left:150px;
+    }
+
+    .carnoso    {
+        left:150px;
+    }
+
+    .rosa    {
+        left:360px;
+    }
+}
+
+@media screen and (max-width:625px) {
+    .bg-success {
+        width:500px;
+        left:50px;
+    }
+
+    .carnoso    {
+        height:70px;
+        left:345px;
+        width:205px;
+    }
+
+    .rosa    {
+        height:70px;
+        left:50px;
+        width:205px;
+    }
+
+    .descripcion    {
+        display:none;
+    }
+}
+
+@media screen and (max-width:580px) {
+    .bg-success {
+        left:70px;
+        width:400px;
+    }
+
+    .rosa   {
+        margin-top:20px;
+        left:70px;
+        width:180px;
+    }
+
+    .carnoso    {
+        margin-top:20px;
+        left:295px;
+        width:180px;
+    }
+
+    .p_registro {
+        font-size:12px;
     }
 
     .carnoso:hover{
@@ -178,5 +354,148 @@
     
     .rosa:hover{
         transform: scale(1.1);
+    }
+}
+
+@media screen and (max-width:580px) {
+    .bg-success {
+        left:60px;
+    }
+
+    .rosa   {
+        left:60px;
+    }
+
+    .carnoso    {
+        left:285px;
+    }
+}
+
+@media screen and (max-width:505px) {
+    .bg-success {
+        left:50px;
+    }
+
+    .rosa   {
+        left:50px;
+    }
+
+    .carnoso    {
+        left:275px;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .bg-success {
+        left:40px;
+    }
+
+    .rosa   {
+        left:40px;
+    }
+
+    .carnoso    {
+        left:265px;
+    }
+}
+
+@media screen and (max-width:465px) {
+    .bg-success {
+        left:30px;
+    }
+
+    .rosa   {
+        left:30px;
+    }
+
+    .carnoso    {
+        left:255px;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .bg-success {
+        width:300px;
+        left:80px;
+    }
+
+    .rosa   {
+        width:140px;
+        left:80px;
+    }
+
+    .carnoso    {
+        width:140px;
+        left:240px;
+    }
+}
+
+@media screen and (max-width:440px) {
+    .bg-success {
+        left:70px;
+    }
+
+    .rosa   {
+        left:70px;
+    }
+
+    .carnoso    {
+        left:230px;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .bg-success {
+        left:60px;
+    }
+
+    .rosa   {
+        left:60px;
+    }
+
+    .carnoso    {
+        left:220px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .bg-success {
+        left:50px;
+    }
+
+    .rosa   {
+        left:50px;
+    }
+
+    .carnoso    {
+        left:210px;
+    }
+}
+
+@media screen and (max-width:390px) {
+    .bg-success {
+        left:40px;
+    }
+
+    .rosa   {
+        left:40px;
+    }
+
+    .carnoso    {
+        left:200px;
+    }
+}
+
+@media screen and (max-width:370px) {
+    .bg-success {
+        left:30px;
+    }
+
+    .rosa   {
+        left:30px;
+    }
+
+    .carnoso    {
+        left:190px;
     }
 }
