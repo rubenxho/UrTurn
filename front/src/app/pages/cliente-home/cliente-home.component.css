@@ -1,0 +1,64 @@
+
+.carusel {
+    max-width: 700px;
+    /* min-width: 700px; */
+    max-height: 400px;
+    /* min-height: 400px; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Titillium Web;
+    margin-top: 0px;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.titulo{
+    font-family: April Fatface ;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.523);
+}
+.titulo2{
+    font-family: Titillium Web ;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    
+}
+
+img {
+    max-width: 700px;
+    /* min-width: 700px; */
+    max-height: 400px;
+    min-height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.centrado{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+@media screen and (max-width:475px){
+    .carusel{
+        max-width: 350px;
+        /* min-width: auto; */
+        max-height: 250px;
+        /* min-height: auto; */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+   
+    img{
+        max-height: 250px;
+        max-width: 350px;
+    }
+
+}
