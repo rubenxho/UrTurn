@@ -6,9 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cliente-home.component.css']
 })
 export class ClienteHomeComponent implements OnInit {
+  
+  public mostrarTarjetas:boolean
+  constructor() { 
+    this.mostrarTarjetas=false
+  }
 
-  constructor() { }
-
+  eventoMostrar(sustituir:boolean){
+    this.mostrarTarjetas=sustituir
+  }
   ngOnInit(): void {
   }
 

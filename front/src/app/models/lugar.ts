@@ -1,16 +1,22 @@
 export class Lugar {
-  nombre: string;
-  dirección: string;
+  name: string;
+  category:string;
+  phone:string;
+  direction: string;
   tiempoAprox: string;
   descripción: string;
   constructor(
-    nombre: string,
-    dirección: string,
+    name: string,
+    category:string,
+    phone:string,
+    direction: string,
     tiempoAprox: string,
     descripción: string
   ) {
-    this.nombre = nombre;
-    this.dirección = dirección;
+    this.name = name;
+    this.category = category;
+    this.phone = phone;
+    this.direction = direction;
     this.tiempoAprox = tiempoAprox;
     this.descripción = descripción;
   }

@@ -1,3 +1,88 @@
-<p>cliente-home works!</p>
+<app-cliente-buscador (eventoMostrar)="eventoMostrar($event)"  ></app-cliente-buscador>
+ 
+<div class="col" *ngIf="mostrarTarjetas==false ;else tarjetas" >
+    
+    <h3 class="titulo2">!Top 5 populares!</h3>
+
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col centrado">
+                <div >
+    
+                    <div id="carouselExampleCaptions" class="carousel slide carusel " data-ride="carousel">
+                        <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                        <div class="carousel-item carusel active">
+                            <img  src="https://www.bhg.nl/wp-content/uploads/2019/02/Restaurant-Zuiver-main-min.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                            <h5 class="titulo">El Bosco</h5>
+                            <p > </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item carusel">
+                            <img src="https://carinena.es/wp-content/uploads/2018/01/Gimnasio-900x600-17.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                            <h5 class="titulo">Alta fit</h5>
+                            <p> </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item carusel">
+                            <img src="https://www.elmueble.com/medio/2020/04/20/ikea-orden-ph166991_12d29477_1347x896.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                            <h5 class="titulo">Ikea</h5>
+                            <p> </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item carusel">
+                            <img src="https://ww1.prweb.com/prfiles/2012/02/19/10458649/Relaxation%20Sanctuario.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                            <h5 class="titulo">Spa +Aqua</h5>
+                            <p> </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item carusel">
+                            <img src="https://th.bing.com/th/id/R840dc3b00687909556a55c8f60538e55?rik=I%2fMKBqyIl3jdow&riu=http%3a%2f%2fmadrid.lecool.com%2ffiles%2f2017%2f05%2f1-International-Union-of-Cinemas-Calls-for-Open-Standards-in-the-Cinema-Industry.jpg&ehk=UpU0iBFOhnXjxeN0opzPr8gGj8EO%2fM7Ibfy29HEFnEI%3d&risl=&pid=ImgRaw" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                            <h5 class="titulo">Cinesa</h5>
+                            <p> </p>
+                            </div>
+                        </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
+    </div>
+
+    
+</div>
+
+<ng-template #tarjetas style="margin: 0;">
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <app-cliente-tarjetas></app-cliente-tarjetas>
+
+            </div>
+        </div>
+
+    </div>
+</ng-template>
