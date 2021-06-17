@@ -14,7 +14,7 @@ export class EmpresaHomeComponent implements OnInit {
 
   constructor() {
     this.estadoCola=true
-    this.mensajeModal=["modalModificar","Confirmar si esta de acuerdo","Confirmar","No","Se ha guardado con exito"]
+    this.mensajeModal=["modalModificar","Confirmar nuevo tiempo de espera","Confirmar","Cancelar","Tiempo modificado correctamente!"]
     // Array(pos0: etiqueta modal, pos1: pregunta, pos2: op1 pregunta, pos3:op2 pregunta, pos4: estadocola, pos5: flag para pos4)
     this.mensajeModalIniciar=["modalIniciar","Confirmar si desea iniciar la cola","Confirmar","Cancelar","Se ha iniciado la cola",this.estadoCola,"1"]
     this.mensajeModalDetener=["modalDetener","Confirmar si desea detener la cola","Confirmar","Cancelar","Se ha detenido la cola",this.estadoCola,"1"]
