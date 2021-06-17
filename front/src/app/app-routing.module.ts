@@ -13,26 +13,27 @@ import { EmpresaPerfilComponent } from './pages/empresa-perfil/empresa-perfil.co
 import { ClienteRegistroComponent } from './pages/cliente-registro/cliente-registro.component';
 import { EmpresaRegistroComponent } from './pages/empresa-registro/empresa-registro.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ClienteTarjetasComponent } from './pages/cliente-tarjetas/cliente-tarjetas.component';
 
 const routes: Routes = [
   { path: 'cliente-perfil-empresa', component: ClientePerfilEmpresaComponent },
   // {path: "cliente-colas", component: ClienteColasComponent },
-  { path: 'clienteHome', component: ClienteHomeComponent },
-  { path: 'empresaHome', component: EmpresaHomeComponent },
-  { path: 'clienteColas', component: ClienteColasComponent },
-  { path: 'empresaCola', component: EmpresaColaComponent },
-  { path: 'empresaOpiniones', component: EmpresaOpinionesPaginaComponent },
-  { path: 'clienteOpiniones', component: ClienteOpinionesComponent },
-  { path: 'clienteFav', component: ClienteFavoritosComponent },
-  { path: 'empresaPerfil', component: EmpresaPerfilComponent },
-  { path: 'clientePerfil', component: ClientePerfilComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'cliente-perfil-empresa', component: ClientePerfilEmpresaComponent },
-  { path: 'cliente-colas', component: ClienteColasComponent },
-  { path: 'cliente-registro', component: ClienteRegistroComponent },
-  { path: 'empresa-registro', component: EmpresaRegistroComponent },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' },
-];
+  {path:"clienteHome", component: ClienteHomeComponent },
+  {path:"empresaHome", component:EmpresaHomeComponent },
+  {path:"clienteColas", component:ClienteColasComponent },
+  {path:"empresaCola", component:EmpresaColaComponent },
+  {path:"empresaOpiniones", component:EmpresaOpinionesPaginaComponent },
+  {path:"clienteOpiniones", component:ClienteOpinionesComponent },
+  {path:"clienteFav", component:ClienteFavoritosComponent },
+  {path:"empresaPerfil", component:EmpresaPerfilComponent },
+  {path:"clientePerfil", component:ClientePerfilComponent },
+  {path:'login', component:LoginComponent},
+  {path:"cliente-perfil-empresa", component:ClientePerfilEmpresaComponent},
+  {path:"cliente-colas", component:ClienteColasComponent},
+  {path:'cliente-registro', component:ClienteRegistroComponent},
+  {path:'empresa-registro', component:EmpresaRegistroComponent},
+  { path: 'clienteTarjetas', component: ClienteTarjetasComponent},
+  {path:"**", redirectTo:'login', pathMatch:'full'},]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

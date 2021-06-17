@@ -99,7 +99,7 @@
     .boton2 {
         margin-top: 20px;
         margin-bottom: 10px;
-        margin: 10px;
+        margin: 5px;
         font-size: 25px;        
     }
 }
@@ -193,6 +193,37 @@
 .parrafo {
     margin: 10px 20px 10px 20px;
     font-weight:lighter;
+}
+
+/********************************boton de regreso************************/
+
+.regresar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 25px;
+    max-width: fit-content;
+}
+
+.bton-regresar {
+    background-color: rgba(108, 92, 231, 1);
+    border-style: none;
+    margin: auto 10px;
+    border-radius: 10px;
+    color: white;
+    width: 175px;
+}
+
+@media screen and (max-width: 320px) {
+    .regresar {
+        display: flex;   
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center; 
+        margin-left: 70px;   
+    }
 }
 
 
