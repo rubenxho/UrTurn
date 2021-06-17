@@ -7,9 +7,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit {
-  @Input() mensajeModal: string[];
-  @Output() eventoCola = new EventEmitter<boolean>();
-
+  
   @Input() mensajeModal: string[];
   @Output() eventoCola = new EventEmitter<boolean>();
 
