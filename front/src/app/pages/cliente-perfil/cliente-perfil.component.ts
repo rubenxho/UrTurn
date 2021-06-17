@@ -12,6 +12,7 @@ export class ClientePerfilComponent implements OnInit {
   [k: string]: any;
   
   public data: any = {
+    img:"",
     name:"",
     apellidos:"",
     password:"",
