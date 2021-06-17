@@ -1,8 +1,14 @@
 <!-- @kehomaxd -->
 
 <!-- Pag -->
+
 <div class="global">
+
+<!-- Titulo de pagina -->
+    <div class="col titulo" ><h1>Perfil</h1></div>
+
 <!-- photo perfil -->
+
     <div class="pic-perfil">
         
         <div class="foto">
@@ -10,13 +16,17 @@
         </div>
         
     </div>
-    <!-- formulario y b -->
+
+    <!-- Formulario y Boton-->
+
     <div class="body-perfil">
 
         <div class="caja">
-            <!-- formulario -->
+
+            <!-- Formulario -->
             <form (input)="handelChange($event)">
 
+                <input class="in first" type="text" name=img placeholder="Imagen">
                 <input class="in" type="text" name="name" placeholder="Nombre" >
                 <input class="in" type="text" name="apellidos" placeholder="Apellidos" >
                 <input class="in" type="password" name="password" placeholder="Contraseña">
@@ -28,7 +38,7 @@
 
         </div>
         
-
+    <!-- Boton -->
         <div class="areaBoton">
                 <button class="bGuardar" data-toggle="modal" data-target="#modalModificar" (click)="handelClick()" type="button">Guardar</button>
         </div>
