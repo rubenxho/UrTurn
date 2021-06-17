@@ -25,13 +25,12 @@
 }
 
 .ruben-header2{
-    
     margin: 20px;
     margin-right: 20px;
 }
 
 .ruben-color-blaL{
-
+    
     color: white;
     padding: 20px;
     font-size: 50px;
@@ -52,9 +51,7 @@
     border-bottom: solid white;
 }
 
-.ruben-header2:focus{
-    
-    
+.ruben-focus{
     border-bottom: solid white;
 }
 

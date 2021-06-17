@@ -4,14 +4,71 @@
         <p class="ruben-color-blaL ruben-header1">UrTurn</p>
     </div>
 
-    <div class="ruben-row ruben-responsive">
-
-        <p class="ruben-color-bla ruben-header2" routerLink="/clienteHome">Home</p>
-        <p class="ruben-color-bla ruben-header2" routerLink="/clienteColas">Mis colas</p>
-        <p class="ruben-color-bla ruben-header2" routerLink="/clienteOpiniones">Reseñas</p>
-        <p class="ruben-color-bla ruben-header2" routerLink="/clienteFav">Favoritos</p>
-        <p class="ruben-color-bla ruben-header2" routerLink="/clientePerfil">Perfil</p>
-
+    <!-- Menu Cliente -->
+    <div class="ruben-row ruben-responsive" *ngIf="tipoUsuario=='Cliente'; else Empresa">
+        <div *ngIf="posicionMenu=='' || posicionMenu!='home'; else homeVacio">
+        <p class="ruben-color-bla ruben-header2" (click)="posicion('home')" routerLink="/clienteHome">Home</p>
+        </div>
+        <div *ngIf="posicionMenu=='' || posicionMenu!='colas'; else colasVacio">
+        <p class="ruben-color-bla ruben-header2" (click)="posicion('colas')" routerLink="/clienteColas">Mis Colas</p>
+        </div>
+        <div *ngIf="posicionMenu=='' || posicionMenu!='resena'; else resenaVacio">    
+        <p class="ruben-color-bla ruben-header2" (click)="posicion('resena')" routerLink="/clienteOpiniones">Reseñas</p>
+        </div>
+        <div *ngIf="posicionMenu=='' || posicionMenu!='favoritos'; else favoritosVacio">
+        <p class="ruben-color-bla ruben-header2" (click)="posicion('favoritos')" routerLink="/clienteFav">Favoritos</p>
+        </div>
+        <div *ngIf="posicionMenu=='' || posicionMenu!='perfil'; else perfilVacio">
+        <p class="ruben-color-bla ruben-header2" (click)="posicion('perfil')" routerLink="/clientePerfil">Perfil</p>
+        </div>
+           
+        <ng-template #homeVacio>
+            <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/empresaHome">Home</p>
+        </ng-template>
+        <ng-template #colasVacio>
+            <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/clienteColas">Mis Colas</p>
+        </ng-template>
+        <ng-template #resenaVacio>
+            <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/clienteOpiniones">Reseñas</p>
+        </ng-template>
+        <ng-template #favoritosVacio>
+            <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/clienteFav">Favoritos</p>
+        </ng-template>
+        <ng-template #perfilVacio>
+            <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/clientePerfil">Perfil</p>
+        </ng-template>
     </div>
+
+    <!-- Menu Empresa -->
+    <ng-template #Empresa>
+  
+        <div class="ruben-row ruben-responsive" >
+            <div *ngIf="posicionMenu=='' || posicionMenu!='homeEmpresa'; else homeEmpresaVacio">
+            <p class="ruben-color-bla ruben-header2" (click)="posicion('homeEmpresa')" routerLink="/empresaHome">Home</p>
+            </div>
+            <div *ngIf="posicionMenu=='' || posicionMenu!='clienteEmpresa'; else clientesEmpresaVacio">
+            <p class="ruben-color-bla ruben-header2" (click)="posicion('clienteEmpresa')" routerLink="/empresaCola">Clientes</p>
+            </div>
+            <div *ngIf="posicionMenu=='' || posicionMenu!='resenaEmpresa'; else resenaEmpresaVacio">    
+            <p class="ruben-color-bla ruben-header2" (click)="posicion('resenaEmpresa')" routerLink="/empresaOpiniones">Reseñas</p>
+            </div>
+            <div *ngIf="posicionMenu=='' || posicionMenu!='perfilEmpresa'; else perfilEmpresaVacio">
+            <p class="ruben-color-bla ruben-header2" (click)="posicion('perfilEmpresa')" routerLink="/empresaPerfil">Perfil</p>
+            </div>
+               
+            <ng-template #homeEmpresaVacio>
+                <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/empresaHome">Home</p>
+            </ng-template>
+            <ng-template #clientesEmpresaVacio>
+                <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/empresaCola">Clientes</p>
+            </ng-template>
+            <ng-template #resenaEmpresaVacio>
+                <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/empresaOpiniones">Reseñas</p>
+            </ng-template>
+            <ng-template #perfilEmpresaVacio>
+                <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/empresaPerfil">Perfil</p>
+            </ng-template>
+        </div> 
+    </ng-template>
 
 </div>

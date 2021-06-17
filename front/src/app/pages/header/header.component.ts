@@ -7,7 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public tipoUsuario:String;
+  public posicionMenu:String;
+
+  constructor() { 
+    this.tipoUsuario="Empresa";
+    this.posicionMenu=""
+  }
+
+  posicion(menu:string){
+    this.posicionMenu=menu;
+  }
+
 
   ngOnInit(): void {
   }

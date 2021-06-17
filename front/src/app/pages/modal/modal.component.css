@@ -1,0 +1,11 @@
+.ruben{
+    margin-top:15%;
+}
+
+/* Reponsive */
+@media screen and (max-width:475px){
+    
+    .ruben{
+        margin-top:90%;
+    }
+}
