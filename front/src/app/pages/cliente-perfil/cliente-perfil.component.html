@@ -15,22 +15,25 @@
 
         <div class="caja">
             <!-- formulario -->
-            <form>
+            <form (input)="handelChange($event)">
 
                 <input class="in" type="text" name="name" placeholder="Nombre" >
-                <input class="in" type="text" name="Apellidos" placeholder="Apellidos" >
+                <input class="in" type="text" name="apellidos" placeholder="Apellidos" >
                 <input class="in" type="password" name="password" placeholder="Contraseña">
-                <input class="in" type="password" name="password" placeholder="Condirmar contraseña">
+                <input class="in" type="password" name="repeatPassword" placeholder="Condirmar contraseña">
                 <input class="in" type="text" name="phone" placeholder="numero telefonico" >
                 <input class="in" type="email" name="mail" placeholder="Email">
         
             </form>
 
-        </div>  
+        </div>
+        
 
         <div class="areaBoton">
-                <button class="bGuardar" type="submit" >Guardar</button>
+                <button class="bGuardar" data-toggle="modal" data-target="#modalModificar" (click)="handelClick()" type="button">Guardar</button>
         </div>
+
+        <app-modal [mensajeModal]="guardarModal"></app-modal>
 
     </div>
 </div>    
