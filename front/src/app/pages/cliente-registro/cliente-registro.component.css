@@ -14,8 +14,8 @@ input[type='number']    {
     .logo   {
         margin-top:15px;
         font-family: Abril Fatface;
-        font-size:50px;
-        color:#343a40;
+        font-size:70px;
+        color:#6c757d;
     }
     
     .recuadro   {
@@ -29,8 +29,8 @@ input[type='number']    {
         height:125px;
         width:300px;
         background-image:url("../../../assets/programetas.jpg");
-           background-repeat:no-repeat;
-           background-size:100% 100%;
+        background-repeat:no-repeat;
+        background-size:100% 100%;
     }
     
     .bg-warning {
@@ -122,8 +122,8 @@ input[type='number']    {
         height:125px;
         width:200px;
         background-image:url("../../../assets/zapatilla.jpg");
-           background-repeat:no-repeat;
-           background-size:100% 100%;
+        background-repeat:no-repeat;
+        background-size:100% 100%;
     }
     
     .carnoso:hover{
@@ -320,6 +320,23 @@ input[type='number']    {
             width:175px;
         }
     }
+
+    @media screen and (max-width:530px) {
+        .bg-success {
+            width:400px;
+            left:50px;
+        }
+
+        .carnoso    {
+            left:275px;
+            width:175px;
+        }
+
+        .violeta    {
+            left:50px;
+            width:175px;
+        }
+    }
     
     @media screen and (max-width:475px) {
         .programetas    {
@@ -332,9 +349,9 @@ input[type='number']    {
     
         .bg-success {
             top:100px;
-            height:70%;
+            height:65%;
             left:70px;
-            width:70%;;
+            width:325px;
         }
 
         .login   {
@@ -346,17 +363,11 @@ input[type='number']    {
             margin-bottom:20px;
         }
     
-        .rosa   {
-            margin-top:20px;
-            left:70px;
-            width:35%;
-        }
-    
         .carnoso    {
             height:66px;
             margin-top:20px;
             top:570px;
-            left:240px;
+            left:245px;
             width:32%;
         }
 
@@ -364,7 +375,7 @@ input[type='number']    {
             height:66px;
             margin-top:20px;
             top:570px;
-            left:80px;
+            left:70px;
             width:32%;
         }
     
@@ -386,5 +397,78 @@ input[type='number']    {
 
         .flecha {
             margin-top:7px;
+        }
+    }
+
+    @media screen and (max-width:475px) {
+        .bg-success {
+            height:475px;
+            width:320px;
+        }
+
+        .carnoso    {
+            width:145px;
+            /* top:625px; */
+        }
+
+        .violeta    {
+            width:145px;
+            /* top:625px; */
+        }
+    }
+
+    @media screen and (max-width:450px) {
+        .bg-success {
+            left:60px;
+        }
+
+        .carnoso    {
+            left:240px;
+        }
+
+        .violeta    {
+            left:60px;
+        }
+    }
+
+    @media screen and (max-width:425px) {
+        .bg-success {
+            left:50px;
+        }
+
+        .carnoso    {
+            left:230px;
+        }
+
+        .violeta    {
+            left:50px;
+        }
+    }
+
+    @media screen and (max-width:405px) {
+        .bg-success {
+            left:40px;
+        }
+
+        .carnoso    {
+            left:220px;
+        }
+
+        .violeta    {
+            left:40px;
+        }
+    }
+
+    @media screen and (max-width:385px) {
+        .bg-success {
+            left:30px;
+        }
+
+        .carnoso    {
+            left:210px;
+        }
+
+        .violeta    {
+            left:30px;
         }
     }

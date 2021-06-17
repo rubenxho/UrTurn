@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-cliente-buscador',
@@ -6,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cliente-buscador.component.css']
 })
 export class ClienteBuscadorComponent implements OnInit {
+@Output() eventoMostrar= new EventEmitter<boolean>();
+public sustituir:boolean=true
+  constructor() { 
+    this.sustituir
+  }
 
-  constructor() { }
+
+  mostrarTarjetas(){
+    console.log("funciion mostrarTarjetas");
+    this.eventoMostrar.emit(this.sustituir)
+    
+  }
 
   ngOnInit(): void {
   }

@@ -13,11 +13,13 @@ export class LoginComponent implements OnInit {
   public myForm:FormGroup;
   public usernameValid:boolean;
   public passValid = true;
+  public tipoUsuario:string;
 
   constructor(private navigation:Router, private formBuilder:FormBuilder) { 
     this.myForm = this.buildForm();
     this.usernameValid = true;
     this.passValid = true;
+    this.tipoUsuario = '';
   }
 
   private buildForm():FormGroup {
@@ -48,13 +50,18 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  public validar()  {
+  public validar(tipoUsuario:string)  {
     this.validarUsername();
     this.validarPassword();
+
+    if(this.myForm.valid) {
+      this.tipoUsuario = tipoUsuario;
+      this.redirigir(`${tipoUsuario}Home`);
+    }
   }
 
-  public redirigir(tipoUsuario:string):void {
-    this.navigation.navigate([`${tipoUsuario}-registro`]);
+  public redirigir(componente:string):void {
+    this.navigation.navigate([componente]);
   }
 
   ngOnInit(): void {
