@@ -13,6 +13,7 @@ import { EmpresaPerfilComponent } from './pages/empresa-perfil/empresa-perfil.co
 import { ClienteRegistroComponent } from './pages/cliente-registro/cliente-registro.component';
 import { EmpresaRegistroComponent } from './pages/empresa-registro/empresa-registro.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ClienteTarjetasComponent } from './pages/cliente-tarjetas/cliente-tarjetas.component';
 
 const routes: Routes = [
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path:"cliente-colas", component:ClienteColasComponent},
   {path:'cliente-registro', component:ClienteRegistroComponent},
   {path:'empresa-registro', component:EmpresaRegistroComponent},
+  { path: 'clienteTarjetas', component: ClienteTarjetasComponent},
   {path:"**", redirectTo:'login', pathMatch:'full'},]
 
 @NgModule({

@@ -1,5 +1,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+
+<div class="regresar">
+    <!-- <button class="bton-regresar" (click)="goBack()">Regresar</button> -->
+    <button class="bton-regresar" routerLink="/clienteTarjetas">Regresar</button>
+</div>
+
 <section class="padre">
 
     <article class="img-tarjeta">
@@ -16,7 +22,7 @@
 
                 <span class="corazonGris" [ngClass]="{corazonRed: favorito}"><!--como meter algo en un vacío-->
 
-                    <i class="fas fa-heart showtoas boton2" (click)="fav()"></i>
+                    <i class="fas fa-heart showtoast boton2" (click)="fav()"></i>
     
                 </span>
 
