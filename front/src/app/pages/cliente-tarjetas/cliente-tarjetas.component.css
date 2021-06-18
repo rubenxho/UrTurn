@@ -22,6 +22,7 @@
   transition: transform 0.5s ease-in-out;
   width: 300px;
   height: 370px;
+  margin-top: 30px;
 }
 .card:hover {
   transform: scale(1.05);
