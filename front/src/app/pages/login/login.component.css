@@ -49,7 +49,7 @@
 .imagenAmarilla {
     width:100%;
     height:100%;
-    background-image:url("../../../assets/lapiz2.png");
+    background-image:url("../../../assets/gorra.png");
     background-position: center;
    	background-repeat:no-repeat;
    	background-size:auto 70%;
@@ -135,7 +135,7 @@
     height:175px;
     width:150px;
     background-color:#aa66cc;
-    background-image:url("../../../assets/reloj.png");
+    background-image:url("../../../assets/lapiz2.png");
    	background-repeat:no-repeat;
    	background-size:100% 100%;
 }
