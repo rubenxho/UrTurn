@@ -33,7 +33,9 @@ const routes: Routes = [
   {path:'cliente-registro', component:ClienteRegistroComponent},
   {path:'empresa-registro', component:EmpresaRegistroComponent},
   { path: 'clienteTarjetas', component: ClienteTarjetasComponent},
-  {path:"**", redirectTo:'login', pathMatch:'full'},]
+  {path:"", component: LoginComponent},
+  // {path:"**", redirectTo:'login', pathMatch:'full'},
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

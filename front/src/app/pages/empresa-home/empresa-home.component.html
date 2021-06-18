@@ -1,9 +1,74 @@
+<div class="ruben-col">
+    <div class="ruben-header">
+        <h1>Vista General</h1>
+    </div>
+    <div class="ruben-row">
+        <form class="ruben-formulario"> 
+            <label for="fname" class="ruben-label" >Tiempo de espera:</label>
+            <input class="ruben-input" placeholder="20 minutos/persona" type="text" id="user" style="text-align: center;">
+            <!-- Boton modal modificar -->
+            <button type="button" class="boton-modificar btn btn-primary " data-toggle="modal" data-target="#modalModificarCola">
+                Modificar
+            </button>
+            <!-- Modal boton modificar-->
+            <app-modal [mensajeModal]='mensajeModal'></app-modal> 
+        </form>
+        <div class="ruben-avanzar-cola">
+            <!-- Botono modal iniciar -->
+                <div class="col der2" *ngIf="estadoCola">
+                    <button type="button"  class=" boton2 btn btn-primary boton-avanzar-cola" data-toggle="modal" data-target="#modalIniciar">
+                        Iniciar
+                    </button>
+                    <!-- Modal boton Iniciar-->
+                    <app-modal [mensajeModal]='mensajeModalIniciar' (eventoCola)="botonIniciarDetener($event)"></app-modal>
+                </div>
+                <!-- Botono modal detener -->
+                <div class="col der2" *ngIf="!estadoCola">
+                    <button type="button"  class=" boton3 btn btn-danger boton-avanzar-cola" data-toggle="modal" data-target="#modalDetener">
+                        Detener
+                    </button>
+                    <!-- Modal botono Detener-->
+                    <app-modal [mensajeModal]='mensajeModalDetener' (eventoCola)="botonIniciarDetener($event)"></app-modal>
+                </div>
+ 
+        </div>
+    </div>
+    <div class="ruben-row2 contenedor-2" >
+        
+            <div class="ruben-col contenedor-cola">
+                <div class="cuadros">
+                    <p class="cuadros-texto" >Personas en Cola: 9</p>
+                    <!-- animacion -->
+                    <div id="bern-stop" style="margin-top: -30px;"></div>
+                    <!-- fin animacion -->
+                    
+                </div>
+                <div class="cuadros">
+                    <p class="cuadros-texto" >Numero de Cliente: 8</p>
+                    <!-- ticket -->
+                    <img src="https://media.istockphoto.com/vectors/its-your-turn-raffle-ticket-single-strip-ticket-with-motto-for-to-vector-id1184375431" alt="" style="margin-bottom: 30px; margin-top: 20px;">
+                    <!--  -->
+                    
+                </div>
+                <div class="cuadros">
+                    <p class="cuadros-texto">Clientes Atendidos: 7</p>
+                    <!-- animacion -->
+                    <div id="bern" style="margin-top: -30px;"></div>
+                    <!-- fin animacion -->
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+
+
 <!-- Web -->
-<div class="container vistaweb" >
+<!-- <div class="container vistaweb" >
     
-    <div class="row" >
+    <div class="row" > -->
         <!-- Cuadro izquierda -->
-        <div class="col">
+        <!-- <div class="col ">
             <div class="col izq izq2">
                 <p class="header">Nombre empresa</p>
                 <div class="cuadros">
@@ -19,45 +84,45 @@
                     <p class="cuadros-texto">5</p>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Cuadro derecha -->
-        <div class="col der vistaMovil" >
+        <!-- <div class="col der vistaMovil" > -->
             <!-- Derecha 1 -->
-            <div class="col izq">
-                <form class="formulario"> 
-                    <label for="fname" class="texto-input" >Tiempo de espera por cliente</label>
-                    <input class="texto-input" placeholder="20 minutos/persona" type="text" id="user" style="text-align: center;">
+            <!-- <div class="col izq">
+                <form class="formulario">  -->
+                    <!-- <label for="fname" class="texto-input" >Tiempo de espera por cliente</label>
+                    <input class="texto-input" placeholder="20 minutos/persona" type="text" id="user" style="text-align: center;"> -->
                     <!-- Boton modal modificar -->
-                    <button type="button" class=" boton1 btn btn-primary carrito" data-toggle="modal" data-target="#modalModificar">
+                    <!-- <button type="button" class=" boton1 btn btn-primary carrito" data-toggle="modal" data-target="#modalModificar">
                         Modificar
-                    </button>
+                    </button> -->
                     <!-- Modal boton modificar -->
-                    <app-modal [mensajeModal]='mensajeModal'></app-modal>
+                    <!-- <app-modal [mensajeModal]='mensajeModal'></app-modal>
                     
                 </form>
-            </div>
+            </div> -->
 
             <!-- Derecha 2 -->
-            <div class="col der2" style="margin-bottom: 40px;">
+            <!-- <div class="col der2" style="margin-bottom: 40px;"> -->
                 <!-- Botono modal iniciar -->
-                <div class="col der2" *ngIf="estadoCola">
+                <!-- <div class="col der2" *ngIf="estadoCola">
                     <button type="button"  class=" boton2 btn btn-primary carrito" data-toggle="modal" data-target="#modalIniciar">
                         Iniciar
-                    </button>
+                    </button> -->
                     <!-- Modal boton Iniciar-->
-                    <app-modal [mensajeModal]='mensajeModalIniciar' (eventoCola)="botonIniciarDetener($event)"></app-modal>
-                </div>
+                    <!-- <app-modal [mensajeModal]='mensajeModalIniciar' (eventoCola)="botonIniciarDetener($event)"></app-modal>
+                </div> -->
                 <!-- Botono modal detener -->
-                <div class="col der2" *ngIf="!estadoCola">
+                <!-- <div class="col der2" *ngIf="!estadoCola">
                     <button type="button"  class=" boton3 btn btn-danger carrito" data-toggle="modal" data-target="#modalDetener">
                         Detener
-                    </button>
+                    </button> -->
                     <!-- Modal botono Detener-->
-                    <app-modal [mensajeModal]='mensajeModalDetener' (eventoCola)="botonIniciarDetener($event)"></app-modal>
+                    <!-- <app-modal [mensajeModal]='mensajeModalDetener' (eventoCola)="botonIniciarDetener($event)"></app-modal>
                 </div>
             </div>
         </div>
 
     </div>  
-</div>
+</div> -->

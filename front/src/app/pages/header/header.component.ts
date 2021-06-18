@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +9,14 @@ export class HeaderComponent implements OnInit {
 
   public tipoUsuario:String;
   public posicionMenu:String;
+  @Input() public controlador:String;
 
   constructor() { 
     this.tipoUsuario="Empresa";
-    this.posicionMenu=""
+    this.posicionMenu="home";
+    this.controlador="";
   }
+
 
   posicion(menu:string){
     this.posicionMenu=menu;
