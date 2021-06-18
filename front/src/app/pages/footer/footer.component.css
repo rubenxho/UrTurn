@@ -10,26 +10,30 @@
 .colf{
     display: flex;
     flex-direction: column;
-
-
 }
+
 .rowf{
     display: flex;
     flex-direction: row;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 10vw;
-    
-
+    height: 15vw;
 }
+
+
+
 
 .bot{
-    color: rgba(114, 111, 97, 1)
+    color: rgba(114, 111, 97, 1);
+    font-size: 7vw;
 }
 
-.bot:hover{
-    color: black;
+
+
+.prueba{
+    color: rgba(48, 79, 254, 0.8);
+    font-size: 7vw;
 }
 
 .responsive{

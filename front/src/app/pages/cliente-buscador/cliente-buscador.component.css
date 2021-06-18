@@ -16,7 +16,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: baseline;
-    background-color: white;
+   
 }
 
 .lupa{
@@ -25,13 +25,27 @@
 }
 
 input{
-    border: white;
+    border:solid 1px #ccc;
+    border-radius: 5px;
 }
-.input{
+
+select{
+    border:solid 1px #ccc;
+    border-radius: 5px;
+    outline:none;
+}
+
+.buscador{
     box-shadow: 2px 2px 10px 1px grey;
     background-color: rgba(255, 255, 255, 0.479);
-    margin-top: 90px;
-    font-family: Titillium Web
+    margin-top: 30px;
+    font-family: Titillium Web;
+    border-radius:10px
+}
+
+button{
+    background-color:rgba(255, 255, 255, 0.479); 
+    border: white;
 }
 
 @media screen and (max-width:475px){
