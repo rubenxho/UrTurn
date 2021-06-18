@@ -10,6 +10,15 @@ input[type='number']    {
         align-items: center;
         text-align:center;
     }
+
+    .logoImagen {
+        margin-top:30px;
+        height:80px;
+        border-radius:100px;
+        background-image:url("../../../assets/logo.png");
+        background-repeat:no-repeat;
+        background-size:100% 100%;
+    }
     
     .logo   {
         margin-top:15px;
@@ -24,11 +33,11 @@ input[type='number']    {
     }
     
     .programetas    {
-        top:120px;
+        top:60px;
         left:100px;
-        height:125px;
+        height:180px;
         width:300px;
-        background-image:url("../../../assets/programetas.jpg");
+        background-image:url("../../../assets/fila.png");
         background-repeat:no-repeat;
         background-size:100% 100%;
     }
@@ -38,6 +47,9 @@ input[type='number']    {
         left:200px;
         width:200px;
         height:200px;
+        background-image:url("../../../assets/silla.jpg");
+        background-repeat:no-repeat;
+        background-size:100% 100%;
     }
     
     .reclamo    {
@@ -83,7 +95,7 @@ input[type='number']    {
     }
     
     .titulo_registro    {
-        margin-top:15px;
+        margin-top:50px;
     }
     
     .p_registro {
@@ -144,8 +156,26 @@ input[type='number']    {
     }
 
     @media screen and (max-width:1235px) {
+        .titulo_registro    {
+            margin-top:14px;
+        }
+        
         .zapatilla  {
             display:none;
+        }
+
+        .logoImagen {
+            display:none;
+        }
+
+        .logoImagenResponsive   {
+            margin-left:400px;
+            margin-top:30px;
+            height:80px;
+            border-radius:100px;
+            background-image:url("../../../assets/logo.png");
+            background-repeat:no-repeat;
+            background-size:50% 80%;
         }
 
         .bg-warning {
@@ -232,6 +262,13 @@ input[type='number']    {
     }
 
     @media screen and (max-width:850px) {
+        .logoImagenResponsive   {
+            margin-left:250px;
+            margin-top:40px;
+            height:100px;
+            background-size:60% 60%;
+        }
+        
         .bg-success {
             left:150px;
         }
@@ -288,6 +325,13 @@ input[type='number']    {
     }
 
     @media screen and (max-width:625px) {
+        .logoImagenResponsive   {
+            margin-left:100px;
+            margin-top:40px;
+            height:100px;
+            background-size:75% 60%;
+        }
+        
         .bg-success {
             width:500px;
             left:50px;
@@ -339,6 +383,13 @@ input[type='number']    {
     }
     
     @media screen and (max-width:475px) {
+        .logoImagenResponsive   {
+            margin-left:60px;
+            margin-top:20px;
+            height:100px;
+            background-size:75% 60%;
+        }
+        
         .programetas    {
             display:none;
         }
