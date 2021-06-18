@@ -1,47 +1,55 @@
 
 
 
-<div class="responsive">
-    <div class="footer rowf" *ngIf="empresa==true ;else footer2">
+<div class="responsive" >
+    <div class="footer rowf"  *ngIf="empresa==true ;else footer2">
 
-        <div routerLink="empresaHome" class="colf " >
-            <i class="bot fas fa-home "></i>
+        <div  [ngClass]="posicionMenu == 'home' ? 'prueba' : 'bot'" class="colf " >
+            <i class=" fas fa-home" (click)="posicion('home')" routerLink="empresaHome"></i>
         </div>
-        <div routerLink="empresaColas" class="colf " >
-            <i class="bot fas fa-users"></i>
+
+        <div routerLink="empresaColas"  [ngClass]="posicionMenu == 'clientes' ? 'prueba' : 'bot'">
+            <i class=" fas fa-users" (click)="posicion('clientes')"></i>
         </div>
-        <div routerLink="empresaOpiniones" class="colf " >
-            <i class="bot fas fa-comments"></i>
+
+        <div routerLink="empresaOpiniones" class="colf " [ngClass]="posicionMenu == 'opiniones' ? 'prueba' : 'bot'">   
+            <i class=" fas fa-comments" (click)="posicion('opiniones')"></i>   
         </div>
-        <div routerLink="empresaPerfil" class="colf " >
-            <i class="bot fas fa-user"></i>
+
+        <div routerLink="empresaPerfil" class="colf " [ngClass]="posicionMenu == 'perfil' ? 'prueba' : 'bot'">  
+            <i class=" fas fa-user" (click)="posicion('perfil')"></i>     
         </div>
         
     </div>
+
     
     <ng-template #footer2>
 
-        <div class="footer rowf">
+        <div class="footer rowf" >
 
-            <div routerLink="clienteHome" class="colf " >
-                <i class="bot fas fa-home "></i>
+            <div routerLink="clienteHome" class="colf " [ngClass]="posicionMenu == 'home' ? 'prueba' : 'bot'" >
+                <i class=" fas fa-home " (click)="posicion('home')" ></i>
             </div>
-            <div routerLink="clienteColas" class="colf " >
-                <i class="bot fas fa-users"></i>
+
+            <div routerLink="clienteColas" class="colf "  [ngClass]="posicionMenu == 'turnos' ? 'prueba' : 'bot'" >
+                <i class="fas fa-users" (click)="posicion('turnos')" ></i>
             </div>
-            <div routerLink="clienteOpiniones" class="colf " >
-                <i class="bot fas fa-comments"></i>
+
+            <div routerLink="clienteOpiniones" class="colf "  [ngClass]="posicionMenu == 'opiniones' ? 'prueba' : 'bot'" >
+                <i class=" fas fa-comments" (click)="posicion('opiniones')" ></i>  
             </div>
-            <div routerLink="clienteFav" class="colf " >
-                <i class="bot fas fa-heart"></i>
+
+            <div routerLink="clienteFav" class="colf "  [ngClass]="posicionMenu == 'fav' ? 'prueba' : 'bot'" >
+                <i class=" fas fa-heart" (click)="posicion('fav')" ></i>
             </div>
-            <div routerLink="clientePerfil" class="colf " >
-                <i class="bot fas fa-user"></i>
+
+            <div routerLink="clientePerfil" class="colf "  [ngClass]="posicionMenu == 'perfil' ? 'prueba' : 'bot'"  >
+                <i class=" fas fa-user" (click)="posicion('perfil')" ></i>
             </div>
 
         </div>
 
-    </ng-template>
+    </ng-template> 
 </div>
 
 

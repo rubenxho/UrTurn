@@ -8,8 +8,9 @@ import { Component, OnInit, Output } from '@angular/core';
   styleUrls: ['./cliente-buscador.component.css']
 })
 export class ClienteBuscadorComponent implements OnInit {
-@Output() eventoMostrar= new EventEmitter<boolean>();
-public sustituir:boolean=true
+  @Output() eventoMostrar= new EventEmitter<boolean>();
+  public sustituir:boolean=true
+ 
   constructor() { 
     this.sustituir
   }

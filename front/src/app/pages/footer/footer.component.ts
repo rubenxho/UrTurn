@@ -7,13 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  public posicionMenu:string=""
 public empresa:boolean
 
   constructor() {
-
+    this.posicionMenu="home"
     this.empresa=false
   }
 
+  posicion(posicion:string){
+    this.posicionMenu=posicion
+   
+  }
  
 
   ngOnInit(): void {
