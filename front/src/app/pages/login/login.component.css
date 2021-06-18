@@ -1,8 +1,20 @@
+
+
 .centrado {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align:center;
+}
+
+.logoImagen {
+    margin-top:30px;
+    margin-left:40px;
+    height:80px;
+    border-radius:100px;
+    background-image:url("../../../assets/logo.png");
+   	background-repeat:no-repeat;
+   	background-size:100% 100%;
 }
 
 .logo   {
@@ -18,20 +30,30 @@
 }
 
 .programetas    {
-    top:120px;
+    top:60px;
     left:100px;
-    height:125px;
+    height:180px;
     width:300px;
-    background-image:url("../../../assets/programetas.jpg");
+    background-image:url("../../../assets/fila.png");
    	background-repeat:no-repeat;
    	background-size:100% 100%;
 }
 
 .bg-warning {
     top:270px;
-    left:200px;
-    width:200px;
-    height:200px;
+    left:100px;
+    width:300px;
+    height:275px;
+}
+
+.imagenAmarilla {
+    width:100%;
+    height:100%;
+    background-image:url("../../../assets/lapiz2.png");
+    background-position: center;
+   	background-repeat:no-repeat;
+   	background-size:auto 70%;
+    margin:0 auto;
 }
 
 .reclamo    {
@@ -59,11 +81,15 @@
     width:60%;
 }
 
-.btn-dark   {
+.btn-light   {
+    margin-top:5px;
     width:40%;
     border-radius:30px;
-    color:white;
+    border-style:solid;
+    border-color:grey;
+    border-width:1px;
     font-weight:900;
+    color:#6c757d;
 }
 
 .rosa   {
@@ -75,20 +101,24 @@
 }
 
 .titulo_registro    {
-    margin-top:15px;
+    margin-top:50px;
 }
 
 .p_registro {
+    margin-top:150px;
     text-align:justify;
     color:white;
 }
 
 .azulado    {
     width:300px;
-    height:185px;
+    height:150px;
     top:395px;
     left:685px;
     background-color:#6C5CE7;
+    background-image:url("../../../assets/programetas.jpg");
+   	background-repeat:no-repeat;
+   	background-size:130% 100%;
 }
 
 .carnoso    {
@@ -104,7 +134,10 @@
     left:860px;
     height:175px;
     width:150px;
-    background-color:#e040fb;
+    background-color:#aa66cc;
+    background-image:url("../../../assets/reloj.png");
+   	background-repeat:no-repeat;
+   	background-size:100% 100%;
 }
 
 .zapatilla  {
@@ -126,8 +159,10 @@
 }
 
 .error  {
+    margin-top:10px;
+    font-weight:bolder;
     font-size: small;
-    color:red;
+    color:white;
 }
 
 @media screen and (max-width:1235px) {
@@ -174,6 +209,7 @@
         height:220px;
         top:150px;
         left:180px;
+        background-image:url("../../../assets/programetas.jpg");
     }
 
     .violeta    {
@@ -242,6 +278,18 @@
     .programetas    {
         display:none;
     }
+
+    .logoImagen {
+        display:none;
+    }
+
+    .logoImagenResponsive   {
+        margin-top:30px;
+        height:80px;
+        background-image:url("../../../assets/logo.png");
+        background-repeat:no-repeat;
+        background-size:50% 100%;
+    }
 }
 
 @media screen and (max-width:890px) {
@@ -301,9 +349,19 @@
     .rosa    {
         left:360px;
     }
+
+    .logoImagenResponsive   {
+        height:120px;
+        margin-top:20px;
+        background-size:85% 80%;
+    }
 }
 
 @media screen and (max-width:625px) {
+    .titulo_registro    {
+        margin-top:15px;
+    }
+    
     .bg-success {
         width:500px;
         left:50px;
@@ -382,6 +440,12 @@
 
     .carnoso    {
         left:275px;
+    }
+
+    .logoImagenResponsive   {
+        height:100px;
+        margin-top:20px;
+        background-size:100% 100%;
     }
 }
 
@@ -497,5 +561,12 @@
 
     .carnoso    {
         left:190px;
+    }
+
+    .logoImagenResponsive   {
+        height:120px;
+        margin-top:40px;
+        background-size:100% 80%;
+        
     }
 }

@@ -1,12 +1,15 @@
 <div class='container-fluid'>
     <div class='row centrado'>
-        <h1 class='logo'>UrTurn</h1>
+        <div class='col-10 logoImagenResponsive'></div>
+        <div class='col-4'></div>
+        <div class='col-4 logoImagen'></div>
+        <div class='col-4'></div>
     </div>
 
     <div class='recuadro programetas'></div>
 
     <div class='recuadro centrado bg-warning'>
-        <label class='reclamo'>Hacer cola nunca fue tan facil</label>
+        <div class='imagenAmarilla'></div>
     </div>
 
     <div class='recuadro bg-success'>
@@ -21,7 +24,7 @@
                             #username 
                             formControlName='username'
                             class="form-control" 
-                            placeholder="Username" 
+                            placeholder="Usuario" 
                             aria-label="Username" 
                             aria-describedby="basic-addon1"
                             [ngClass]="{'is-invalid':usernameValid==false}"
@@ -34,7 +37,7 @@
                     <input  type="password" 
                             formControlName='password'
                             class="form-control" 
-                            placeholder="Password" 
+                            placeholder="Contraseña" 
                             aria-label="Username" 
                             aria-describedby="basic-addon1" 
                             [ngClass]=
@@ -44,14 +47,14 @@
             </div>
 
             <div class='row login'>
-                <button type="button" class="btn btn-dark" on-click='validar(username.value)'>Sign In</button>
+                <button type="button" class="btn btn-light" on-click='validar(username.value)'>Entra!</button>
             </div>
         </form>
 
-        <label *ngIf='!usernameValid' class='error'>El campo usuario es obligatorio</label>
-        <label *ngIf='usernameValid && !passValid' class='error'>
-            El password debe tener como mínimo 6 carateres
-        </label>
+            <label *ngIf='!usernameValid' class='error'>El campo usuario es obligatorio</label>
+            <label *ngIf='usernameValid && !passValid' class='error'>
+                El password debe tener <br/> como mínimo 6 carateres
+            </label>
     </div>
 
     <div class='recuadro rosa' on-click='redirigir("empresa-registro")'>
@@ -60,12 +63,12 @@
         </div>
 
         <div class="row centrado p_registro descripcion">
-            <p>Regístrate como empresa<br/>y gestiona los turnos<br/>de espera en tu negocio</p>
+            
         </div>
     </div>
 
     <div class='recuadro azulado centrado'>
-        <label for="registrate" class='reclamo'>Regístrate</label>
+        <label for="registrate" class='reclamo'></label>
     </div>
 
     <div class='recuadro carnoso' on-click='redirigir("cliente-registro")'>
@@ -74,12 +77,12 @@
         </div>
 
         <div class="row centrado p_registro descripcion">
-            <p>Regístrate como cliente<br/>y aprovecha tu tiempo<br/>fácilmente</p>
+            
         </div>
     </div>
 
     <div class='recuadro violeta centrado'>
-        <label for="pideTurno" class='reclamo'>Pide turno</label>
+        <label for="pideTurno" class='reclamo'></label>
     </div>
 
     <div class='recuadro zapatilla'></div>

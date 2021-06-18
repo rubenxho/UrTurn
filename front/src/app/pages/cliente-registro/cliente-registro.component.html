@@ -1,6 +1,9 @@
 <div class='container-fluid'>
     <div class='row centrado'>
-        <h1 class='logo'>UrTurn</h1>
+        <div class='col-10 logoImagenResponsive centrado'></div>
+        <div class='col-4'></div>
+        <div class='col-4 logoImagen'></div>
+        <div class='col-4'></div>
     </div>
 
     <div class='recuadro programetas'>
@@ -8,7 +11,7 @@
     </div>
 
     <div class='recuadro centrado bg-warning'>
-        <label class='reclamo'>Hacer cola nunca fue tan facil</label>
+        <label class='reclamo'></label>
     </div>
 
     <div class='recuadro bg-success'>
@@ -63,7 +66,7 @@
                             #password
                             formControlName='password'
                             class="form-control" 
-                            placeholder="Password" 
+                            placeholder="Contraseña" 
                             aria-label="Username" 
                             aria-describedby="basic-addon1"
                             [ngClass]=
@@ -77,7 +80,7 @@
                     <input  type="password" 
                             #repPassword
                             class="form-control" 
-                            placeholder="Repeat password" 
+                            placeholder="Repetir contraseña" 
                             aria-label="Username" 
                             aria-describedby="basic-addon1"
                             [ngClass]=
@@ -112,10 +115,6 @@
         <div class='row centrado titulo_registro'>
             <label for="recuadro rosa" class='reclamo'>Empresa</label>
         </div>
-
-        <div class="row centrado p_registro">
-            <p>Regístrate como empresa<br/>y gestiona los turnos<br/>de espera en tu negocio</p>
-        </div>
     </div>
 
     <div class='recuadro azulado centrado'>
@@ -123,12 +122,8 @@
     </div>
 
     <div class='recuadro carnoso' on-click='redirigir("empresa-registro")'>
-        <div class='row centrado titulo_registro'>
-            <label for="recuadro rosa" class='reclamo'>Empresa</label>
-        </div>
-
-        <div class="row centrado p_registro descripcion">
-            <p>Regístrate como empresa<br/>y gestiona los turnos<br/>de espera en tu negocio</p>
+        <div class='row centrado titulo_registro reclamo'>
+            <label class='reclamo centrado'>Empresa</label>
         </div>
     </div>
 
