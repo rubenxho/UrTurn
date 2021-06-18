@@ -1,34 +1,49 @@
-.card-text .btn-primary {
-  font-family: Titillium Web;
-  font-weight: bolder;
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0%;
+  margin-bottom: 5%;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* card*/
+.card {
+  display: flex;
+  justify-content: center;
+  background-color: #f2f1ed;
+  transition: transform 0.5s ease-in-out;
+  width: 300px;
+  height: 370px;
+}
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.6s ease-in-out;
+}
+.card-img-top {
+  cursor: pointer;
+  width: 100%;
+  height: 165px;
 }
 .card-title {
+  text-shadow: #ccc 15px 0 20px;
   font-family: Abril Fatface;
-  font-size: 32px;
+  font-size: 25px;
   position: absolute;
   top: 120px;
   color: white;
 }
-.myrow {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 80px;
+.card-text .btn-primary {
+  font-family: Titillium Web;
+  font-weight: bolder;
 }
-.card {
-  transition: transform 0.5s ease-in-out;
-}
-.card:hover {
-  transform: scale(1.05);
-  transition: transform 0.5s ease-in-out;
-  border-radius: 10px;
-}
-
-/* la estrella
-.estrella {
-  color: yellow;
-}
-*/
 
 /* la estrella*/
 .valoracion {
@@ -52,35 +67,36 @@
 }
 
 /* la corazon*/
+.fa-heart {
+  cursor: pointer;
+  position: absolute;
+  top: 295px;
+  margin-left: 10%;
+}
 .corazonGris {
   font-size: 35px;
   color: #c1b8b8;
 }
-
 .corazonRed {
   font-size: 35px;
   color: rgb(216, 8, 42);
 }
-
-/* un icon de guardar a favorito*/
-.fa-thumbs-up {
+#numPosicion {
+  font-weight: bolder;
+  background: transparent;
   color: blue;
+  cursor: default;
+}
+#comfirmarColaModal {
+  margin-top: 15%;
 }
 
-/* position de toast */
-.toast {
-  position: absolute;
-  top: 115px;
-  right: 0px;
-  background-color: rgba(16, 243, 16, 0.329);
-}
-
+/* responsive*/
 @media screen and (max-width: 475px) {
-  .card-img-top {
-    size: 20px;
+  .card {
+    margin-bottom: 50px;
   }
-  .col {
-    margin-left: 0%;
-    margin-bottom: 30px;
+  #comfirmarColaModal {
+    margin-top: 70%;
   }
 }
