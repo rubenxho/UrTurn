@@ -1,81 +1,85 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+<div class="global">
 
-<div class="regresar">
-    <!-- <button class="bton-regresar" (click)="goBack()">Regresar</button> -->
-    <button class="bton-regresar" routerLink="/clienteTarjetas">Regresar</button>
+    <div class="regresar">
+        <!-- <button class="bton-regresar" (click)="goBack()">Regresar</button> -->
+        <button class="bton-regresar" routerLink="/clienteTarjetas">Regresar</button>
+    </div>
+
+    <div><h6 class="titular">Información del Establecimiento</h6></div>
+
+    <section class="padre">
+
+        <article class="img-tarjeta">
+
+            <div class="sobreFoto">
+
+                <h2 class="nombre">EMPRESA</h2> 
+
+                <div class="row botones">
+                    <div>
+                        <button class="boton" data-toggle="modal" data-target="#modalModificar">Hacer cola</button>
+                    </div>              
+
+                    <span class="corazonGris" [ngClass]="{corazonRed: favorito}"><!--como meter algo en un vacío-->
+
+                        <i class="fas fa-heart showtoast boton2" (click)="fav()"></i>
+        
+                    </span>
+
+                </div>
+
+            </div>
+
+            <img class="imagenD" src="./assets/gym2.png" alt="gym">
+
+        </article>
+
+        <article class="hijo2">
+
+            <div class="agrupado">
+
+                <div class="lista">
+
+                    <h6 class="lineaLista">Dirección:
+                        <p class="parrafo1">Lorem ipsum dolor sit amet.</p>
+                    </h6>
+                    <h6 class="lineaLista">Tiempo de espera:
+                        <p class="parrafo1">Lorem ipsum dolor sit amet.</p>
+                    </h6>
+                    <h6 class="lineaLista">Número de personas en cola:
+                        <p class="parrafo1">Lorem ipsum dolor sit amet.</p>
+                    </h6>                
+
+                </div>
+
+                <div class="horario">
+
+                    <h6 class="lineaHorario">Horario:</h6>
+                    <h6 class="lineaHorario">L-V:
+                        <p class="parrafoHora">10:00-22:00</p>
+                    </h6>
+                    <h6 class="lineaHorario">S-D:
+                        <p class="parrafoHora">10:00-00:00</p>
+                    </h6>
+
+                </div>
+
+            </div>
+
+            <div class="descripccion">
+
+                <h6 class="titulo">Descripción:</h6>
+                <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate eius pariatur atque minima fugiat magni, aliquam facilis sed placeat veritatis modi hic non quaerat cumque animi est nemo labore harum?.</p>
+                
+            </div> 
+                        
+        </article>    
+
+    </section>
+
 </div>
-
-<section class="padre">
-
-    <article class="img-tarjeta">
-
-        <div class="sobreFoto">
-
-            <h2 class="nombre">EMPRESA</h2> 
-
-            <div class="botones">
-
-                <button class="boton" data-toggle="modal" data-target="#modalModificar">Hacer cola</button>
-
-               
-
-                <span class="corazonGris" [ngClass]="{corazonRed: favorito}"><!--como meter algo en un vacío-->
-
-                    <i class="fas fa-heart showtoast boton2" (click)="fav()"></i>
-    
-                </span>
-
-            </div>
-
-        </div>
-
-        <img class="imagenD" src="./assets/gym2.png" alt="gym">
-
-    </article>
-
-    <article class="hijo2">
-
-        <div class="agrupado">
-
-            <div class="lista">
-
-                <h6 class="lineaLista">Dirección:
-                    <p class="parrafo">Lorem ipsum dolor sit amet.</p>
-                </h6>
-                <h6 class="lineaLista">Tiempo de espera:
-                    <p class="parrafo">Lorem ipsum dolor sit amet.</p>
-                </h6>
-                <h6 class="lineaLista">Número de personas en cola:
-                    <p class="parrafo">Lorem ipsum dolor sit amet.</p>
-                </h6>                
-
-            </div>
-
-            <div class="horario">
-
-                <h6 class="lineaHorario">Horario:</h6>
-                <h6 class="lineaHorario">L-V:
-                    <p class="parrafoHora">10:00-22:00</p>
-                </h6>
-                <h6 class="lineaHorario">S-D:
-                    <p class="parrafoHora">10:00-00:00</p>
-                </h6>
-
-            </div>
-
-        </div>
-
-        <div class="descripccion">
-
-            <h6 class="titulo">Descripción:</h6>
-            <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate eius pariatur atque minima fugiat magni, aliquam facilis sed placeat veritatis modi hic non quaerat cumque animi est nemo labore harum?.</p>
-            
-        </div> 
-                    
-    </article>    
-
-</section>
 
 <app-empresa-opiniones></app-empresa-opiniones>
 

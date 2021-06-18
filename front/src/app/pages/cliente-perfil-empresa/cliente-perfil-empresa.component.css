@@ -1,16 +1,24 @@
 /*****Estilos*****/
-
 .padre {
     background-color: rgba(242, 241, 237, 1);
     border-width: 15px;
     border-color: rgba(242, 241, 237, 1);
-    border-radius: 15px;
-    box-shadow: 2px 0px 2px 0px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
     max-width: min(720px, calc(100vw - 40px));
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 813px) {
+    .padre {
+        display: flex;
+        flex-direction: column;
+        max-width: min(720px, calc(100vw - 10px));
+        margin-top: 10px;
+    }
 }
 
 /*******************imagen*****************************/
@@ -26,16 +34,13 @@
     max-height: 100%;
     min-height: 100px;
     min-width: min(720px, calc(100vw - 40px));
-    border-radius: 15px;    
+    border-radius: 5px;    
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 813px) {
     .imagenD {
-        width: 100%;
         max-height: 100%;
         min-height: 100px;
-        min-width: 320px;
-        /* border-radius: 15px;         */
     }
 }
 
@@ -51,7 +56,7 @@
 }
 
 .nombre {
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(0, 0, 0, .6);
     height: fit-content;/*ajusta el tamaño al contenido de la caja*/
     padding: 10px 20px;
     color: #ffff;
@@ -59,33 +64,48 @@
     font-family: Abril Fatface;
 }
 
+@media screen and (max-width: 813px) {
+    .nombre {
+        background-color: rgba(0, 0, 0, .9);
+        height: fit-content;/*ajusta el tamaño al contenido de la caja*/
+        /* padding: 5px 10px; */
+        color: #ffff;
+        font-size: 22px;
+        margin-left: 43px;
+        font-family: Abril Fatface;
+    }
+}
+
 .botones {
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(0, 0, 0, .7);
     height: fit-content;
     padding: 5px;
     min-width: max-content;/*la caja tiene un width definido, no se mueve, es el mínimo del máximo*/
     margin: 15px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 813px) {
     .botones {
-        margin: 15px 5px;
-        width: 110px;
+        background-color: rgba(0, 0, 0, .6);
+        margin-right: 99px;
+        margin-bottom: 14px;
+        min-width: max-content
     }
 }
 
 .boton {
-    background-color: rgba(108, 92, 231, 1);
+    background-color: #5C74F6;
     border-style: none;
     margin: auto 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
     width: 175px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 813px) {
     .boton {
-        margin: auto auto;
+        margin-bottom: 15px;
+        margin-left: 15px;
         width: 95px;
     }
 }
@@ -95,12 +115,10 @@
     font-size: 30px;   
 }
 
-@media screen and (max-width: 475px) {
+@media screen and (max-width: 813px) {
     .boton2 {
-        margin-top: 20px;
-        margin-bottom: 10px;
-        margin: 5px;
-        font-size: 25px;        
+        margin-left: 0;
+        margin-right: auto;      
     }
 }
 
@@ -121,14 +139,13 @@
     padding: 10px 0px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 813px) {
     .agrupado {
         display: flex; 
         flex-direction: column;   
         justify-content: center;
         align-items: center;
-        margin: auto 20px;
-        padding: 10px 0px;
+        margin: auto 42px 0px; 
         column-count: 1;
     }
 }
@@ -152,7 +169,7 @@
     width: 250px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 813px) {
     .horario {
         display: flex;
         flex-direction: column;   
@@ -169,9 +186,9 @@
     font-weight:lighter;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 813px) {
     .parrafoHora {
-        margin: auto 20px;        
+        margin: auto 15px;        
     }
 }
 
@@ -190,9 +207,27 @@
     margin: auto 20px;
 }
 
+@media screen and (max-width: 813px) {
+    .titulo {
+        margin: auto 48px;
+        /* padding: 10px 0px;         */
+    }
+}
+
+.parrafo1 {
+    margin: 10px 20px 10px 20px;
+    font-weight:lighter;
+}
+
 .parrafo {
     margin: 10px 20px 10px 20px;
     font-weight:lighter;
+}
+
+@media screen and (max-width: 813px) {
+    .parrafo {
+        margin: auto 48px;        
+    }
 }
 
 /********************************boton de regreso************************/
@@ -200,29 +235,66 @@
 .regresar {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-content: center;
-    flex-wrap: wrap;
-    margin: 25px;
+    justify-content:flex-start;
+    align-content:center;
+    /* flex-wrap: wrap; */
+    margin-left: 15px;
+    margin-top: 10px;
     max-width: fit-content;
 }
 
 .bton-regresar {
-    background-color: rgba(108, 92, 231, 1);
+    background-color: #5C74F6;
     border-style: none;
     margin: auto 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
-    width: 175px;
+    width: 150px;
+    height: 50px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 813px) {
     .regresar {
+        display: flex;   
+        flex-direction: column; 
+        justify-content:initial;
+        align-items: center; 
+        margin-left: 135px;
+        width: 210px;
+        height: 30px;   
+    }
+}
+
+@media screen and (max-width: 813px) {
+    .regresar {
+        display: flex;   
+        flex-direction: column; 
+        justify-content:initial;
+        align-items: center; 
+        margin-left: 115px;
+        width: 210px;
+        height: 30px;   
+    }
+}
+
+.titular {
+    /* display:inline-block; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 35px;
+}
+
+@media screen and (max-width: 813px) {
+    .titular {
         display: flex;   
         flex-direction: column; 
         justify-content: center;
         align-items: center; 
-        margin-left: 70px;   
+        margin: 5px 70px 5px 110px;
+        font-size: 25px;
     }
 }
 
