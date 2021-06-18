@@ -21,6 +21,7 @@ input:focus{
     display: flex;
     justify-content: center; 
     text-align: center; 
+    background-color: #ffffff3a;
     /* margin-bottom: 15px; */
     /* padding: 20px; */
 }
