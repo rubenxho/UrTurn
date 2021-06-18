@@ -7,6 +7,12 @@ declare var $: any;
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  public prueba:String
+  
+  constructor(){
+    this.prueba="Cliente"
+  }
+
   ngOnInit() {
     $('.showtoast').click(function () {
       $('.toast').toast('show');

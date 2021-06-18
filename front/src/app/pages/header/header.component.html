@@ -5,7 +5,7 @@
     </div>
 
     <!-- Menu Cliente -->
-    <div class="ruben-row ruben-responsive" *ngIf="tipoUsuario=='Cliente'; else Empresa">
+    <div class="ruben-row ruben-responsive" *ngIf="controlador=='Cliente'; else Empresa">
         <div *ngIf="posicionMenu=='' || posicionMenu!='home'; else homeVacio">
         <p class="ruben-color-bla ruben-header2" (click)="posicion('home')" routerLink="/clienteHome">Home</p>
         </div>
@@ -72,3 +72,20 @@
     </ng-template>
 
 </div>
+
+    <!-- Modificar luego -->
+    <!-- <div [ngClass]="posicionMenu == 'home' ? 'ruben-focus' : ''">
+    <p class="ruben-color-bla ruben-header2" (click)="posicion('home')" routerLink="/clienteHome">Home</p>
+    </div>
+    <div [ngClass]="posicionMenu == 'colas' ? 'ruben-focus' : ''">
+    <p class="ruben-color-bla ruben-header2" (click)="posicion('colas')" routerLink="/clienteColas">Mis Colas</p>
+    </div>
+    <div [ngClass]="posicionMenu == 'resena' ? 'ruben-focus' : ''">    
+    <p class="ruben-color-bla ruben-header2" (click)="posicion('resena')" routerLink="/clienteOpiniones">Reseñas</p>
+    </div>
+    <div [ngClass]="posicionMenu == 'favoritos' ? 'ruben-focus' : ''">
+    <p class="ruben-color-bla ruben-header2" (click)="posicion('favoritos')" routerLink="/clienteFav">Favoritos</p>
+    </div>
+    <div [ngClass]="posicionMenu == 'perfil' ? 'ruben-focus' : ''">
+    <p class="ruben-color-bla ruben-header2" (click)="posicion('perfil')" routerLink="/clientePerfil">Perfil</p>
+    </div> -->

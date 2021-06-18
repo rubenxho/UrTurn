@@ -1,66 +1,82 @@
-
-<!-- Web -->
-<div class="container" style="margin-top: 30px;">
-    <div class="col titulo" ><h1>Proximos clientes</h1></div>
-    <div class="row" >
-        <!-- Cuadro izquierda -->
-        <div class="col">
-            <div class="col izq">
-                <div class="cuadros">
-                    <p class="cuadros-texto">Usuario1</p>
-                </div>
-                <div class="cuadros">
-                    <p class="cuadros-texto">Usuario2</p>
-                </div>
-                <div class="cuadros">
-                    <p class="cuadros-texto">usuario4</p>
-                </div>
-                <div class="cuadros">
-                    <p class="cuadros-texto">usuario5</p>
-                </div>
-                <div class="cuadros">
-                    <p class="cuadros-texto">usuario6</p>
-                </div>
-                <div class="cuadros">
-                    <p class="cuadros-texto">usuario7</p>
-                </div>
-                <div class="cuadros">
-                    <p class="cuadros-texto">usuario8</p>
-                </div>
-
+<div class="global">
+    <div class="ruben-col">
+        <div class="ruben-header">
+            <h1>Proximos clientes</h1>
+        </div>
+        <div class="ruben-row">
+            <form class="ruben-formulario"> 
+                <label for="fname" class="ruben-label" >Tiempo de espera:</label>
+                <input class="ruben-input" placeholder="20 minutos/persona" type="text" id="user" style="text-align: center;">
+                <!-- Boton modal modificar -->
+                <button type="button" class="boton-modificar btn btn-primary " data-toggle="modal" data-target="#modalModificarCola">
+                    Modificar
+                </button>
+                <!-- Modal boton modificar-->
+                <app-modal [mensajeModal]='mensajeModalCola'></app-modal> 
+            </form>
+            <div class="ruben-avanzar-cola">
+                <button type="button"  class=" btn btn-primary boton-avanzar-cola" data-toggle="modal" data-target="#modalAvanzar">
+                    Avanzar Cola
+                </button>
+                <!-- Modal boton Avanzar Cola -->
+                <app-modal [mensajeModal]='mensajeModalAvanzar'></app-modal> 
             </div>
         </div>
-
-        <!-- Cuadro derecha -->
-        <div class="col der vistaMovil" >
-            <!-- Derecha 1 -->
-            <div class="col izq">
-                <form class="formulario"> 
-                    <label for="fname" class="texto-input" >Tiempo de espera por cliente</label>
-                    <input class="texto-input" placeholder="20 minutos/persona" type="text" id="user" style="text-align: center;">
-                    <!-- Boton modal modificar -->
-                    <button type="button" class=" boton1 btn btn-primary carrito" data-toggle="modal" data-target="#modalModificarCola">
-                        Modificar
-                    </button>
-                    <!-- Modal boton modificar-->
-                    <app-modal [mensajeModal]='mensajeModalCola'></app-modal> 
+        <div class="ruben-row2 contenedor-2" >
+            
+                <div class="ruben-col contenedor-cola">
+                    <div class="cuadros" (click)="mostrarUsuario('usuario1')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  Eva123</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario2')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  Javi0001</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario3')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  13David13</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario4')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  estefaniacucea</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario5')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  KehomaxD</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario6')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  rubenrivas</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario5')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  KehomaxD</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario6')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  rubenrivas</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario5')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  KehomaxD</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario6')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  rubenrivas</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario5')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  KehomaxD</p>
+                    </div>
+                    <div class="cuadros" (click)="mostrarUsuario('usuario6')">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  rubenrivas</p>
+                    </div>
                     
-                </form>
-            </div>
-
-            <!-- Derecha 2 -->
-            <div class="col der2" style="margin-bottom: 50px;">
-                <!-- Botono modal Avanzar Cola -->
-                <div class="col der2" >
-                    <button type="button"  class=" boton2 btn btn-primary carrito" data-toggle="modal" data-target="#modalAvanzar">
-                        Avanzar Cola
-                    </button>
-                    <!-- Modal boton Avanzar Cola -->
-                    <app-modal [mensajeModal]='mensajeModalAvanzar'></app-modal> 
                 </div>
-            </div>
+            
+                <div class="ruben-col contenedor-cliente"> 
+                    <div class="foto">
+                                <img class="imagen" src=" https://vocegestor.com/wp-content/uploads/2017/11/apontamento-de-despesas-a-importancia-de-uma-ferramenta-para-o-cliente-1.jpeg">
+                    </div>
+                    <div class="col2">
+                    <p>Usuario: {{infoUsuario}}</p>
+                    <p>Nombre: Ruben</p>
+                    <p>Apellido: Rivas</p>
+                    <p>Telefono: 623184811</p>
+                    </div>
+                </div>
+            
         </div>
-
-    </div>  
+    </div>
 </div>
 

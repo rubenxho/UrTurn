@@ -1,8 +1,7 @@
-<!-- <app-header></app-header> -->
 
-<app-header></app-header>
-<!-- <app-empresa-opiniones></app-empresa-opiniones> -->
+<div class="prueba" *ngIf="prueba">
+<app-header [controlador]='prueba'></app-header>
+</div>
 <router-outlet></router-outlet>
 
-
-<!-- <app-footer></app-footer> -->
+<app-footer></app-footer>
