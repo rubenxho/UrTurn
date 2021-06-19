@@ -23,7 +23,7 @@
 }
 
 .cuadros:hover{
-    transform: scale(1.02);
+    transform: scaleX(1.05);
     border: 2px solid transparent;
 
 }
@@ -45,16 +45,12 @@
 
 .ruben-label{
     text-align: center;
-    font-family:Titillium Web;
-    font-weight: bold;
     font-size: 18px;
     margin-right: 10px;
-    margin-top: 8px;
-    
 }
 
 .ruben-input{
-    width: 170px;
+    width: 150px;
     padding: 5px;
     box-sizing: border-box;
     border:1px solid #ccc;
@@ -65,10 +61,10 @@
 
 .boton-modificar{
     background-color: #5C74F6;
-    border-radius: 20px;
-    margin: 5px 0px 0px 0px;
+    border-radius: 5px;
     color:#fff;
     border: none;
+    padding: 8px;
 }
 
 
@@ -113,20 +109,21 @@
     background-color: rgba(255, 255, 255, 0.479);
     border-radius: 10px;
     padding: 20px;
-    margin-right: 30px;
+    margin-right: 130px;
+    margin-left: -30px;
 }
 
 .boton-avanzar-cola{
     background-color: #5C74F6;
+    border-radius: 5px;
     margin: 5px 0px 0px 0px;
     color:#fff;
     border: none;
-    border-radius: 20px;
+    padding: 8px;
+    border-radius: 5px;
     padding-left: 40px;
     padding-right: 50px;
     height: 60px;
-    font-family:Titillium Web;
-    font-weight: bold;
     font-size: 20px;
 }
 
@@ -135,10 +132,9 @@
     background-color: rgba(255, 255, 255, 0.479);
     border-radius: 10px;
     padding: 20px;
-    width: 600px;
+    width: 500px;
     box-sizing: border-box;
-    margin-left: 15px;
-    margin-right: 100px;
+    margin-right: 60px;
     /* height: 305px; */
     max-height: 310px;
     overflow-y: scroll;
@@ -156,10 +152,11 @@
     padding: 20px;
     width: 300px;
     box-sizing: border-box;
+    max-height: 310px;
 }
 
 .contenedor-2{
-    margin-top: 40px;
+    margin-top: 30px;
     
 }
 
@@ -186,20 +183,61 @@
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 30px;
+    
 }
 
 .imagen{
     display: flex;
-    width: 200px;
     height: 100%;
+    width: 220px;
+    
 }
 
 
+.global{
+    margin-top: 60px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.ticket {
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5C74F6;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    animation: mymove 6s infinite;
+    margin-left: -650px;
+    margin-top: 30px;
+    
+}
+  
+.ticket {animation-timing-function: linear;}
+  
+  @keyframes mymove {
+    from {left: 0px;}
+    to {left: 730px;}
+}
 
 @media screen and (max-width:390px){
-    *{
-        border: solid black;
+
+    .global{
+        margin-top: 30px;
+        margin-left: 0;
+        margin-right: 0;
     }
+
+    .contenedor-cola{
+        max-height:initial;
+        overflow-y:initial;
+        overflow-x: initial;
+        margin-bottom: 20px;
+    }
+    
     .ruben-col{
         display: flex;
         justify-content: flex-start;
@@ -211,6 +249,9 @@
         display: none;
     }
 
+    .ruben-row{
+        width: 374px;
+    }
     .ruben-row2{
         width: 374px;
     }
@@ -221,27 +262,26 @@
         margin-left: 35px;
     }
 
-    h1{
-        font-size: 30px;
-    }
-
     .ruben-formulario{
-        display:flex; 
-        flex-direction:column;
-        justify-content: center;
-        align-items: center;
         padding: 10px;
-        width: 300px;
-        margin-left: 35px;
+        width: 310px;
+        margin-left: 0px;
+        margin-right: initial;
+    
     }
 
     .ruben-input{
-        margin-bottom: 5px;
+        width: 50px;
+    }
+
+    .ruben-label{
+        margin-right: 5px;
+        font-size: 15px;
     }
 
     .ruben-avanzar-cola{
         margin-top: 20px;
-        margin-left: 10px;
+        margin-left: 120px;
     }
 
     .contenedor-cola{
@@ -254,6 +294,15 @@
         margin-top: 20px;
         margin-bottom: 60px;
     }
+
+    .boton-avanzar-cola{
+        margin-left:-105px;
+        height: 60px;
+        margin-bottom: 0px;
+    }
     
+    .ruben-row3{
+        display:none;
+    }
 }
 
