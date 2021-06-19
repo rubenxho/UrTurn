@@ -23,7 +23,7 @@
     font-family: Titillium Web;;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:376px) {
     .container{
         width: 100%;
     }
@@ -86,7 +86,7 @@
     font-size: 25px;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:376px) {
     .boton{
         background-color: #5C74F6;
         border-style: none;
@@ -96,6 +96,36 @@
         width: 180px;
         height: 60px;
         font-size: 25px;
+    }
+}
+
+/***********************Foto perfil**********************/
+
+.foto{
+    /* border-style: solid; */
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* la imagen */
+.imagen{
+    display: flex;
+    width: 100px;
+    height: 100px;
+}
+
+/* Circulo de la imagen */
+.pic-perfil{
+    /* border-style: solid; */
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;    
+}
+
+@media screen and (max-width:376px) {
+    .pic-perfil{
+        margin-top: 15px;
     }
 }
 
