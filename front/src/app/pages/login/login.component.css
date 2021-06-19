@@ -84,7 +84,7 @@
 .btn-light   {
     margin-top:5px;
     width:40%;
-    border-radius:30px;
+    border-radius:5px;
     border-style:solid;
     border-color:grey;
     border-width:1px;
@@ -98,6 +98,7 @@
     height:150px;
     width:225px;
     background-color:#ff4081;
+    cursor:pointer;
 }
 
 .titulo_registro    {
@@ -127,6 +128,7 @@
     height:150px;
     width:225px;
     background-color:rgb(230, 93, 93);
+    cursor:pointer;
 }
 
 .violeta    {
@@ -443,8 +445,8 @@
     }
 
     .logoImagenResponsive   {
-        height:100px;
-        margin-top:20px;
+        height:80px;
+        margin-top:40px;
         background-size:100% 100%;
     }
 }
@@ -548,6 +550,11 @@
     .carnoso    {
         left:200px;
     }
+
+    .logoImagenResponsive   {
+        background-size:100% 80%;
+        margin-top:50px;
+    }
 }
 
 @media screen and (max-width:370px) {
@@ -561,12 +568,5 @@
 
     .carnoso    {
         left:190px;
-    }
-
-    .logoImagenResponsive   {
-        height:120px;
-        margin-top:40px;
-        background-size:100% 80%;
-        
     }
 }

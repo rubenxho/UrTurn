@@ -12,7 +12,7 @@ public empresa:boolean
 
   constructor() {
     this.posicionMenu="home"
-    this.empresa=false
+    this.empresa=true
   }
 
   posicion(posicion:string){

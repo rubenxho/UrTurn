@@ -86,11 +86,14 @@ input[type='number']    {
         width:60%;
     }
     
-    .btn-dark   {
+    .btn-light   {
         width:40%;
-        border-radius:30px;
-        color:white;
+        border-radius:5px;
+        border-style:solid;
+        border-color:grey;
+        border-width:1px;
         font-weight:900;
+        color:#6c757d;
     }
     
     .rosa   {
@@ -126,6 +129,7 @@ input[type='number']    {
         height:150px;
         width:225px;
         background-color:rgb(230, 93, 93);
+        cursor:pointer;
     }
     
     .violeta    {
@@ -134,6 +138,7 @@ input[type='number']    {
         height:60px;
         width:150px;
         background-color:#e040fb;
+        cursor:pointer;
     }
     
     .zapatilla  {
@@ -161,6 +166,10 @@ input[type='number']    {
     .error  {
         font-size: small;
         color:red;
+    }
+
+    .flecha {
+        cursor:pointer;
     }
 
     @media screen and (max-width:1235px) {
@@ -501,6 +510,11 @@ input[type='number']    {
 
         .violeta    {
             left:50px;
+        }
+
+        .logoImagenResponsive {
+            margin-top:30px;
+            height:80px;
         }
     }
 

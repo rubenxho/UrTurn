@@ -7,7 +7,7 @@ declare var $: any;
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  public prueba:String
+  public prueba:String;
   
   constructor(){
     this.prueba="Cliente"
