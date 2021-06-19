@@ -1,11 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{foto[0]}}" class="card-img-top" alt="" data-bs-toggle="tooltip" data-bs-placement="top"
                     title="Más información" routerLink="/cliente-perfil-empresa">
                 <div class="card-body">
-                    <h4 class="card-title">{{nombre[0]}}</h4>
+                    <div clase="carde-title-color ">
+                        <h4 class="card-title">
+                            {{nombre[0]}}</h4>
+                    </div>
                     <p class="card-text">Tiempo Aprox: {{tiempoAprox[0]}} Mins</p>
                     <div class="valoracion">
                         <input id="radio1" type="radio" name="estrellas" value="5">
@@ -21,13 +24,14 @@
                     </div>
                     <div>
                         <ng-container *ngIf="!enCola; else posicion">
-                            <button type="button" onclick="confirmarCola()" class="btn btn-primary" data-toggle="modal"
-                                data-target="#comfirmarColaModal">{{boton}}
+                            <button type="button" onclick="confirmarCola()" class="btn btn-primary botonCola" id=""
+                                data-toggle="modal" data-target="#comfirmarColaModal">{{boton}}
                             </button>
                         </ng-container>
 
                         <ng-template #posicion>
-                            <button class="btn btn-primary" id="numPosicion"> Num: {{ColaPosicion[0]}}</button>
+                            <button class="btn btn-primary botonCola " id="numPosicion"> Num:
+                                {{ColaPosicion[0]}}</button>
                         </ng-template>
                         <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
                             <i class="fas fa-heart" (click)="fav()"></i>
@@ -38,11 +42,14 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{foto[1]}}" class="card-img-top" alt="" data-bs-toggle="tooltip" data-bs-placement="top"
                     title="Más información" routerLink="/cliente-perfil-empresa">
                 <div class="card-body">
-                    <h4 class="card-title">{{nombre[1]}}</h4>
+                    <div clase="carde-title-color ">
+                        <h4 class="card-title">
+                            {{nombre[1]}}</h4>
+                    </div>
                     <p class="card-text">Tiempo Aprox: {{tiempoAprox[1]}} Mins</p>
                     <div class="valoracion">
                         <input id="radio1" type="radio" name="estrellas" value="5">
@@ -58,13 +65,14 @@
                     </div>
                     <div>
                         <ng-container *ngIf="!enCola; else posicion">
-                            <button type="button" onclick="confirmarCola()" class="btn btn-primary" data-toggle="modal"
-                                data-target="#comfirmarColaModal">{{boton}}
+                            <button type="button" onclick="confirmarCola()" class="btn btn-primary botonCola" id=""
+                                data-toggle="modal" data-target="#comfirmarColaModal">{{boton}}
                             </button>
                         </ng-container>
 
                         <ng-template #posicion>
-                            <button class="btn btn-primary" id="numPosicion"> Num: {{ColaPosicion[1]}}</button>
+                            <button class="btn btn-primary botonCola " id="numPosicion"> Num:
+                                {{ColaPosicion[1]}}</button>
                         </ng-template>
                         <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
                             <i class="fas fa-heart" (click)="fav()"></i>
@@ -75,11 +83,14 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{foto[2]}}" class="card-img-top" alt="" data-bs-toggle="tooltip" data-bs-placement="top"
                     title="Más información" routerLink="/cliente-perfil-empresa">
                 <div class="card-body">
-                    <h4 class="card-title">{{nombre[2]}}</h4>
+                    <div clase="carde-title-color ">
+                        <h4 class="card-title">
+                            {{nombre[2]}}</h4>
+                    </div>
                     <p class="card-text">Tiempo Aprox: {{tiempoAprox[2]}} Mins</p>
                     <div class="valoracion">
                         <input id="radio1" type="radio" name="estrellas" value="5">
@@ -95,13 +106,14 @@
                     </div>
                     <div>
                         <ng-container *ngIf="!enCola; else posicion">
-                            <button type="button" onclick="confirmarCola()" class="btn btn-primary" data-toggle="modal"
-                                data-target="#comfirmarColaModal">{{boton}}
+                            <button type="button" onclick="confirmarCola()" class="btn btn-primary botonCola" id=""
+                                data-toggle="modal" data-target="#comfirmarColaModal">{{boton}}
                             </button>
                         </ng-container>
 
                         <ng-template #posicion>
-                            <button class="btn btn-primary" id="numPosicion"> Num: {{ColaPosicion[2]}}</button>
+                            <button class="btn btn-primary botonCola " id="numPosicion"> Num:
+                                {{ColaPosicion[2]}}</button>
                         </ng-template>
                         <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
                             <i class="fas fa-heart" (click)="fav()"></i>
@@ -114,11 +126,14 @@
 
     <div class="row">
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{foto[0]}}" class="card-img-top" alt="" data-bs-toggle="tooltip" data-bs-placement="top"
                     title="Más información" routerLink="/cliente-perfil-empresa">
                 <div class="card-body">
-                    <h4 class="card-title">{{nombre[0]}}</h4>
+                    <div clase="carde-title-color ">
+                        <h4 class="card-title">
+                            {{nombre[0]}}</h4>
+                    </div>
                     <p class="card-text">Tiempo Aprox: {{tiempoAprox[0]}} Mins</p>
                     <div class="valoracion">
                         <input id="radio1" type="radio" name="estrellas" value="5">
@@ -134,13 +149,14 @@
                     </div>
                     <div>
                         <ng-container *ngIf="!enCola; else posicion">
-                            <button type="button" onclick="confirmarCola()" class="btn btn-primary" data-toggle="modal"
-                                data-target="#comfirmarColaModal">{{boton}}
+                            <button type="button" onclick="confirmarCola()" class="btn btn-primary botonCola" id=""
+                                data-toggle="modal" data-target="#comfirmarColaModal">{{boton}}
                             </button>
                         </ng-container>
 
                         <ng-template #posicion>
-                            <button class="btn btn-primary" id="numPosicion"> Num: {{ColaPosicion[0]}}</button>
+                            <button class="btn btn-primary botonCola " id="numPosicion"> Num:
+                                {{ColaPosicion[0]}}</button>
                         </ng-template>
                         <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
                             <i class="fas fa-heart" (click)="fav()"></i>
@@ -151,11 +167,14 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{foto[1]}}" class="card-img-top" alt="" data-bs-toggle="tooltip" data-bs-placement="top"
                     title="Más información" routerLink="/cliente-perfil-empresa">
                 <div class="card-body">
-                    <h4 class="card-title">{{nombre[1]}}</h4>
+                    <div clase="carde-title-color ">
+                        <h4 class="card-title">
+                            {{nombre[1]}}</h4>
+                    </div>
                     <p class="card-text">Tiempo Aprox: {{tiempoAprox[1]}} Mins</p>
                     <div class="valoracion">
                         <input id="radio1" type="radio" name="estrellas" value="5">
@@ -171,13 +190,14 @@
                     </div>
                     <div>
                         <ng-container *ngIf="!enCola; else posicion">
-                            <button type="button" onclick="confirmarCola()" class="btn btn-primary" data-toggle="modal"
-                                data-target="#comfirmarColaModal">{{boton}}
+                            <button type="button" onclick="confirmarCola()" class="btn btn-primary botonCola" id=""
+                                data-toggle="modal" data-target="#comfirmarColaModal">{{boton}}
                             </button>
                         </ng-container>
 
                         <ng-template #posicion>
-                            <button class="btn btn-primary" id="numPosicion"> Num: {{ColaPosicion[1]}}</button>
+                            <button class="btn btn-primary botonCola " id="numPosicion"> Num:
+                                {{ColaPosicion[1]}}</button>
                         </ng-template>
                         <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
                             <i class="fas fa-heart" (click)="fav()"></i>
@@ -188,11 +208,14 @@
         </div>
 
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{foto[2]}}" class="card-img-top" alt="" data-bs-toggle="tooltip" data-bs-placement="top"
                     title="Más información" routerLink="/cliente-perfil-empresa">
                 <div class="card-body">
-                    <h4 class="card-title">{{nombre[2]}}</h4>
+                    <div clase="carde-title-color ">
+                        <h4 class="card-title">
+                            {{nombre[2]}}</h4>
+                    </div>
                     <p class="card-text">Tiempo Aprox: {{tiempoAprox[2]}} Mins</p>
                     <div class="valoracion">
                         <input id="radio1" type="radio" name="estrellas" value="5">
@@ -208,13 +231,14 @@
                     </div>
                     <div>
                         <ng-container *ngIf="!enCola; else posicion">
-                            <button type="button" onclick="confirmarCola()" class="btn btn-primary" data-toggle="modal"
-                                data-target="#comfirmarColaModal">{{boton}}
+                            <button type="button" onclick="confirmarCola()" class="btn btn-primary botonCola" id=""
+                                data-toggle="modal" data-target="#comfirmarColaModal">{{boton}}
                             </button>
                         </ng-container>
 
                         <ng-template #posicion>
-                            <button class="btn btn-primary" id="numPosicion"> Num: {{ColaPosicion[2]}}</button>
+                            <button class="btn btn-primary botonCola " id="numPosicion"> Num:
+                                {{ColaPosicion[2]}}</button>
                         </ng-template>
                         <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
                             <i class="fas fa-heart" (click)="fav()"></i>
