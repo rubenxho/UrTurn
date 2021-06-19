@@ -71,7 +71,7 @@
 .fa-heart {
   cursor: pointer;
   position: absolute;
-  top: 295px;
+  top: 300px;
   margin-left: 10%;
 }
 .corazonGris {
@@ -93,7 +93,7 @@
 }
 
 /* responsive*/
-@media screen and (max-width: 475px) {
+@media screen and (max-width: 375px) {
   .card {
     margin-bottom: 50px;
   }
