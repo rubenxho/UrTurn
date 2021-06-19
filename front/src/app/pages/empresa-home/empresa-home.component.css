@@ -1,268 +1,4 @@
-/* *{
-    
-}
 
-.izq{
-    box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
-    background-color: rgba(255, 255, 255, 0.479);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px;
-}
-
-.izq2{
-    align-items: center;
-}
-
-.header{
-    font-family: Abril Fatface;
-    margin: 40px 0px 40px 0px;
-    font-size: 25px;
-}
-
-.cuadros{
-    transition: transform 1s ease-out;
-    background-color: #6C5CE7;
-    box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px;
-    width: 300px;
-    margin-bottom: 15px;
-}
-
-.cuadros:hover{
-    transform: rotate(360deg);
-}
-
-.cuadros-texto{
-    
-    font-family:Titillium Web;
-    font-weight: 900;
-    font-size: 25px;
-    color: white;
-    margin: 1px;
-
-}
-
-
-.formulario{
-    display: flex; 
-    flex-direction: row; 
-    padding: 10px;
-    margin: 10px;
-}
-
-input{
-    margin-bottom: 5px;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border:1px solid #ccc;
-    text-align: center;
-    border-radius: 5px;
-}
-
-.texto-input{
-
-    text-align: center;
-    font-family:Titillium Web;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.der2{
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-}
-
-.boton1{
-    margin: 5px 0px 0px 0px;
-    background: #6C5CE7;
-    color:#fff;
-    border: none;
-    border-radius: 20px;
-    padding: 10px;
-    font-family:Titillium Web;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.boton2{
-    margin: 5px 0px 0px 0px;
-    background: #6C5CE7;
-    color:#fff;
-    border: none;
-    border-radius: 20px;
-    padding: 10px;
-    width: 100%;
-    height: 60px;
-    font-family:Titillium Web;
-    font-weight: bold;
-    font-size: 30px;
-}
-
-.boton3{
-    margin: 5px 0px 0px 0px;
-    color:#fff;
-    border: none;
-    border-radius: 20px;
-    padding: 10px;
-    width: 100%;
-    height: 60px;
-    font-family:Titillium Web;
-    font-weight: bold;
-    font-size: 30px;
-}
-
-.prueba{
-    background-color: green;
-}
-
-.vistaMovil{
-    margin-top: 110px;
-}
-
-.vistaweb{
-    margin-top: 90px;
-}
-
-/* Reponsive */
-/* @media screen and (max-width:475px){
-    
-   
-    .vistaweb{
-        margin-top: 40px;
-    }
-
-    .cuadros{
-        width: 250px;
-    }
-
-    .izq{
-        width: 350px;
-        margin-left: 60px;
-    }
-    
-    .vistaMovil{
-        margin-top: 40px;
-    }
-
-    .cuadros-texto{
-    
-        font-size: 18px;
-    }
-
-    .texto-input{
-        font-size: 18px;
-    }
-
-    .carrito{
-        font-size: 18px;
-    }
-
-    .boton2{
-        width: 90%;
-        height: 50px;
-        font-size: 18px;
-    }
-
-    .der2{
-        margin-left: 3px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-
-    .boton3{
-        width: 90%;
-        height: 50px;
-        font-size: 18px;
-    }
-}
-
-@media screen and (max-width:450px){
-    
-    .izq{
-        margin-left: 40px;
-        
-        
-    }
-    
-}
-
-@media screen and (max-width:420px){
-    
-    .izq{
-        margin-left: 25px;
-    }
-    
-}
-
-@media screen and (max-width:405px){
-    
-    .izq{
-        margin-left: 15px;
-    }
-    
-}
-
-@media screen and (max-width:390px){
-    
-    .izq{
-        width: 330px;
-    }
-    
-}
-
-@media screen and (max-width:376px){
-    
-    .izq{
-        margin-left: 12px;
-        
-    }
-    
-}
-
-@media screen and (max-width:370px){
-    
-    .izq{
-        width: 320px;
-        
-    }
-    
-}
-
-@media screen and (max-width:360px){
-    
-    .izq{
-        width: 310px;
-        
-    }
-    
-}
-
-@media screen and (max-width:360px){
-    
-    .izq{
-        width: 310px;
-        
-    }
-    
-} */ */
-
-
-
-
-
-/* AQUIIIIIIIIIIIIIIIIIIII */
 .boton2{
     margin: 5px 0px 0px 0px;
     background-color: #5C74F6;
@@ -277,24 +13,51 @@ input{
     align-items: center;
     border-radius: 10px;
     padding-top: 10px;
-    width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     box-sizing: border-box;
-    max-height: 190px;
-    min-height: 190px;
+    width: 200px;
+    height: 150px;
+    transition: width 1s ease-out;
+    margin-right: 6px;
+}
+
+.cuadr2{
+    margin-left: -150px;
 }
 
 .cuadros:hover{
-    transform: scale(1.02);
+    width: 260px;
     border: 2px solid transparent;
-
+    transition-timing-function: linear;
+    background-color: #3547ad;
 }
 
-.cuadros-texto{
-    font-size: 20px;
-    color: white;
-    
+.c1{
+    background-color: #5C74F6;
+    box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    width: 200px;
+    max-height: 100px;
+    transition: max-height 1s ease-in-out;
+    margin-right: 6px;
+    overflow:hidden;
 }
+
+.c1:hover{
+    max-height:100%;
+    border: 2px solid transparent;
+    transition-timing-function: linear;
+    background-color: #3547ad;
+}
+
+
 
 .ruben-semi-header{
     margin-left: 80px;
@@ -327,10 +90,10 @@ input{
 
 .boton-modificar{
     background-color: #5C74F6;
-    border-radius: 20px;
-    margin: 5px 0px 0px 0px;
+    border-radius: 5px;
     color:#fff;
     border: none;
+    padding: 8px;
 }
 
 
@@ -341,6 +104,16 @@ input{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap; 
+}
+
+.ruben-row3{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap; 
+    
 }
 
 .ruben-col{
@@ -376,19 +149,36 @@ input{
     background-color: rgba(255, 255, 255, 0.479);
     border-radius: 10px;
     padding: 20px;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 .boton-avanzar-cola{
+    background-color: #5C74F6;
+    border-radius: 5px;
     margin: 5px 0px 0px 0px;
     color:#fff;
     border: none;
-    border-radius: 20px;
+    padding: 8px;
+    border-radius: 5px;
     padding-left: 40px;
     padding-right: 40px;
     height: 60px;
-    font-family:Titillium Web;
-    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+}
+
+.boton-detener-cola{
+    background-color: rgb(238, 26, 26);
+    border-radius: 5px;
+    margin: 5px 0px 0px 0px;
+    color:#fff;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+    height: 60px;
+    text-align: center;
     font-size: 20px;
 }
 
@@ -400,13 +190,14 @@ input{
     flex-direction: column;
     justify-content: center; 
     text-align: center; 
-    padding: 20px;
+    padding: 0px 20px 0px 20px;
     width: 670px;
     box-sizing: border-box;
     margin-right: 100px;
     margin-left: 85px;
     margin-bottom: 20px;
-    flex-wrap: nowrap !important;
+    max-height: 400px;
+    min-height: 400px;
     
 }
 
@@ -421,11 +212,18 @@ input{
     padding: 20px;
     width: 300px;
     box-sizing: border-box;
+    
 }
 
 .contenedor-2{
-    margin-top: 20px;
-    
+    margin-top: 50px;
+    box-sizing: border-box;
+    /* box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
+    background-color: rgba(255, 255, 255, 0.479);
+    border-radius: 10px;
+    width: 680px;
+    height: 200px;
+    padding-top: 25px; */
 }
 
 .ruben-col2{
@@ -459,40 +257,45 @@ input{
     height: 200px;
 }
 
-/* animacion */
-
-#bern-stop {
-    width:112px;
-    height:156px;
-    margin:auto;  
-    background: url(http://i.imgur.com/ifk0SLH.png) repeat-x;
-    background-position:0;
-    /* background-position:-112px; */
-    /* animation: walk .8s steps(6) infinite; */
+.global{
+    margin-top: 60px;
+    margin-left: 20%;
+    margin-right: 20%;
+    
 }
 
-#bern {
-    width:112px;
-    height:156px;
-    margin:auto;  
-    background: url(http://i.imgur.com/ifk0SLH.png) repeat-x;
-    background-position:0;
-    background-position:-112px;
-    animation: walk .8s steps(6) infinite;
+.rub:hover{
+    transform: scale(1.5);
 }
 
-@keyframes walk {
-    0% { background-position:0 }
-    100% { background-position:-672px }    
+.responsive-movil{
+    display: none;
 }
-/*******ticket****/
-img {
-    width: 200px;
-    border-radius: 10px;
+
+.texto-cuadro2{
+    font-size: 40px; 
+    color: white;
+}
+
+.cuadros-texto{
+    color: white; 
 }
 
 @media screen and (max-width:390px){
 
+    .global{
+        margin-top: 30px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .contenedor-cola{
+        max-height:initial;
+        overflow-y:initial;
+        overflow-x: initial;
+        margin-bottom: 20px;
+    }
+    
     .ruben-col{
         display: flex;
         justify-content: flex-start;
@@ -500,10 +303,9 @@ img {
         width: 374px;
     }
 
-    .contenedor-cliente{
-        display: none;
+    .ruben-row{
+        width: 374px;
     }
-
     .ruben-row2{
         width: 374px;
     }
@@ -514,27 +316,27 @@ img {
         margin-left: 35px;
     }
 
-    h1{
-        font-size: 30px;
-    }
-
     .ruben-formulario{
-        display:flex; 
-        flex-direction:column;
-        justify-content: center;
-        align-items: center;
         padding: 10px;
-        width: 300px;
-        margin-left: 35px;
+        width: 310px;
+        margin-left: 0px;
+        margin-right: initial;
+    
     }
 
     .ruben-input{
-        margin-bottom: 5px;
+        width: 50px;
+    }
+
+    .ruben-label{
+        margin-right: 5px;
+        font-size: 15px;
     }
 
     .ruben-avanzar-cola{
         margin-top: 20px;
-        margin-left: 10px;
+        margin-left: 105px;
+        margin-bottom: -50px;
     }
 
     .contenedor-cola{
@@ -547,5 +349,42 @@ img {
         margin-top: 20px;
         margin-bottom: 60px;
     }
+
+    .boton-avanzar-cola{
+        margin-left:-105px;
+        height: 60px;
+        margin-bottom: 0px;
+    }
     
+    .boton-detener-cola{
+        margin-left:-105px;
+        height: 60px;
+        margin-bottom: 0px;
+    }
+
+    .responsive-web{
+        display: none;
+    }
+    
+    .responsive-movil{
+        display: initial;
+        margin-top: 0px;
+        margin-left: 85px;
+    }
+
+    .texto-cuadro2{
+        font-size: 20px; 
+        color: white;
+    }
+    
+    .cuadros-texto{
+        font-size: 15px;
+    }
+
+    .cuadros{
+        height: 100px;
+    }
 }
+
+
+

@@ -10,7 +10,7 @@ export class AppComponent {
   public prueba:String
   
   constructor(){
-    this.prueba="Cliente"
+    this.prueba="Empresa"
   }
 
   ngOnInit() {
