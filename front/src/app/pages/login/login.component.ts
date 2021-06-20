@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   public usernameValid:boolean;
   public passValid = true;
   public tipoUsuario:string;
+  @Output() eventoIniciarSesion= new EventEmitter<string>()
 
   constructor(private navigation:Router, private formBuilder:FormBuilder) { 
     this.myForm = this.buildForm();
@@ -53,10 +54,13 @@ export class LoginComponent implements OnInit {
   public validar(tipoUsuario:string)  {
     this.validarUsername();
     this.validarPassword();
-
+    
     if(this.myForm.valid) {
       this.tipoUsuario = tipoUsuario;
       this.redirigir(`${tipoUsuario}Home`);
+      /*Evento para llamar al header que necesito(empresa/cliente)*/ 
+      this.eventoIniciarSesion.emit(this.tipoUsuario)
+      
     }
   }
 

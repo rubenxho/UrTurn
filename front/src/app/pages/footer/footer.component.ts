@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -8,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   public posicionMenu:string=""
-public empresa:boolean
+  public empresa:boolean
+  @Input() public controlador:String;
 
   constructor() {
     this.posicionMenu="home"
-    this.empresa=true
+    this.empresa=false
+    this.controlador="";
   }
 
   posicion(posicion:string){
