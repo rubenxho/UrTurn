@@ -1,18 +1,7 @@
-.titulo{
-    box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
-    background-color: #ffffff3a;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center; 
-    text-align: center; 
-    /* margin-bottom: 15px; */
-    /* padding: 20px; */
-}
-
 .global{
-    margin-top: 30px;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-top: 20px;
+    margin-left: 12%;
+    margin-right: 12%;
 }
 
 @media screen and (max-width: 475px){
@@ -20,9 +9,6 @@
     .global{
         margin-left: 10px;
         margin-right: 10px;
-        margin-top: 30px;
-    }
-    .titulo{
-        width: 100%;
+        margin-top: 20px;
     }
 }
