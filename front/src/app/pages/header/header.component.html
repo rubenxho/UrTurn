@@ -43,8 +43,8 @@
     <ng-template #Empresa>
   
         <div class="ruben-row ruben-responsive" >
-            <div *ngIf="posicionMenu=='' || posicionMenu!='homeEmpresa'; else homeEmpresaVacio">
-            <p class="ruben-color-bla ruben-header2" (click)="posicion('homeEmpresa')" routerLink="/empresaHome">Home</p>
+            <div *ngIf="posicionMenu=='' || posicionMenu!='home'; else homeEmpresaVacio">
+            <p class="ruben-color-bla ruben-header2" (click)="posicion('home')" routerLink="/empresaHome">Home</p>
             </div>
             <div *ngIf="posicionMenu=='' || posicionMenu!='clienteEmpresa'; else clientesEmpresaVacio">
             <p class="ruben-color-bla ruben-header2" (click)="posicion('clienteEmpresa')" routerLink="/empresaCola">Clientes</p>

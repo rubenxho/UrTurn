@@ -2,13 +2,13 @@
 
 
 <div class="responsive" >
-    <div class="footer rowf"  *ngIf="empresa==true ;else footer2">
+    <div class="footer rowf"  *ngIf="controlador=='Empresa' ;else footer2">
 
         <div  [ngClass]="posicionMenu == 'home' ? 'prueba' : 'bot'" class="colf " >
             <i class=" fas fa-home" (click)="posicion('home')" routerLink="empresaHome"></i>
         </div>
 
-        <div routerLink="empresaColas"  [ngClass]="posicionMenu == 'clientes' ? 'prueba' : 'bot'">
+        <div routerLink="empresaCola"  [ngClass]="posicionMenu == 'clientes' ? 'prueba' : 'bot'">
             <i class=" fas fa-users" (click)="posicion('clientes')"></i>
         </div>
 

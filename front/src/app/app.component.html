@@ -1,7 +1,10 @@
-
-<div class="prueba" *ngIf="prueba">
-<app-header [controlador]='prueba'></app-header>
+<div *ngIf="estado=='conectado'; else navegar">
+    <app-login (eventoIniciarSesion)="tipoUsuario($event)"></app-login>
 </div>
-<router-outlet></router-outlet>
 
-<app-footer></app-footer>
+<ng-template #navegar>
+        <app-header [controlador]='header'></app-header>
+        <router-outlet></router-outlet>
+        <app-footer [controlador]='header'></app-footer>
+</ng-template>
+    
