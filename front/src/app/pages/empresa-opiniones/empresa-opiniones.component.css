@@ -2,9 +2,14 @@
 
 
 .global{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
 }
 
+.two{
+    display: none;
+}
 
 /* Valoraciones */
 #form {
@@ -36,69 +41,178 @@
   
   label:hover,
   label:hover ~ label {
-    color: orange;
+    
+    color: rgb(241, 207, 11);
   }
   
   input[type="radio"]:checked ~ label {
-    color: orange;
+    color: yellow;
   }
 
 /* Tarjeta comentario */
 
-/* Tarjetas donde estan lals reñeñas */
+
+/* Animacion para foto y nombre */
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/opensans/v20/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
+  }
+  /* .transition {
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+  } */
+  .container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    left: 0;
+    right: 0;
+    margin: 0 0;
+    top: 20px;
+  }
+  /* Propio x-d */
+  img{
+      border-radius: 5%;
+  }
+  /* end x-d */
+  .div-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
+  }
+  .div-img .img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    -webkit-transform: 0px 0px 1;
+    -moz-transform: 0px 0px 1;
+    -ms-transform: 0px 0px 1;
+    -o-transform: 0px 0px 1;
+    transform: 0px 0px 1;
+    transform: translate(0px, 0px) scale(1);
+    -webkit-transform: translate(0px, 0px) scale(1);
+    -moz-transform: translate(0px, 0px) scale(1);
+    -o-transform: translate(0px, 0px) scale(1);
+    -ms-transform: translate(0px, 0px) scale(1);
+    -webkit-transition: all 0s ease 0s;
+    -moz-transition: all 0s ease 0s;
+    -o-transition: all 0s ease 0s;
+    transition: all 0s ease 0s;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+  }
+  .text{ 
+    font-family: Titillium Web;
+      display: flex;
+      margin-top: -30px;
+  }
+  .div-img .text {
+    font-family: 'Open Sans';
+    position: relative;
+    z-index: -1;
+    display: block;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    -webkit-transform: 0px 0px 1;
+    -moz-transform: 0px 0px 1;
+    -ms-transform: 0px 0px 1;
+    -o-transform: 0px 0px 1;
+    transform: 0px 0px 1;
+    transform: translate(0px, 0px) scale(1);
+    -webkit-transform: translate(0px, 0px) scale(1);
+    -moz-transform: translate(0px, 0px) scale(1);
+    -o-transform: translate(0px, 0px) scale(1);
+    -ms-transform: translate(0px, 0px) scale(1);
+    -webkit-transition: all 0s ease 0s;
+    -moz-transition: all 0s ease 0s;
+    -o-transition: all 0s ease 0s;
+    transition: all 0s ease 0s;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+  }
+  .div-img:hover .img {
+    -webkit-transform: 0px -30px 0.5;
+    -moz-transform: 0px -30px 0.5;
+    -ms-transform: 0px -30px 0.5;
+    -o-transform: 0px -30px 0.5;
+    transform: 50px -30px 0.5;
+    transform: translate(0px, -30px) scale(0.5);
+    -webkit-transform: translate(0px, -30px) scale(0.5);
+    -moz-transform: translate(0px, -30px) scale(0.5);
+    -o-transform: translate(0px, -30px) scale(0.5);
+    -ms-transform: translate(0px, -30px) scale(0.5);
+    border-radius: 50%;
+  }
+  .div-img:hover .text {
+    font-size: 10px;
+    -webkit-transform: 0px 0px 2;
+    -moz-transform: 0px 0px 2;
+    -ms-transform: 0px 0px 2;
+    -o-transform: 0px 0px 2;
+    transform: 0px 0px 2;
+    transform: translate(0px, 0px) scale(2);
+    -webkit-transform: translate(0px, 0px) scale(2);
+    -moz-transform: translate(0px, 0px) scale(2);
+    -o-transform: translate(0px, 0px) scale(2);
+    -ms-transform: translate(0px, 0px) scale(2);
+  }
+
+/* Tarjetas donde estan las reñeñas */
+
 .conteiner{
-    box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
-    background-color: rgba(255, 255, 255, 0.479);
-    border-radius: 10px;
-    margin-top: 30px;
+    margin-top: 30px; 
     margin-left: 20%;
     margin-right: 20%;
-    /* border-style: solid; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border-color: yellow; */
 }
 
 /* la reseña */
 .group{
     display: flex;
     flex-direction: row;
-    /* border-style: solid; */
-    /* background-color : blanco || gris */
-    /* background-color: rgba(242, 241, 237, 1);  */
-    /* background-color: #acaba6;*/
     overflow: hidden;
     background-color: #b6b6b690;
-    /* max-width: min(720px, calc(100vw - 40px)); */
     width: 100%;
     margin-bottom: 10px;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
-.user{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;  
-    text-align: center;  
-}
+/* .user{
+    border-style: solid;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 15px;
 
-.user-name{
+} */
+
+/* .user-name{
     display: flex;
     margin-left: 30px;
-    /* justify-content: center; */
+    justify-content: center;
     font-family: Titillium Web;
     font-size:large;
     color: #000000;
     word-wrap: break-word;
-}
+} */
 
-img{
-    width: 100px;
-    height: 100px; 
-}
 
-.pic-profile{
+
+/* .pic-profile{
     display: flex;
     margin: 10px;
     justify-content: center;
@@ -106,23 +220,35 @@ img{
     overflow: hidden;
     width: 100px;
     height: 100px;
-}
+} */
 
 .comment-user{
     font-family: Titillium Web;
     font-weight: bolder;
     overflow-y: auto;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .comment{
-    display: flex;
-    margin: 20px;
-    /* border-style: solid; */
-    width: 400px;
+    margin: 10px;
+    /* width: 100%; */
+}
+/* ESTRELLAS */
+.valoracion{
+    width: 100%;
+    margin-right: 15px; 
 }
 
+.clasificacion{  
+    display: flex;
+
+}
 .stars{
+
+    width: 100%;
+    display: flex;
+    text-align: end;
     font-size: 30px;
 }
 
@@ -133,44 +259,66 @@ img{
 
     .global{        
         width: 100%;
-        margin-bottom: 50px;
+        padding: 20px 10px 25% 10px;
+    }
+    
+    .two{
+        display: flex;
+    }
+    .one{
+        display: none;
     }
 
     .group{
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        border-radius: 0px;
-    }
-    .conteiner{
-        width: 100%;
-        margin-left: 0px;
-    }
-    .user-name{
-        margin-left: 0px;
-    }
-    .pic-profile{
-        width: 50px;
-        height: 50px;
-    }
-    img{
-        width: 50px;
-        height: 50px;
+        margin-top: 10px;
+        /* background-color: transparent;
+        border-bottom:double; */
     }
     .user{
-        margin-top: 2%;
-        margin-left: 4%;
-        margin-right: 2%;
-        width: 25%;
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+        width: 100%;
     }
+    
+    .user-name{
+
+        margin-top: 20px;
+        margin-left: -50px;
+        width: 100%;
+    }
+
+    .pic-profile{
+        width: 100%;
+        height: 70px;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+    img{
+        border-radius: 50%;
+        overflow: hidden;
+        width: 70px;
+        height: 70px;
+    }
+
     .comment{
         width: 100%;
     }
 
+    .comment-user{
+        margin-right: 20px;
+    }
+    .valoracion{
+        width: 100%;
+    }
     .stars{
+        display: flex;
+        align-content: flex-end;
         width: 100%;
         font-size: 25px;
     } 
-
-
 }
