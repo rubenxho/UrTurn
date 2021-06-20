@@ -14,60 +14,65 @@ input:focus{
     margin-right: 20%;
 }
 
-/* Titulo de la pagina */
-.titulo{
-    box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
-    border-radius: 10px;
+/* Circulo de la imagen */
+.perfil{
+    /* border-style: solid; */
     display: flex;
-    justify-content: center; 
-    text-align: center; 
-    background-color: #ffffff3a;
-    /* margin-bottom: 15px; */
-    /* padding: 20px; */
+    flex-direction: column;
+    width: 50%;
+    margin: 20px;
+}
+.pic{
+    margin-top: 10px    ;
+    display: flex;
+    justify-content: center;
+}
+.div-inf{
+    /* border-style: solid; */
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 40px;
+    width: 50%;
 }
 
-/* body de la imagen */
-.foto{
+.info{
+    margin-top: 10px;
+    margin-bottom: 32px;
+    font-size: 20px;
+    font-weight: bolder;
     /* border-style: solid; */
-    justify-content: center;
-    border-radius: 50%;
-    overflow: hidden;
 }
 
 /* la imagen */
 .imagen{
-    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
     width: 200px;
     height: 200px;
 }
 
 /* Body del formularion y boton */
 .body-perfil{
-    /* border-style: solid; */
     box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
-    /* background-color: #ffffff46; */
-    flex-direction: column;
+    background-color: #ffffff54;
+    flex-direction: row;
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: center
+    border-radius: 10px;
 }
 
-/* Circulo de la imagen */
-.pic-perfil{
-    /* border-style: solid; */
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 16px;
-}
+
 
 /* Body del fomularion */
 .caja{
-    /* border-style: solid; */
     display: flex;
+    flex-direction: column;
+    width: 50%;
     justify-content: center;
     text-align: center;
+    margin: 20px;
 }
 
 /* Primer input */
@@ -77,30 +82,34 @@ input:focus{
 
 /* Todos los inputs */
 .in{
-    display: flex;
-    margin-bottom: 10px;
-    width: 500px;
-    height: 35px;
+    /* display: flex; */
+    margin-bottom: 25px;
+    width: 85%;
+    padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
     border:1px solid #ccc;
 }
 
+/* .in::placeholder{
+    text-align: center;
+} */
+
 /* Body del cuerpo */
 .areaBoton{
     text-align: center;
-    margin-left: -18px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* Boton */
 .bGuardar{
     background-color: #5C74F6;
     color: white;
-    width: 250px;
+    width: 100px;
     height: 50px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
 }
 
@@ -108,30 +117,55 @@ input:focus{
 @media screen and (max-width: 475px){
 
     .in{
-        margin-top: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
         width: 250px;
-        margin-bottom: 10px;
     }
+
+
     .imagen{
-        width: 120px;
-        height: 120px;
-    }
-    .bGuardar{
         width: 100px;
-        margin-left: 10px;
-    } 
+        height: 100px;
+    }
+
     .body-perfil{
-        width: 100%;
+        box-shadow: none;
+        /* background-color: #ffffff8e; */
+        flex-direction: column;
+        border-radius: 10px;
+        width: auto;
+        /* margin: 20px; */
     }
     .global{
         margin-left: 10px;
         margin-right: 10px;
-        margin-top: 30px;
+        margin-top: 10px;
+        width: auto;
     }
-    .titulo{
-        width: 100%;
+
+    .areaBoton{
+        width: auto;
     }
-    .bGuardar{
-        margin-bottom: 50px;
+
+    .div-inf{
+        display: none;
+    }
+
+    .caja{
+        display: flex;
+        flex-direction: column;
+        width: auto;
+    }
+
+    form{
+        margin-right: 30px;
+    }
+
+    .perfil{
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+        margin-bottom: -15px;
+        width: auto;
     }
 }

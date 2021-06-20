@@ -4,45 +4,50 @@
 
 <div class="global">
 
-<!-- Titulo de pagina -->
-    <div class="col titulo" ><h1>Perfil</h1></div>
 
 <!-- photo perfil -->
 
-    <div class="pic-perfil">
-        
-        <div class="foto">
-                    <img class="imagen" src=" https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Dont find">
-        </div>
-        
-    </div>
 
-    <!-- Formulario y Boton-->
 
     <div class="body-perfil">
 
-        <div class="caja">
-
-            <!-- Formulario -->
-            <form (input)="handelChange($event)">
-
-                <input class="in first" type="text" name=img placeholder="Imagen">
-                <input class="in" type="text" name="name" placeholder="Nombre" >
-                <input class="in" type="text" name="apellidos" placeholder="Apellidos" >
-                <input class="in" type="password" name="password" placeholder="Contraseña">
-                <input class="in" type="password" name="repeatPassword" placeholder="Confirmar contraseña">
-                <input class="in" type="text" name="phone" placeholder="Numero Telefonico" >
-                <input class="in" type="email" name="mail" placeholder="Email">
-        
-            </form>
-
+        <div class="perfil">        
+            <div class="pic"> 
+            <img class="imagen" src=" https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Dont find">
+            </div>       
+            <div class="div-inf">
+                
+                    <p class="info"> name </p>
+                    <p class="info"> lastname </p>
+                    <p class="info"> phone </p>
+                    <p class="info"> mail </p>
+            </div> 
         </div>
+
+            <div class="caja">
+
+                <!-- Formulario -->
+                <form (input)="handelChange($event)">
+
+                    <input class="in first" type="text" name=img placeholder="Imagen">
+                    <input class="in" type="text" name="name" placeholder="Nombre" >
+                    <input class="in" type="text" name="lastname" placeholder="Apellidos" >
+                    <input class="in" type="password" name="password" placeholder="Contraseña">
+                    <input class="in" type="password" name="repeatPassword" placeholder="Confirmar contraseña">
+                    <input class="in" type="text" name="phone" placeholder="Numero Telefonico" >
+                    <input class="in" type="email" name="mail" placeholder="Email">
+            
+                </form>
+
+           
         
-    <!-- Boton -->
+        <!-- Boton -->
         <div class="areaBoton">
-                <button class="bGuardar" data-toggle="modal" data-target="#modalModificar" (click)="handelClick()" type="button">Guardar</button>
+        <button class="bGuardar" data-toggle="modal" data-target="#modalModificar" (click)="handelClick()" type="button">Guardar</button>
         </div>
-
+        
+        </div>
+        
         <app-modal [mensajeModal]="guardarModal"></app-modal>
 
     </div>

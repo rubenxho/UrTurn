@@ -14,7 +14,7 @@ export class ClientePerfilComponent implements OnInit {
   public data: any = {
     img:"",
     name:"",
-    apellidos:"",
+    lastname:"",
     password:"",
     repeatPassword:"",
     phone:"",
