@@ -276,35 +276,3 @@
         height: 30px;   
     }
 }
-
-.titular {
-    /* display:inline-block; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    font-size: 35px;
-}
-
-@media screen and (max-width: 813px) {
-    .titular {
-        display: flex;   
-        flex-direction: column; 
-        justify-content: center;
-        align-items: center; 
-        margin: 5px 70px 5px 110px;
-        font-size: 25px;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-

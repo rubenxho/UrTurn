@@ -7,43 +7,60 @@
         <div class="pic-perfil">
             
             <div class="foto">
-                        <img class="imagen" src=" https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                <img class="imagen" src=" https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                
+                <select  class="categoria" type="text">
+                    <option value="">Categoria</option>
+                    <option value="Belleza">Belleza</option>
+                    <option value="Deporte">Deporte</option>
+                    <option value="Hogar">Hogar</option>
+                    <option value="Moda">Moda</option>
+                    <option value="Ocio">Ocio</option>
+                    <option value="Restauración">Restauración</option>
+                    <option value="Salud">Salud</option>
+                </select> 
             </div>
             
-        </div>
 
-        <!-- Fin foto perfil -->
+            <!-- Fin foto perfil -->
         
-        <form class="formulario">
+            <form class="formulario">
 
-            <input class="input2" type="text" placeholder="Nombre">  <br/><br/>
-
-            <input class="input2" type="text" placeholder="Categoria">   <br/><br/>
-
-            <input class="input2" type="password" placeholder="Contraseña">  <br/><br/>
                 
-            <input class="input2" type="password" placeholder="Confirmar Contraseña">  <br/><br/>
 
-            <input class="input2" type="email" placeholder="Email">  <br/><br/>
+                <input class="input2" type="text" placeholder="Nombre">  <br/><br/>
 
-            <input class="input2" type="text" placeholder="Imagen">  <br/><br/>
+                <input class="input2" type="password" placeholder="Contraseña">  <br/><br/>
+                        
+                <input class="input2" type="password" placeholder="Confirmar Contraseña">  <br/><br/>
 
-            <input class="input2" type="text" placeholder="Horario">  <br/><br/>
+                <input class="input2" type="email" placeholder="Email">  <br/><br/>
 
-            <input class="input2" type="text" placeholder="Tiempo Estimado Espera">  <br/><br/>
+                <input class="input2" type="text" placeholder="Imagen">  <br/><br/>
 
-            <textarea class="descripcion input2" name="mensaje" placeholder="Escriba aquí la descrippción de su local"></textarea> <br/><br/>
+                <div class="horario">
+                <p style="margin-right: 0px;">Apertura: </p> 
+                <input class="input2-time" style="margin-right: auto;" type="time" placeholder="Horario">  <br/><br/>
+                <p style="margin-right: 0px;">Cierre: </p> 
+                <input class="input2-time" type="time" placeholder="Horario">  <br/><br/>
+                </div>
 
-        </form>    
+                <input class="input2" type="text" placeholder="Tiempo Estimado Espera">  <br/><br/>
 
-        <div class="btn-container">
+                <textarea class="descripcion input2" name="mensaje" placeholder="Escriba aquí la descrippción de su local"></textarea> <br/><br/>
+            
+                <div class="btn-container">
 
-            <button class="boton" data-toggle="modal" data-target="#modalModificar">Enviar</button>            
+                <button class="boton" data-toggle="modal" data-target="#modalModificar">Enviar</button>            
+
+                </div>
+            </form>    
+
+            
 
         </div>
 
-    </div>
-
+    </div> 
 </div>
 
 
