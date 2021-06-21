@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteOpinionesResenarService } from 'src/app/services/cliente-opiniones-resenar.service';
 
 @Component({
   selector: 'app-cliente-opiniones',
@@ -6,41 +7,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cliente-opiniones.component.css'],
 })
 export class ClienteOpinionesComponent implements OnInit {
-  // atributo para el corazon de favorito
+  // para mostrar dos campos
+  public resenar: boolean;
+  public resenado: boolean;
+
+  // para el corazon de favorito
   public favorito: boolean;
+
   // mesajes para modal
-  public mensajeModal: string[];
-  public mensajeModalEnviar: any[];
-  public resena: boolean;
-  public resenaTexto: string[];
+
   public quitarTarjeta: boolean;
 
-  constructor() {
-    // atributo para el corazon de favorito
+  // Variable para mostrar todos los locales no reseñados aún
+  public notReviews: any[];
+
+  constructor(private reviewService: ClienteOpinionesResenarService) {
+    // dos campos
+    this.resenar = true;
+    this.resenado = false;
+    //para el corazon de favorito
     this.favorito = false;
-    this.resena = false;
     this.quitarTarjeta = false;
-    // mesajes para modal
-    this.mensajeModal = [
-      'Dar reseña',
-      'Escribe tu opinion',
-      'Enviar',
-      'Cancelar',
-    ];
-    this.mensajeModalEnviar = ['Has enviado un opinion'];
-    this.resenaTexto = [];
+
+    // Variable para mostrar todos los locales no reseñados aún
+    this.notReviews = [];
   }
-  // method para guardar a favorito
   fav() {
     this.favorito = !this.favorito;
   }
-  mostrarResenaBajo(opinionCliente: string) {
-    this.resena = true;
-    this.resenaTexto.push(opinionCliente);
-  }
-  sinTarjeta() {
+  dejarOpinar() {
     this.quitarTarjeta = true;
   }
+  resenarCampo() {
+    this.resenar = true;
+    this.resenado = false;
+    console.log(this.resenar);
+  }
+  resenadoCampo() {
+    this.resenado = true;
+    this.resenar = false;
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.notReviews = this.reviewService.listarResenasPorCliente('1');
+  }
 }
