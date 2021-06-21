@@ -1,54 +1,51 @@
-<!-- @kehomaxd -->
-
-<!-- Pag -->
-
 <div class="global">
 
+    <div class="container">    
 
-<!-- photo perfil -->
+        <div class="contenedor-form">
 
+            <!-- photo perfil -->
 
-
-    <div class="body-perfil">
-
-        <div class="perfil">        
-            <div class="pic"> 
-            <img class="imagen" src=" https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Dont find">
-            </div>       
-            <div class="div-inf">
+            <div class="pic-perfil">
                 
-                    <p class="info"> name </p>
-                    <p class="info"> lastname </p>
-                    <p class="info"> phone </p>
-                    <p class="info"> mail </p>
-            </div> 
-        </div>
+                <div class="foto">
+                    <img class="imagen" src=" https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                    
+                </div>
+                
 
-            <div class="caja">
-
-                <!-- Formulario -->
-                <form (input)="handelChange($event)">
-
-                    <input class="in first" type="text" name=img placeholder="Imagen">
-                    <input class="in" type="text" name="name" placeholder="Nombre" >
-                    <input class="in" type="text" name="lastname" placeholder="Apellidos" >
-                    <input class="in" type="password" name="password" placeholder="Contraseña">
-                    <input class="in" type="password" name="repeatPassword" placeholder="Confirmar contraseña">
-                    <input class="in" type="text" name="phone" placeholder="Numero Telefonico" >
-                    <input class="in" type="email" name="mail" placeholder="Email">
+                <!-- Fin foto perfil -->
             
-                </form>
+                <form class="formulario">
 
-           
-        
-        <!-- Boton -->
-        <div class="areaBoton">
-        <button class="bGuardar" data-toggle="modal" data-target="#modalModificar" (click)="handelClick()" type="button">Guardar</button>
-        </div>
-        
-        </div>
-        
-        <app-modal [mensajeModal]="guardarModal"></app-modal>
+                    <input class="input2" type="text" placeholder="Imagen">  <br/><br/>
 
+                    <input class="input2" type="text" placeholder="Nombre">  <br/><br/>
+
+                    <input class="input2" type="text" placeholder="Apellidos">  <br/><br/>
+
+                    <input class="input2" type="password" placeholder="Contraseña">  <br/><br/>
+                            
+                    <input class="input2" type="password" placeholder="Confirmar Contraseña">  <br/><br/>
+
+                    <input class="input2" type="text" placeholder="Numero de Telefono">  <br/><br/>
+                
+                    <div class="btn-container">
+
+                    <button class="boton" data-toggle="modal" data-target="#modalModificar">Enviar</button>            
+
+                    </div>
+                </form>    
+
+                
+
+            </div>
+
+        </div> 
     </div>
-</div>    
+
+
+
+    <app-modal [mensajeModal]="guardarModal"></app-modal>
+
+</div>

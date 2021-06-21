@@ -1,9 +1,13 @@
+.global{
+    margin: 10px;
+    margin-bottom: 10px;
+}
 .container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
     padding-bottom: 50px;
 }
 input:focus{
@@ -11,10 +15,19 @@ input:focus{
 }
 .categoria{
     margin-top: 20px;
-    width: 50%;
+    width: 100%;
+}
+
+.etiquetas{
+    justify-content: center;
+    width: 200px;
 }
 
 @media screen and (max-width:475px) {
+    .etiquetas{
+        justify-content: center;
+        width: 100px;
+    }
     .container{
         display: flex;
         flex-direction: row;
@@ -29,16 +42,11 @@ input:focus{
         width: 100%;
     }
     .categoria{
-        max-width: 50%;
+        width: 100%;
         
     }
     .input2 {
         margin-bottom: -25px;
-        width: 85%;
-        padding: 10px;
-        box-sizing: border-box;
-        border:1px solid #ccc;
-        border-radius: 5px;
     }
 }
 
@@ -65,7 +73,7 @@ input:focus{
 
 .input2{
     /* margin: 5px; */
-    margin-bottom: -25px;
+    /* margin-bottom: -25px; */
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -76,42 +84,56 @@ input:focus{
 .horario{
     display: flex;
     flex-direction: row;
-    width: 85%;
+    width: 100%;
     height: 5%;
-    margin-bottom: 6px;
+    margin-bottom: 20px;
 }
 
 .input2-time{
-    width: 25%;
+    width: auto;
     box-sizing: border-box;
     border:1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+    margin-right: 15%;
+}
+
+.time-name{
+    margin-right: 5%;
 }
 
 .boton {
 
     background-color: #5C74F6;
-    /* margin: auto 10px 20px 10px; */
+    margin: auto 10px 20px 10px;
     border-style: none;
     margin-left: 20px;
     border-radius: 5px;
     color: white;
     width: 100px;
     height: 50px;
-    /* font-size: 25px; */
+    font-size: 25px;
 }
 
 @media screen and (max-width:475px) {
+    
+    .rigth{
+        margin-left: -17px;
+    }
+
+    .input2{
+        padding: 5px;
+    }
+
     .boton{
         background-color: #5C74F6;
         border-style: none;
-        /* margin: auto 10px 20px 10px; */
+        margin: auto 10px 20px 10px;
         border-radius: 5px;
         color: white;
         width: 100px;
-        height: 50px;
-        font-size: 25px;
+        height: 25px;
+        font-size: 15px;
     }
 }
 
@@ -147,15 +169,18 @@ input:focus{
 @media screen and (max-width:475px) {
 
     .foto{
-        margin-left: 30%;
-        width: auto;
+        display: flex;
+        justify-content: center;
+        width: 100%;
         margin-bottom: 15px;
     }
 
     .categoria{
-        width: 100px;
+        text-align: center;
     }
     .imagen{
+        display: block;
+        margin: auto;
         width: 100px;
         height: 100px;
     }
