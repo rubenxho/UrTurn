@@ -7,12 +7,14 @@ declare var $: any;
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  public header:String
-  public estado:String
-
+  
+  public header:string;
+  public estado:string;
+  
   constructor(){
     this.header="Cliente"
     this.estado="dconectado"
+    
   }
 
   tipoUsuario(usuario:string){

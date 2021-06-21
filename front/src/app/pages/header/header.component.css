@@ -47,12 +47,25 @@
 }
 
 .ruben-header2:hover{
-
+    cursor:pointer;
     border-bottom: solid white;
 }
 
 .ruben-focus{
     border-bottom: solid white;
+}
+
+.logoImagen {
+    margin-top:10px;
+    margin-left:60px;
+    width:400px;
+    height:80px;
+    border-radius:100px;
+    background-image:url("../../../assets/logoInvertido.png");
+   	background-repeat:no-repeat;
+   	background-size:80% 85%;
+    /* -webkit-filter: invert(100%);
+    filter: invert(1000%); */
 }
 
 /* Reponsive */
