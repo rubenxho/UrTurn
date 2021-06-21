@@ -1,171 +1,108 @@
-<div class="global">
-<section class="container">    
+<div class='container'>
+    <div class='col-3 logo'></div>
 
-    <article class="col-3 col1">
-        
-        <div class="sobreFoto">
-
-            <h2 class="nombre">EMPRESA</h2>
-
+    <div class='col-3'>
+        <div class='row numero'>
+            <div>
+                <h5><strong>Ticket nº:</strong></h5>
+            </div>
         </div>
 
-        <img class="img" src="./assets/gym2.png" alt="gym">
-    </article>
-
-    <article class="col-3 col2"> 
-
-        <div class="fila">
-
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person colorPerson"></i>
-            <i class="fas fa-male person"></i>
-
-        </div>       
-             
-    </article>
-
-    <article class="col-3 col2"> 
-
-        <div class="fila">
-
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-
-        </div>       
-             
-    </article>
-
-    <article class="col-3 col3">
-
-        <div>
-            <h6 class="tiempo">Tiempo Estimado</h6>
-            <p class="parrafo">25 minutos</p>
+        <div class='row ticket'>
+            <h4><strong>25</strong></h4>
         </div>
+    </div>
 
-        <div>
-            <button class="boton" data-toggle="modal" data-target="#modalModificar">Cancelar</button>
-        </div>
+    <div class='col-3'>
+        <h3>Tiempo estimado en ser atendido: 55 minutos</h3>
+    </div>
+</div>
 
-        <app-modal [mensajeModal]="clienteCola"></app-modal>
-
-            <!-- Modal -->
-        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea salir de la cola?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body" id="desplegable"></div>
-                        <div class="modal-footer">
-
-                        <button type="button" class="boton" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="boton2" data-dismiss="modal">Confirmar Cancelar</button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                
-        </div> -->
-
-    </article>
-
-</section>
-
-
-<!-- --------------------------------------segunda linea. Borrar. Va con ngFor -->
-
-<section class="container">    
-
-    <article class="col-3 col1">
-        
-        <div class="sobreFoto">
-
-            <h2 class="nombre">EMPRESA</h2>
-
-        </div>
-
-        <img class="img" src="./assets/gym2.png" alt="gym">
-    </article>
-
-    <article class="col-3 col2"> 
-
-        <div class="fila">
-
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person colorPerson"></i>
-            <i class="fas fa-male person"></i>
-
-        </div>       
-             
-    </article>
-
-    <article class="col-3 col2"> 
-
-        <div class="fila">
-
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-            <i class="fas fa-male person"></i>
-
-        </div>       
-             
-    </article>
-
-    <article class="col-3 col3">
-
-        <div>
-            <h6 class="tiempo">Tiempo Estimado</h6>
-            <p class="parrafo">25 minutos</p>
-        </div>
-
-        <div>
-            <button class="boton" data-toggle="modal" data-target="#modalModificar">Cancelar</button>
-        </div>
-
-        <app-modal [mensajeModal]="clienteCola"></app-modal>
-
-            <!-- Modal -->
-        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea salir de la cola?</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body" id="desplegable"></div>
-                        <div class="modal-footer">
-
-                        <button type="button" class="boton" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="boton2" data-dismiss="modal">Confirmar Cancelar</button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                
-        </div> -->
-
-    </article>
-
-</section>
+<div class='container'>
 
 </div>
+
+
+
+
+
+<!-- <div class='container'>
+   
+
+    <div class='logo'></div>
+
+    #5C74F6
+    <div class="row"> 
+        <div class='col-4'>
+
+        
+
+        <div class='row'></div>
+                
+        <div class='ticket'>
+            
+        </div>
+    
+        </div>
+
+        <div></div>
+
+        <div class='col-8'>
+            
+            <div class='row'>
+                <label for=""><strong>Quedan</strong></label>
+        
+        
+            
+            </div>
+            <div>
+                <button class="boton" data-toggle="modal" data-target="#modalModificar">Cancelar</button>
+            </div>
+            
+            <app-modal [mensajeModal]="clienteCola"></app-modal>
+        
+            
+       
+              
+             
+    
+    
+    
+        
+
+            Modal
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea salir de la cola?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body" id="desplegable"></div>
+                        <div class="modal-footer">
+
+                        <button type="button" class="boton" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="boton2" data-dismiss="modal">Confirmar Cancelar</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                
+        </div>
+
+</div> -->
+
+
+
+
+
+
+
+
+
+

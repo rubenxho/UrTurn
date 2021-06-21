@@ -14,13 +14,15 @@ export class LoginComponent implements OnInit {
   public usernameValid:boolean;
   public passValid = true;
   public tipoUsuario:string;
-  @Output() eventoIniciarSesion= new EventEmitter<string>()
+  public conectado:boolean;
+  @Output() eventoIniciarSesion= new EventEmitter<string>();
 
   constructor(private navigation:Router, private formBuilder:FormBuilder) { 
     this.myForm = this.buildForm();
     this.usernameValid = true;
     this.passValid = true;
     this.tipoUsuario = '';
+    this.conectado = false;
   }
 
   private buildForm():FormGroup {
@@ -59,6 +61,7 @@ export class LoginComponent implements OnInit {
       this.tipoUsuario = tipoUsuario;
       this.redirigir(`${tipoUsuario}Home`);
       /*Evento para llamar al header que necesito(empresa/cliente)*/ 
+      this.conectado = true;
       this.eventoIniciarSesion.emit(this.tipoUsuario)
       
     }

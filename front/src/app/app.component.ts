@@ -7,23 +7,10 @@ declare var $: any;
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  public header:String
-  public estado:String
-
+  public prueba:String;
+  
   constructor(){
-    this.header=""
-    this.estado="conectado"
-  }
-
-  tipoUsuario(usuario:string){
-    console.log("Mensaje desde app")
-    this.estado=""
-    if(usuario=="empresa"){
-      this.header="Empresa"
-    }
-    else{
-      this.header="Cliente"
-    }
+    this.prueba="Cliente";
   }
 
   ngOnInit() {
