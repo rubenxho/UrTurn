@@ -33,7 +33,7 @@ const routes: Routes = [
   {path:'cliente-registro', component:ClienteRegistroComponent},
   {path:'empresa-registro', component:EmpresaRegistroComponent},
   { path: 'clienteTarjetas', component: ClienteTarjetasComponent},
-  // {path:"", component: LoginComponent},
+  {path:"", component: LoginComponent},
   // {path:"**", redirectTo:'login', pathMatch:'full'},
 ]
 

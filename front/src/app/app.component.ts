@@ -11,8 +11,8 @@ export class AppComponent {
   public estado:String
 
   constructor(){
-    this.header=""
-    this.estado="conectado"
+    this.header="Cliente"
+    this.estado="dconectado"
   }
 
   tipoUsuario(usuario:string){
