@@ -1,20 +1,12 @@
-.container {
+.main {
   margin-top: 50px;
+  margin-bottom: 70px;
 }
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 5%;
-}
+
 .col {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 5px;
 }
 
 .card {
@@ -23,7 +15,7 @@
   background-color: #f2f1ed;
   width: 310px;
   height: 340px;
-  margin-top: 5px;
+  margin-top: 3rem;
 }
 
 .card-img-top {
@@ -31,6 +23,7 @@
   width: 100%;
   height: 200px;
 }
+
 .card-title {
   width: 100%;
   height: 40px;
@@ -43,6 +36,7 @@
   left: 0%;
   text-align: center;
 }
+
 .card-text {
   font-family: Titillium Web;
   font-weight: bolder;
@@ -51,6 +45,7 @@
   top: 205px;
   margin-left: 5%;
 }
+
 .botonResena {
   font-family: Titillium Web;
   font-weight: bolder;
@@ -59,6 +54,10 @@
   top: 280px;
   width: 90px;
   margin-left: 5%;
+}
+
+.botonEviar {
+  width: 90px;
 }
 
 .btn-secondary {
@@ -96,7 +95,6 @@
   color: #ffff00;
 }
 
-/* la corazon*/
 .fa-heart {
   cursor: pointer;
   position: absolute;
@@ -117,12 +115,30 @@
   font-family: Titillium Web;
   font-size: large;
 }
+#quitarResenaModal {
+  margin-top: 15%;
+  font-family: Titillium Web;
+  font-size: large;
+}
 
-/*comentario*/
+.botones {
+  align-content: center;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
 
-@media only screen and (max-width: 375px) {
+.btn-outline-primary {
+  height: 60px;
+  font-family: Titillium Web;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+@media screen and (max-width: 375px) {
   .card {
-    margin-bottom: 30px;
+    margin-bottom: 5px;
+    align-content: center;
   }
   #resenaModal {
     margin-top: 70%;
@@ -130,5 +146,17 @@
   .clienteResenado {
     font-family: Titillium Web;
     font-weight: bolder;
+  }
+  #quitarResenaModal {
+    margin-top: 70%;
+  }
+  .row {
+    margin-top: 10px;
+  }
+  .botones {
+    align-content: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
   }
 }
