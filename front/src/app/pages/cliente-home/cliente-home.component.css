@@ -1,85 +1,79 @@
-.rowstefi{
-    flex-direction: row;
-    align-items:center;
-    justify-content: center;
-    margin: 0px;
-
+.rowstefi {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
 }
-.colstefi{
-    flex-direction: column;
-    padding-left: 0px;
-    padding-right: 0px;
+.colstefi {
+  flex-direction: column;
+  padding-left: 0px;
+  padding-right: 0px;
 }
-.tarjeta{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+.tarjeta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
 .carusel {
-    max-width: 700px;
-    /* min-width: 700px; */
-    max-height: 400px;
-    /* min-height: 400px; */
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-family: Titillium Web;
-    margin-top: 0px;
-    background-size: cover;
-    background-position: center;
-    
+  max-width: 700px;
+  /* min-width: 700px; */
+  max-height: 400px;
+  /* min-height: 400px; */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: Titillium Web;
+  margin-top: 0px;
+  background-size: cover;
+  background-position: center;
 }
-.calendario{
-    color:#5C74F6;
-    margin: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
+.calendario {
+  color: #5c74f6;
+  margin: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
-.titulo{
-    font-family: April Fatface ;
-    font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.523);
+.titulo {
+  font-family: April Fatface;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.523);
 }
-.titulo2{
-    font-family: Black Han Sans ;
-    font-weight: bolder;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    
+.titulo2 {
+  font-family: Black Han Sans;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 img {
-    max-width: 700px;
-    /* min-width: 700px; */
-    max-height: 400px;
-    /* min-height: 200px; */
-    background-size: cover;
-    background-position: center;
+  max-width: 700px;
+  /* min-width: 700px; */
+  max-height: 400px;
+  /* min-height: 200px; */
+  background-size: cover;
+  background-position: center;
 }
 
-.centrado{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    
+.centrado {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
+@media screen and (max-width: 475px) {
+  .carusel {
+    max-width: 350px;
+    max-height: 250px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
 
-
-@media screen and (max-width:475px){
-    .carusel{
-        max-width: 350px;      
-        max-height: 250px;
-        margin-top: 0px;
-        margin-bottom: 20px;
-    }
-   
-    img{
-        max-height: 250px;
-        max-width: 350px;
-    }
-
+  img {
+    max-height: 250px;
+    max-width: 350px;
+  }
 }
