@@ -1,4 +1,3 @@
-/****************************estilos***************************/
 h5  {
     margin-top: 20px;
 }
@@ -14,6 +13,10 @@ h5  {
     height: 150px;
     margin: 30px auto 30px auto;
     /* margin-top: 50px; */
+}
+
+.containerResponsive    {
+    display:none;
 }
 
 .logo   {
@@ -39,107 +42,37 @@ h5  {
     align-items:center;
 }
 
-
-
-
-
-@media screen and (max-width: 376px) {
-    .container {
-        box-shadow: 0 ;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;    
-        width: 100%;
-        height: min-content;
-        margin: 30px 100px auto 0px;
-        /* padding-bottom: 50px; */
-    }
-
-    .global {
-        padding-bottom: 60px;
-    }
-}
-
-.col1 {
-    display: flex;
-    flex-direction: column;
+.reloj  {
+    margin-top:0;
+    width:100px;
+    height:100px;
+    background-image:url("../../../assets/reloj2.png");
+   	background-repeat:no-repeat;
+   	background-size:100% 80%;
+    border-radius:5px;
+    text-align: center;
     justify-content: center;
-    align-items: center;
-    padding: 0px;
-    margin: 2px;
+    align-items:center;
 }
 
-.img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 10px;
+.minutos    {
+    margin-top:-22px;
 }
 
-@media screen and (max-width: 376px) {
-    .img {
-        max-width: 350px;
-        max-height: 100%;
-        border-radius: 5px;
-        margin-top: 6px;
-    }
+.boton  {
+    position:absolute;
+    left:20px;
+    top:70px;
 }
 
-.sobreFoto {
-    position: absolute;  
-    /* position: sticky; */
-    top: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 0px;   
-}
-
-.nombre {    
-    background-color: rgba(0, 0, 0, .1);
-    height: fit-content;/*ajusta el tamaño al contenido de la caja*/
-    padding: 5px 10px;
-    color: #ffff;
-    font-size: 22px;
-    font-family: Abril Fatface;
-}
-
-@media screen and (max-width: 376px) {
-    .nombre {
-        background-color: rgba(0, 0, 0, .1);
-        height: fit-content;/*ajusta el tamaño al contenido de la caja*/
-        padding: 1px 3px;
-        color: #ffff;
-        font-size: 15px;
-    }
-}
-
-.col2 {
-    margin: 5px;
-}
-
-.fila {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30%; 
-}
-
-.person {
-    font-size: 36px;
-    margin: 0px 10px;
-}
-
-.colorPerson {
-    color: #5C74F6;
-}
-
-.col3 {
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between;
-    align-items: center;
+.starbucks  {
+    margin-left:-14px;
+    width:100px;
+    height:auto;
+    background-image:url("../../../assets/starbucks.png");
+   	background-repeat:no-repeat;
+   	background-size:80% 100%;
+    border-radius:5px;
 }
 
 .boton {
@@ -152,48 +85,68 @@ h5  {
     height: 50px;
 }
 
-@media screen and (max-width: 376px) {
-    .boton {
-        margin-bottom: 5px;
+.modal  {
+    margin-top:10%;
+}
+
+@media screen and (max-width: 415px)    {
+    .container  {
+        display:none;
+    }
+
+    .containerResponsive    {
+        display:block;
+        background-color: rgba(236, 239, 241, 1);
+        border-width: 15px;
+        border-color: rgba(242, 241, 237, 1);
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
+        display: flex;    
+        width:280px;
+        height: 150px;
+        margin: 30px auto 30px auto;
+    }
+
+    h5  {
+        margin-top:20px;
+        font-size:11px;
+        margin-left:12px;
+    }
+
+    .logo   {
+        margin-top:5px;
+        margin-left:3px;
+        background-size:90% 60%;
+    }
+
+    .starbucks   {
+        margin-top:5px;
+        margin-left:3px;
+        background-size:90% 60%;
+    }
+
+    .ticket {
+        width:60px;
+        height:60%;
+        margin-left:-10px;
+    }
+
+    .reloj  {
+        width:60px;
+        height:60%;
+        margin-left:-5px;
+    }
+
+    .boton  {
+        position:sticky;
+        width:85px;
+        height:35px;
+        margin-top:95%;
+        margin-left:14px;
+    }
+
+    .modal  {
+        margin-top:60%;
     }
 }
-
-/*******boton 2 del modal***********/
-/* .boton2 {
-    background-color: rgba(0, 0, 0, 1);
-    border-style: none;
-    margin: auto 20px;
-    border-radius: 10px;
-    color: white;
-    width: 250px;
-    margin-bottom: 10px;
-} */
-/***************************************/
-
-.tiempo {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-@media screen and (max-width: 376px) {
-    .tiempo {
-        margin: 10px 15px;
-    }
-}
-
-.parrafo {
-    margin: 20px 20px 10px 20px;
-    font-weight:lighter;
-    font-size: 20px;
-}
-
-@media screen and (max-width: 376px) {
-    .parrafo {
-        display: flex;
-        margin: 10px 10px 15px 10px;
-        font-size: 15px;
-    }
-}
-
-
 
