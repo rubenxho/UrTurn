@@ -36,7 +36,7 @@ select{
 }
 
 .buscador{
-    box-shadow: 2px 2px 10px 1px grey;
+    box-shadow: 0px 4px 8px 3px rgb(0 0 0 / 20%);
     background-color: rgba(255, 255, 255, 0.479);
     margin-top: 30px;
     font-family: Titillium Web;
@@ -73,5 +73,13 @@ button{
         box-shadow: 2px 2px 10px 1px grey;
         background-color: rgba(255, 255, 255, 0.479);
         margin-top: 20px;
+    }
+    .buscador{
+        box-shadow: 1px 1px 5px 1px grey;
+        background-color: rgba(255, 255, 255, 0.479);
+        margin-top: 30px;
+        font-family: Titillium Web;
+        border-radius:10px;
+       width: 100vw;
     }
 }
