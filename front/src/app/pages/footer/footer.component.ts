@@ -13,7 +13,7 @@ export class FooterComponent implements OnInit {
 
   constructor() {
     this.posicionMenu="home"
-    this.empresa=false
+    this.empresa=true
     this.controlador="";
   }
 

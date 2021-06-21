@@ -1,8 +1,13 @@
 <app-cliente-buscador (eventoMostrar)="eventoMostrar($event)"  ></app-cliente-buscador>
  
 <div class="col" *ngIf="mostrarTarjetas==false ;else tarjetas" >
+    <div class="container">
+        <div class="rowstefi"> 
+            <h3 class="titulo2">! TOP 5 DEL MES !</h3>
+            
+        </div>
+    </div>
     
-    <h3 class="titulo2">!Top 5 populares!</h3>
 
     <div class="container-fluid">
         <div class="row ">
@@ -75,7 +80,7 @@
 
 <ng-template #tarjetas style="margin-top: 0px;">
 
-    <div class="container">
+    <div class=" tarjeta">
         <div class="row">
             <div class="col">
                 <app-cliente-tarjetas></app-cliente-tarjetas>
