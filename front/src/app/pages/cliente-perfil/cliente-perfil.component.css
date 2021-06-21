@@ -1,47 +1,108 @@
-*{
-    font-family: Titillium Web;
-    font-weight: 900;
+.global{
+    margin: 10px;
+    margin-bottom: 10px;
 }
-
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px;
+    padding-bottom: 50px;
+}
 input:focus{
     outline: none;
 }
 
-/* body cliente-perfil */
-.global{
-    margin-top: 30px;
-    margin-left: 20%;
-    margin-right: 20%;
+@media screen and (max-width:475px) {
+    .container{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .contenedor-form {
+        display: flex;
+        flex-direction: column;
+        width:max-content;
+    }
+    .formulario{
+        width: 100%;
+    }
+
+    .input2 {
+        margin-bottom: -25px;
+    }
 }
 
-/* Circulo de la imagen */
-.perfil{
-    /* border-style: solid; */
+.contenedor-form {
+    background-color: rgba(255, 255, 255, 0.479);
     display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 20px;
-}
-.pic{
-    margin-top: 10px    ;
-    display: flex;
+    flex-direction: row;
     justify-content: center;
-}
-.div-inf{
-    /* border-style: solid; */
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-top: 40px;
-    width: 50%;
+    align-items: center;
+    border-radius: 10px;
+    width: 100%;
 }
 
-.info{
-    margin-top: 10px;
-    margin-bottom: 32px;
-    font-size: 20px;
-    font-weight: bolder;
+
+.formulario {
     /* border-style: solid; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 100px;
+    /* border-style: solid; */
+}
+
+.input2{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border:1px solid #ccc;
+    border-radius: 5px;
+}
+
+.boton {
+    background-color: #5C74F6;
+    margin: -14px 10px 0px 10px;
+    border-style: none;
+    margin-left: 20px;
+    border-radius: 5px;
+    color: white;
+    width: 100px;
+    height: 50px;
+    font-size: 25px;
+}
+
+@media screen and (max-width:475px) {
+    
+    .input2{
+
+        padding: 5px;
+    }
+    
+    .boton{
+        background-color: #5C74F6;
+        border-style: none;
+        margin: auto 10px 20px 10px;
+        border-radius: 5px;
+        color: white;
+        width: 100px;
+        height: 25px;
+        font-size: 15px
+    }
+}
+
+/***********************Foto perfil**********************/
+
+.foto{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    /* border-style: solid; */
+    /* justify-content: center; */
+    /* overflow: hidden; */
 }
 
 /* la imagen */
@@ -53,119 +114,34 @@ input:focus{
     height: 200px;
 }
 
-/* Body del formularion y boton */
-.body-perfil{
-    box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
-    background-color: #ffffff54;
-    flex-direction: row;
-    border-radius: 10px;
+/* Circulo de la imagen */
+.pic-perfil{
+    /* border-style: solid; */
     display: flex;
-    border-radius: 10px;
-}
-
-
-
-/* Body del fomularion */
-.caja{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+    width: 100%;
     justify-content: center;
-    text-align: center;
-    margin: 20px;
+    margin-top: 20px;    
 }
 
-/* Primer input */
-.first{
-    margin-top: 20px;
-}
+@media screen and (max-width:475px) {
 
-/* Todos los inputs */
-.in{
-    /* display: flex; */
-    margin-bottom: 25px;
-    width: 85%;
-    padding: 10px;
-    border-radius: 5px;
-    box-sizing: border-box;
-    border:1px solid #ccc;
-}
-
-/* .in::placeholder{
-    text-align: center;
-} */
-
-/* Body del cuerpo */
-.areaBoton{
-    text-align: center;
-    width: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-/* Boton */
-.bGuardar{
-    background-color: #5C74F6;
-    color: white;
-    width: 100px;
-    height: 50px;
-    border-radius: 5px;
-    border: none;
-}
-
-/* responsive */
-@media screen and (max-width: 475px){
-
-    .in{
-        margin-top: 5px;
-        margin-bottom: 5px;
-        width: 250px;
+    .foto{
+        margin-left: 110px;
+        width: auto;
+        margin-bottom: 15px;
     }
 
-
+    .categoria{
+        width: 100px;
+    }
     .imagen{
         width: 100px;
         height: 100px;
     }
 
-    .body-perfil{
-        box-shadow: none;
-        /* background-color: #ffffff8e; */
-        flex-direction: column;
-        border-radius: 10px;
-        width: auto;
-        /* margin: 20px; */
-    }
-    .global{
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-top: 10px;
-        width: auto;
-    }
-
-    .areaBoton{
-        width: auto;
-    }
-
-    .div-inf{
-        display: none;
-    }
-
-    .caja{
+    .pic-perfil{
         display: flex;
         flex-direction: column;
-        width: auto;
-    }
-
-    form{
-        margin-right: 30px;
-    }
-
-    .perfil{
-        display: flex;
-        justify-content: center;
         margin-top: 5px;
-        margin-bottom: -15px;
-        width: auto;
     }
 }
