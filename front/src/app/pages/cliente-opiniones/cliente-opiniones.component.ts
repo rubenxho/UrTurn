@@ -13,11 +13,13 @@ export class ClienteOpinionesComponent implements OnInit {
   public mensajeModalEnviar: any[];
   public resena: boolean;
   public resenaTexto: string[];
+  public quitarTarjeta: boolean;
 
   constructor() {
     // atributo para el corazon de favorito
     this.favorito = false;
     this.resena = false;
+    this.quitarTarjeta = false;
     // mesajes para modal
     this.mensajeModal = [
       'Dar reseña',
@@ -35,6 +37,9 @@ export class ClienteOpinionesComponent implements OnInit {
   mostrarResenaBajo(opinionCliente: string) {
     this.resena = true;
     this.resenaTexto.push(opinionCliente);
+  }
+  sinTarjeta() {
+    this.quitarTarjeta = true;
   }
 
   ngOnInit(): void {}
