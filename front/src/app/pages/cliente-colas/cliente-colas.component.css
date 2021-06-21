@@ -4,7 +4,7 @@ h5  {
 }
 
 .container {
-    background-color: rgba(236, 239, 241, 1);
+    background-color: #ffffff54;
     border-width: 15px;
     border-color: rgba(242, 241, 237, 1);
     border-radius: 10px;
@@ -45,7 +45,9 @@ h5  {
 
 @media screen and (max-width: 376px) {
     .container {
-        box-shadow: 0 ;
+        background-color: #ffffff54;
+        box-shadow: 0px 4px 8px 3px rgb(0 0 0 / 5%);
+        border-radius: 0px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -57,7 +59,7 @@ h5  {
     }
 
     .global {
-        padding-bottom: 60px;
+        padding-bottom: 80px;
     }
 }
 
@@ -85,25 +87,6 @@ h5  {
     }
 }
 
-.sobreFoto {
-    position: absolute;  
-    /* position: sticky; */
-    top: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 0px;   
-}
-
-.nombre {    
-    background-color: rgba(0, 0, 0, .1);
-    height: fit-content;/*ajusta el tamaño al contenido de la caja*/
-    padding: 5px 10px;
-    color: #ffff;
-    font-size: 22px;
-    font-family: Abril Fatface;
-}
-
 @media screen and (max-width: 376px) {
     .nombre {
         background-color: rgba(0, 0, 0, .1);
@@ -115,15 +98,48 @@ h5  {
 }
 
 .col2 {
-    margin: 5px;
+    margin: 50px 50px 50px 50px;
 }
 
 .fila {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30%; 
+    margin-top: -5%; 
+}
+
+.centro {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-items: center;
+    margin-top: 0%;
+}
+
+@media screen and (max-width: 376px) {
+
+    .centro {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: -10%;
+        margin-bottom: -25%;
+        /* margin-right: 10%; */
+    }
+    .fila {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* margin-top: -5%; */
+    }
+
+    .col2{
+        margin-right: 30px;
+        /* margin-left: -80px; */
+    }
 }
 
 .person {
@@ -143,9 +159,13 @@ h5  {
 }
 
 .boton {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
     background-color: #5C74F6;
     border-style: none;
-    margin: auto 10px;
+    margin-top: 50px;
     border-radius: 5px;
     color: white;
     width: 120px;
@@ -154,7 +174,9 @@ h5  {
 
 @media screen and (max-width: 376px) {
     .boton {
-        margin-bottom: 5px;
+        margin-bottom: 15px;
+        width: 100px;
+        height: 70px;
     }
 }
 
@@ -171,29 +193,57 @@ h5  {
 /***************************************/
 
 .tiempo {
-    margin-top: 10px;
-    font-weight: bold;
+    margin-top:15px;
+    font-size:15px;
+}
+
+.tiempoT {
+    margin-top:15px;
+    font-size:15px;
 }
 
 @media screen and (max-width: 376px) {
     .tiempo {
         margin: 10px 15px;
     }
+    .tiempoT {
+        margin-top: 5%;
+    }
 }
 
 .parrafo {
-    margin: 20px 20px 10px 20px;
-    font-weight:lighter;
-    font-size: 20px;
+    margin: 5px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.parrafoP {
+    margin-bottom: 5px;
+    /* margin: 5px; */
+    font-weight: bold;
+    font-size: 25px;
 }
 
 @media screen and (max-width: 376px) {
     .parrafo {
+        margin-top: -2px;
         display: flex;
-        margin: 10px 10px 15px 10px;
-        font-size: 15px;
+        font-size: 20px;
+        color: #28a745;
+    }
+
+    .parrafoP {
+        display: flex;
+        font-size: 20px;
+        color: #28a745;
+        margin-top: 19px;
     }
 }
+
+
+
+
+
 
 
 
