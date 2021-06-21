@@ -3,7 +3,7 @@ h5  {
 }
 
 .container {
-    background-color: #ffffff54;
+    background-color: rgba(236, 239, 241, 1);
     border-width: 15px;
     border-color: rgba(242, 241, 237, 1);
     border-radius: 10px;
@@ -76,13 +76,9 @@ h5  {
 }
 
 .boton {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
     background-color: #5C74F6;
     border-style: none;
-    margin-top: 50px;
+    margin: auto 10px;
     border-radius: 5px;
     color: white;
     width: 120px;
