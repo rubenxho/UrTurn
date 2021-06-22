@@ -100,9 +100,13 @@ app.get('/local', (req, res) => {
     let sqlByID = `SELECT nombre_empresa, direccion, tiempo_espera, descripcion, apertura, cierre, imagen_url
                     FROM usuario_empresa
                     WHERE id_usuario_empresa = ?`;
-    let sqlAll = `SELECT nombre_empresa, tiempo_espera, imagen_url
-                    FROM usuario_empresa ORDER BY categoria`;
+    let sqlAll = `SELECT nombre_empresa, tiempo_espera FROM urturn.usuario_empresa
+                    WHERE (categoria = ? AND codigo_postal = ?);`;
     let id = req.query.id;
+    let busqueda = [
+        req.query.categoria,
+        req.query.codigo_postal
+    ];    
     
     if(id){
         connection.query(sqlByID, id, (err, result) => {
@@ -121,8 +125,8 @@ app.get('/local', (req, res) => {
                 res.json({error: false, codigo: 200, mesaje: 'Búsqueda correcta'}); 
             }
         });
-    }else{
-        connection.query(sqlAll, [id], (err, result) => {
+    }else if(busqueda){
+        connection.query(sqlAll, busqueda, (err, result) => {
             
             if(err){
 
