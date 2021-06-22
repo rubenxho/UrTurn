@@ -4,7 +4,7 @@
 
 
 .ruben-row{
-
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap; 
@@ -73,9 +73,9 @@
     
     .ruben-responsive{
         display: none;
-    }
+    }  
 
     .ruben-color-blaL{
         font-size: 35px;
-    }
+    }    
 }
