@@ -1,3 +1,21 @@
+#hijo1{
+  position: absolute;
+  left:0px;
+  top:20px;
+
+}
+#hijo2{
+  position: absolute;
+  top: 15px;
+}
+
+.hijo1{
+  background-color: #5C74F6;
+  color: #5c73f600;
+  width: 35vw;
+  height: 20px;
+}
+
 .rowstefi {
   flex-direction: row;
   align-items: center;
@@ -13,7 +31,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
+  
 }
 
 .carusel {
@@ -46,6 +64,8 @@
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  color: white;
+  font-size: 2vw;
 }
 
 img {
@@ -62,11 +82,12 @@ img {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
 }
 
 @media screen and (max-width: 475px) {
   .carusel {
-    max-width: 350px;
+    width: 100vw;
     max-height: 250px;
     margin-top: 0px;
     margin-bottom: 20px;
@@ -74,6 +95,25 @@ img {
 
   img {
     max-height: 250px;
-    max-width: 350px;
+    max-width: 100%;
   }
+
+  .tarjeta{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .hijo1{
+    width: 60vw;
+    height: 10px;
+  }
+
+  .titulo2 {
+    margin-top: 5px;
+    font-size: 4vw;
+  }
+ 
 }
