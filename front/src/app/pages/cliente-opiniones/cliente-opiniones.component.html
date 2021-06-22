@@ -1,13 +1,17 @@
 <div class="main">
     <div class="botones">
         <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-primary" (click)="resenarCampo()">Reseñar</button>
-            <button type="button" class="btn btn-outline-primary" (click)="resenadoCampo()">Reseñado</button>
+            <button type="button" class="btn btn-outline-primary comentarColor"
+                [ngClass]="{comentarColor: comentarAzul}" (click)="comentarCampo()">Comentar</button>
+            <button type="button" class="btn btn-outline-primary comentariosColor"
+                [ngClass]="{comentariosColor: !comentarAzul}" (click)="comentariosCampo()">Mis
+                comentarios</button>
         </div>
     </div>
 
+
     <!--campo de resenar-->
-    <ng-container *ngIf="resenar">
+    <ng-container *ngIf="comentar">
         <div class="container resenas">
             <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1" *ngIf="!quitarTarjeta">
                 <ng-container *ngFor="let notReview of notReviews">
@@ -106,7 +110,7 @@
     </div>
 
     <!--campo de resenado-->
-    <ng-container *ngIf="resenado">
+    <ng-container *ngIf="comentarios">
         <app-empresa-opiniones></app-empresa-opiniones>
     </ng-container>
 

@@ -28,14 +28,13 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 3%;
+  margin-bottom: 4%;
 }
 .col {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 5px;
 }
 
 .card {
@@ -45,7 +44,9 @@
   transition: transform 0.5s ease-in-out;
   width: 310px;
   height: 340px;
-  margin-top: 5px;
+  margin-top: 10px;
+  margin-left: 17px;
+  margin-right: 17px;
 }
 .card:hover {
   transform: scale(1.05);
@@ -128,7 +129,7 @@
   background: transparent;
   color: blue;
   cursor: default;
-  width: 120px;
+  width: 140px;
   font-weight: bolder;
 }
 
@@ -145,7 +146,7 @@
     margin-bottom: 50px;
   }
   .card {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
   .card:hover {
     transform: none;
@@ -153,5 +154,6 @@
 
   #comfirmarColaModal {
     margin-top: 70%;
+    align-content: center;
   }
 }
