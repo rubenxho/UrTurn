@@ -62,4 +62,85 @@ app.get("/discos",
     }
 )
 
-app.listen(3000)
+/******************************ENDPOINT PUNTUACIO****************************************************/
+
+app.post('/puntuacion', (req, res) => {
+    console.log(req.body);
+    let params = [
+        req.body.id_usuario_cliente,
+        req.body.id_usuario_empresa,
+        req.body.date
+    ];
+    connection.query (`INSERT INTO puntuacion (id_usuario_cliente, id_usuario_empresa, date)
+                        VALUES (?,?,?)`,
+
+                    params,
+
+                    (err, newPuntuacion) => {
+
+                        if (err){
+
+                            console.log(err);
+                            res.send(err);
+
+                        }else{
+
+                            console.log(newPuntuacion);
+                            res.send({error: false, codigo: 200, mensaje: 'Añadida nueva puntuación'});
+
+                        }
+                    });                  
+});
+
+/*********************************************************************************************************/
+/********************************ENDPOINT LOCALES*********************************************************/
+
+app.get('/local', (req, res) => {
+    
+    let sqlByID = `SELECT nombre_empresa, direccion, tiempo_espera, descripcion, apertura, cierre, imagen_url
+                    FROM usuario_empresa
+                    WHERE id_usuario_empresa = ?`;
+    let sqlAll = `SELECT nombre_empresa, tiempo_espera, imagen_url
+                    FROM usuario_empresa ORDER BY categoria`;
+    let id = req.query.id;
+    
+    if(id){
+        connection.query(sqlByID, id, (err, result) => {
+            
+            if(err){
+
+                console.log(err);
+                res.send(err);
+
+            }else if(result){
+
+                res.json(result);
+
+            }else{
+
+                res.json({error: false, codigo: 200, mesaje: 'Búsqueda correcta'}); 
+            }
+        });
+    }else{
+        connection.query(sqlAll, [id], (err, result) => {
+            
+            if(err){
+
+                console.log(err);
+                res.send(err);
+
+            }else if(result){
+
+                res.json(result);
+
+            }else{
+
+                res.json({error: false, codigo: 200, mesaje: 'Búsqueda correcta'}); 
+            }
+        });
+    } 
+});
+
+/************************************************************************************/
+
+app.listen(3000);
