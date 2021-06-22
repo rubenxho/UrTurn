@@ -26,7 +26,8 @@ import { ModalComponent } from './pages/modal/modal.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { ModalCambioComponent } from './pages/modal-cambio/modal-cambio.component'
+import { ModalCambioComponent } from './pages/modal-cambio/modal-cambio.component';
+
 
 @NgModule({
   declarations: [
