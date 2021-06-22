@@ -7,24 +7,21 @@ declare var $: any;
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  
-  public header:string;
-  public estado:string;
-  
-  constructor(){
-    this.header="Cliente"
-    this.estado="dconectado"
-    
+  public header: string;
+  public estado: string;
+
+  constructor() {
+    this.header = 'Cliente';
+    this.estado = 'dconectado';
   }
 
-  tipoUsuario(usuario:string){
-    console.log("Mensaje desde app")
-    this.estado=""
-    if(usuario=="empresa"){
-      this.header="Empresa"
-    }
-    else{
-      this.header="Cliente"
+  tipoUsuario(usuario: string) {
+    console.log('Mensaje desde app');
+    this.estado = '';
+    if (usuario == 'empresa') {
+      this.header = 'Empresa';
+    } else {
+      this.header = 'Cliente';
     }
   }
 

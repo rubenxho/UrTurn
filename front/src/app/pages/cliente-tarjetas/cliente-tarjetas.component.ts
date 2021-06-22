@@ -32,7 +32,7 @@ export class ClienteTarjetasComponent implements OnInit {
     this.nombre = ['Sobrino de Botín', 'Holliday GYM', 'Hamman'];
     this.tiempoAprox = [20, 15, 20];
     this.boton = 'Hacer la cola';
-    this.ColaPosicion = [5, 8, 10];
+    this.ColaPosicion = [1150, 8, 10];
     this.enCola = false;
 
     //atributo para hacer favorito
