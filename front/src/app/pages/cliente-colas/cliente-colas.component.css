@@ -1,14 +1,13 @@
-h5  {
-    margin-top: 20px;
-}
+/****************************estilos***************************/
 
 .container {
-    background-color: rgba(236, 239, 241, 1);
+    background-color: #ffffff54;
     border-width: 15px;
     border-color: rgba(242, 241, 237, 1);
     border-radius: 10px;
     box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
-    display: flex;    
+    display: flex;
+    justify-content: space-between;    
     width: 790px;
     height: 150px;
     margin: 30px auto 30px auto;
@@ -77,106 +76,137 @@ h5  {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items:center;
+    align-items: center;
+    margin-top: -5%; 
 }
 
-.minutos    {
-    margin-top:-22px;
+.centro {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-items: center;
+    margin-top: 0%;
 }
 
-.boton  {
-    position:absolute;
-    left:20px;
-    top:70px;
+@media screen and (max-width: 376px) {
+
+    .centro {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: -10%;
+        margin-bottom: -25%;
+        /* margin-right: 10%; */
+    }
+    .fila {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* margin-top: -5%; */
+    }
+
+    .col2{
+        margin-right: 30px;
+        /* margin-left: -80px; */
+    }
 }
 
-.starbucks  {
-    margin-left:-14px;
-    width:100px;
-    height:auto;
-    background-image:url("../../../assets/starbucks.png");
-   	background-repeat:no-repeat;
-   	background-size:80% 100%;
-    border-radius:5px;
+.person {
+    font-size: 36px;
+    margin: 0px 10px;
+}
+
+.colorPerson {
+    color: #5C74F6;
+}
+
+.col3 {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
 }
 
 .boton {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
     background-color: #5C74F6;
     border-style: none;
-    margin: auto 10px;
+    margin-top: 50px;
     border-radius: 5px;
     color: white;
     width: 120px;
     height: 50px;
 }
 
-.modal  {
-    margin-top:10%;
-}
-
-@media screen and (max-width: 415px)    {
-    .container  {
-        display:none;
-    }
-
-    .containerResponsive    {
-        display:block;
-        background-color: rgba(236, 239, 241, 1);
-        border-width: 15px;
-        border-color: rgba(242, 241, 237, 1);
-        border-radius: 10px;
-        box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
-        display: flex;    
-        width:280px;
-        height: 150px;
-        margin: 30px auto 30px auto;
-    }
-
-    h5  {
-        margin-top:20px;
-        font-size:11px;
-        margin-left:12px;
-    }
-
-    .logo   {
-        margin-top:5px;
-        margin-left:3px;
-        background-size:90% 60%;
-    }
-
-    .starbucks   {
-        margin-top:5px;
-        margin-left:3px;
-        background-size:90% 60%;
-    }
-
-    .ticket {
-        width:60px;
-        height:60%;
-        margin-left:-10px;
-    }
-
-    .reloj  {
-        width:60px;
-        height:60%;
-        margin-left:-5px;
-    }
-
-    .boton  {
-        position:sticky;
-        width:85px;
-        height:35px;
-        margin-top:95%;
-        margin-left:14px;
-    }
-
-    .modal  {
-        margin-top:60%;
+@media screen and (max-width: 376px) {
+    .boton {
+        margin-bottom: 15px;
+        width: 100px;
+        height: 70px;
     }
 }
 
+/*******boton 2 del modal***********/
+/* .boton2 {
+    background-color: rgba(0, 0, 0, 1);
+    border-style: none;
+    margin: auto 20px;
+    border-radius: 10px;
+    color: white;
+    width: 250px;
+    margin-bottom: 10px;
+} */
+/***************************************/
 
+.tiempo {
+    margin-top:15px;
+    font-size:15px;
+}
 
+.tiempoT {
+    margin-top:15px;
+    font-size:15px;
+}
 
+@media screen and (max-width: 376px) {
+    .tiempo {
+        margin: 10px 15px;
+    }
+    .tiempoT {
+        margin-top: 5%;
+    }
+}
 
+.parrafo {
+    margin: 5px;
+    font-weight: bold;
+    font-size: 25px;
+}
 
+.parrafoP {
+    margin-bottom: 5px;
+    /* margin: 5px; */
+    font-weight: bold;
+    font-size: 25px;
+}
+
+@media screen and (max-width: 376px) {
+    .parrafo {
+        margin-top: -2px;
+        display: flex;
+        font-size: 20px;
+        color: #28a745;
+    }
+
+    .parrafoP {
+        display: flex;
+        font-size: 20px;
+        color: #28a745;
+        margin-top: 19px;
+    }
+}

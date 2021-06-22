@@ -1,166 +1,157 @@
-<div class='container'>
-    <div class='col-3 logo'></div>
+<div class="global">
+    <section class="container">    
 
-    <div class='col-3'>
-        <div class='row numero'>
+        <article class="col-2 col1">
+            
+            <!-- <div class="sobreFoto">
+    
+                <h2 class="nombre">EMPRESA</h2>
+    
+            </div> -->
+    
+            <img class="img" src="./assets/mcdonalds.png" alt="gym">
+        </article>
+    
+        <div class="centro">
+
+            <article class="col-3 col2"> 
+    
+                <div class="fila">
+    
+                    <h6 class="tiempo">Tiempo Estimado:</h6>
+                    <p class="parrafo">25 min</p>
+    
+                </div>       
+                    
+            </article>
+    
+            <article class="col-3 col2"> 
+    
+                <div class="fila">
+    
+                    <h6 class="tiempoT">Ticket Número:</h6>
+                    <p class="parrafoP">11</p>
+    
+                </div>       
+                    
+            </article>
+    
+        </div>
+    
+        <article class="col-2 col3">
+    
             <div>
-                <h5><strong>Ticket nº:</strong></h5>
-            </div>
-        </div>
-
-        <div class='row ticket'>
-            <h4><strong>25</strong></h4>
-        </div>
-    </div>
-
-    <div class='col-3'>
-        <div class='row numero'>
-            <div>
-                <h5><strong>Te tocará en:</strong></h5>
-            </div>
-        </div>
-
-        <div class='row reloj'>
-            <h4 class='minutos'><strong>5m</strong></h4>
-        </div>
-    </div>
-
-    <div class='col-3'>
-        <div class='row numero'>
-            <div>
-                <h5><strong>¿Cambio de planes?</strong></h5>
-            </div>
-        </div>
-
-        <div class='row'>
-            <button class="boton" data-toggle="modal" data-target="#modalModificar">Cancelar</button>
-        </div>
-    </div>
-</div>
-
-<div class='container'>
-    <div class='col-3 starbucks'></div>
-
-    <div class='col-3'>
-        <div class='row numero'>
-            <div>
-                <h5><strong>Ticket nº:</strong></h5>
-            </div>
-        </div>
-
-        <div class='row ticket'>
-            <h4><strong>25</strong></h4>
-        </div>
-    </div>
-
-    <div class='col-3'>
-        <div class='row numero'>
-            <div>
-                <h5><strong>Te tocará en:</strong></h5>
-            </div>
-        </div>
-
-        <div class='row reloj'>
-            <h4 class='minutos'><strong>5m</strong></h4>
-        </div>
-    </div>
-
-    <div class='col-3'>
-        <div class='row numero'>
-            <div>
-                <h5><strong>¿Cambio de planes?</strong></h5>
-            </div>
-        </div>
-
-        <div class='row'>
-            <button class="boton" data-toggle="modal" data-target="#modalModificar">Cancelar</button>
-        </div>
-    </div>
-</div>
-
-<div class='containerResponsive'>
-    <div class='col-4 logo'>
-        <div class='row'>
-            <div class='row'>
                 <button class="boton" data-toggle="modal" data-target="#modalModificar">Cancelar</button>
             </div>
-        </div>
+    
+            <app-modal [mensajeModal]="clienteCola"></app-modal>
+    
+                <!-- Modal -->
+            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea salir de la cola?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+    
+                            <div class="modal-body" id="desplegable"></div>
+                            <div class="modal-footer">
+    
+                            <button type="button" class="boton" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="boton2" data-dismiss="modal">Confirmar Cancelar</button>
+    
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                    
+            </div> -->
+    
+        </article>
+    
+    </section>
+
+
+<!-- --------------------------------------segunda linea. Borrar. Va con ngFor -->
+
+<section class="container">    
+
+    <article class="col-2 col1">
+        
+        <!-- <div class="sobreFoto">
+
+            <h2 class="nombre">EMPRESA</h2>
+
+        </div> -->
+
+        <img class="img" src="./assets/Starbucks-logo-2.jpg" alt="gym">
+    </article>
+
+    <div class="centro">
+
+        <article class="col-3 col2"> 
+
+            <div class="fila">
+
+                <h6 class="tiempo">Tiempo Estimado:</h6>
+                <p class="parrafo">25 min</p>
+
+            </div>       
+                
+        </article>
+
+        <article class="col-3 col2"> 
+
+            <div class="fila">
+
+                <h6 class="tiempoT">Ticket Número:</h6>
+                <p class="parrafoP">11</p>
+
+            </div>       
+                
+        </article>
+
     </div>
 
-    <div class='col-4'>
-        <div class='row numero'>
-            <div>
-                <h5><strong>Ticket nº:</strong></h5>
-            </div>
+    <article class="col-2 col3">
+
+        <div>
+            <button class="boton" data-toggle="modal" data-target="#modalModificar">Cancelar</button>
         </div>
 
-        <div class='row ticket'>
-            <h4><strong>25</strong></h4>
-        </div>
-    </div>
+        <app-modal [mensajeModal]="clienteCola"></app-modal>
 
-    <div class='col-4'>
-        <div class='row numero'>
-            <div>
-                <h5><strong>Te tocará en:</strong></h5>
-            </div>
-        </div>
+            <!-- Modal -->
+        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea salir de la cola?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
 
-        <div class='row reloj'>
-            <h4 class='minutos'><strong>5m</strong></h4>
-        </div>
-    </div>
-</div>
+                        <div class="modal-body" id="desplegable"></div>
+                        <div class="modal-footer">
 
-<div class='containerResponsive'>
-    <div class='col-4 starbucks'>
-        <div class='row'>
-            <div class='row'>
-                <button class="boton" data-toggle="modal" data-target="#modalModificar">Cancelar</button>
-            </div>
-        </div>
-    </div>
+                        <button type="button" class="boton" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="boton2" data-dismiss="modal">Confirmar Cancelar</button>
 
-    <div class='col-4'>
-        <div class='row numero'>
-            <div>
-                <h5><strong>Ticket nº:</strong></h5>
-            </div>
-        </div>
+                        </div>
 
-        <div class='row ticket'>
-            <h4><strong>25</strong></h4>
-        </div>
-    </div>
+                    </div>
 
-    <div class='col-4'>
-        <div class='row numero'>
-            <div>
-                <h5><strong>Te tocará en:</strong></h5>
-            </div>
-        </div>
+                </div>
+                
+        </div> -->
 
-        <div class='row reloj'>
-            <h4 class='minutos'><strong>5m</strong></h4>
-        </div>
-    </div>
-</div>
+    </article>
 
-<div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel" style='color:#007bff'>Cancelar turno</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" style='text-align: center;'>
-          <h4>¿Quieres ceder el turno?</h4>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Tengo otro plan</button>
-        </div>
-      </div>
-    </div>
+</section>
+
 </div>
