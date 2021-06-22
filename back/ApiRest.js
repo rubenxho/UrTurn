@@ -26,26 +26,25 @@ connection.connect(function (err, res) {
 
 let salida = '';
 
-app.get("/discos",
-    function (request,response)
-    {
-        let id = request.query.id_disco;
-        if(id){
-            let params =[id]
-            let sql= 'SELECT * FROM usuario_cliente'
-            connection.query(sql,params, 
-                function(err, res){
-                    if(err){
-                     console.log(err);
-                     response.send({error: true, codigo: 200, mensaje: 'El disco no existe'})
-                     }
-                    else{
-                     console.log(res)
-                     response.send(res)
-                    }
-                }
-           )}
-
+// app.get("/discos", function (request,response) {
+//         let id = request.query.id_disco;
+//         if(id){
+//             let params =[id]
+//             let sql= 'SELECT * FROM usuario_cliente'
+//             connection.query(sql,params, 
+//                 function(err, res){
+//                     if(err){
+//                      console.log(err);
+//                      response.send({error: true, codigo: 200, mensaje: 'El disco no existe'})
+//                      }
+//                     else{
+//                      console.log(res)
+//                      response.send(res)
+//                     }
+//                 }
+            
+//            )}
+    
 app.get("/favoritos",
     function(request, response){
         let categoria=request.query.categoria
