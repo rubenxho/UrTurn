@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from './services/login.service';
 declare var $: any;
 
 @Component({
@@ -7,17 +8,16 @@ declare var $: any;
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  public header: string;
-  public estado: string;
+  public header:string;
+  public estado:boolean;
 
-  constructor() {
-    this.header = 'Cliente';
-    this.estado = 'dconectado';
+  constructor(public ls:LoginService) {
+    this.header = '';
+    this.estado = false;
   }
 
   tipoUsuario(usuario: string) {
     console.log('Mensaje desde app');
-    this.estado = '';
     if (usuario == 'empresa') {
       this.header = 'Empresa';
     } else {

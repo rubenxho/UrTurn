@@ -14,6 +14,7 @@ import { ClienteRegistroComponent } from './pages/cliente-registro/cliente-regis
 import { EmpresaRegistroComponent } from './pages/empresa-registro/empresa-registro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ClienteTarjetasComponent } from './pages/cliente-tarjetas/cliente-tarjetas.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'cliente-perfil-empresa', component: ClientePerfilEmpresaComponent },

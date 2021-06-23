@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
+import { Login } from 'src/app/models/login';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +13,20 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   public myForm:FormGroup;
-  public usernameValid:boolean;
+  public emailValid:boolean;
   public passValid = true;
   public tipoUsuario:string;
-  public conectado:boolean;
+  public id_usuario:number;
+  public estado:boolean;
   @Output() eventoIniciarSesion= new EventEmitter<string>();
 
-  constructor(private navigation:Router, private formBuilder:FormBuilder) { 
+  constructor(private navigation:Router, private formBuilder:FormBuilder, private ls:LoginService) { 
     this.myForm = this.buildForm();
-    this.usernameValid = true;
+    this.emailValid = true;
     this.passValid = true;
     this.tipoUsuario = '';
-    this.conectado = false;
+    this.id_usuario = 0;
+    this.estado = false;
   }
 
   private buildForm():FormGroup {
@@ -30,18 +34,19 @@ export class LoginComponent implements OnInit {
     const minPasswordLength = 6;
     
     let myForm = this.formBuilder.group({
-      username:[,Validators.required],
+      email:[,Validators.required],
       password:[,[Validators.required, Validators.minLength(minPasswordLength)]]
     });
 
     return myForm;
   }
 
-  public validarUsername():void {
+  public validarEmail():void {
+
     if(this.myForm.get('username')?.invalid) {
-      this.usernameValid = false;
+      this.emailValid = false;
     }else {
-      this.usernameValid = true;
+      this.emailValid = true;
     }
   }
 
@@ -53,18 +58,48 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  public validar(tipoUsuario:string)  {
-    this.validarUsername();
+  public validar(email:string, password:string):void  {
+    this.validarEmail();
     this.validarPassword();
     
     if(this.myForm.valid) {
-      this.tipoUsuario = tipoUsuario;
-      this.redirigir(`${tipoUsuario}Home`);
-      /*Evento para llamar al header que necesito(empresa/cliente)*/ 
-      this.conectado = true;
-      this.eventoIniciarSesion.emit(this.tipoUsuario)
+      let login = new Login();
+      login.email = email;
+      login.contraseña = password;
+
+      this.ls.getIdUsuario(login).subscribe((data:any) => {
+
+        if(data.mensaje.length>0 && data.mensaje[0].id_usuario_cliente==null) {
+          this.id_usuario = data.mensaje[0].id_usuario_empresa;
+          this.tipoUsuario = 'empresa';
+          // alert('es una empresa');
+          
+        }else if(data.mensaje.length>0 && data.mensaje[0].id_usuario_empresa==null)  {
+          this.id_usuario = data.mensaje[0].id_usuario_cliente;
+          this.tipoUsuario = 'cliente';
+          // alert('es un cliente');
+
+        }else {
+          alert('El usuario o password introducidos no son correctos');
+          return;
+        }
+        
+        this.cambiarEstado();
+        this.redirigir(`${this.tipoUsuario}Home`);
+      });
+    
+      
+      // /*Evento para llamar al header que necesito(empresa/cliente)*/ 
+      // this.conectado = true;
+      // this.eventoIniciarSesion.emit(this.tipoUsuario)
       
     }
+  }
+
+  public cambiarEstado()  {
+    this.ls.tipoUsuario = this.tipoUsuario;
+    this.estado = !this.estado;
+    this.ls.estado = this.estado;
   }
 
   public redirigir(componente:string):void {

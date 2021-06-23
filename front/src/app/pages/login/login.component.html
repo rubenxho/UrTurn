@@ -21,20 +21,23 @@
             <div class='row login'>
                 <div class="input-group mb-3">
                     <input  type="text"
-                            #username 
-                            formControlName='username'
+                            name=email
+                            #email 
+                            formControlName='email'
                             class="form-control" 
-                            placeholder="Usuario" 
-                            aria-label="Username" 
+                            placeholder="Email" 
+                            aria-label="Emailname" 
                             aria-describedby="basic-addon1"
-                            [ngClass]="{'is-invalid':usernameValid==false}"
-                            on-keyup = validarUsername();/>
+                            [ngClass]="{'is-invalid':emailValid==false}"
+                            on-keyup = validarEmail();/>
                 </div>
             </div>
 
             <div class='row login'>
                 <div class="input-group mb-3">
                     <input  type="password" 
+                            #password
+                            name='password'
                             formControlName='password'
                             class="form-control" 
                             placeholder="Contraseña" 
@@ -47,12 +50,12 @@
             </div>
 
             <div class='row login'>
-                <button type="button" class="btn btn-light" on-click='validar(username.value)'>Entra!</button>
+                <button type="button" class="btn btn-light" on-click='validar(email.value, password.value)'>Entra!</button>
             </div>
         </form>
 
-            <label *ngIf='!usernameValid' class='error'>El campo usuario es obligatorio</label>
-            <label *ngIf='usernameValid && !passValid' class='error'>
+            <label *ngIf='!emailValid' class='error'>El campo Email es obligatorio</label>
+            <label *ngIf='emailValid && !passValid' class='error'>
                 El password debe tener <br/> como mínimo 6 carateres
             </label>
     </div>

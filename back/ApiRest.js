@@ -180,58 +180,61 @@ app.get("/local", (req, res) => {
       }
     });
   }
-  let sqlAll = `SELECT nombre_empresa, tiempo_espera FROM urturn.usuario_empresa
-                    WHERE (categoria = ? AND codigo_postal = ?);`;
-  let id = req.query.id;
-  let busqueda = [req.query.categoria, req.query.codigo_postal];
+  // let sqlAll = `SELECT nombre_empresa, tiempo_espera FROM urturn.usuario_empresa
+  //                   WHERE (categoria = ? AND codigo_postal = ?);`;
+  // let id = req.query.id;
+  // let busqueda = [req.query.categoria, req.query.codigo_postal];
 
-  if (id) {
-    connection.query(sqlByID, id, (err, result) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else if (result) {
-        res.json(result);
-      } else {
-        res.json({ error: false, codigo: 200, mesaje: "Búsqueda correcta" });
-      }
-    });
-  } else if (busqueda) {
-    connection.query(sqlAll, busqueda, (err, result) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else if (result) {
-        res.json(result);
-      } else {
-        res.json({ error: false, codigo: 200, mesaje: "Búsqueda correcta" });
-      }
-    });
-  }
+  // if (id) {
+  //   connection.query(sqlByID, id, (err, result) => {
+  //     if (err) {
+  //       console.log(err);
+  //       res.send(err);
+  //     } else if (result) {
+  //       res.json(result);
+  //     } else {
+  //       res.json({ error: false, codigo: 200, mesaje: "Búsqueda correcta" });
+  //     }
+  //   });
+  // } else if (busqueda) {
+  //   connection.query(sqlAll, busqueda, (err, result) => {
+  //     if (err) {
+  //       console.log(err);
+  //       res.send(err);
+  //     } else if (result) {
+  //       res.json(result);
+  //     } else {
+  //       res.json({ error: false, codigo: 200, mesaje: "Búsqueda correcta" });
+  //     }
+  //   });
+  // }
 });
 
 /************************************************************************************/
 
 app.get("/login", (request, response) => {
   let params = [
-    request.body.email,
-    request.body.contraseña,
-    request.body.email,
-    request.body.contraseña,
+    request.query.email,
+    request.query.contraseña,
+    request.query.email,
+    request.query.contraseña,
   ];
 
-  let sql = `SELECT uc.id_usuario_cliente FROM usuario_cliente AS uc 
-                INNER JOIN login as l on (uc.id_usuario_cliente = l.id_usuario_cliente) 
-                WHERE l.email = ? and l.contraseña = ?
-                UNION
-                SELECT ue.id_usuario_empresa FROM usuario_empresa AS ue 
-                INNER JOIN login as l on (ue.id_usuario_empresa = l.id_usuario_empresa) 
-                WHERE l.email = ? and l.contraseña = ?;`;
+  // let sql = `SELECT uc.id_usuario_cliente FROM usuario_cliente AS uc 
+  //               INNER JOIN login as l on (uc.id_usuario_cliente = l.id_usuario_cliente) 
+  //               WHERE l.email = ? and l.contraseña = ?
+  //               UNION
+  //               SELECT ue.id_usuario_empresa FROM usuario_empresa AS ue 
+  //               INNER JOIN login as l on (ue.id_usuario_empresa = l.id_usuario_empresa) 
+  //               WHERE l.email = ? and l.contraseña = ?;`;
+
+  let sql = `select id_usuario_cliente, id_usuario_empresa from login where email=? and contraseña=?;`
 
   connection.query(sql, params, (error, rs) => {
     if (!error) {
       salida = { error: false, code: 200, mensaje: rs };
-      // console.log(rs[0].id_usuario_cliente);
+      console.log(rs[0].id_usuario_cliente);
+      console.log(rs[0].id_usuario_empresa);
       response.send(salida);
     } else {
       salida = { error: true, code: 200, mensaje: error };
