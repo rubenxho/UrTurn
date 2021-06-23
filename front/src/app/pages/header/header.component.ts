@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,8 @@ export class HeaderComponent implements OnInit {
   public posicionMenu:String;
   @Input() public controlador:String;
 
-  constructor() { 
-    this.tipoUsuario="Empresa";
+  constructor(public ls:LoginService) { 
+    this.tipoUsuario="";
     this.posicionMenu="home";
     this.controlador="";
   }
@@ -24,6 +25,8 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // alert(this.ls.seleccionarTipoUsuario());
+    this.controlador = this.ls.seleccionarTipoUsuario();
   }
 
 }

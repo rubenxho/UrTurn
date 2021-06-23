@@ -25,19 +25,18 @@ export class EmpresaColaComponent implements OnInit {
     this.infoUsuario="usuario1"
 
     //inicializar newPuntuacion
-    this.newPuntuacion = new Puntuacion (0, 0, 0, "");
+    this.newPuntuacion = new Puntuacion (0, 0, 0);
   }
 
   //funcion crear nueva puntuacion
   crearPuntuacion(id_usuario_cliente: number, id_usuario_empresa: number, date: string){
 
-    let newPuntuacion = new Puntuacion(0, id_usuario_cliente, id_usuario_empresa, date)
+    let newPuntuacion = new Puntuacion(0, id_usuario_cliente, id_usuario_empresa)
     this.puntuacionService.addPuntuacion(newPuntuacion).subscribe(data => {
 
      console.log(data);
 
     });
-
   }
 
   ngOnInit(): void {
