@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Favoritos } from '../models/favoritos';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,8 @@ private url:string
     return this.http.get(this.url + categoria + cp + id_usuario_cliente)
   }
 
-  anyadirFav(id_usuario_cliente:number, id_usuario_empresa:number, NOW()){
+  // anyadirFav(id_usuario_cliente:number, id_usuario_empresa:number, NOW()){
     
-    return this.http.post(this.url , )
-  }
+  //   return this.http.post(this.url , )
+  // }
 }
