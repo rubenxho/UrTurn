@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { LocalServiceService } from 'src/app/services/local-service.service';
+import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 
 @Component({
   selector: 'app-cliente-tarjetas',
@@ -7,13 +8,8 @@ import { LocalServiceService } from 'src/app/services/local-service.service';
   styleUrls: ['./cliente-tarjetas.component.css'],
 })
 export class ClienteTarjetasComponent implements OnInit {
-  @Input() infoLugares: string[];
-  @Output() eventoCola = new EventEmitter<string>();
-
-  public foto: string;
-  public nombre: string;
-  public tiempoAprox: number;
-  public infoboton: string;
+  @Input() usuarioEmpresa: any;
+  //public usuarioEmpresa: UsuarioEmpresa;
 
   //atributo para hacer favorito
   public favorito: boolean;
@@ -23,13 +19,23 @@ export class ClienteTarjetasComponent implements OnInit {
   public ticket: number;
 
   constructor(private localService: LocalServiceService) {
-    // para tarjeta
-    this.infoLugares = [];
-    this.foto =
-      'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg';
-    this.nombre = 'Sobrino de Botín';
-    this.tiempoAprox = 20;
-    this.infoboton = 'Hacer la cola';
+    this.usuarioEmpresa = null;
+    //this.usuarioEmpresa = new UsuarioEmpresa(
+    //  0,
+    //  'Sobrino',
+    //  'restaurante',
+    //  '1231231',
+    //  123123,
+    //  'espana',
+    //  'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
+    //  'ok',
+    //  1,
+    //  2,
+    //  3,
+    //  'urturn',
+    //  []
+    //);
+
     this.ticket = 1150;
 
     //atributo para hacer favorito
