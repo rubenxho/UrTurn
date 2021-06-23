@@ -8,14 +8,16 @@ import { ClienteOpinionesResenarService } from 'src/app/services/cliente-opinion
 })
 export class ClienteOpinionesComponent implements OnInit {
   // para mostrar dos campos
-  public resenar: boolean;
-  public resenado: boolean;
+  public comentar: boolean;
+  public comentarios: boolean;
+
+  // para campo de comentar
+  public comentarAzul: boolean;
 
   // para el corazon de favorito
   public favorito: boolean;
 
   // mesajes para modal
-
   public quitarTarjeta: boolean;
 
   // Variable para mostrar todos los locales no reseñados aún
@@ -23,12 +25,14 @@ export class ClienteOpinionesComponent implements OnInit {
 
   constructor(private reviewService: ClienteOpinionesResenarService) {
     // dos campos
-    this.resenar = true;
-    this.resenado = false;
+    this.comentar = true;
+    this.comentarios = false;
+    // campo de comentar
+    this.comentarAzul = true;
     //para el corazon de favorito
     this.favorito = false;
+    //
     this.quitarTarjeta = false;
-
     // Variable para mostrar todos los locales no reseñados aún
     this.notReviews = [];
   }
@@ -38,14 +42,15 @@ export class ClienteOpinionesComponent implements OnInit {
   dejarOpinar() {
     this.quitarTarjeta = true;
   }
-  resenarCampo() {
-    this.resenar = true;
-    this.resenado = false;
-    console.log(this.resenar);
+  comentarCampo() {
+    this.comentar = true;
+    this.comentarios = false;
+    this.comentarAzul = true;
   }
-  resenadoCampo() {
-    this.resenado = true;
-    this.resenar = false;
+  comentariosCampo() {
+    this.comentarios = true;
+    this.comentar = false;
+    this.comentarAzul = false;
   }
 
   ngOnInit(): void {

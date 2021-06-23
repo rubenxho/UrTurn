@@ -121,6 +121,7 @@
   font-size: large;
 }
 
+/* boton principal*/
 .botones {
   align-content: center;
   text-align: center;
@@ -130,9 +131,22 @@
 
 .btn-outline-primary {
   height: 60px;
+  width: 250px;
   font-family: Titillium Web;
   font-size: 25px;
   font-weight: bolder;
+  background-color: white;
+  color: #5c74f6;
+}
+
+.comentarColor {
+  background-color: #5c74f6;
+  color: white;
+}
+
+.comentariosColor {
+  background-color: #5c74f6;
+  color: white;
 }
 
 @media screen and (max-width: 375px) {
@@ -158,5 +172,12 @@
     text-align: center;
     margin-top: 10px;
     margin-bottom: 0px;
+  }
+  .btn-outline-primary {
+    height: 60px;
+    width: 155px;
+    font-family: Titillium Web;
+    font-size: 18px;
+    font-weight: bolder;
   }
 }
