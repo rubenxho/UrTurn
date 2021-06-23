@@ -101,7 +101,7 @@ app.get('/local', (req, res) => {
                     FROM usuario_empresa
                     WHERE id_usuario_empresa = ?`;
     let sqlAll = `SELECT nombre_empresa, tiempo_espera FROM urturn.usuario_empresa
-                    WHERE (categoria = ? AND codigo_postal = ?);`;
+                    WHERE (categoria = ? AND codigo_postal = ?)`;
     let id = req.query.id;
     let busqueda = [
         req.query.categoria,
