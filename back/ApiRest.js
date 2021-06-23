@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const mysql = require("mysql2");
+=======
+const express =require("express");
+const app =  express();    
+const cors = require('cors')
+const mysql = require('mysql2'); 
+const { request } = require("express");
+
+>>>>>>> stefi13
 
 //Creo un servidor
 app.use(express.urlencoded({ extended: false }));
@@ -23,64 +32,96 @@ connection.connect(function (err, res) {
   else console.log("Conectado!");
 });
 
-let salida = "";
+let salida = ""
 
-// app.get("/discos", function (request,response) {
-//         let id = request.query.id_disco;
-//         if(id){
-//             let params =[id]
-//             let sql= 'SELECT * FROM usuario_cliente'
-//             connection.query(sql,params,
-//                 function(err, res){
-//                     if(err){
-//                      console.log(err);
-//                      response.send({error: true, codigo: 200, mensaje: 'El disco no existe'})
-//                      }
-//                     else{
-//                      console.log(res)
-//                      response.send(res)
-//                     }
-//                 }
+app.get("/favoritos",
+    function(request, response){
+        let categoria = request.query.categoria
+        let cp = request.query.cp
+        let id = request.query.id
+        let params = []
+        let sql=``
 
-//            )}
+        if(cp==null && categoria==null ){
+            params = [id]
+            sql=`SELECT e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
+            JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
+            JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
+            WHERE f.id_usuario_cliente=?`
 
-app.get("/favoritos", function (request, response) {
-  let categoria = request.query.categoria;
-  let categoria_param = "";
-  let cp = request.query.cp;
-  let id = request.query.id;
-  let params = [categoria, cp, id];
-  sql = `SELECT e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f JOIN urturn.usuario_empresa 
-        AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) JOIN urturn.usuario_cliente 
-        AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) WHERE e.categoria=? AND codigo_postal=?
-        AND f.id_usuario_cliente=?`;
-  if (categoria == "restauracion") {
-    categoria_param = "restauracion";
-  } else if (categoria == "deporte") {
-    categoria_param = "deporte";
-  } else if (categoria == "belleza") {
-    categoria_param = "belleza";
-  } else if (categoria == "hogar") {
-    categoria_param = "hogar";
-  } else if (categoria == "moda") {
-    categoria_param = "moda";
-  } else if (categoria == "ocio") {
-    categoria_param = "ocio";
-  } else if (categoria == "salud") {
-    categoria_param = "salud";
-  } else if (categoria == "alimentacion") {
-    categoria_param = "alimentacion";
-  }
-
-  connection.query(sql, params, function (err, res) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(res);
-      response.send(res);
+        }
+        else if(cp==null){
+            params = [categoria, id]
+            sql = `SELECT e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
+            JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
+            JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
+            WHERE e.categoria=? AND f.id_usuario_cliente=?`
+        }
+        else if(categoria==null){
+            params = [cp, id]
+            sql = `SELECT e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
+            JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
+            JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
+            WHERE codigo_postal=? AND f.id_usuario_cliente=?`
+        }
+        else {
+            params4 = [categoria, cp, id]
+            sql = `SELECT e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f
+            JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
+            JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
+            WHERE e.categoria=? AND codigo_postal=? AND f.id_usuario_cliente=?`
+        }
+        connection.query(sql,params,
+            function(err,res){
+                if(err){
+                    console.log(err);
+                }
+                else {
+                    console.log(res)
+                    response.send(res);
+                }
+        })
     }
-  });
-});
+)
+
+app.post("/favoritos",
+    function(request, response){
+        id_usuario_cliente = request.body.id_usuario_cliente
+        id_usuario_empresa = request.body.id_usuario_empresa
+        fecha = request.body.fecha
+        params = [ id_usuario_cliente, id_usuario_empresa, fecha]
+        sql = `INSERT INTO urturn.favoritos ( id_usuario_cliente, id_usuario_empresa, fecha)
+        VALUES (?,?,NOW())`
+        
+        connection.query(sql,params,
+            function(err,res){
+                if(err){
+                    console.log(err);
+                }
+                else {
+                    console.log(res)
+                    response.send(res);
+                }
+        })
+    }
+)
+
+app.delete("/favoritos",
+    function(request,response){
+        params=[request.body.id_favoritos]
+        sql=`DELETE  FROM urturn.favoritos WHERE (id_favoritos=?)`
+
+        connection.query(sql,params,
+            function(err,res){
+                if(err){
+                    console.log(err);
+                }
+                else {
+                    console.log(res)
+                    response.send(res);
+                }
+        })
+    })
 
 /******************************ENDPOINT PUNTUACIO****************************************************/
 

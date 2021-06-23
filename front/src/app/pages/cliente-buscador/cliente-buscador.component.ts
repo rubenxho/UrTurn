@@ -21,6 +21,7 @@ export class ClienteBuscadorComponent implements OnInit {
     this.eventoMostrar.emit(this.sustituir)
     
   }
+  
 
   ngOnInit(): void {
   }
