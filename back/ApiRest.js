@@ -244,12 +244,13 @@ app.get("/login", (request, response) => {
 });
 
 app.post("/empresa-registro", (request, response) => {
-  let params1 = [request.body.nombre, request.body.telefono];
-  let params3 = [0, request.body.email, request.body.contraseña];
+
+  let params1 = [request.body.nombre_empresa, request.body.telefono];
+  let params3 = [0, request.body.email, request.body.password];
 
   let sql1 = `INSERT INTO usuario_empresa (nombre_empresa,telefono) VALUES (?,?);`;
   let sql2 = `SELECT id_usuario_empresa FROM usuario_empresa WHERE nombre_empresa = ? AND telefono = ?;`;
-  let sql3 = `INSERT INTO login (id_usuario_cliente, id_usuario_empresa, email, contraseña) VALUES (null,?,?,?);`;
+  let sql3 = `INSERT INTO login (id_usuario_empresa, email, contraseña) VALUES (?,?,?);`;
 
   connection.query(sql1, params1, (error1, rs) => {
     if (!error1) {

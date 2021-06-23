@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
+import { RegistroEmpresaService } from 'src/app/services/registro-empresa.service';
 
 @Component({
   selector: 'app-empresa-registro',
@@ -15,7 +17,7 @@ export class EmpresaRegistroComponent implements OnInit {
   public emailValid:boolean;
   public telefonoValid:boolean
 
-  constructor(private navigation:Router, private formBuilder:FormBuilder) { 
+  constructor(private navigation:Router, private formBuilder:FormBuilder, private rs:RegistroEmpresaService) { 
     this.myForm = this.buildForm();
     this.rsocialValid = true;
     this.passValid = true;
@@ -78,15 +80,19 @@ export class EmpresaRegistroComponent implements OnInit {
     }
   }
 
-  public validar(tipoUsuario:string)  {
+  public validar(rsocial:string, email:string, telefono:string, password:string)  {
     this.validarUsername();
     this.validarPassword();
     this.validarEmail();
     this.validarTelefono();
 
     if(this.myForm.valid) {
-      alert('guardar usuario empresa');
-      // this.redirigir(`${tipoUsuario}Home`);
+      let empresa:UsuarioEmpresa = new UsuarioEmpresa(0, rsocial, '', telefono, 0, '', '', '', null, null, 0, '', [], email, password);
+      
+      this.rs.postNuevoUsuario(empresa).subscribe((data:any) => {
+        console.log(data.mensaje);
+      });
+      this.redirigir(`login`);
     }
   }
 

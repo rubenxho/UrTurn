@@ -24,7 +24,9 @@
         <form [formGroup]='myForm'>
             <div class='row login'>
                 <div class="input-group mb-3">
-                    <input  type="text" 
+                    <input  type="text"
+                            #rsocial
+                            name='rsocial' 
                             formControlName='rsocial'
                             class="form-control" 
                             placeholder="Razón social" 
@@ -38,6 +40,8 @@
             <div class='row login'>
                 <div class="input-group mb-3">
                     <input  type="email" 
+                            #email
+                            name='email'
                             formControlName='email'
                             class="form-control"
                             ngModel email="true" 
@@ -52,6 +56,8 @@
             <div class='row login'>
                 <div class="input-group mb-3">
                     <input  type="number" 
+                            #telefono
+                            name='telefono'
                             formControlName='telefono'
                             class="form-control" 
                             placeholder="Teléfono" 
@@ -66,6 +72,7 @@
                 <div class="input-group mb-3">
                     <input  type="password" 
                             #password
+                            name='password'
                             formControlName='password'
                             class="form-control" 
                             placeholder="Contraseña" 
@@ -92,7 +99,11 @@
             </div>
 
             <div class='row login'>
-                <button type="button" class="btn btn-light" on-click='validar("empresa")'>Registrarse</button>
+                <button type="button" 
+                        class="btn btn-light" 
+                        on-click='validar(rsocial.value, email.value, telefono.value, password.value)'>
+                    Registrarse
+                </button>
             </div>
         </form>
 

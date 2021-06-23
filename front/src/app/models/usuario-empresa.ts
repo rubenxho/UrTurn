@@ -14,6 +14,8 @@ export class UsuarioEmpresa {
     public tiempo_espera:number; //en minutos
     public logo:string;
     public opiniones:Opiniones[];
+    public email:string;
+    public password:string;
 
     constructor(id_usuario_empresa:number=0, 
                 nombre_empresa:string='', 
@@ -27,7 +29,9 @@ export class UsuarioEmpresa {
                 cierre:any=null,
                 tiempo_espera:number=0,
                 logo:string='',
-                opiniones:Opiniones[]=[]) {
+                opiniones:Opiniones[]=[],
+                email:string='',
+                password:string='') {
 
         this.id_usuario_empresa = id_usuario_empresa;
         this.nombre_empresa = nombre_empresa;
@@ -42,6 +46,8 @@ export class UsuarioEmpresa {
         this.tiempo_espera = tiempo_espera;
         this.logo = logo;
         this.opiniones = opiniones;
+        this.email = email;
+        this.password = password;
     }  
 
     public calcularCalificacion():number    {
