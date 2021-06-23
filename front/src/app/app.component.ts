@@ -11,7 +11,7 @@ export class AppComponent {
   public estado: string;
 
   constructor() {
-    this.header = 'Cliente';
+    this.header = 'Empresa';
     this.estado = 'dconectado';
   }
 
