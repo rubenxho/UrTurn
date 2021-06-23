@@ -17,7 +17,7 @@ export class EmpresaRegistroComponent implements OnInit {
   public emailValid:boolean;
   public telefonoValid:boolean
 
-  constructor(private navigation:Router, private formBuilder:FormBuilder, private rs:RegistroEmpresaService) { 
+  constructor(private navigation:Router, private formBuilder:FormBuilder, public rs:RegistroEmpresaService) { 
     this.myForm = this.buildForm();
     this.rsocialValid = true;
     this.passValid = true;

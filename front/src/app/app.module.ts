@@ -53,6 +53,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderEmpresaComponent,
     ModalComponent,
     ModalCambioComponent,
+    // RegistroEmpresaService
   ],
   imports: [
     BrowserModule,
@@ -62,7 +63,7 @@ import { HttpClientModule } from '@angular/common/http';
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
