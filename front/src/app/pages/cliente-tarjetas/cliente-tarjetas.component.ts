@@ -18,8 +18,23 @@ export class ClienteTarjetasComponent implements OnInit {
   public ticket: number;
   public usuarioEmpresas:any
 
+  // para localEmpresa
+
+  public local: UsuarioEmpresa;
+  
+
+  /*********************************/
+
   constructor(private localService: LocalServiceService) {
     this.usuarioEmpresas = [];
+
+    //inicializar local
+    this.local = new UsuarioEmpresa ();
+    
+    //*************************/
+
+    this.usuarioEmpresa = null;
+
     this.ticket = 1150;
   //atributo para hacer favorito
     this.enCola = false;
@@ -36,10 +51,20 @@ export class ClienteTarjetasComponent implements OnInit {
     this.enCola = true;
   }
 
-  obtenerLocalAll() {
+  // obtenerLocalAll() {
     // return this.localService.
     // connectar con LocalServiceService de David
+  // }
+
+
+  //funcion mostrar datos del local según los endpoints
+  muestraLocal(){
+    
+    console.log(this.usuarioEmpresa)
+    this.localService.localElegido = this.usuarioEmpresa
+    
   }
+    
 
 
   ngOnInit(): void {}

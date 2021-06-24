@@ -1,8 +1,9 @@
-import { ThisReceiver } from '@angular/compiler';
-import { TransformVisitor } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
-import { ToastrService } from 'ngx-toastr'
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
+import { LocalServiceService } from 'src/app/services/local-service.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cliente-perfil-empresa',
@@ -22,16 +23,30 @@ export class ClientePerfilEmpresaComponent implements OnInit {
   public mensajeModalAvisar: any;
   public ColaPosicion: number;
 
-  constructor(private router: Router, private toastr: ToastrService) { 
+  //empresa
 
-    this.favorito = false;
-    this.frase = "";
+  public local: UsuarioEmpresa;
 
-    /*****************/
-    this.ColaPosicion = 5;
-    this.mensajeModalAvisar = `Estás en la cola, numero ${this.ColaPosicion}`;
-    this.clienteCola = ["modalModificar","¿Confirmas hacer la cola?", "Sí", "No", this.mensajeModalAvisar ];
-  }
+  /**********************************/
+
+  constructor(
+                private router: Router, private toastr: ToastrService,
+                private localServive: LocalServiceService, private _location: Location
+              ) 
+              { 
+
+                this.favorito = false;
+                this.frase = "";
+
+                //empresa
+
+                this.local = this.localServive.localElegido;
+
+                /*****************/
+                this.ColaPosicion = 5;
+                this.mensajeModalAvisar = `Estás en la cola, numero ${this.ColaPosicion}`;
+                this.clienteCola = ["modalModificar","¿Confirmas hacer la cola?", "Sí", "No", this.mensajeModalAvisar ];
+              }
 
   fav() {
     console.log(this.favorito);
@@ -45,9 +60,11 @@ export class ClientePerfilEmpresaComponent implements OnInit {
     }
   }
 
-  goBack() {
-    this.router.navigate(['/app-cliente-tarjetas'])
+  //metodo para volver a pagina anterior
+  backClicked() {
+    this._location.back();
   }
+  /*******************************/
 
   showSucces(){
     this.toastr.success(this.frase);

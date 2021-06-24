@@ -3,8 +3,8 @@
 <div class="global">
 
     <div class="regresar">
-        <!-- <button class="bton-regresar" (click)="goBack()">Regresar</button> -->
-        <button class="bton-regresar" routerLink="/clienteTarjetas"><i class="fas fa-arrow-left"></i> Volver</button>
+        <button class="bton-regresar" (click)="backClicked()"><i class="fas fa-arrow-left"></i> VOLVER</button>
+        <!-- <button class="bton-regresar" routerLink="/clienteFav"><i class="fas fa-arrow-left"></i> Volver</button> -->
     </div>
 
     <!-- <div><h6 class="titular">Información del Establecimiento</h6></div> -->
@@ -15,7 +15,7 @@
 
             <div class="sobreFoto">
 
-                <h2 class="nombre">EMPRESA</h2> 
+                <h2 class="nombre">{{local.nombre_empresa}}</h2> 
 
                 <div class="row botones">
                     <div>
@@ -32,7 +32,7 @@
 
             </div>
 
-            <img class="imagenD" src="./assets/gym2.png" alt="gym">
+            <img class="imagenD" src={{local.imagen_url}} alt="gym">
 
         </article>
 
@@ -43,10 +43,10 @@
                 <div class="lista">
 
                     <h6 class="lineaLista">Dirección:
-                        <p class="parrafo1">Lorem ipsum dolor sit amet.</p>
+                        <p class="parrafo1">{{local.direccion}}</p>
                     </h6>
                     <h6 class="lineaLista">Tiempo de espera:
-                        <p class="parrafo1">Lorem ipsum dolor sit amet.</p>
+                        <p class="parrafo1">{{local.tiempo_espera}}</p>
                     </h6>
                     <h6 class="lineaLista">Número de personas en cola:
                         <p class="parrafo1">Lorem ipsum dolor sit amet.</p>
@@ -58,7 +58,8 @@
 
                     <h6 class="lineaHorario">Horario:</h6>
                     <h6 class="lineaHorario">L-D:
-                        <p class="parrafoHora">10:00-00:00</p>
+                        <p class="parrafoHora">{{local.apertura}}</p>
+                        <p class="parrafoHora">{{local.cierre}}</p>
                     </h6>
                     <!-- <h6 class="lineaHorario">S-D:
                         <p class="parrafoHora">10:00-00:00</p>
@@ -71,7 +72,7 @@
             <div class="descripccion">
 
                 <h6 class="titulo">Descripción:</h6>
-                <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate eius pariatur atque minima fugiat magni, aliquam facilis sed placeat veritatis modi hic non quaerat cumque animi est nemo labore harum?.</p>
+                <p class="parrafo">{{local.descripcion}}</p>
                 
             </div> 
                         
