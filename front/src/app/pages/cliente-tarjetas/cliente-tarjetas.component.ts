@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { LocalServiceService } from 'src/app/services/local-service.service';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
+import { Opiniones } from 'src/app/models/opiniones';
 
 @Component({
   selector: 'app-cliente-tarjetas',
@@ -19,7 +20,10 @@ export class ClienteTarjetasComponent implements OnInit {
   public usuarioEmpresas:any
 
   constructor(private localService: LocalServiceService) {
-    this.usuarioEmpresas = [];
+    this.usuarioEmpresas = [
+      new UsuarioEmpresa(1,"GYM","DEPORTE","123456",28026,"Espana","fotoE","Mejor GYM","09:00","18:00",20,"GYM",[new Opiniones(1,1,"eva","fotoC",1,"GYM","fotoE",5,"MUY BIEN"),new Opiniones(1,1,"eva","fotoC",1,"GYM","fotoE",5,"MUY BIEN")],"123@.com","2021-06-24")
+
+    ];
     this.ticket = 1150;
   //atributo para hacer favorito
     this.enCola = false;

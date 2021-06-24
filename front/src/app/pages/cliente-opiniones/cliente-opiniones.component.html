@@ -5,7 +5,8 @@
             <button type="button" class="btn btn-outline-primary comentarColor"
                 [ngClass]="{comentarColor: comentarAzul}" (click)="comentarCampo()">Comentar</button>
             <button type="button" class="btn btn-outline-primary comentariosColor"
-                [ngClass]="{comentariosColor: !comentarAzul}" (click)="comentariosCampo()">Mis
+                [ngClass]="{comentariosColor: !comentarAzul}" (click)="comentariosCampo()"
+                (click)="opinionesCliente()">Mis
                 comentarios</button>
         </div>
     </div>
@@ -24,21 +25,10 @@
                                     <h4 class="card-title">{{local.nombre_empresa}}</h4>
                                 </div>
                                 <p class="card-text">Tiempo Aprox:{{local.tiempo_espera}} Mins</p>
-                                <div class="valoracion">
-                                    <input id="radio1" type="radio" name="estrellas" value="5" #estre1>
-                                    <label for="radio1">★</label>
-                                    <input id="radio2" type="radio" name="estrellas" value="4" #estre2>
-                                    <label for="radio2">★</label>
-                                    <input id="radio3" type="radio" name="estrellas" value="3" #estre3>
-                                    <label for="radio3">★</label>
-                                    <input id="radio4" type="radio" name="estrellas" value="2" #estre4>
-                                    <label for="radio4">★</label>
-                                    <input id="radio5" type="radio" name="estrellas" value="1" #estre5>
-                                    <label for="radio5">★</label>
-                                </div>
+
                                 <div>
-                                    <button type="button" onclick="darResena()" class="btn btn-primary botonResena"
-                                        data-toggle="modal" data-target="#resenaModal">
+                                    <button type="button" class="btn btn-primary botonResena" data-toggle="modal"
+                                        data-target="#resenaModal">
                                         <i class="far fa-edit"></i>
                                     </button>
                                     <button type="button" class="btn btn-secondary " data-toggle="modal"
@@ -49,6 +39,7 @@
                                         <i class="fas fa-heart" (click)="fav()"></i>
                                     </span>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -57,31 +48,46 @@
         </div>
     </ng-container>
 
+
     <!--modal de dar una resena-->
     <div class="modal fade" id="resenaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-
                 <div class="modal-header">
                     <h5 class="modal-title">Escribe tu opinion</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-                <div class="modal-body" id="desplegable">
-                    <div class="input-group">
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                <form>
+                    <div class="modal-body" id="desplegable">
+                        <div class="input-group">
+                            <div class="valoracion" (input)=handleStar($event)>
+                                <input id="radio1" type="radio" name="estrellas" value="5">
+                                <label for="radio1">★</label>
+                                <input id="radio2" type="radio" name="estrellas" value="4">
+                                <label for="radio2">★</label>
+                                <input id="radio3" type="radio" name="estrellas" value="3">
+                                <label for="radio3">★</label>
+                                <input id="radio4" type="radio" name="estrellas" value="2">
+                                <label for="radio4">★</label>
+                                <input id="radio5" type="radio" name="estrellas" value="1">
+                                <label for="radio5">★</label>
+                            </div>
+                            <div>
+                                <textarea class="form-control" aria-label="With textarea" name="texto"
+                                    #textoOpinion></textarea>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary botonEviar" data-dismiss="modal" data-toggle="modal"
-                        data-target="#enviarModal">
-                        <i class="far fa-edit"></i>
-                    </button>
-                </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+                            data-target="#enviarModal" (click)=" crearComentario(textoOpinion.value)">
+                            <i class="far fa-edit"></i>
+                        </button>
+                    </div>
+                </form>
 
             </div>
         </div>
@@ -113,7 +119,7 @@
 
     <ng-container *ngIf="comentarios">
         <ng-container *ngFor="let opinion of opiniones">
-            <app-empresa-opiniones [opinionHijo]="opinion"></app-empresa-opiniones>
+            <app-empresa-opiniones [opinionHijo]="opiniones"></app-empresa-opiniones>
         </ng-container>
     </ng-container>
 
