@@ -19,14 +19,14 @@ export class ClienteFavoritosComponent implements OnInit {
     this.favoritos=[]
   }
 
-//evento para mostrar en detalle la tarjeta de un local pinchando en su foto
-  // muestraLocal(id: number){
+//evento para mostrar en detalle los favoritos pinchando en su imagen
+  muestraLocal(id: number){
     
-  //   this.localService.getLocal(id).subscribe( (data: any) => {
-  //     this.locales = data;
+    this.localService.getLocal(id).subscribe( (data: any) => {
+      this.locales = data;
       
-  //   })
-  // }
+    })
+  }
 
 //evento para filtrar la búsqueda de locales favoritos
   filtrar(filtro:string[]){
@@ -41,14 +41,6 @@ export class ClienteFavoritosComponent implements OnInit {
     
  
   
-
-
-
-
-
-
-
-
   ngOnInit(): void {}
 
 }
