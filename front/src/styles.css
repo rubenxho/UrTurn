@@ -5,3 +5,10 @@ body  {
    	background-size:100% 100%;
 }
 
+.fijo   {
+    position:sticky;
+    z-index:9000;
+    width:100%;
+    top:0;
+}
+
