@@ -1,47 +1,55 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <img src="{{usuarioEmpresa.imagen_url}}" class="card-img-top" alt="" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Más información" routerLink="/cliente-perfil-empresa">
-                <div class="card-body">
-                    <div clase="carde-title-color ">
-                        <h4 class="card-title">
-                            {{usuarioEmpresa.nombre_empresa}}</h4>
-                    </div>
-                    <p class="card-text">Tiempo Aprox: {{usuarioEmpresa.tiempo_espera}} Mins</p>
-                    <div class="valoracion">
-                        <input id="radio1" type="radio" name="estrellas" value="5">
-                        <label for="radio1">★</label>
-                        <input id="radio2" type="radio" name="estrellas" value="4">
-                        <label for="radio2">★</label>
-                        <input id="radio3" type="radio" name="estrellas" value="3">
-                        <label for="radio3">★</label>
-                        <input id="radio4" type="radio" name="estrellas" value="2">
-                        <label for="radio4">★</label>
-                        <input id="radio5" type="radio" name="estrellas" value="1">
-                        <label for="radio5">★</label>
-                    </div>
-                    <div>
-                        <ng-container *ngIf="!enCola; else posicion">
-                            <button type="button" onclick="confirmarCola()" class="btn btn-primary botonCola" id=""
-                                data-toggle="modal" data-target="#comfirmarColaModal">Hacer la cola
-                            </button>
-                        </ng-container>
+    <div class="row  row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <ng-container *ngFor="let usuarioEmpresa of usuarioEmpresas">
+            <div class="col">
+                <div class="card">
+                    <img src="{{usuarioEmpresa.imagen_url}}" class="card-img-top" alt="" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="Más información" routerLink="/cliente-perfil-empresa">
+                    <div class="card-body">
 
-                        <ng-template #posicion>
-                            <button class="btn btn-primary botonCola " id="numPosicion"> Ticket:
-                                {{ticket}}</button>
-                        </ng-template>
-                        <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
-                            <i class="fas fa-heart" (click)="fav()"></i>
-                        </span>
+                        <div clase="carde-title-color ">
+                            <h4 class="card-title">
+                                {{usuarioEmpresa.nombre_empresa}}</h4>
+                        </div>
+
+                        <p class="card-text">Tiempo Aprox: {{usuarioEmpresa.tiempo_espera}} Mins</p>
+                        <div class="valoracion">
+                            <input id="radio1" type="radio" name="estrellas" value="5">
+                            <label for="radio1">★</label>
+                            <input id="radio2" type="radio" name="estrellas" value="4">
+                            <label for="radio2">★</label>
+                            <input id="radio3" type="radio" name="estrellas" value="3">
+                            <label for="radio3">★</label>
+                            <input id="radio4" type="radio" name="estrellas" value="2">
+                            <label for="radio4">★</label>
+                            <input id="radio5" type="radio" name="estrellas" value="1">
+                            <label for="radio5">★</label>
+                        </div>
+
+                        <div>
+                            <ng-container *ngIf="!enCola; else posicion">
+                                <button type="button" onclick="confirmarCola()" class="btn btn-primary botonCola" id=""
+                                    data-toggle="modal" data-target="#comfirmarColaModal">Hacer la cola
+                                </button>
+                            </ng-container>
+
+                            <ng-template #posicion>
+                                <button class="btn btn-primary botonCola " id="numPosicion"> Ticket:
+                                    {{ticket}}</button>
+                            </ng-template>
+
+                            <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
+                                <i class="fas fa-heart" (click)="fav()"></i>
+                            </span>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
+        </ng-container>
     </div>
 </div>
+
 
 <div class="modal fade" id="comfirmarColaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">

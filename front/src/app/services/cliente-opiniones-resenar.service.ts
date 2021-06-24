@@ -1,39 +1,28 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Opiniones } from '../models/opiniones';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ClienteOpinionesResenarService {
-  private noteReview: any[] = [
-    {
-      nombre: 'Sobrino de Botín',
-      img: 'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-      tiempo: 40,
-    },
-    {
-      nombre: 'Sobrino de Botín',
-      img: 'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-      tiempo: 20,
-    },
-    {
-      nombre: 'GYM',
-      img: 'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-      tiempo: 15,
-    },
-    {
-      nombre: 'Sobrino de Botín',
-      img: 'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-      tiempo: 25,
-    },
-    {
-      nombre: 'Sobrino de Botín',
-      img: 'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-      tiempo: 20,
-    },
-  ];
+  private url = 'http://localhost:3000/opiniones';
 
-  constructor() {}
-  listarResenasPorCliente(id: string): any[] {
-    return this.noteReview;
+  constructor(private http: HttpClient) {
+    this.getOpiniones();
+    this.getClienteOpiniones(4);
+    this.getEmpresaOpiniones(30);
+  }
+  getOpiniones() {
+    return this.http.get(`${this.url}`);
+  }
+  getClienteOpiniones(id_usuario_cliente: number) {
+    return this.http.get(`${this.url}?${id_usuario_cliente}`);
+  }
+  getEmpresaOpiniones(id_usuario_empresa: number) {
+    return this.http.get(`${this.url}?${id_usuario_empresa}`);
+  }
+  postOpinion(opinionNuevo: Opiniones) {
+    return this.http.post(`${this.url}`, opinionNuevo);
   }
 }
