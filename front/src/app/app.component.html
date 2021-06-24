@@ -1,12 +1,13 @@
-<div *ngIf="!ls.estado; else navegar">
-    <!-- <app-login (eventoIniciarSesion)="tipoUsuario($event)"></app-login> -->
+<!-- <div *ngIf="!ls.estado; else navegar">
+    <app-login (eventoIniciarSesion)="tipoUsuario($event)"></app-login>
     <router-outlet></router-outlet>
-</div>
+</div> -->
 
 
-<ng-template #navegar>
+<!-- <ng-template #navegar> -->
     <!-- <app-header [controlador]='header'></app-header> -->
-    <app-header></app-header>
-    <router-outlet></router-outlet>
-    <app-footer [controlador]='header'></app-footer>
-</ng-template>
+    
+<app-header *ngIf=ls.estado></app-header>
+<router-outlet></router-outlet>
+<app-footer *ngIf=ls.estado></app-footer>
+<!-- </ng-template> -->

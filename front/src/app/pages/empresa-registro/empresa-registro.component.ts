@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { RegistroEmpresaService } from 'src/app/services/registro-empresa.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-empresa-registro',
@@ -17,7 +18,7 @@ export class EmpresaRegistroComponent implements OnInit {
   public emailValid:boolean;
   public telefonoValid:boolean
 
-  constructor(private navigation:Router, private formBuilder:FormBuilder, public rs:RegistroEmpresaService) { 
+  constructor(private navigation:Router, private formBuilder:FormBuilder, public rs:RegistroEmpresaService, private ls:LoginService) { 
     this.myForm = this.buildForm();
     this.rsocialValid = true;
     this.passValid = true;
@@ -101,6 +102,7 @@ export class EmpresaRegistroComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.ls.estado = false;
   }
 
 }

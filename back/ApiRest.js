@@ -701,8 +701,6 @@ app.get("/login", (request, response) => {
   connection.query(sql, params, (error, rs) => {
     if (!error) {
       salida = { error: false, code: 200, mensaje: rs };
-      console.log(rs[0].id_usuario_cliente);
-      console.log(rs[0].id_usuario_empresa);
       response.send(salida);
     } else {
       salida = { error: true, code: 200, mensaje: error };

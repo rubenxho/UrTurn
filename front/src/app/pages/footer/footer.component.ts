@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-footer',
@@ -11,19 +12,19 @@ export class FooterComponent implements OnInit {
   public empresa:boolean
   @Input() public controlador:String;
 
-  constructor() {
+  constructor(private ls:LoginService) {
     this.posicionMenu="home"
     this.empresa=true
     this.controlador="";
   }
 
   posicion(posicion:string){
-    this.posicionMenu=posicion
-   
+    this.posicionMenu=posicion;
   }
  
 
   ngOnInit(): void {
+    this.controlador = this.ls.seleccionarTipoUsuario();
   }
 
 }
