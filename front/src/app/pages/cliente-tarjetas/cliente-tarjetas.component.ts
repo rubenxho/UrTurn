@@ -13,37 +13,20 @@ export class ClienteTarjetasComponent implements OnInit {
 
   //atributo para hacer favorito
   public favorito: boolean;
-
   // para modal
   public enCola: boolean;
   public ticket: number;
+  public usuarioEmpresas:any
 
   constructor(private localService: LocalServiceService) {
-    this.usuarioEmpresa = null;
-    //this.usuarioEmpresa = new UsuarioEmpresa(
-    //  0,
-    //  'Sobrino',
-    //  'restaurante',
-    //  '1231231',
-    //  123123,
-    //  'espana',
-    //  'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-    //  'ok',
-    //  1,
-    //  2,
-    //  3,
-    //  'urturn',
-    //  []
-    //);
-
+    this.usuarioEmpresas = [];
     this.ticket = 1150;
-
-    //atributo para hacer favorito
+  //atributo para hacer favorito
     this.enCola = false;
     this.favorito = false;
   }
-
   //method para guardar a favorito
+  
   fav() {
     this.favorito = !this.favorito;
   }
@@ -53,7 +36,11 @@ export class ClienteTarjetasComponent implements OnInit {
     this.enCola = true;
   }
 
-  obtenerLocalComponente() {}
+  obtenerLocalAll() {
+    // return this.localService.
+    // connectar con LocalServiceService de David
+  }
+
 
   ngOnInit(): void {}
 }
