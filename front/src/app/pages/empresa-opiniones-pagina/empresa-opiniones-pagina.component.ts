@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { UsuarioServiceService } from 'src/app/services/usuario-service.service';
 
 @Component({
   selector: 'app-empresa-opiniones-pagina',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpresaOpinionesPaginaComponent implements OnInit {
 
-  constructor() { }
+  public opinionEmpresa={img:"", name:"", comment:"", estrellas: 1}
+
+  constructor(private apiserv:UsuarioServiceService) { 
+
+  }
 
   ngOnInit(): void {
   }
-
+  public buscar(id:number){
+    if(id>0){
+      this.apiserv.obtenerUserEmpresaId(id).subscribe( (data:any)=>{
+        // console.log(data)
+        return this.apiserv = data;
+      })
+    }else{
+      this.apiserv.obtenerUserEmpresaId(id).subscribe( (data: any) =>{ 
+        return this.apiserv = data;
+      });
+    }
+  }
 }

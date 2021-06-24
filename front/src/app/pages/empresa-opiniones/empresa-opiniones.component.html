@@ -12,8 +12,9 @@
                 <!-- <div class="pic-profile"> -->
                     <div class="container">
                         <div class="div-img" >
-                        <img class="img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" title="Foto10" alt="Foto10">
-                        <div class="text">Luca</div>
+                        <img class="img" src="{{opinionHijo.img}}" title="Foto10" alt="Foto10">
+                        <div class="text">{{opinionHijo.name}}</div>
+                        
                         </div>
                     </div>
                 <!-- </div> -->
@@ -21,15 +22,13 @@
             <!-- </div> -->
         
                 <div class="comment">
-                    <p class="comment-user">every conjuring movies be like “this is the scariest job
-                        that ed and lorraine warren ever did” like is there any job they did that 
-                        aren’t scary these guys are literally ghostbusters</p>
+                    <p class="comment-user">{{opinionHijo.comment}}</p>
                 </div>
         
                 <div class="stars">
             
                     <div class="valoracion">
-                            <form>
+                            <form (input)=handleStar($event)>
                                 <p class="clasificacion">
                                     <input id="radio1" type="radio" name="estrellas" value="5">
                                     <label for="radio1">★</label>
@@ -61,25 +60,25 @@
         <div class="user">
             <!-- Foto -->
             <div class="pic-profile">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="foto de cliente">
+                <img src="{{opinionHijo.img}}" alt="foto de cliente">
             </div>
             <!-- Nombre -->
-            <p class="user-name"> Luca </p>
+            <p class="user-name"> {{opinionHijo.name}} </p>
                 <!-- Estrellas -->
-                <div class="stars">z
+                <div class="stars">
             
                     <div class="valoracion">
                         <form>
                         <p class="clasificacion">
-                            <input id="radio1" type="radio" name="estrellas" value="5">
+                            <input id="radio1" type="radio" name="estrellas" value="{{opinionHijo.estrellas}}">
                             <label for="radio1">★</label>
-                            <input id="radio2" type="radio" name="estrellas" value="4">
+                            <input id="radio2" type="radio" name="estrellas" value="{{opinionHijo.estrellas}}">
                             <label for="radio2">★</label>
-                            <input id="radio3" type="radio" name="estrellas" value="3">
+                            <input id="radio3" type="radio" name="estrellas" value="{{opinionHijo.estrellas}}">
                             <label for="radio3">★</label>
-                            <input id="radio4" type="radio" name="estrellas" value="2">
+                            <input id="radio4" type="radio" name="estrellas" value="{{opinionHijo.estrellas}}">
                             <label for="radio4">★</label>
-                            <input id="radio5" type="radio" name="estrellas" value="1">
+                            <input id="radio5" type="radio" name="estrellas" value="{{opinionHijo.estrellas}}">
                             <label for="radio5">★</label>
                         </p>
                         </form>
@@ -90,9 +89,7 @@
         <!--Are Comentario -->
         <div class="comment">
             <!-- Comenteario -->
-            <p class="comment-user">every conjuring movies be like “this is the scariest job that
-                ed and lorraine warrenever did” like is there any job
-                they did that aren’t scary these guys are literally ghostbusters</p>
+            <p class="comment-user">{{opinionHijo.comment}}</p>
         </div>
 
     </div>   

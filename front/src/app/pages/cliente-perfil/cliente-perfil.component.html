@@ -9,30 +9,30 @@
             <div class="pic-perfil">
                 
                 <div class="foto">
-                    <img class="imagen" src=" https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                    <img class="imagen" name="img" src="{{testImg}}" alt="     Not Found  ">
                     
                 </div>
                 
 
                 <!-- Fin foto perfil -->
             
-                <form class="formulario">
+                <form class="formulario" (input)=handleChange($event)>
 
-                    <input class="input2" type="text" placeholder="Imagen">  <br/><br/>
+                    <input class="input2" type="text" name="img" placeholder="img">  <br/><br/>
 
-                    <input class="input2" type="text" placeholder="Nombre">  <br/><br/>
+                    <input class="input2" type="text" name="name" placeholder="name">  <br/><br/>
 
-                    <input class="input2" type="text" placeholder="Apellidos">  <br/><br/>
+                    <input class="input2" type="text" name="lastName" placeholder="Apellidos">  <br/><br/>
 
-                    <input class="input2" type="password" placeholder="Contraseña">  <br/><br/>
+                    <input class="input2" type="password" name="password" placeholder="Contraseña">  <br/><br/>
                             
-                    <input class="input2" type="password" placeholder="Confirmar Contraseña">  <br/><br/>
+                    <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña">  <br/><br/>
 
-                    <input class="input2" type="text" placeholder="Numero de Telefono">  <br/><br/>
+                    <input class="input2" type="text" name="phone" placeholder="Numero de Telefono">  <br/><br/>
                 
                     <div class="btn-container">
 
-                    <button class="boton" data-toggle="modal" data-target="#modalModificar">Enviar</button>            
+                    <button class="boton" type="button" data-toggle="modal" data-target="#modalModificar" (click)="handleClick()">Enviar</button>            
 
                     </div>
                 </form>    

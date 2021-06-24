@@ -5,14 +5,14 @@
 
             <!-- photo perfil -->
 
-            <div class="pic-perfil">
+            <div class="pic-perfil" (input)="handelChange($event)">
                 
                 <div class="foto">
                     <img class="imagen" src=" https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
                     
                     <div  class="categoria">
                     
-                        <select class="etiquetas" type="text">
+                        <select class="etiquetas" name="category" type="text">
                             <option value="">Categoria</option>
                             <option value="Belleza">Belleza</option>
                             <option value="Deporte">Deporte</option>
@@ -34,29 +34,29 @@
 
                     
 
-                    <input class="input2" type="text" placeholder="Nombre">  <br/><br/>
+                    <input class="input2" type="text" name="name" placeholder="Nombre">  <br/><br/>
 
-                    <input class="input2" type="password" placeholder="Contraseña">  <br/><br/>
+                    <input class="input2" type="password" name="password" placeholder="Contraseña">  <br/><br/>
                             
-                    <input class="input2" type="password" placeholder="Confirmar Contraseña">  <br/><br/>
+                    <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña">  <br/><br/>
 
-                    <input class="input2" type="url" placeholder="Imagen">  <br/><br/>
-                    <input class="input2" type="url" placeholder="Logo">  <br/><br/>
+                    <input class="input2" type="url" name="img" placeholder="Imagen">  <br/><br/>
+                    <input class="input2" type="url" name="logo" placeholder="Logo">  <br/><br/>
 
                     <div class="horario">
                     <p class="time-name left">Apertura: </p> 
-                    <input class="input2-time" type="time" placeholder="Apertura">  <br/><br/>
+                    <input class="input2-time" type="time" name="open" placeholder="Apertura">  <br/><br/>
                     <p class="time-name rigth">Cierre: </p> 
-                    <input class="input2-time" type="time" placeholder="Apertura">  <br/><br/>
+                    <input class="input2-time" type="time" name="close" placeholder="Apertura">  <br/><br/>
                     </div>
 
-                    <input class="input2" type="text" placeholder="Tiempo Estimado Espera">  <br/><br/>
+                    <input class="input2" type="text" name="timeWait" placeholder="Tiempo Estimado Espera">  <br/><br/>
 
-                    <textarea class="descripcion input2" name="mensaje" placeholder="Escriba aquí la descrippción de su local"></textarea> <br/><br/>
+                    <textarea class="descripcion input2" name="txt" placeholder="Escriba aquí la descrippción de su local"></textarea> <br/><br/>
                 
                     <div class="btn-container">
 
-                    <button class="boton" data-toggle="modal" data-target="#modalModificar">Enviar</button>            
+                    <button class="boton" data-toggle="modal" data-target="#modalModificar" (click)="handelClick()">Enviar</button>            
 
                     </div>
                 </form>    

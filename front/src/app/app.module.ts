@@ -27,6 +27,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalCambioComponent } from './pages/modal-cambio/modal-cambio.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { ModalCambioComponent } from './pages/modal-cambio/modal-cambio.componen
     BrowserAnimationsModule, 
     ToastrModule.forRoot(),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
