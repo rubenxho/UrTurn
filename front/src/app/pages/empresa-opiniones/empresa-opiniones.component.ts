@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-empresa-opiniones',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpresaOpinionesComponent implements OnInit {
 
-  constructor() { }
+  @Input() opinionHijo:any
+  public data:any = {
+    estrellas:0
+  }
+  constructor() {
+    this.opinionHijo = {img:"", name:"", comment:"", estrellas: 0}
+   }
 
   ngOnInit(): void {
   }
+
+  handleStar(event:any){
+    const index:string = event.target.name
+    const value:String = event.target.value;
+    this.data[ index ] = value;
+    console.log(this.data)
+  }
+
 
 }

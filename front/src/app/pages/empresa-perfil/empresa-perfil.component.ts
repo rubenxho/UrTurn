@@ -8,11 +8,34 @@ import { Component, OnInit } from '@angular/core';
 export class EmpresaPerfilComponent implements OnInit {
 
   public empresaPerfil: string [];
+  
+  public data: any = {
+    category:"",
+    name:"",
+    password:"",
+    repeatpassword:"",
+    img:"",
+    localStorage:"",
+    open:"",
+    close:"",
+    timeWait:"",
+    txt:""
+  }
 
   constructor() { 
 
     this.empresaPerfil = ["modalModificar","¿Seguro que desea enviar su perfil?", "Sí", "No", "Perfil enviado, gracias"];
 
+  }
+
+  handelChange(event:any){
+    const index:string = event.target.name;
+    const value:string = event.target.name;
+    this.data[index] = value;
+  }
+
+  handelClick(){
+    console.log(this.data)
   }
 
   ngOnInit(): void {
