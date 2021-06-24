@@ -3,7 +3,8 @@
         <div class="col">
             <div class="card">
                 <img src="{{usuarioEmpresa.imagen_url}}" class="card-img-top" alt="" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Más información" routerLink="/cliente-perfil-empresa">
+                    data-bs-placement="top" title="Más información" routerLink="/cliente-perfil-empresa"
+                    (click)="muestraLocal()">
                 <div class="card-body">
                     <div clase="carde-title-color ">
                         <h4 class="card-title">
@@ -63,3 +64,4 @@
         </div>
     </div>
 </div>
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
+import { LocalServiceService } from 'src/app/services/local-service.service';
 
 @Component({
   selector: 'app-cliente-favoritos',
@@ -8,7 +9,7 @@ import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 })
 export class ClienteFavoritosComponent implements OnInit {
   public locales: UsuarioEmpresa[];
-  constructor() {
+  constructor(private localService: LocalServiceService) {
     this.locales = [
       new UsuarioEmpresa(
         0,
@@ -73,5 +74,17 @@ export class ClienteFavoritosComponent implements OnInit {
     ];
   }
 
+  
+
+    muestraLocal(id: number){
+    
+      this.localService.getLocal(id).subscribe( (data: any) => {
+        this.locales = data;
+      
+    })
+  }
+    
+
   ngOnInit(): void {}
+
 }

@@ -18,23 +18,21 @@ export class ClienteTarjetasComponent implements OnInit {
   public enCola: boolean;
   public ticket: number;
 
+  // para localEmpresa
+
+  public local: UsuarioEmpresa;
+  
+
+  /*********************************/
+
   constructor(private localService: LocalServiceService) {
+
+    //inicializar local
+    this.local = new UsuarioEmpresa ();
+    
+    //*************************/
+
     this.usuarioEmpresa = null;
-    //this.usuarioEmpresa = new UsuarioEmpresa(
-    //  0,
-    //  'Sobrino',
-    //  'restaurante',
-    //  '1231231',
-    //  123123,
-    //  'espana',
-    //  'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-    //  'ok',
-    //  1,
-    //  2,
-    //  3,
-    //  'urturn',
-    //  []
-    //);
 
     this.ticket = 1150;
 
@@ -54,6 +52,16 @@ export class ClienteTarjetasComponent implements OnInit {
   }
 
   obtenerLocalComponente() {}
+
+  //funcion mostrar datos del local según los endpoints
+  muestraLocal(){
+    
+    console.log(this.usuarioEmpresa)
+    this.localService.localElegido = this.usuarioEmpresa
+    
+  }
+    
+
 
   ngOnInit(): void {}
 }

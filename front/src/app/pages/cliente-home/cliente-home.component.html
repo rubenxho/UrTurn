@@ -84,6 +84,9 @@
 
 <ng-template #tarjetas>
            
-    <app-cliente-tarjetas ></app-cliente-tarjetas>      
+    <!-- <app-cliente-tarjetas></app-cliente-tarjetas>  -->
+    <ng-container *ngFor="let local of locales">
+        <app-cliente-tarjetas [usuarioEmpresa]="local"></app-cliente-tarjetas>
+    </ng-container>     
 
 </ng-template>
