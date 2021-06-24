@@ -72,27 +72,27 @@ export class LoginComponent implements OnInit {
         if(data.mensaje.length>0 && data.mensaje[0].id_usuario_cliente==null) {
           this.id_usuario = data.mensaje[0].id_usuario_empresa;
           this.tipoUsuario = 'empresa';
+
+          login.id_usuario_empresa = this.id_usuario;
           // alert('es una empresa');
           
         }else if(data.mensaje.length>0 && data.mensaje[0].id_usuario_empresa==null)  {
           this.id_usuario = data.mensaje[0].id_usuario_cliente;
           this.tipoUsuario = 'cliente';
+
+          login.id_usuario_cliente = this.id_usuario;
           // alert('es un cliente');
 
         }else {
           alert('El usuario o password introducidos no son correctos');
           return;
         }
-        
+
+        this.ls.login = login;
+        alert(this.ls.login.id_usuario_cliente + ' - ' + this.ls.login.id_usuario_empresa);
         this.cambiarEstado();
         this.redirigir(`${this.tipoUsuario}Home`);
       });
-    
-      
-      // /*Evento para llamar al header que necesito(empresa/cliente)*/ 
-      // this.conectado = true;
-      // this.eventoIniciarSesion.emit(this.tipoUsuario)
-      
     }
   }
 
