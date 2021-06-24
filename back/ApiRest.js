@@ -373,10 +373,10 @@ app.post("/favoritos",
     function(request, response){
         id_usuario_cliente = request.body.id_usuario_cliente
         id_usuario_empresa = request.body.id_usuario_empresa
-        fecha = request.body.fecha
+        fecha= new date(Date.now())
         params = [ id_usuario_cliente, id_usuario_empresa, fecha]
         sql = `INSERT INTO urturn.favoritos ( id_usuario_cliente, id_usuario_empresa, fecha)
-        VALUES (?,?,NOW())`
+        VALUES (?,?,?)`
         
         connection.query(sql,params,
             function(err,res){
