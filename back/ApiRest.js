@@ -282,10 +282,20 @@ app.post("/empresa-registro", (request, response) => {
 /********************************************ENDPOINT CLIENTEOPINIONES******************************************************/
 app.get("/opiniones", (req, res) => {
   let paramsCliente = [req.query.id_usuario_cliente];
-  const sqlCliente = `SELECT * FROM opiniones AS op WHERE op.id_usuario_cliente = ?;`;
+  const sqlCliente = `  
+  SELECT op.id_opiniones, userC.id_usuario_cliente ,userC.nombre_cliente, userC.imagen_url,  op.nota, op.opinion, op.fecha
+  FROM urturn.opiniones AS op
+  JOIN urturn.usuario_cliente AS userC 
+  ON op.id_usuario_cliente = userC.id_usuario_cliente
+  WHERE userC.id_usuario_cliente = ?;`;
 
   let paramsEmpresa = [req.query.id_usuario_empresa];
-  const sqlEmpresa = `SELECT * FROM opiniones WHERE opiniones.id_usuario_empresa =?`;
+  const sqlEmpresa = `
+  SELECT op.id_opiniones, userE.id_usuario_empresa ,userE.nombre_empresa, userE.imagen_url,  op.nota, op.opinion, op.fecha
+  FROM urturn.opiniones AS op
+  JOIN urturn.usuario_empresa AS userE 
+  ON op.id_usuario_empresa = userE.id_usuario_empresa
+  WHERE userE.id_usuario_empresa = ?;`;
 
   const sqlAll = `SELECT * FROM urturn.opiniones`;
 
