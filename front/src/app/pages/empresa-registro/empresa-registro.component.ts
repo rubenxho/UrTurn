@@ -91,8 +91,8 @@ export class EmpresaRegistroComponent implements OnInit {
       
       this.rs.postNuevoUsuario(empresa).subscribe((data:any) => {
         console.log(data.mensaje);
+        this.redirigir(`login`);
       });
-      this.redirigir(`login`);
     }
   }
 

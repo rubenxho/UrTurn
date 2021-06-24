@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { UsuarioCliente } from 'src/app/models/usuario-cliente';
+import { RegistroClienteService } from 'src/app/services/registro-cliente.service';
 
 @Component({
   selector: 'app-cliente-registro',
@@ -15,7 +17,7 @@ export class ClienteRegistroComponent implements OnInit {
   public emailValid:boolean;
   public telefonoValid:boolean
 
-  constructor(private navigation:Router, private formBuilder:FormBuilder) { 
+  constructor(private navigation:Router, private formBuilder:FormBuilder, public rs:RegistroClienteService) { 
     this.myForm = this.buildForm();
     this.rsocialValid = true;
     this.passValid = true;
@@ -78,15 +80,20 @@ export class ClienteRegistroComponent implements OnInit {
     }
   }
 
-  public validar(tipoUsuario:string)  {
+  public validar(nombre:string, email:string, telefono:string, password:string)  {
     this.validarUsername();
     this.validarPassword();
     this.validarEmail();
     this.validarTelefono();
 
     if(this.myForm.valid) {
-      alert('guardar usuario cliente');
-      // this.redirigir(`${tipoUsuario}Home`);
+      let cliente:UsuarioCliente = new UsuarioCliente(0, nombre, '', telefono, '', email, password);
+
+      this.rs.postNuevoUsuario(cliente).subscribe((data:any) => {
+        console.log(data.mensaje);
+        this.redirigir(`login`);
+      });
+      
     }
   }
 

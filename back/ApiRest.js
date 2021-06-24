@@ -687,4 +687,40 @@ app.delete("/opiniones", (req, res) => {
   }
 });
 
+app.post("/cliente-registro", (request, response) => {
+
+  let params1 = [request.body.nombre_cliente, request.body.telefono];
+  let params3 = [0, request.body.email, request.body.password];
+
+  let sql1 = `INSERT INTO usuario_cliente (nombre_cliente,telefono) VALUES (?,?);`;
+  let sql2 = `SELECT id_usuario_cliente FROM usuario_cliente WHERE nombre_cliente = ? AND telefono = ?;`;
+  let sql3 = `INSERT INTO login (id_usuario_cliente, email, contraseña) VALUES (?,?,?);`;
+
+  connection.query(sql1, params1, (error1, rs) => {
+    if (!error1) {
+      connection.query(sql2, params1, (error2, rs2) => {
+        if (!error2) {
+          params3[0] = rs2[0].id_usuario_cliente;
+
+          connection.query(sql3, params3, (error3, rs3) => {
+            if (!error3) {
+              salida = { error: false, code: 200, mensaje: rs3 };
+              response.send(salida);
+            } else {
+              salida = { error: true, code: 200, mensaje: error3 };
+              response.send(salida);
+            }
+          });
+        } else {
+          salida = { error: true, code: 200, mensaje: error2 };
+          response.send(salida);
+        }
+      });
+    } else {
+      salida = { error: true, code: 200, mensaje: error1 };
+      response.send(salida);
+    }
+  });
+});
+
 app.listen(3000);
