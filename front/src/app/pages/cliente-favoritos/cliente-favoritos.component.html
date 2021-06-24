@@ -1,6 +1,11 @@
 <div class="main">
-    <app-cliente-buscador></app-cliente-buscador>
-    <ng-container *ngFor="let local of locales">
-        <app-cliente-tarjetas [usuarioEmpresa]="local"></app-cliente-tarjetas>
+    <app-cliente-buscador (eventoFiltrar)="filtrar($event)"></app-cliente-buscador>
+    <app-cliente-tarjetas></app-cliente-tarjetas>
+
+    
+    <ng-container *ngFor="let favorito of favoritos">
+        <app-cliente-tarjetas [usuarioEmpresa]="favorito"></app-cliente-tarjetas>
     </ng-container>
+   
+
 </div>

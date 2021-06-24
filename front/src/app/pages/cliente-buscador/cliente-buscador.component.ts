@@ -9,8 +9,11 @@ import { Component, OnInit, Output } from '@angular/core';
 })
 export class ClienteBuscadorComponent implements OnInit {
   @Output() eventoMostrar= new EventEmitter<boolean>();
+  @Output() eventoFiltrar= new EventEmitter<string[]>();
+  
+
   public sustituir:boolean=true
- 
+  
   constructor() { 
     this.sustituir
   }
@@ -21,6 +24,13 @@ export class ClienteBuscadorComponent implements OnInit {
     this.eventoMostrar.emit(this.sustituir)
     
   }
+
+  buscar(categoria:string, cp:string)
+  {
+    console.log(categoria, cp);
+    this.eventoFiltrar.emit([categoria, cp]) 
+  }
+
   
 
   ngOnInit(): void {

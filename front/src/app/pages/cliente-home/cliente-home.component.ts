@@ -64,12 +64,12 @@ export class ClienteHomeComponent implements OnInit {
     this.mostrarTarjetas=sustituir
   }
 
-  muestraLocal(){
+  // muestraLocal(){
     
-    console.log(this.usuarioEmpresa)
-    this.localService.localElegido = this.usuarioEmpresa
+  //   console.log(this.usuarioEmpresa)
+  //   this.localService.localElegido = this.usuarioEmpresa
     
-  }
+  // }
 
   ngOnInit(): void {
   }
