@@ -42,7 +42,7 @@
   font-weight: bolder;
   font-size: 20px;
   position: absolute;
-  top: 205px;
+  top: 225px;
   margin-left: 5%;
 }
 
@@ -70,10 +70,21 @@
   margin-left: 40%;
 }
 
+.input-group{
+  height: 150px;
+  text-align: center;
+}
+/*texto*/
+.form-control{
+  position: absolute;
+  height:100px;
+  top:55px
+}
 /* la estrella*/
 .valoracion {
   position: absolute;
-  top: 230px;
+  top: 0px;
+  left: -17px;
   overflow: hidden;
   display: inline-block;
   margin-left: 5%;
@@ -90,7 +101,10 @@
   font-size: 30px;
 }
 .valoracion label:hover,
-.valoracion label:hover ~ label,
+.valoracion label:hover ~ label{
+  color:rgb(253, 200, 101)
+}
+
 .valoracion input:checked ~ label {
   color: #ffff00;
 }
@@ -155,7 +169,7 @@
     align-content: center;
   }
   #resenaModal {
-    margin-top: 70%;
+    margin-top: 45%;
   }
   .clienteResenado {
     font-family: Titillium Web;

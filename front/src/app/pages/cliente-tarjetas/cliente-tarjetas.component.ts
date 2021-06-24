@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { LocalServiceService } from 'src/app/services/local-service.service';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
+import { Opiniones } from 'src/app/models/opiniones';
 
 @Component({
   selector: 'app-cliente-tarjetas',
