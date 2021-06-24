@@ -8,7 +8,7 @@
         <p class="ruben-color-bla ruben-header2" (click)="posicion('home')" routerLink="/clienteHome">Home</p>
         </div>
         <div *ngIf="posicionMenu=='' || posicionMenu!='colas'; else colasVacio">
-        <p class="ruben-color-bla ruben-header2" (click)="posicion('colas')" routerLink="/clienteColas">Mis Colas</p>
+        <p class="ruben-color-bla ruben-header2" (click)="posicion('colas')" routerLink="/clienteColas">Mis Turnos</p>
         </div>
         <div *ngIf="posicionMenu=='' || posicionMenu!='resena'; else resenaVacio">    
         <p class="ruben-color-bla ruben-header2" (click)="posicion('resena')" routerLink="/clienteOpiniones">Reseñas</p>
@@ -24,7 +24,7 @@
             <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/empresaHome">Home</p>
         </ng-template>
         <ng-template #colasVacio>
-            <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/clienteColas">Mis Colas</p>
+            <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/clienteColas">Mis Turnos</p>
         </ng-template>
         <ng-template #resenaVacio>
             <p class="ruben-color-bla ruben-header2 ruben-focus" routerLink="/clienteOpiniones">Reseñas</p>
