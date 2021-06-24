@@ -10,11 +10,13 @@ export class LoginService {
   private url:string;
   public estado:boolean;
   public tipoUsuario:string
+  public login:Login;
 
   constructor(private http:HttpClient) { 
     this.url = 'http://localhost:3000/login';
     this.estado = false;
     this.tipoUsuario = '';
+    this.login = new Login();
   }
 
   public getIdUsuario(login:Login):any  {
