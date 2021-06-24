@@ -1,7 +1,7 @@
 <div class="container rowb "  >
 
     <div class="colb">
-        <select type="text" name="Local"  #local>
+        <select type="text" name="Local"  #categoria>
             <option value="">Categoría</option>
             <option value="Belleza">Belleza</option>
             <option value="Deporte">Deporte</option>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="colb" >
-        <button (click)="mostrarTarjetas()">
+        <button (click)="buscar(categoria.value, cp.value)">
             <i class="fas fa-search lupa" ></i>
         </button> 
     </div>

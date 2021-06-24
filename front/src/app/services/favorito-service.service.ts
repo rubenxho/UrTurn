@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Favoritos } from '../models/favoritos';
+import { UsuarioEmpresa } from '../models/usuario-empresa';
 
 
 @Injectable({
@@ -8,25 +9,35 @@ import { Favoritos } from '../models/favoritos';
 })
 export class FavoritoServiceService {
 private url:string
+public favoritos: UsuarioEmpresa[];
   constructor(private http:HttpClient) {
     this.url="http://localhost:3000/favoritos"
+    this.favoritos = []
   }
 
-  obtenerFavId( id_usuario_cliente:number):any{
-    return this.http.get(this.url + `?id=` + id_usuario_cliente)
+  obtenerFav(categoria:string, cp:string, id_usuario_cliente:number){
+    let codigo:any
+
+    if(cp==null && categoria==null ){
+     codigo = this.http.get(this.url + `?id=` + id_usuario_cliente)
+    }
+
+    else if(cp==null){
+      codigo= this.http.get(this.url + `?categoria=` + categoria + `&` + `?id=` + id_usuario_cliente)
+    }
+
+    else if(categoria==null){
+      codigo = this.http.get(this.url + `?cp=` + cp + `&` + `?id=` + id_usuario_cliente)
+    }
+
+    else{
+      codigo = this.http.get(this.url +`?categoria=`+ categoria + `&` + `?cp=` + cp + `&` + `?id=` + id_usuario_cliente)
+    }
+
+    return codigo
   }
 
-  obtenerFavCategoria(categoria:string, id_usuario_cliente:number):any{
-    return this.http.get(this.url + `?categoria=` + categoria + `&` + `?id=` + id_usuario_cliente)
-  }
-
-  obtenerFavCp(cp:string, id_usuario_cliente:number):any{
-    return this.http.get(this.url + `?cp=` + cp + `&` + `?id=` + id_usuario_cliente)
-  }
-
-  obtenerFav(categoria:string, cp:string, id_usuario_cliente:number):any{
-    return this.http.get(this.url +`?categoria=`+ categoria + `&` + `?cp=` + cp + `&` + `?id=` + id_usuario_cliente)
-  }
+  
 
   anyadirFav(id_usuario_cliente:number, id_usuario_empresa:number){
     let nuevoFav:Favoritos= new Favoritos (id_usuario_cliente, id_usuario_empresa)
