@@ -1,4 +1,6 @@
+import { isGeneratedFile } from '@angular/compiler/src/aot/util';
 import { Component, OnInit } from '@angular/core';
+import { UsuarioCliente } from 'src/app/models/usuario-cliente';
 import { UsuarioServiceService } from 'src/app/services/usuario-service.service'
 
 @Component({
@@ -10,40 +12,63 @@ import { UsuarioServiceService } from 'src/app/services/usuario-service.service'
 
 export class ClientePerfilComponent implements OnInit {
 
-  [k: string]: any;
+
+  // [k: string]: any;
   
-  public data: any = {
-    img:"",
+  public profileData: any = {
     name:"",
     lastname:"",
-    password:"",
-    repeatPassword:"",
     phone:"",
-    mail:""
+    img:"",
+    mail:"",
+    password:"",
   }
+
+  public pic:String="";
   public guardarModal: string[]
   public owner = 5;
+  public me: UsuarioCliente = new UsuarioCliente(0, "", "", "", "");
 
-  public testingWtest = "Gregorio";
-  public testImg = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com.mx%2Fpin%2F805862927044760750%2F&psig=AOvVaw3yq8j9hQxS6KZUbWvYwWHW&ust=1624543252708000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCOixtrL1rfECFQAAAAAdAAAAABAD";
+  public user: UsuarioCliente = new UsuarioCliente(0, "", "", "", "");
 
   constructor(private apiUserService:UsuarioServiceService) {
-    this.guardarModal = ["modalModificar","Realizar cambios","Si", "Cancelar","Cambios guardados"]
+    this.guardarModal = ["modalModificar","Realizar cambios","Si", "Cancelar","Cambios guardados", "", "2"]
    }
 
+ 
   ngOnInit(): void {
+    this.apiUserService.obtenerUserClienteId(this.owner)
+    .subscribe((data:any)=>{
+      console.log(data)
+      return data = this.me
+    }) 
+    // this.apiUserService.obtenerUserClienteId(this.owner).subscribe(user:any => (this.me = user));
   }
 
   handleChange(event:any){
     const index:string = event.target.name
     const value:String = event.target.value;
-    this.data[ index ] = value;
+    this.profileData[ index ] = value;
   }
 
   handleClick(){
-    console.log(this.data);
-    this.apiUserService.putUserCliente(this.owner)
-
+    console.log(this.profileData);
+     this.user = new UsuarioCliente(this.owner, this.profileData.name, this.profileData.lastname, this.profileData.phone, this.profileData.img);
+     console.log(this.user)
+     return this.user
   }
-  
+
+  subirCambios(guardar:boolean){
+    console.log("guardar")
+    if(guardar==true){
+      console.log(this.user)
+      console.log("flag after")
+      this.apiUserService.putUserCliente(this.user)
+      .subscribe((data:any)=>{
+        console.log(data)
+        return data = this.user;
+      })
+
+    }
+  }
 }

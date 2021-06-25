@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class EmpresaOpinionesComponent implements OnInit {
 
   @Input() opinionHijo:any
+  
   public data:any = {
     estrellas:0
   }

@@ -9,26 +9,30 @@
             <div class="pic-perfil">
                 
                 <div class="foto">
-                    <img class="imagen" name="img" src="{{testImg}}" alt="     Not Found  ">
+                    <img class="imagen" name=img  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="  Not Found  ">
                     
+                    <div>
+                        <button type="button" class="exit"> Cerrar Sesion </button>
+                    </div>
+
                 </div>
                 
 
                 <!-- Fin foto perfil -->
             
-                <form class="formulario" (input)=handleChange($event)>
+                <form class="formulario" #userForm="ngForm" (input)=handleChange($event)>
 
-                    <input class="input2" type="text" name="img" placeholder="img">  <br/><br/>
+                    <input class="input2" type="text" name="img" placeholder="Imagen"  alter="photo">  <br/><br/>
 
-                    <input class="input2" type="text" name="name" placeholder="name">  <br/><br/>
+                    <input class="input2" type="text" name="name" placeholder="Nombre">  <br/><br/>
 
-                    <input class="input2" type="text" name="lastName" placeholder="Apellidos">  <br/><br/>
+                    <input class="input2" type="text" name="lastName" placeholder="Apellido">  <br/><br/>
 
-                    <input class="input2" type="password" name="password" placeholder="Contraseña">  <br/><br/>
+                    <input class="input2" type="password" name="password" placeholder="Contraseña"> <br/><br/>
                             
                     <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña">  <br/><br/>
 
-                    <input class="input2" type="text" name="phone" placeholder="Numero de Telefono">  <br/><br/>
+                    <input class="input2" type="text" name="phone" placeholder="Telefono">  <br/><br/>
                 
                     <div class="btn-container">
 
@@ -46,6 +50,6 @@
 
 
 
-    <app-modal [mensajeModal]="guardarModal"></app-modal>
+    <app-modal [mensajeModal]="guardarModal" (eventoGuardarPerfil)="subirCambios($event)"></app-modal>
 
 </div>

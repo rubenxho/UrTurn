@@ -44,7 +44,8 @@ label {
   label:hover,
   label:hover ~ label {
     
-    color: rgb(241, 207, 11);
+    color:rgb(235, 235, 57)
+    /* color: #f1cf0b; */
   }
   
   input[type="radio"]:checked ~ label {

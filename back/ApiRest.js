@@ -551,7 +551,7 @@ app.get("/userE",(request,response)=>{
             }
             
         })
-    }else{
+    }else if(!id){
 
         let sql= `SELECT userE.* FROM urturn.usuario_empresa AS userE;`
 
@@ -566,6 +566,8 @@ app.get("/userE",(request,response)=>{
               response.send(sending)
             }
         })
+    }else{
+      response.send({error: true, codigo: 204, mensaje: 'UNFOUND'})
     }
 });
 
@@ -584,10 +586,10 @@ app.put("/userE",(request,response)=>{
 	let close= (request.body.cierre == "" ? null : request.body.cierre);
 	let time = (request.body.tiempo_espera == "" ? null : request.body.tiempo_espera);
 	let logo = (request.body.logo == "" ? null : request.body.logo);
-    let status =(request.body.estado_turno == "" ? null : request.body.estado_turno);
+  let status =(request.body.estado_turno == "" ? null : request.body.estado_turno);
 
 	let params = [name,catg,tlf,cp,address,img,desc,open,close,time,logo,status, id];
-
+  console.log(params)
 	let sql='UPDATE urturn.usuario_empresa AS userE SET userE.nombre_empresa=COALESCE(?,userE.nombre_empresa), userE.categoria=COALESCE(?,userE.categoria), userE.telefono=COALESCE(?,userE.telefono), userE.codigo_postal=COALESCE(?,userE.codigo_postal), userE.direccion=COALESCE(?,userE.direccion), userE.imagen_url=COALESCE(?,userE.imagen_url), userE.descripcion=COALESCE(?,userE.descripcion), userE.apertura=COALESCE(?,userE.apertura), userE.cierre=COALESCE(?,userE.cierre), userE.tiempo_espera=COALESCE(?,userE.tiempo_espera), userE.logo=COALESCE(?,userE.logo), userE.estado_turno=COALESCE(?,userE.estado_turno) WHERE userE.id_usuario_empresa = ?'
 
     connection.query(sql, params, (err,res)=>{
@@ -635,10 +637,10 @@ app.delete("/deleteUserE", (request, response)=>{
 app.get("/userC",(request,response)=>{
 
     let sending;
-    let id = request.query.id_usuario_cliente;
+    let id = request.query.id;
     let params = [id];
 
-    if(id){
+    if(id>0){
           
         let sql = 'SELECT userC.* FROM urturn.usuario_cliente AS userC WHERE userC.id_usuario_cliente = ?'        
         
@@ -654,7 +656,7 @@ app.get("/userC",(request,response)=>{
             }
             
         })
-    }else{
+    }else if(!id){
 
         let sql='SELECT * FROM urturn.usuario_cliente'
         connection.query(sql, (err,res)=>{
@@ -669,6 +671,8 @@ app.get("/userC",(request,response)=>{
               response.send(sending)
             }
         })
+    }else{
+      response.send({error: true, codigo: 204, mensaje: 'UNFOUND'})
     }
 });
 
@@ -683,11 +687,9 @@ app.put("/userC",(request,response)=>{
 	let img = (request.body.imagen_url == "" ? null : request.body.imagen_url);
 
 	let params = [name,lastName, tlf, img, id];
-    console.log("flag1")
     console.log(params)
-	let sql='UPDATE urturn.usuario_cliente AS userC SET userC.nombre_cliente=COALESCE(?,userC.nombre_cliente), userC.apellidos_cliente=COALESCE(?,userC.apellidos_cliente), userC.telefono=COALESCE(?,userC.telefono), userC.imagen_url=COALESCE(?,userC.imagen_url) WHERE userC.id_usuario_cliente =?'
-        console.log("flag2")
-    connection.query(sql, params, (err,res)=>{
+	let sql='UPDATE urturn.usuario_cliente AS userC SET userC.nombre_cliente=COALESCE(?,userC.nombre_cliente), userC.apellidos_cliente=COALESCE(?,userC.apellidos_cliente), userC.telefono=COALESCE(?,userC.telefono), userC.imagen_url=COALESCE(?,userC.imagen_url) WHERE userC.id_usuario_cliente =?'  
+  connection.query(sql, params, (err,res)=>{
         if(err){
             console.log(err)
             sending={error: true, codigo: 200, mensaje: 'Ha ocurrido un error putUserC'}

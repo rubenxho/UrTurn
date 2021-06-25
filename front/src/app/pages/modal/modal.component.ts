@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./modal.component.css'],
 })
 export class ModalComponent implements OnInit {
+  
   @Input() mensajeModal: string[];
   @Output() eventoCola = new EventEmitter<boolean>();
   @Output() eventoGuardarPerfil = new EventEmitter<boolean>();
@@ -27,7 +28,7 @@ export class ModalComponent implements OnInit {
         this.llamarEventoCola(false);
       }
     }
-    // Evento Guardar perfil kehoma
+    // Evento Guardar perfil @Kehomaxd
     if(this.mensajeModal[6]=="2"){
       this.llamarEventoGuardarPerfil(true)
     }
