@@ -140,11 +140,14 @@
     border-radius: 5px;
     color:#fff;
     border: none;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 20px;
     padding-right: 20px;
     text-align: center;
     margin-left: 15px;
+    margin-top: 3px;
+    
 }
 
 .contenedor-cola{
@@ -156,6 +159,7 @@
     box-sizing: border-box;
     margin-right: 20px;
     max-height: 310px;
+    min-height: 310px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -198,18 +202,23 @@
 }
 
 .foto{
-    justify-content: center;
     border-radius: 50%;
     overflow: hidden;
-    margin-bottom: 30px;
-    
+    margin-bottom: 20px;
+    display: flex;
+    max-width: 120px;
+    min-width: 120px;
+    max-height: 120px;
+    min-height: 120px;
+    justify-content: center;
+    align-items: center;   
 }
 
 .imagen{
-    display: flex;
+    margin-left: 60px;
     height: 100%;
-    width: 220px;
-    
+    width: auto;
+    max-height: 120px;
 }
 
 
@@ -229,7 +238,7 @@
     color: white;
     font-weight: bold;
     position: relative;
-    animation: mymove 5s;
+    animation: mymove 2.5s;
     margin-left: 30px;
     margin-top: 30px;
     
@@ -296,18 +305,19 @@
     }
 
     .ruben-formulario{
-        padding: 10px;
         width: 300px;
-        padding: 20px;
-        max-height: 80px;
-        margin-left: 12px;
+        padding: 10px;
+        padding-top: 0px;
+        max-height: 140px;
+        min-height: 130px;
+        margin-left: 8px;
     }
 
     .boton-avanzar-cola{
         margin-left:-105px;
         height: 60px;
         margin-bottom: 0px;
-        margin-top: 7px;
+        margin-top: 0px;
         border-radius: 5px;
         color:#fff;
         border: none;
@@ -315,10 +325,11 @@
         padding-right: 20px;
         text-align: center;
         height: 35px;
+        width: 260px;
     }
 
     .ruben-avanzar-cola{
-        margin-top: 30px;
+        margin-top: -70px;
         margin-left: 105px;
         margin-bottom: -50px;
     }
@@ -333,6 +344,13 @@
         
     }
 
+    .boton-modificar{
+        background-color: #5C74F6;
+        border-radius: 5px;
+        color:#fff;
+        border: none;
+        padding: 6px 7px 6px 7px;
+    }
     
     /* 
 

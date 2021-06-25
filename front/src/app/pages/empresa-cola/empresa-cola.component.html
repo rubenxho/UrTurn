@@ -17,144 +17,83 @@
                     Avanzar Cola
                 </button>
                 <!-- Modal boton Avanzar Cola -->
-                <app-modal [mensajeModal]='mensajeModalAvanzar'></app-modal> 
+                <app-modal [mensajeModal]='mensajeModalAvanzar' (eventoAvanzarCola)="botonAvanzarCola($event)"></app-modal> 
             </div>
         </div>
         
-        <div class="ruben-row3 ticket" > <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<p> Proximo Cliente: RUBEN RIVAS</p> </div>
+        <div *ngIf="clientesEnCola.length!=0">
+        <div class="ruben-row3 ticket" > <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<p> Proximo Cliente: {{clientesEnCola[0].nombre_cliente}} {{clientesEnCola[0].apellidos_cliente}}</p> </div>
+        </div>
+        <div *ngIf="clientesEnCola.length==0">
+            <div class="ruben-row3 ticket" > <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<p> Sin clientes en cola</p> </div>
+        </div>
+
 
         <div class="ruben-row2 contenedor-2" >
                 <!-- parte web -->
-                <div class="ruben-col contenedor-cola prueba">
-                    
-                    <div class="cuadros" (click)="mostrarUsuario('usuario1')">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  Eva123</p>
+                <div class="ruben-col contenedor-cola prueba" *ngIf="clientesEnCola.length!=0; else sinClientes">
+                    <div class="cuadros" *ngFor="let cliente of clientesEnCola let i=index" (click)="mostrarUsuario(i)">
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i> {{clientesEnCola[i].nombre_cliente}} {{clientesEnCola[i].apellidos_cliente}}</p>
                     </div>
-                    <div class="cuadros" (click)="mostrarUsuario('usuario2')">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  Javi0001</p>
-                    </div>
-                    <div class="cuadros" (click)="mostrarUsuario('usuario3')">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  13David13</p>
-                    </div>
-                    <div class="cuadros" (click)="mostrarUsuario('usuario4')">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  estefaniacucea</p>
-                    </div>
-                    <div class="cuadros" (click)="mostrarUsuario('usuario5')">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  KehomaxD</p>
-                    </div>
-                    <div class="cuadros" (click)="mostrarUsuario('usuario6')">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  rubenrivas</p>
-                    </div>
-                    <div class="cuadros" (click)="mostrarUsuario('usuario5')">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  KehomaxD</p>
-                    </div>
-                    <div class="cuadros" (click)="mostrarUsuario('usuario6')">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  rubenrivas</p>
-                    </div>
-                    <div class="cuadros" (click)="mostrarUsuario('usuario5')">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  KehomaxD</p>
-                    </div>
-                    <div class="cuadros" (click)="mostrarUsuario('usuario6')">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i>  rubenrivas</p>
-                    </div> 
                 </div>
+                <ng-template #sinClientes>
+                    <div class="ruben-col contenedor-cola prueba">
+                        <div class="cuadros" >
+                        <p class="cuadros-texto"> Sin clientes en cola</p>
+                        </div>
+                    </div>
+                </ng-template>
 
                 <!-- Parte movil -->
-                <div class="ruben-col contenedor-cola responsive-movil">
-                    <div class="card" style=" width: 250px; text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: 5px; margin-bottom: 7px;">
+                <div class="ruben-col contenedor-cola responsive-movil" >
+                    <hr style="margin-top: -40px; border:0.01px solid rgba(2, 2, 2, 0.13); width: 100%; margin-left: -26px;">
+                    <div *ngIf="clientesEnCola.length!=0; else sinClientesMovil" style="margin-top: -15px;">
+                    <div class="card" style=" width: 250px; text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: -55px; margin-bottom: 7px;" *ngFor="let cliente of clientesEnCola let i=index">
                         <h5 class="card-header">
-                            <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ;"data-toggle="collapse" href="#collapse-collapsed" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
-                                javi123
-                                
+                            <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ; "data-toggle="collapse" href="#collapse-collapsed{{i}}" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
+                                {{cliente.nombre_cliente}} {{cliente.apellidos_cliente}}
                             </a>
                         </h5>
-                        <div id="collapse-collapsed" class="collapse" aria-labelledby="heading-collapsed">
+                        <div id="collapse-collapsed{{i}}" class="collapse" aria-labelledby="heading-collapsed" style="background-color: rgba(0,0,0,.03)">
                             <div class="card-body" style="margin-top: -10px;;">
-                                <p style="color: black; font-size: 17px; ">Usuario: {{infoUsuario}}</p>
-                                <p style="color: black; font-size: 17px; ">Nombre: Ruben</p>
-                                <p style="color: black; font-size: 17px; ">Apellido: Rivas</p>
-                                <p style="color: black; font-size: 17px; ">Telefono: 623184811</p>
+                                <p style="color: black; font-size: 17px; ">Ticket {{cliente.id_turno}}</p>
+                                <p style="color: black; font-size: 17px; ">Nombre: {{cliente.nombre_cliente}}</p>
+                                <p style="color: black; font-size: 17px; ">Apellido: {{cliente.apellidos_cliente}}</p>
+                                <p style="color: black; font-size: 17px; ">Telefono: {{cliente.telefono}}</p>
+                                <div>   
+                                    <p >Fama: <i class="fas fa-circle" style="color: red;"></i></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card" style=" width: 250px; text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: 5px; margin-bottom: 7px">
+                    </div>
+                </div>
+
+                <!-- Movil caso cuando no hay clientes -->
+                <ng-template #sinClientesMovil>
+                    <div class="card" style=" width: 250px; text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: -55px; margin-bottom: 7px; margin-top: -15px;">
                         <h5 class="card-header">
                             <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ;"data-toggle="collapse" href="#collapse-collapsed2" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
-                                Rubenrivas15
+                                Sin clientes
                                 
                             </a>
                         </h5>
-                        <div id="collapse-collapsed2" class="collapse" aria-labelledby="heading-collapsed">
-                            <div class="card-body" style="margin-top: -10px;;">
-                                <p style="color: black; font-size: 17px; ">Usuario: {{infoUsuario}}</p>
-                                <p style="color: black; font-size: 17px; ">Nombre: Ruben</p>
-                                <p style="color: black; font-size: 17px; ">Apellido: Rivas</p>
-                                <p style="color: black; font-size: 17px; ">Telefono: 623184811</p>
-                            </div>
-                        </div>
                     </div>
-                    <div class="card" style=" width: 250px; text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: 5px; margin-bottom: 7px">
-                        <h5 class="card-header">
-                            <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ;"data-toggle="collapse" href="#collapse-collapsed3" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
-                                eva123
-                                
-                            </a>
-                        </h5>
-                        <div id="collapse-collapsed3" class="collapse" aria-labelledby="heading-collapsed">
-                            <div class="card-body" style="margin-top: -10px;;">
-                                <p style="color: black; font-size: 17px; ">Usuario: {{infoUsuario}}</p>
-                                <p style="color: black; font-size: 17px; ">Nombre: Ruben</p>
-                                <p style="color: black; font-size: 17px; ">Apellido: Rivas</p>
-                                <p style="color: black; font-size: 17px; ">Telefono: 623184811</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style=" width: 250px; text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: 5px; margin-bottom: 7px">
-                        <h5 class="card-header">
-                            <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ;"data-toggle="collapse" href="#collapse-collapsed3" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
-                                kehoma
-                                
-                            </a>
-                        </h5>
-                        <div id="collapse-collapsed3" class="collapse" aria-labelledby="heading-collapsed">
-                            <div class="card-body" style="margin-top: -10px;;">
-                                <p style="color: black; font-size: 17px; ">Usuario: {{infoUsuario}}</p>
-                                <p style="color: black; font-size: 17px; ">Nombre: Ruben</p>
-                                <p style="color: black; font-size: 17px; ">Apellido: Rivas</p>
-                                <p style="color: black; font-size: 17px; ">Telefono: 623184811</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card" style=" width: 250px; text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: 5px; margin-bottom: 7px">
-                        <h5 class="card-header">
-                            <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ;"data-toggle="collapse" href="#collapse-collapsed3" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
-                                stefaniacucea
-                                
-                            </a>
-                        </h5>
-                        <div id="collapse-collapsed3" class="collapse" aria-labelledby="heading-collapsed">
-                            <div class="card-body" style="margin-top: -10px;;">
-                                <p style="color: black; font-size: 17px; ">Usuario: {{infoUsuario}}</p>
-                                <p style="color: black; font-size: 17px; ">Nombre: Ruben</p>
-                                <p style="color: black; font-size: 17px; ">Apellido: Rivas</p>
-                                <p style="color: black; font-size: 17px; ">Telefono: 623184811</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
+                </ng-template>
             
-
+                <!-- Web tarjeta cliente -->
                 <div class="ruben-col contenedor-cliente"> 
                     <div class="foto">
                                 <img class="imagen" src=" https://vocegestor.com/wp-content/uploads/2017/11/apontamento-de-despesas-a-importancia-de-uma-ferramenta-para-o-cliente-1.jpeg">
                     </div>
                     <div class="col2">
-                    <p>Usuario: {{infoUsuario}}</p>
-                    <p>Nombre: Ruben</p>
-                    <p>Apellido: Rivas</p>
-                    <p>Telefono: 623184811</p>
-                    </div>
+                    
+                    <p>Nombre: {{clienteVisto.nombre_cliente}}</p>
+                    <p>Apellido: {{clienteVisto.apellidos_cliente}}</p>
+                    <p >Telefono: {{clienteVisto.telefono}}</p>
+                    <p >Fama: <i class="fas fa-circle" style="color: red;"></i></p>
+                    <h2 style="font-weight:bold;"><i class="fas fa-ticket-alt"></i> {{clienteVisto.id_turno}}</h2>
+                    
                 </div>
             
         </div>

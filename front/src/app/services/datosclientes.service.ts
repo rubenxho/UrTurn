@@ -1,22 +1,20 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Puntuacion } from '../models/puntuacion';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PuntuacionService {
+export class DatosclientesService {
 
-  private url = 'http://localhost:3000/strike?id_usuario_cliente=3';
+  private url:string;
 
   constructor(private http: HttpClient) { 
-
+    this.url='http://localhost:3000/turnos/empresa/datos_clientes?id_usuario_empresa=29'
   }
 
   getDatosClientes(){
     return this.http.get(this.url)
   }
-
 
   
 }

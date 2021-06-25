@@ -209,9 +209,35 @@ app.post("/turnos/cliente",
         )
     }
 )
+
+app.put("/turnos/cliente",
+    function(request,response)
+    {
+        // FECHA ACTUAL
+        let hoy = new Date(Date.now());
+
+        let cliente=request.body.id_turno;
+        let params=["Cancelado",cliente,"Activo"];
+        let sql= "UPDATE turnos SET estado=? WHERE id_turno=? AND estado=?"
+        connection.query(sql,params, 
+            function(err, res){
+                if(err){
+                 console.log(err);
+                 response.send({error: true, codigo: 200, mensaje: 'Error en el update cancelar turno'})
+                 }
+                else{
+                 console.log(res)
+                 response.send(res)
+                }
+            }
+        )
+    }
+)   
+
 /* <----------------------------------------FIN Turnos/Cliente --------------------------------------->  */ 
 
 /* <----------------------------------------Endpoint Turnos/EMPRESA --------------------------------------->  */ 
+// ENDPOINT DONDE DEVUELVO JSON CON LOS DATOS A MOSTRAR EN HOME/EMPRESA
 app.get("/turnos/empresa/datos_generales",
     function(request,response)
     {
@@ -228,51 +254,86 @@ app.get("/turnos/empresa/datos_generales",
                  }
                 else{
                     console.log(res)
-                    let numero_clientes=res[0].numero_clientes;
-                    let params2=[empresa,"Activo",hoy]
-                    let sql='SELECT id_turno, nombre_cliente, apellidos_cliente FROM turnos AS t  INNER JOIN usuario_cliente AS c ON (t.id_usuario_cliente=c.id_usuario_cliente) WHERE t.id_usuario_empresa=? AND estado=? AND fecha_apertura_turno > ? ORDER BY fecha_apertura_turno ASC LIMIT 1'
-                    connection.query(sql,params2, 
-                        function(err, res){
-                            if(err){
-                             console.log(err);
-                             response.send({error: true, codigo: 200, mensaje: 'Error select proximo cliente'})
-                             }
-                            else{
-                                console.log(res)
-                                let id_turno=res[0].id_turno;
-                                let proximo_cliente=res[0].nombre_cliente+" "+res[0].apellidos_cliente
-                                let params3=[empresa,"Activo",hoy,hoy]
-                                let sql='SELECT COUNT(*) AS clientes_atendidos FROM turnos WHERE id_usuario_empresa=? AND estado=? AND DAY(Fecha_cierre_turno)= DAY(?) AND fecha_cierre_turno < ?'
-                                connection.query(sql,params3, 
-                                       function(err, res){
-                                           if(err){
-                                            console.log(err);
-                                            response.send({error: true, codigo: 200, mensaje: 'ERROR select clientes atendidos'})
+                    console.log(res[0].numero_clientes) 
+                    // CASO DONDE TENGO PERSONAS EN COLA
+                    if(res[0].numero_clientes!=0){     
+                                    console.log("respuesta numero clientes")
+                                    let numero_clientes=res[0].numero_clientes;
+                                    let params2=[empresa,"Activo",hoy]
+                                    let sql='SELECT id_turno, nombre_cliente, apellidos_cliente FROM turnos AS t  INNER JOIN usuario_cliente AS c ON (t.id_usuario_cliente=c.id_usuario_cliente) WHERE t.id_usuario_empresa=? AND estado=? AND fecha_apertura_turno > ? ORDER BY fecha_apertura_turno ASC LIMIT 1'
+                                    connection.query(sql,params2, 
+                                        function(err, res){
+                                            if(err){
+                                             console.log(err);
+                                             response.send({error: true, codigo: 200, mensaje: 'Error select proximo cliente'})
+                                             }
+                                            else{
+                                                console.log(res)
+                                                let id_turno=res[0].id_turno;
+                                                let proximo_cliente=res[0].nombre_cliente+" "+res[0].apellidos_cliente
+                                                let params3=[empresa,"Activo",hoy,hoy]
+                                                let sql='SELECT COUNT(*) AS clientes_atendidos FROM turnos WHERE id_usuario_empresa=? AND estado=? AND DAY(fecha_cierre_turno)= DAY(?) AND fecha_cierre_turno < ?'
+                                                connection.query(sql,params3, 
+                                                       function(err, res){
+                                                           if(err){
+                                                            console.log(err);
+                                                            response.send({error: true, codigo: 200, mensaje: 'ERROR select clientes atendidos'})
+                                                            }
+                                                           else{
+                                                            console.log(res)
+                                                            let clientes_atendidos=res[0].clientes_atendidos;
+                                                            let respuesta={
+                                                                "numero_clientes_cola":numero_clientes,
+                                                                "numero_ticket":id_turno,
+                                                                "proximo_cliente":proximo_cliente,
+                                                                "clientes_atendidos":clientes_atendidos
+                                                            }
+                                                            response.send(respuesta)
+                                                           }
+                                                       }
+                                                   )   
                                             }
-                                           else{
-                                            console.log(res)
-                                            let clientes_atendidos=res[0].clientes_atendidos;
-                                            let respuesta={
-                                                "numero_clientes_cola":numero_clientes,
-                                                "numero_ticket":id_turno,
-                                                "proximo_cliente":proximo_cliente,
-                                                "clientes_atendidos":clientes_atendidos
-                                            }
-                                            response.send(respuesta)
-                                           }
-                                       }
-                                   )   
-                            }
-                        }
-                    )   
+                                        }
+                                    )
+                    }
+                    //CASO EN DONDE NO TENGO NINGUN CLIENTE EN COLA 
+                    else{
+                        console.log(res)
+                        let id_turno=res[0].id_turno;
+                        let proximo_cliente=res[0].nombre_cliente+" "+res[0].apellidos_cliente
+                        let params3=[empresa,"Activo",hoy,hoy]
+                        let sql='SELECT COUNT(*) AS clientes_atendidos FROM turnos WHERE id_usuario_empresa=? AND estado=? AND DAY(fecha_cierre_turno)= DAY(?) AND fecha_cierre_turno < ?'
+                        connection.query(sql,params3, 
+                               function(err, res){
+                                   if(err){
+                                    console.log(err);
+                                    response.send({error: true, codigo: 200, mensaje: 'ERROR else select clientes atendidos'})
+                                    }
+                                   else{
+                                    console.log("clientes atendidos")   
+                                    console.log(res)
+                                    let clientes_atendidos=res[0].clientes_atendidos;
+                                    let respuesta={
+                                        "numero_clientes_cola":0,
+                                        "numero_ticket":0,
+                                        "proximo_cliente":"Sin Clientes",
+                                        "clientes_atendidos":clientes_atendidos
+                                    }
+                                    response.send(respuesta)
+                                   }
+                               }
+                        ) 
+                    }                              
                 }
             }
         )
     }
 )   
+
 /* <----------------------------------------FIN Turnos/EMPRESA --------------------------------------->  */ 
 
 /* <----------------------------------------Endpoint Turnos/empresa/cola --------------------------------------->  */ 
+// Me retorna un array con clientes en cola
 app.get("/turnos/empresa/datos_clientes",
     function(request,response)
     {
@@ -281,7 +342,7 @@ app.get("/turnos/empresa/datos_clientes",
 
         let empresa=request.query.id_usuario_empresa;
         let params=[empresa,"Activo",hoy];
-        let sql= "SELECT nombre_cliente, apellidos_cliente, telefono, imagen_url FROM turnos AS t  INNER JOIN usuario_cliente AS c ON (t.id_usuario_cliente=c.id_usuario_cliente) WHERE t.id_usuario_empresa=? AND estado=? AND fecha_apertura_turno> ? ORDER BY fecha_apertura_turno ASC "
+        let sql= "SELECT t.id_turno,nombre_cliente, apellidos_cliente, telefono, imagen_url FROM turnos AS t  INNER JOIN usuario_cliente AS c ON (t.id_usuario_cliente=c.id_usuario_cliente) WHERE t.id_usuario_empresa=? AND estado=? AND fecha_apertura_turno> ? ORDER BY fecha_apertura_turno ASC "
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -299,6 +360,7 @@ app.get("/turnos/empresa/datos_clientes",
 /* <----------------------------------------FIN Turnos/empresa/cola --------------------------------------->  */
 
 /* <----------------------------------------Endpoint Turnos/EMPRESA/AvanzarCola --------------------------------------->  */ 
+// Endpoint para avanzar cola (cambio estado del primer cliente a CANCELADO y luego lo apunto en la tabla strike)
 app.put("/turnos/empresa/avanzar_cola",
     function(request,response)
     {
@@ -306,6 +368,7 @@ app.put("/turnos/empresa/avanzar_cola",
         let hoy = new Date(Date.now());
         let fecha_actual_espera= new Date();
         let empresa=request.body.id_usuario_empresa;
+        console.log(request.body.id_usuario_empresa)
         let params=[empresa];
         let sql ="SELECT tiempo_espera FROM usuario_empresa WHERE id_usuario_empresa=?"
         connection.query(sql,params, 
@@ -368,6 +431,79 @@ app.put("/turnos/empresa/avanzar_cola",
     }
 ) 
 /* <----------------------------------------FIN Turnos/EMPRESA/AvanzarCola --------------------------------------->  */
+
+/* <----------------------------------------Endpoint puntuacion --------------------------------------->  */ 
+// EndPoint donde recibo un usuario y calculo su "fama", retorna un string con el color de su fama 
+app.get("/strike",
+    function(request,response)
+    {
+        // FECHA ACTUAL
+        let hoy = new Date(Date.now());
+        let karma=" ";
+        let cliente=request.query.id_usuario_cliente;
+        let params=[cliente,hoy,cliente,"Activo"];
+        let sql= "SELECT COUNT(*) AS locales_visitados FROM turnos WHERE id_usuario_cliente=? AND fecha_cierre_turno < ? AND estado=?"
+        connection.query(sql,params, 
+            function(err, res){
+                if(err){
+                 console.log(err);
+                 response.send({error: true, codigo: 200, mensaje: 'Error select todos los turnos'})
+                 }
+                else{
+                    console.log(res)
+                    let locales_visitados= res[0].locales_visitados;
+                    let params2=[cliente];
+                    let sql= "SELECT COUNT(*) AS numero_strike FROM puntuacion WHERE id_usuario_cliente=?;"
+                    connection.query(sql,params2, 
+                      function(err, res){
+                          if(err){
+                           console.log(err);
+                           response.send({error: true, codigo: 200, mensaje: 'Error select contar strike'})
+                           }
+                          else{
+                           console.log(res)
+                           let numero_strike=res[0].numero_strike
+                           locales_visitados=10
+                           numero_strike=3
+                            
+                            if(locales_visitados==0){
+                                if(numero_strike>=3){
+                                  karma="red"
+                                  console.log("red")
+                                }
+                                else if(numero_strike>=2){
+                                  karma="yellow"
+                                  console.log("yellow")
+                                }
+                                else{
+                                  karma="green"
+                                  console.log("green")
+                                }
+                            }
+                            else if(locales_visitados*0.3<=numero_strike){
+                              karma="red"
+                              console.log("red")
+                            }
+                            else if(locales_visitados*0.2<=numero_strike){
+                              karma="yellow"
+                              console.log("yellow")
+                            }
+                            else{
+                              karma="green"
+                              console.log("green")
+                            }
+                            // retorna un string con el color de su fama
+                            response.send(karma)
+                          }
+                      }
+                    )
+                }
+            }
+        )
+    }
+)   
+/* <----------------------------------------FIN puntuacion --------------------------------------->  */
+
 
 app.post("/favoritos",
     function(request, response){
