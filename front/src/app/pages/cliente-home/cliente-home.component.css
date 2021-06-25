@@ -4,16 +4,15 @@
   top:20px;
 
 }
-#hijo2{
-  position: absolute;
-  top: 15px;
-}
 
 .hijo1{
-  background-color: #5C74F6;
-  color: #5c73f600;
-  width: 35vw;
-  height: 20px;
+  background-color: #5c73f693;
+  color: white;
+  width: max-content;
+  height: max-content;
+  font-family: Black HanSans;
+  font: bolder;
+  font-size: 3vw;
 }
 
 .rowstefi {
@@ -107,8 +106,7 @@ img {
     margin-bottom: 30px;
   }
   .hijo1{
-    width: 60vw;
-    height: 10px;
+    font-size: 15px;
   }
 
   .titulo2 {
