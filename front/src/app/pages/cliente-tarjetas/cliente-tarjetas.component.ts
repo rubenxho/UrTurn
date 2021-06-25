@@ -28,7 +28,7 @@ export class ClienteTarjetasComponent implements OnInit {
   /*********************************/
 
   constructor(private localService: LocalServiceService) {
-    //this.usuarioEmpresa = null;
+    this.usuarioEmpresa = new UsuarioEmpresa ();;
 
     //inicializar local
     this.local = new UsuarioEmpresa ();

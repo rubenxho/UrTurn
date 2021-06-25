@@ -13,7 +13,7 @@ export class ClienteFavoritosComponent implements OnInit {
   // para localEmpresa
   @Input() usuarioEmpresa: any;
 
-  public local: UsuarioEmpresa;
+
   public locales: UsuarioEmpresa[];
   public favoritos: UsuarioEmpresa[];
 
@@ -23,7 +23,7 @@ export class ClienteFavoritosComponent implements OnInit {
   
 
   constructor(private localService: LocalServiceService,private favoritoService:FavoritoServiceService ) {
-
+  
     this.locales = [];
     this.favoritos=[]
   }
