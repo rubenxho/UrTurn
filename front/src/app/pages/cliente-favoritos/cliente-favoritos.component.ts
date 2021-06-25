@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { LocalServiceService } from 'src/app/services/local-service.service';
 import { FavoritoServiceService } from 'src/app/services/favorito-service.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-cliente-favoritos',
@@ -13,7 +14,7 @@ export class ClienteFavoritosComponent implements OnInit {
   public locales: UsuarioEmpresa[];
   public favoritos: UsuarioEmpresa[];
 
-  constructor(private localService: LocalServiceService,private favoritoService:FavoritoServiceService ) {
+  constructor(private localService: LocalServiceService,private favoritoService:FavoritoServiceService, private loginService:LoginService) {
 
     this.locales = [];
     this.favoritos=[]
@@ -32,7 +33,7 @@ export class ClienteFavoritosComponent implements OnInit {
   filtrar(filtro:string[]){
    
     
-    this.favoritoService.obtenerFav(filtro[0], filtro[1], 0).subscribe((data:UsuarioEmpresa[])=>{
+    this.favoritoService.obtenerFav(filtro[0], filtro[1], this.loginService.login.id_usuario_cliente ).subscribe((data:UsuarioEmpresa[])=>{
         this.favoritos = data;
 
       })

@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { LocalServiceService } from 'src/app/services/local-service.service';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { Opiniones } from 'src/app/models/opiniones';
+import { FavoritoServiceService } from 'src/app/services/favorito-service.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-cliente-tarjetas',
@@ -26,7 +28,7 @@ export class ClienteTarjetasComponent implements OnInit {
 
   /*********************************/
 
-  constructor(private localService: LocalServiceService) {
+  constructor(private localService: LocalServiceService, private FavService: FavoritoServiceService, private loginService: LoginService) {
     this.usuarioEmpresas = [];
 
     //inicializar local
@@ -43,11 +45,14 @@ export class ClienteTarjetasComponent implements OnInit {
   }
   //method para guardar a favorito
   
-  fav() {
+  fav( id_usuario_empresa:any) {
     this.favorito = !this.favorito;
+   
+    id_usuario_empresa
+    this.FavService.anyadirFav( this.loginService.login.id_usuario_cliente, id_usuario_empresa)
   }
 
-  // confirma hace la cola
+  // confirma hacer la cola
   comfirmadoCola() {
     this.enCola = true;
   }

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row  row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-        <ng-container *ngFor="let usuarioEmpresa of usuarioEmpresas">
+        <ng-container *ngFor="let usuarioEmpresa of usuarioEmpresas; let i=index">
             <div class="col">
                 <div class="card">
                     <img src="{{usuarioEmpresa.imagen_url}}" class="card-img-top" alt="" data-bs-toggle="tooltip"
@@ -40,7 +40,7 @@
                             </ng-template>
 
                             <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
-                                <i class="fas fa-heart" (click)="fav()"></i>
+                                <i class="fas fa-heart" (click)="fav(i)"></i>
                             </span>
                         </div>
 
