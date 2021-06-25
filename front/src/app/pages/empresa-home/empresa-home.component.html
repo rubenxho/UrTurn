@@ -14,7 +14,7 @@
             <div class="separador"></div>
             <div class="ruben-avanzar-cola">
                 <!-- Botono modal iniciar -->
-                    <div class="col der2" *ngIf="estadoCola">
+                    <div class="col der2" *ngIf="!estadoCola">
                         <button type="button"  class="boton-avanzar-cola" data-toggle="modal" data-target="#modalIniciar">
                             Iniciar Cola
                         </button>
@@ -22,7 +22,7 @@
                         <app-modal [mensajeModal]='mensajeModalIniciar' (eventoCola)="botonIniciarDetener($event)"></app-modal>
                     </div>
                     <!-- Botono modal detener -->
-                    <div class="col der2" *ngIf="!estadoCola">
+                    <div class="col der2" *ngIf="estadoCola">
                         <button type="button"  class="boton-detener-cola" data-toggle="modal" data-target="#modalDetener">
                             Detener Cola
                         </button>
@@ -38,46 +38,46 @@
                     <div class="cuadros">
                         <i class="fas fa-male" style="font-size: 40px; margin-top: 5px;"></i>
                         <p class="cuadros-texto">Personas en Cola:</p>
-                        <p class="cuadros-texto numero">9</p>
+                        <p class="cuadros-texto numero">{{datosGenerales.numero_clientes_cola}}</p>
                     </div>
                     <div class="cuadros">
                         <i class="fas fa-child" style="font-size: 40px;margin-top: 5px;" ></i>
                         <p class="cuadros-texto" style="margin-bottom: 20px;">Numero de Cliente:</p>
-                        <p class="cuadros-texto numero">8</p>
+                        <p class="cuadros-texto numero">{{datosGenerales.numero_ticket}}</p>
                     </div>
                     <div class="cuadros cuadr2 ">
                         <i class="fas fa-ticket-alt" style="font-size: 40px; margin-top: 5px;"></i>
                         <p class="cuadros-texto" style="margin-top: -5px;">Proximo Cliente:</p>
-                        <p class="cuadros-texto numero" style="font-size: 30px; ">Rubenrivas15</p>
+                        <p class="cuadros-texto numero" style="font-size: 30px; ">{{datosGenerales.proximo_cliente}}</p>
                         
                     </div>
                     <div class="cuadros cuadr2 ">
                         <i class="fas fa-walking" style="font-size: 40px;margin-top: 5px;" ></i>
                         <p class="cuadros-texto" >Clientes Atendidos:</p>
-                        <p class="cuadros-texto numero" >20</p>
+                        <p class="cuadros-texto numero" >{{datosGenerales.clientes_atendidos}}</p>
                     </div>
                 </div>
             
         </div>
 
 
-        <div class="ruben-row3 contenedor-2 responsive-movil" style="margin-top: 50px;" >
+        <div class="ruben-row3 contenedor-2 responsive-movil" style="margin-top: 20px;" >
             <hr>
                 <div class="cuadros">
                     <p class="cuadros-texto" style="margin-bottom: 5px;">Personas en Cola:</p>
-                    <p class="cuadros-texto numero" >9</p>                        
+                    <p class="cuadros-texto numero" >{{datosGenerales.numero_clientes_cola}}</p>                        
                 </div>
                 <div class="cuadros">
                     <p class="cuadros-texto" style="margin-bottom: 5px;">Numero de Cliente:</p>
-                    <p class="cuadros-texto numero" >8</p>
+                    <p class="cuadros-texto numero" >{{datosGenerales.numero_ticket}}</p>
                 </div>
                 <div class="cuadros">
                     <p class="cuadros-texto" style="margin-bottom: 5px;">Clientes Atendidos:</p>
-                    <p class="cuadros-texto numero" >20</p>
+                    <p class="cuadros-texto numero" >{{datosGenerales.proximo_cliente}}</p>
                 </div>
                 <div class="cuadros">
                     <p class="cuadros-texto" style="margin-bottom: 5px;">Proximo Cliente:</p>
-                    <p class="cuadros-texto numero" >Rubenrivas15</p>
+                    <p class="cuadros-texto numero" >{{datosGenerales.clientes_atendidos}}</p>
                 </div>      
         </div>
 

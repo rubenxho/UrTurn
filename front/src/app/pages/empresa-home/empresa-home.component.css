@@ -333,8 +333,10 @@
         padding: 10px;
         width: 300px;
         padding: 20px;
-        max-height: 80px;
-        margin-left: 45px;
+        padding-top: 1px;
+        max-height: 140px;
+        min-height: 130px;
+        margin-left: 42px;
     }
 
     .separador{
@@ -351,7 +353,7 @@
     }
 
     .ruben-avanzar-cola{
-        margin-top: 20px;
+        margin-top: -70px;
         margin-left: 105px;
         margin-bottom: -50px;
     }
@@ -371,12 +373,14 @@
         margin-left:-105px;
         height: 60px;
         margin-bottom: 0px;
+        width: 260px;
     }
     
     .boton-detener-cola{
         margin-left:-105px;
         height: 60px;
         margin-bottom: 0px;
+        width: 260px;
     }
 
     .responsive-web{
@@ -437,6 +441,10 @@
         padding-right: 20px;
         text-align: center;
         height: 35px;
+    }
+
+    .boton-modificar{
+        padding: 6px 7px 6px 7px;
     }
 }
 

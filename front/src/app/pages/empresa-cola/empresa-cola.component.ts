@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Puntuacion } from 'src/app/models/puntuacion';
+import { UsuarioEncola } from 'src/app/models/usuario-encola';
+import { BotonAvanzarService } from 'src/app/services/boton-avanzar.service';
+import { DatosclientesService } from 'src/app/services/datosclientes.service';
+import { DatosgeneralesService } from 'src/app/services/datosgenerales.service';
 import { PuntuacionService } from 'src/app/services/puntuacion.service';
 
 @Component({
@@ -12,56 +16,53 @@ export class EmpresaColaComponent implements OnInit {
   public mensajeModalAvanzar: string[];
   public ampliarUsuario: boolean;
   public infoUsuario: string;
+  public clientesEnCola: UsuarioEncola [];
+  public clienteVisto: UsuarioEncola
 
   //llamada servicio puntuacion
-
   public newPuntuacion: Puntuacion;
 
-  constructor(public puntuacionService: PuntuacionService) {
-    this.mensajeModalCola = [
-      'modalModificarCola',
-      'Confirmar nuevo tiempo de espera',
-      'Confirmar',
-      'Cancelar',
-      'Tiempo modificado correctamente!',
-    ];
-    this.mensajeModalAvanzar = [
-      'modalAvanzar',
-      '¿Desea avanzar la cola?',
-      'Si',
-      'No',
-      'Cola avanzada correctamente',
-    ];
+  constructor(public puntuacionService: PuntuacionService, private datosclientesService: DatosclientesService, private botonAvanzarService: BotonAvanzarService) {
+    this.clientesEnCola=new Array();
+    this.clienteVisto=new UsuarioEncola(0,"Sin Clientes","??????","??????","")
+    this.mensajeModalCola = ['modalModificarCola','Confirmar nuevo tiempo de espera','Confirmar','Cancelar','Tiempo modificado correctamente!'];
+    this.mensajeModalAvanzar = ['modalAvanzar','¿Desea avanzar la cola?','Si','No','Cola avanzada correctamente',"","3"];
     this.ampliarUsuario = true;
     this.infoUsuario = 'usuario1';
-
     //inicializar newPuntuacion
     this.newPuntuacion = new Puntuacion(0, 0, 0);
+    
   }
 
-  //funcion crear nueva puntuacion
-  crearPuntuacion(
-    id_usuario_cliente: number,
-    id_usuario_empresa: number,
-    date: string
-  ) {
-    let newPuntuacion = new Puntuacion(
-      0,
-      id_usuario_cliente,
-      id_usuario_empresa
-    );
-    this.puntuacionService.addPuntuacion(newPuntuacion).subscribe((data) => {
-      console.log(data);
-    });
-  }
-
-  ngOnInit(): void {}
-
-  mostrarUsuario(nombre: string) {
-    this.infoUsuario = nombre;
+  mostrarUsuario(index: number) {
+    console.log("mostrarusuario")
+    this.clienteVisto = this.clientesEnCola[index];
   }
 
   modificar() {
     this.ampliarUsuario = false;
+  }
+
+  botonAvanzarCola(click:boolean){
+    if(click==true){
+      console.log("flag avanzar cola")
+      let id=29
+      this.botonAvanzarService.updBotonAvanzar(id).subscribe(data=>{
+        this.clientesEnCola.splice(0, 1)
+        console.log(data)
+      })
+    }
+  }
+
+
+  ngOnInit(): void {
+    // Servicio datosClientes
+    this.datosclientesService.getDatosClientes().subscribe((data:any)=>{
+      this.clientesEnCola=data
+      console.log(data);
+      console.log(this.clientesEnCola)
+    })
+    
+
   }
 }
