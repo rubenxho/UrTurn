@@ -12,7 +12,8 @@ export class EmpresaOpinionesComponent implements OnInit {
     estrellas:0
   }
   constructor() {
-    this.opinionHijo = {img:"", name:"", comment:"", estrellas: 0}
+   this.opinionHijo = {img:"", nombre:"", opinion:"", nota: 0, fecha:""}
+    
    }
 
   ngOnInit(): void {
@@ -24,6 +25,4 @@ export class EmpresaOpinionesComponent implements OnInit {
     this.data[ index ] = value;
     console.log(this.data)
   }
-
-
 }

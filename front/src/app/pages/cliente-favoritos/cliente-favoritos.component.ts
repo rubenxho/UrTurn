@@ -11,9 +11,7 @@ export class ClienteFavoritosComponent implements OnInit {
   
   public locales: UsuarioEmpresa[];
   constructor(private localService: LocalServiceService) {
-    this.locales = [
-      
-    ];
+    this.locales = [];
   }
 
   

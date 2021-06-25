@@ -6,11 +6,11 @@
                 [ngClass]="{comentarColor: comentarAzul}" (click)="comentarCampo()">Comentar</button>
             <button type="button" class="btn btn-outline-primary comentariosColor"
                 [ngClass]="{comentariosColor: !comentarAzul}" (click)="comentariosCampo()"
-                (click)="opinionesCliente()">Mis
+                (click)="opinionesClienteSobreEmpresa()">Mis
                 comentarios</button>
         </div>
     </div>
-
+    <button (click)="empresaVistadas()">hhh</button>
     <!--campo de resenar-->
     <ng-container *ngIf="comentar">
         <div class="container resenas">
@@ -47,7 +47,6 @@
             </div>
         </div>
     </ng-container>
-
 
     <!--modal de dar una resena-->
     <div class="modal fade" id="resenaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -115,13 +114,11 @@
         </div>
     </div>
 
-    <!--campo de resenado
-
+    <!--campo de resenado-->
     <ng-container *ngIf="comentarios">
         <ng-container *ngFor="let opinion of opiniones">
-            <app-empresa-opiniones [opinionHijo]="opiniones"></app-empresa-opiniones>
+            <app-empresa-opiniones [opinionHijo]="opinion"></app-empresa-opiniones>
         </ng-container>
     </ng-container>
 
 </div>
--->
