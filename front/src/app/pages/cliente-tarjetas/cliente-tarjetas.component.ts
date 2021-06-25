@@ -60,11 +60,16 @@ export class ClienteTarjetasComponent implements OnInit {
   //funcion mostrar datos del local según los endpoints
   muestraLocal(){
     
-    this.localService.localElegido = this.usuarioEmpresa
+    this.localService.getTop().subscribe((data: any) => {
+      this.local= data;
+      console.log(this.local)
+    })
     
   }
     
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.muestraLocal()
+  }
 }
