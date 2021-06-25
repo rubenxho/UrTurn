@@ -25,6 +25,10 @@
                     
                     </div>
 
+                    <div>
+                        <button type="button" class="exit"> Cerrar Sesion </button>
+                    </div>
+
                 </div>
                 
 
@@ -32,14 +36,12 @@
             
                 <form class="formulario">
 
-                    
-
                     <input class="input2" type="text" name="name" placeholder="Nombre">  <br/><br/>
 
                     <input class="input2" type="password" name="password" placeholder="Contraseña">  <br/><br/>
-                            
+                    <input class="input2" type="text" name="address" placeholder="Direccion"> <br><br/>      
                     <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña">  <br/><br/>
-
+                    <input class="input2" type="text" name="phone" placeholder="Telefono">  <br/><br/>
                     <input class="input2" type="url" name="img" placeholder="Imagen">  <br/><br/>
                     <input class="input2" type="url" name="logo" placeholder="Logo">  <br/><br/>
 
@@ -70,4 +72,4 @@
 </div>
 
 
-<app-modal [mensajeModal]="empresaPerfil"></app-modal>
+<app-modal [mensajeModal]="empresaPerfil" (eventoGuardarPerfil)="subirCambios($event)"></app-modal>
