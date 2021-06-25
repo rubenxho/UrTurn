@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { LocalServiceService } from 'src/app/services/local-service.service';
 import { FavoritoServiceService } from 'src/app/services/favorito-service.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-cliente-favoritos',
@@ -17,12 +18,8 @@ export class ClienteFavoritosComponent implements OnInit {
   public locales: UsuarioEmpresa[];
   public favoritos: UsuarioEmpresa[];
 
-  /*********************************/
-  
-  // public locales: UsuarioEmpresa[];
-  
+  constructor(private localService: LocalServiceService,private favoritoService:FavoritoServiceService, private loginService:LoginService) {
 
-  constructor(private localService: LocalServiceService,private favoritoService:FavoritoServiceService ) {
   
     this.locales = [];
     this.favoritos=[]
@@ -40,14 +37,17 @@ export class ClienteFavoritosComponent implements OnInit {
 
 //evento para filtrar la búsqueda de locales favoritos
   filtrar(filtro:string[]){
-   
-    
-    this.favoritoService.obtenerFav(filtro[0], filtro[1], 0).subscribe((data:UsuarioEmpresa[])=>{
+   console.log(filtro)
+    console.log(this.loginService.login.id_usuario_cliente )
+    this.favoritoService.obtenerFav(filtro[0], filtro[1], this.loginService.login.id_usuario_cliente ).subscribe((data:UsuarioEmpresa[])=>{
         this.favoritos = data;
+        console.log(data);
+        
 
       })
     
   }
+  
     
  
   
