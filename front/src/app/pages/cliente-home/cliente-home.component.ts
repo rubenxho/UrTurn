@@ -23,55 +23,36 @@ export class ClienteHomeComponent implements OnInit {
     //inicializar local
     this.local = new UsuarioEmpresa ();
     this.usuarioEmpresa = null;
-    this.locales = [
-      new UsuarioEmpresa(
-        0,
-        'S1',
-        'restaurante',
-        '1231231',
-        123123,
-        'espana',
-        'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-        'ok',
-        1,
-        2,
-        3,
-        'urturn',
-        []
-      ),
-      new UsuarioEmpresa(
-        0,
-        'S2',
-        'restaurante',
-        '1231231',
-        123123,
-        'espana',
-        'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-        'ok',
-        1,
-        2,
-        3,
-        'urturn',
-        []
-      )
-    ];
+    this.locales = [];
     //*************************/
 
     this.mostrarTarjetas=false
   }
 
-  eventoMostrar(sustituir:boolean){
-    this.mostrarTarjetas=sustituir
+  
+
+  muestraLocal(id: number){
+
+    this.localService.getLocal(id).subscribe((data: any) => {
+      this.locales= data;
+    })
+    
+    // console.log(this.usuarioEmpresa);
+    // this.localService.localElegido = this.usuarioEmpresa;
+    
   }
 
-  muestraLocal(){
-    
-    console.log(this.usuarioEmpresa)
-    this.localService.localElegido = this.usuarioEmpresa
-    
+  muestraTopLocal(){
+
+    console.log(this.usuarioEmpresa);
+    this.localService.localesTop = this.usuarioEmpresa;
+
   }
+
+  
 
   ngOnInit(): void {
+
   }
 
 }
