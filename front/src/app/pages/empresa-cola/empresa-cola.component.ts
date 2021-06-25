@@ -18,24 +18,30 @@ export class EmpresaColaComponent implements OnInit {
   public infoUsuario: string;
   public clientesEnCola: UsuarioEncola [];
   public clienteVisto: UsuarioEncola
+  public karma:string
 
   //llamada servicio puntuacion
   public newPuntuacion: Puntuacion;
 
-  constructor(public puntuacionService: PuntuacionService, private datosclientesService: DatosclientesService, private botonAvanzarService: BotonAvanzarService) {
+  constructor(public puntuacionService: PuntuacionService, private datosclientesService: DatosclientesService, private botonAvanzarService: BotonAvanzarService, private karmaService: PuntuacionService) {
     this.clientesEnCola=new Array();
-    this.clienteVisto=new UsuarioEncola(0,"Sin Clientes","??????","??????","")
+    this.clienteVisto=new UsuarioEncola(0,0,"Sin Clientes","??????","??????","")
     this.mensajeModalCola = ['modalModificarCola','Confirmar nuevo tiempo de espera','Confirmar','Cancelar','Tiempo modificado correctamente!'];
     this.mensajeModalAvanzar = ['modalAvanzar','¿Desea avanzar la cola?','Si','No','Cola avanzada correctamente',"","3"];
     this.ampliarUsuario = true;
     this.infoUsuario = 'usuario1';
-    //inicializar newPuntuacion
-    this.newPuntuacion = new Puntuacion(0, 0, 0);
     
   }
 
   mostrarUsuario(index: number) {
-    console.log("mostrarusuario")
+    let id=this.clientesEnCola[index].id_usuario_cliente;
+    console.log(id)
+    this.karmaService.getKarma(id).subscribe((data:any)=>{
+      this.karma=data.karma
+      console.log(this.karmaService)
+      console.log(data);
+      
+    })
     this.clienteVisto = this.clientesEnCola[index];
   }
 

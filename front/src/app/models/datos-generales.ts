@@ -10,5 +10,7 @@ export class DatosGenerales {
         this.numero_ticket=numero_ticket;
         this.proximo_cliente=proximo_cliente;
         this.clientes_atendidos=clientes_atendidos;
+
+        
     }
 }

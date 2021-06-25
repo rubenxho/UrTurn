@@ -85,7 +85,7 @@ app.get("/turnos/cliente",
 
         let cliente=request.query.id_usuario_cliente;
         let params=[hoy,hoy,cliente,"Activo",hoy];
-        let sql= "SELECT t.id_turno, t.id_usuario_empresa, e.nombre_empresa, TRUNCATE((TO_SECONDS(fecha_apertura_turno)-TO_SECONDS(?))/60,0) AS tiempo_espera FROM turnos AS t INNER JOIN usuario_empresa AS e ON (t.id_usuario_empresa=e.id_usuario_empresa) WHERE DAY(fecha_apertura_turno)= DAY(?) AND id_usuario_cliente= ? AND estado=? AND fecha_apertura_turno > ? "
+        let sql= "SELECT t.id_turno, t.id_usuario_empresa, e.nombre_empresa,e.logo, TRUNCATE((TO_SECONDS(fecha_apertura_turno)-TO_SECONDS(?))/60,0) AS tiempo_espera FROM turnos AS t INNER JOIN usuario_empresa AS e ON (t.id_usuario_empresa=e.id_usuario_empresa) WHERE DAY(fecha_apertura_turno)= DAY(?) AND id_usuario_cliente= ? AND estado=? AND fecha_apertura_turno > ? "
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -342,7 +342,7 @@ app.get("/turnos/empresa/datos_clientes",
 
         let empresa=request.query.id_usuario_empresa;
         let params=[empresa,"Activo",hoy];
-        let sql= "SELECT t.id_turno,nombre_cliente, apellidos_cliente, telefono, imagen_url FROM turnos AS t  INNER JOIN usuario_cliente AS c ON (t.id_usuario_cliente=c.id_usuario_cliente) WHERE t.id_usuario_empresa=? AND estado=? AND fecha_apertura_turno> ? ORDER BY fecha_apertura_turno ASC "
+        let sql= "SELECT t.id_turno,t.id_usuario_cliente,nombre_cliente, apellidos_cliente, telefono, imagen_url FROM turnos AS t  INNER JOIN usuario_cliente AS c ON (t.id_usuario_cliente=c.id_usuario_cliente) WHERE t.id_usuario_empresa=? AND estado=? AND fecha_apertura_turno> ? ORDER BY fecha_apertura_turno ASC "
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -463,21 +463,19 @@ app.get("/strike",
                           else{
                            console.log(res)
                            let numero_strike=res[0].numero_strike
-                           locales_visitados=10
-                           numero_strike=3
                             
                             if(locales_visitados==0){
                                 if(numero_strike>=3){
                                   karma="red"
-                                  console.log("red")
+                                  console.log("red 0")
                                 }
                                 else if(numero_strike>=2){
                                   karma="yellow"
-                                  console.log("yellow")
+                                  console.log("yellow 0")
                                 }
                                 else{
                                   karma="green"
-                                  console.log("green")
+                                  console.log("green 0")
                                 }
                             }
                             else if(locales_visitados*0.3<=numero_strike){
@@ -493,7 +491,10 @@ app.get("/strike",
                               console.log("green")
                             }
                             // retorna un string con el color de su fama
-                            response.send(karma)
+                            let respuesta={
+                              "karma":karma
+                            }
+                            response.send(respuesta)
                           }
                       }
                     )
