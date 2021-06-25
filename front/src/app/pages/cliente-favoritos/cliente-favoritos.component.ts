@@ -31,14 +31,17 @@ export class ClienteFavoritosComponent implements OnInit {
 
 //evento para filtrar la búsqueda de locales favoritos
   filtrar(filtro:string[]){
-   
-    
+   console.log(filtro)
+    console.log(this.loginService.login.id_usuario_cliente )
     this.favoritoService.obtenerFav(filtro[0], filtro[1], this.loginService.login.id_usuario_cliente ).subscribe((data:UsuarioEmpresa[])=>{
         this.favoritos = data;
+        console.log(data);
+        
 
       })
     
   }
+  
     
  
   
