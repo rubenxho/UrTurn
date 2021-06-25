@@ -7,14 +7,14 @@ import { Puntuacion } from '../models/puntuacion';
 })
 export class PuntuacionService {
 
-  private url = 'http://localhost:3000/strike?id_usuario_cliente=3';
+  private url = 'http://localhost:3000/strike?id_usuario_cliente=';
 
   constructor(private http: HttpClient) { 
 
   }
 
-  getDatosClientes(){
-    return this.http.get(this.url)
+  getKarma(id:number){
+    return this.http.get(`${this.url}${id}`)
   }
 
 
