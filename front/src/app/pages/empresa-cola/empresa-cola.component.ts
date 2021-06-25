@@ -25,7 +25,7 @@ export class EmpresaColaComponent implements OnInit {
 
   constructor(public puntuacionService: PuntuacionService, private datosclientesService: DatosclientesService, private botonAvanzarService: BotonAvanzarService, private karmaService: PuntuacionService) {
     this.clientesEnCola=new Array();
-    this.clienteVisto=new UsuarioEncola(0,0,"Sin Clientes","??????","??????","")
+    this.clienteVisto=new UsuarioEncola(0,0,"Sin Clientes","??????","??????"," ")
     this.mensajeModalCola = ['modalModificarCola','Confirmar nuevo tiempo de espera','Confirmar','Cancelar','Tiempo modificado correctamente!'];
     this.mensajeModalAvanzar = ['modalAvanzar','¿Desea avanzar la cola?','Si','No','Cola avanzada correctamente',"","3"];
     this.ampliarUsuario = true;
