@@ -532,10 +532,10 @@ app.post("/favoritos",
 app.get("/userE",(request,response)=>{
 
     let sending;
-    let id = request.query.id_usuario_empresa
+    let id = request.query.id
     let params = [id];
 
-    if(id){ 
+    if(id>0){ 
         let sql = `SELECT userE.*  FROM urturn.usuario_empresa AS userE
         WHERE userE.id_usuario_empresa = ?;`       
         
@@ -631,7 +631,7 @@ app.delete("/deleteUserE", (request, response)=>{
         response.send({error: true, codigo: 200, mensaje: 'ERROR DELETE'})
     }
 });
-
+/******************************END CRUD USER-EMPRESA*****************************************/ 
 /******************************CRUD USER-CLIENTE*****************************************/ 
 
 app.get("/userC",(request,response)=>{
@@ -727,7 +727,7 @@ app.delete("/deleteUserC", (request, response)=>{
         response.send({error: true, codigo: 200, mensaje: 'ERROR DELETE'})
     }
 });
-
+/***************************************END CRUD USER-CLIENTE*************************************************/
 /****************************************************************************************************/
 
 app.delete("/favoritos",
