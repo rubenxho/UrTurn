@@ -1,8 +1,10 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Opiniones } from 'src/app/models/opiniones';
 import { ClienteOpinionesResenarService } from 'src/app/services/cliente-opiniones-resenar.service';
-import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { LoginService } from 'src/app/services/login.service';
+import { UsuarioCliente} from 'src/app/models/usuario-cliente'
+import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
+import { UsuarioServiceService } from 'src/app/services/usuario-service.service';
 
 @Component({
   selector: 'app-cliente-opiniones',
@@ -12,8 +14,8 @@ import { LoginService } from 'src/app/services/login.service';
 export class ClienteOpinionesComponent implements OnInit {
   @Input() usuarioEmpresa: any;
 
-  public locales: UsuarioEmpresa[];
-  public opiniones: Opiniones[];
+  public locales: any;
+  public opiniones: any;
   // para mostrar dos campos
   public comentar: boolean;
   public comentarios: boolean;
@@ -26,41 +28,11 @@ export class ClienteOpinionesComponent implements OnInit {
   // estrellas valor
   public estrellas:number;
 
-  constructor(private opinionesService: ClienteOpinionesResenarService) {
-    
-    this.locales = [
-      new UsuarioEmpresa(
-        0,
-        'S1',
-        'restaurante',
-        '1231231',
-        123123,
-        'espana',
-        'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-        'ok',
-        1,
-        2,
-        3,
-        'urturn',
-        []
-      ),new UsuarioEmpresa(
-        0,
-        'S1',
-        'restaurante',
-        '1231231',
-        123123,
-        'espana',
-        'https://www.elviajerofisgon.com/wp-content/uploads/2016/03/RestaurantesAntiguosEspa%C3%B1a_destacada-1280x720.jpg',
-        'ok',
-        1,
-        2,
-        3,
-        'urturn',
-        []
-      )
-    ];
-    this.opiniones = [];
-
+  // 
+  public lscInfoPintar:any
+  constructor(private opinionesService: ClienteOpinionesResenarService, private lsc: LoginService, private lscInfo: UsuarioServiceService) {
+    this.locales = "";
+    this.opiniones = "";
     // dos campos
     this.comentar = true;
     this.comentarios = false;
@@ -71,8 +43,9 @@ export class ClienteOpinionesComponent implements OnInit {
     this.quitarTarjeta = false;
     // valor estrella defecto
     this.estrellas=0
+    //
+    this.lscInfoPintar=""
   }
-
   // guardar a favorito
   fav() {
     this.favorito = !this.favorito;
@@ -94,28 +67,48 @@ export class ClienteOpinionesComponent implements OnInit {
     this.comentarAzul = false;
   }
 
-    //Agarrar estrellas
+  //Agarrar estrellas
   handleStar(event:any){
-    // const index:string = event.target.name
+  // const index:string = event.target.name
     const value:string = event.target.value
     this.estrellas = parseInt(value)
     console.log(this.estrellas)
     return this.estrellas
   }
+  /******************************************* CAMPO 1 comentar **************************************************/ 
+  // mostrar las colas que ha terminado de este cliente
+  empresaVistadas(){
+    this.lsc.login.id_usuario_cliente=11 // al final se quita
+    this.opinionesService.getEmpresaVisitadasDeCliente(this.lsc.login.id_usuario_cliente).subscribe((date:any)=>{
+      console.log(date[0])
+      console.log(this.locales)
+      return  this.locales = date
+    })
+  }
 
-  // crear un comentario
+  // crear un comentario nuevo
   crearComentario(textoOpinion:string){
     let nota = this.estrellas
-    let opinionNuevo = new Opiniones(0,1,"clienteNombre","clienteImagen",29,"empresaNombre","empresaImagen",nota,textoOpinion);
+
+    this.lscInfo.obtenerUserClienteId(this.lsc.login.id_usuario_cliente).subscribe((date:any)=>{
+      this.lscInfoPintar = date
+    console.log(this.lscInfoPintar)
+    })
+
+    let opinionNuevo = new Opiniones(0,this.lsc.login.id_usuario_cliente,"this.lscInfoPintar. ","clienteImagen",29,"empresaNombre","empresaImagen",nota,textoOpinion); // falta id de usuario empresa que el cliente ha terminado turno.
     this.opinionesService.postOpinion(opinionNuevo).subscribe((date:any)=>{
     })
     this.quitarTarjeta = true;
-
   }
-  // coger todos comentarios de este cliente
-  opinionesCliente() {
-    this.opinionesService.getOpiniones().subscribe((date: any) => {
-    this.opiniones = date;
+
+
+  /******************************************* CAMPO 2 comentarios **************************************************/ 
+  // coger todos comentarios hechos de este cliente, mostrar la info de la empresa.
+  opinionesClienteSobreEmpresa() {
+    let id = this.lsc.login.id_usuario_cliente;
+    this.opinionesService.getEmpresaOpiniones(id).subscribe((date: any) => {
+      console.log(date)
+      return this.opiniones = date;
     });
   }
 

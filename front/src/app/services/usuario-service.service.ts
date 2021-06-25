@@ -17,8 +17,8 @@ export class UsuarioServiceService {
   
   /************EMPRESA**************/ 
         
-  public obtenerUserEmpresaId(id:any):any{
-      return this.http.get(`${this.url}/userE`, id)
+  public obtenerUserEmpresaId(id:number):any{
+      return this.http.get(`${this.url}/userE?id=${id}`)
   }
 
   public obtenerUserEmpresa():any{
@@ -39,10 +39,10 @@ export class UsuarioServiceService {
       return this.http.get(`${this.url}/userC`)
   }
 
-  public obtenerUserClienteId(id:any):any{
+  public obtenerUserClienteId(id:number):any{
     return this.http.get(`${this.url}/userC?id=${id}`)
   }
-  public putUserCliente(clue:UsuarioCliente):any{
+  public actualizarUserCliente(clue:UsuarioCliente):any{
     console.log(clue)
     return this.http.put(`${this.url}/userC`, clue)
   }

@@ -17,16 +17,17 @@ public favoritos: UsuarioEmpresa[];
 
   obtenerFav(categoria:string, cp:string, id_usuario_cliente:number){
     let codigo:any
-
-    if(cp==null && categoria==null ){
+    console.log("flag")
+    if(cp=="" && categoria=="" ){
+      console.log("hola")
      codigo = this.http.get(this.url + `?id=` + id_usuario_cliente)
     }
 
-    else if(cp==null){
+    else if(cp==""){
       codigo= this.http.get(this.url + `?categoria=` + categoria + `&` + `?id=` + id_usuario_cliente)
     }
 
-    else if(categoria==null){
+    else if(categoria==""){
       codigo = this.http.get(this.url + `?cp=` + cp + `&` + `?id=` + id_usuario_cliente)
     }
 

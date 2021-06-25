@@ -1,60 +1,60 @@
 <!-- Desktop -->
-<div class="global one"> 
+<div class="global one">
 
     <div class="conteiner">
 
-    <!-- caja de reseñas -->
-    
+        <!-- caja de reseñas -->
+
         <div class="group">
 
             <!-- <div class="user"> -->
-        
-                <!-- <div class="pic-profile"> -->
-                    <div class="container">
-                        <div class="div-img" >
-                        <img class="img" src="{{opinionHijo.img}}" title="Foto10" alt="Foto10">
-                        <div class="text">{{opinionHijo.name}}</div>
-                        
-                        </div>
-                    </div>
-                <!-- </div> -->
-                    <!-- <p class="user-name"> david </p> -->
+
+            <!-- <div class="pic-profile"> -->
+            <div class="container">
+                <div class="div-img">
+                    <img class="img" src="{{opinionHijo.usuario_empresa_imagen}}" title="Foto10" alt="Foto10">
+                    <div class="text">{{opinionHijo.nombre}}</div>
+
+                </div>
+            </div>
             <!-- </div> -->
-        
-                <div class="comment">
-                    <p class="comment-user">{{opinionHijo.comment}}</p>
+            <!-- <p class="user-name"> david </p> -->
+            <!-- </div> -->
+
+            <div class="comment">
+                <p class="comment-user">{{opinionHijo.opinion}}</p>
+            </div>
+
+            <div class="stars">
+
+                <div class="valoracion">
+                    <form (input)=handleStar($event)>
+                        <p class="clasificacion">
+                            <input id="radio1" type="radio" name="estrellas" value="5">
+                            <label for="radio1">★</label>
+                            <input id="radio2" type="radio" name="estrellas" value="4">
+                            <label for="radio2">★</label>
+                            <input id="radio3" type="radio" name="estrellas" value="3">
+                            <label for="radio3">★</label>
+                            <input id="radio4" type="radio" name="estrellas" value="2">
+                            <label for="radio4">★</label>
+                            <input id="radio5" type="radio" name="estrellas" value="1">
+                            <label for="radio5">★</label>
+                        </p>
+                    </form>
                 </div>
-        
-                <div class="stars">
-            
-                    <div class="valoracion">
-                            <form>
-                                <p class="clasificacion">
-                                    <input id="radio1" type="radio" name="estrellas" value="5">
-                                    <label for="radio1">★</label>
-                                    <input id="radio2" type="radio" name="estrellas" value="4">
-                                    <label for="radio2">★</label>
-                                    <input id="radio3" type="radio" name="estrellas" value="3">
-                                    <label for="radio3">★</label>
-                                    <input id="radio4" type="radio" name="estrellas" value="2">
-                                    <label for="radio4">★</label>
-                                    <input id="radio5" type="radio" name="estrellas" value="1">
-                                    <label for="radio5">★</label>
-                                </p>
-                            </form>
-                    </div>
-        
-                </div>
+
+            </div>
         </div>
-    </div>  
+    </div>
 </div>
 
 <!-- ********************Mobile********************  -->
 
-<div class="global two"> 
+<div class="global two">
 
     <!-- reseñas movil -->
-    
+
     <div class="group">
         <!-- Foto, nombre y estrellas -->
         <div class="user">
@@ -63,12 +63,12 @@
                 <img src="{{opinionHijo.img}}" alt="foto de cliente">
             </div>
             <!-- Nombre -->
-            <p class="user-name"> {{opinionHijo.name}} </p>
-                <!-- Estrellas -->
-                <div class="stars">
-            
-                    <div class="valoracion">
-                        <form>
+            <p class="user-name"> {{opinionHijo.nombre}} </p>
+            <!-- Estrellas -->
+            <div class="stars">
+
+                <div class="valoracion">
+                    <form>
                         <p class="clasificacion">
                             <input id="radio1" type="radio" name="estrellas" value="{{opinionHijo.estrellas}}">
                             <label for="radio1">★</label>
@@ -81,16 +81,16 @@
                             <input id="radio5" type="radio" name="estrellas" value="{{opinionHijo.estrellas}}">
                             <label for="radio5">★</label>
                         </p>
-                        </form>
-                    </div>
-        
+                    </form>
                 </div>
+
             </div>
+        </div>
         <!--Are Comentario -->
         <div class="comment">
             <!-- Comenteario -->
-            <p class="comment-user">{{opinionHijo.comment}}</p>
+            <p class="comment-user">{{opinionHijo.opinion}}</p>
         </div>
 
-    </div>   
+    </div>
 </div>

@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { LocalServiceService } from 'src/app/services/local-service.service';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { Opiniones } from 'src/app/models/opiniones';
+import { FavoritoServiceService } from 'src/app/services/favorito-service.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-cliente-tarjetas',
@@ -18,7 +20,7 @@ export class ClienteTarjetasComponent implements OnInit {
   // para modal
   public enCola: boolean;
   public ticket: number;
- // public usuarioEmpresas:any
+  public usuarioEmpresas:any
 
   // para localEmpresa
 
@@ -27,8 +29,10 @@ export class ClienteTarjetasComponent implements OnInit {
 
   /*********************************/
 
-  constructor(private localService: LocalServiceService) {
-    //this.usuarioEmpresa = null;
+  constructor(private localService: LocalServiceService, private FavService: FavoritoServiceService, private loginService: LoginService) {
+    this.usuarioEmpresas = [];
+    this.usuarioEmpresa = new UsuarioEmpresa ();
+
 
     //inicializar local
     this.local = new UsuarioEmpresa ();
@@ -42,11 +46,15 @@ export class ClienteTarjetasComponent implements OnInit {
   }
   //method para guardar a favorito
   
-  fav() {
-    this.favorito = !this.favorito;
+  fav( ) {
+    // id_usuario_empresa:any
+    // this.favorito = !this.favorito;
+   
+    // id_usuario_empresa
+    // this.FavService.anyadirFav( this.loginService.login.id_usuario_cliente, id_usuario_empresa)
   }
 
-  // confirma hace la cola
+  // confirma hacer la cola
   comfirmadoCola() {
     this.enCola = true;
   }
@@ -60,11 +68,16 @@ export class ClienteTarjetasComponent implements OnInit {
   //funcion mostrar datos del local según los endpoints
   muestraLocal(){
     
-    this.localService.localElegido = this.usuarioEmpresa
+    this.localService.getTop().subscribe((data: any) => {
+      this.local= data;
+      console.log(this.local)
+    })
     
   }
     
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.muestraLocal()
+  }
 }
