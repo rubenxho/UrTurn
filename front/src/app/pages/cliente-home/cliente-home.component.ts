@@ -31,10 +31,11 @@ export class ClienteHomeComponent implements OnInit {
 
   
 
-  muestraLocal(id: number){
+  muestraLocal(){
 
-    this.localService.getLocal(id).subscribe((data: any) => {
+    this.localService.getTop().subscribe((data: any) => {
       this.locales= data;
+      console.log(this.locales)
     })
     
     // console.log(this.usuarioEmpresa);
@@ -52,7 +53,7 @@ export class ClienteHomeComponent implements OnInit {
   
 
   ngOnInit(): void {
-
+    this.muestraLocal()
   }
 
 }
