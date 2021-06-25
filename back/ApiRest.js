@@ -899,51 +899,71 @@ app.post("/empresa-registro", (request, response) => {
 
 /********************************************ENDPOINT CLIENTEOPINIONES******************************************************/
 app.get("/opiniones", (req, res) => {
-  let paramsCliente = [req.query.id_usuario_cliente];
+  let paramsEmpresa = [req.query.id_usuario_empresa];
   const sqlCliente = `  
   SELECT op.id_opiniones, userC.id_usuario_cliente ,userC.nombre_cliente, userC.imagen_url,  op.nota, op.opinion, op.fecha
   FROM urturn.opiniones AS op
   JOIN urturn.usuario_cliente AS userC 
   ON op.id_usuario_cliente = userC.id_usuario_cliente
-  WHERE userC.id_usuario_cliente = ?;`;
+  JOIN urturn.usuario_empresa AS userE 
+  ON userE.id_usuario_empresa = op.id_usuario_empresa 
+  WHERE userE.id_usuario_empresa = ?
+  ORDER BY op.fecha DESC;`;
 
-  let paramsEmpresa = [req.query.id_usuario_empresa];
+
+  let paramsCliente = [req.query.id_usuario_cliente];
   const sqlEmpresa = `
   SELECT op.id_opiniones, userE.id_usuario_empresa ,userE.nombre_empresa, userE.imagen_url,  op.nota, op.opinion, op.fecha
   FROM urturn.opiniones AS op
   JOIN urturn.usuario_empresa AS userE 
   ON op.id_usuario_empresa = userE.id_usuario_empresa
-  WHERE userE.id_usuario_empresa = ?;`;
+  JOIN urturn.usuario_cliente AS userC 
+  ON op.id_usuario_cliente = userC.id_usuario_cliente
+  WHERE userC.id_usuario_cliente = ?
+  ORDER BY op.fecha DESC;`;
 
-  const sqlAll = `SELECT * FROM urturn.opiniones`;
-
-  if (paramsCliente[0] != undefined && paramsEmpresa[0] == undefined) {
-    connection.query(sqlCliente, paramsCliente, (err, dbres) => {
+  if (paramsEmpresa[0] != undefined && paramsCliente[0] == undefined) {
+    connection.query(sqlCliente, paramsEmpresa, (err, dbres) => {
       if (err) {
         res.status(400).send({ error: true });
       } else {
         res.status(200).send(dbres);
       }
     });
-  } else if (paramsEmpresa[0] != undefined && paramsCliente[0] == undefined) {
-    connection.query(sqlEmpresa, paramsEmpresa, (err, dbres) => {
+  } else if (paramsCliente[0] != undefined && paramsEmpresa[0] == undefined) {
+    connection.query(sqlEmpresa, paramsCliente, (err, dbres) => {
       if (err) {
         res.status(400).send({ error: true });
       } else {
         res.status(200).send(dbres);
       }
     });
-  } else {
-    connection.query(sqlAll, (err, dbres) => {
+  }    
+});
+
+app.get("/opiniones/empresa_visitada",(req,res)=>{
+let paramsCliente2 = [req.query.id_usuario_cliente];
+  const sqlAll = `
+  SELECT uE.id_usuario_empresa, uE.nombre_empresa, uE.imagen_url
+  FROM urturn.usuario_empresa AS uE
+  INNER JOIN urturn.turnos AS turns
+  ON uE.id_usuario_empresa = turns.id_usuario_empresa 
+  INNER JOIN urturn.opiniones AS opinion
+  ON uE.id_usuario_empresa = opinion.id_usuario_empresa  
+  WHERE 
+  turns.id_usuario_cliente = 11
+  and (turns.fecha_cierre_turno < NOW()) and turns.estado = "activo"
+  GROUP BY uE.id_usuario_empresa  
+  `;
+  connection.query(sqlAll, paramsCliente2, (err, dbres) => {
       if (err) {
         res.status(400).send({ error: true });
       } else {
         console.log(dbres);
         res.status(200).send(dbres);
       }
-    });
-  }
-});
+    }); 
+})
 
 app.post("/opiniones", (req, res) => {
   const params = [

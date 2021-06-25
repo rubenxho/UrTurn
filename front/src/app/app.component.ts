@@ -12,7 +12,7 @@ export class AppComponent {
   public estado:boolean;
 
   constructor(public ls:LoginService) {
-    this.header = 'Cliente';
+    this.header = 'Empresa';
     this.estado = false;
   }
 

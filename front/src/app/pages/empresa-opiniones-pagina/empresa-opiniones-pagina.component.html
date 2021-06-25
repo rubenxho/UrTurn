@@ -1,5 +1,4 @@
-<div class="global">
-    <!-- <app-empresa-opiniones></app-empresa-opiniones> -->
-</div>
-
-<app-empresa-opiniones [opinionHijo]="opinionEmpresa"></app-empresa-opiniones>
+<!--El controlador no esta preparado. falta el id de userE,,,, espera el service de empresa-->
+<ng-container *ngFor="let opinionEmpresa of opinionEmpresas">
+    <app-empresa-opiniones [opinionHijo]="opinionEmpresa"></app-empresa-opiniones>
+</ng-container>
