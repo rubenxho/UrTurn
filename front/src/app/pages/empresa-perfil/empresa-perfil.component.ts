@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { UsuarioServiceService } from 'src/app/services/usuario-service.service';
+import { LoginService } from 'src/app/services/login.service';
+import { Login } from 'src/app/models/login';
+
 
 @Component({
   selector: 'app-empresa-perfil',
@@ -24,15 +27,28 @@ export class EmpresaPerfilComponent implements OnInit {
     timeWait:"",
     txt:""
   }
-  public owner = 29;
+  public owner:number;
+
   public me:UsuarioEmpresa = new UsuarioEmpresa(0, "", "", "", 0, "", "", "", "", "", 0, "");
 
   public user:UsuarioEmpresa = new UsuarioEmpresa(0, "", "", "", 0, "", "", "", "", "", 0, "");
 
-  constructor(private apiUserService:UsuarioServiceService) { 
+  constructor(private apiUserService:UsuarioServiceService, private lsowner:LoginService) { 
 
     this.empresaPerfil = ["modalModificar","¿Seguro que desea enviar su perfil?", "Sí", "No", "Perfil enviado, gracias", "", "2"];
+    this.owner = this.lsowner.login.id_usuario_empresa;
 
+  }
+
+  ngOnInit(): void {
+    // console.log(this.owner)
+    this.apiUserService.obtenerUserEmpresaId(this.owner)
+    .subscribe((data:any)=>{
+      console.log(data)
+      this.me = data[0]
+      console.log(this.me)
+      return this.me
+    })
   }
 
   handelChange(event:any){
@@ -42,10 +58,10 @@ export class EmpresaPerfilComponent implements OnInit {
   }
 
   handelClick(){
-    // console.log(this.data)
+    console.log(this.data)
     console.log(this.user)
     this.user = new UsuarioEmpresa(this.owner, this.data.name, this.data.category, this.data.telefono, this.data.codigo_postal, "", this.data.img, this.data.txt, this.data.open, this.data.close, this.data.timeWait, this.data.logo)
-    // console.log(this.user)
+    console.log(this.user)
     return this.user
   }
 
@@ -56,11 +72,6 @@ export class EmpresaPerfilComponent implements OnInit {
         // console.log(data)
         return data = this.user;
       })
-
     }
   }
-
-  ngOnInit(): void {
-  }
-
 }

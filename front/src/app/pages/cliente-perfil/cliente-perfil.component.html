@@ -9,11 +9,11 @@
             <div class="pic-perfil">
                 
                 <div class="foto">
-                    <img class="imagen" name=img  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="  Not Found  ">
+                    <img class="imagen" name=img  src="{{me.imagen_url}}" alt=" Not Found ">
                     
-                    <div>
+                    <!-- <div>
                         <button type="button" class="exit"> Cerrar Sesion </button>
-                    </div>
+                    </div> -->
 
                 </div>
                 
@@ -24,15 +24,15 @@
 
                     <input class="input2" type="text" name="img" placeholder="Imagen"  alter="photo">  <br/><br/>
 
-                    <input class="input2" type="text" name="name" placeholder="Nombre">  <br/><br/>
+                    <input class="input2" type="text" name="name" placeholder="{{me.nombre_cliente}}">  <br/><br/>
 
-                    <input class="input2" type="text" name="lastName" placeholder="Apellido">  <br/><br/>
+                    <input class="input2" type="text" name="lastName" placeholder="{{me.apellidos_cliente   }}">  <br/><br/>
 
                     <input class="input2" type="password" name="password" placeholder="Contraseña"> <br/><br/>
                             
                     <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña">  <br/><br/>
 
-                    <input class="input2" type="text" name="phone" placeholder="Telefono">  <br/><br/>
+                    <input class="input2" type="text" name="phone" placeholder="{{me.telefono}}">  <br/><br/>
                 
                     <div class="btn-container">
 
