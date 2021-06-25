@@ -9,12 +9,12 @@ export class LocalServiceService {
 
   private url = 'http://localhost:3000/local';
 
-  public locales: UsuarioEmpresa [];
+  public localesTop: UsuarioEmpresa [];
   public localElegido: UsuarioEmpresa;
 
   constructor(private http: HttpClient) {
     
-    this.locales = [];
+    this.localesTop = [];
     this.localElegido = new UsuarioEmpresa();
     
   }
@@ -44,6 +44,12 @@ export class LocalServiceService {
       return this.http.get(this.url);
 
     } 
+
+  }
+
+  getTop(){
+
+    return this.http.get(this.url);
 
   }
 

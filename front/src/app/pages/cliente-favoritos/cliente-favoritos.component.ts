@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { LocalServiceService } from 'src/app/services/local-service.service';
 import { FavoritoServiceService } from 'src/app/services/favorito-service.service';
@@ -9,9 +9,18 @@ import { FavoritoServiceService } from 'src/app/services/favorito-service.servic
   styleUrls: ['./cliente-favoritos.component.css'],
 })
 export class ClienteFavoritosComponent implements OnInit {
-  
+
+  // para localEmpresa
+  @Input() usuarioEmpresa: any;
+
+  public local: UsuarioEmpresa;
   public locales: UsuarioEmpresa[];
   public favoritos: UsuarioEmpresa[];
+
+  /*********************************/
+  
+  // public locales: UsuarioEmpresa[];
+  
 
   constructor(private localService: LocalServiceService,private favoritoService:FavoritoServiceService ) {
 
@@ -23,9 +32,10 @@ export class ClienteFavoritosComponent implements OnInit {
   muestraLocal(id: number){
     
     this.localService.getLocal(id).subscribe( (data: any) => {
-      this.locales = data;
+      this.favoritos = data;
       
     })
+    
   }
 
 //evento para filtrar la búsqueda de locales favoritos

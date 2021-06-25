@@ -9,7 +9,8 @@ import { Opiniones } from 'src/app/models/opiniones';
   styleUrls: ['./cliente-tarjetas.component.css'],
 })
 export class ClienteTarjetasComponent implements OnInit {
-  @Input() usuarioEmpresa: any;
+  @Input() usuarioEmpresa:UsuarioEmpresa;
+  
   //public usuarioEmpresa: UsuarioEmpresa;
 
   //atributo para hacer favorito
@@ -17,7 +18,7 @@ export class ClienteTarjetasComponent implements OnInit {
   // para modal
   public enCola: boolean;
   public ticket: number;
-  public usuarioEmpresas:any
+ // public usuarioEmpresas:any
 
   // para localEmpresa
 
@@ -27,14 +28,12 @@ export class ClienteTarjetasComponent implements OnInit {
   /*********************************/
 
   constructor(private localService: LocalServiceService) {
-    this.usuarioEmpresas = [];
+    //this.usuarioEmpresa = null;
 
     //inicializar local
     this.local = new UsuarioEmpresa ();
     
     //*************************/
-
-    this.usuarioEmpresa = null;
 
     this.ticket = 1150;
   //atributo para hacer favorito
@@ -53,15 +52,14 @@ export class ClienteTarjetasComponent implements OnInit {
   }
 
   // obtenerLocalAll() {
-    // return this.localService.
-    // connectar con LocalServiceService de David
+  //   return this.localService.
+  //   connectar con LocalServiceService de David
   // }
 
 
   //funcion mostrar datos del local según los endpoints
   muestraLocal(){
     
-    console.log(this.usuarioEmpresa)
     this.localService.localElegido = this.usuarioEmpresa
     
   }
