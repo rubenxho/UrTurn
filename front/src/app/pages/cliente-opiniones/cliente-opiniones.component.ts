@@ -28,7 +28,6 @@ export class ClienteOpinionesComponent implements OnInit {
   // estrellas valor
   public estrellas:number;
 
-  // 
   public lscInfoPintar:any
   constructor(private opinionesService: ClienteOpinionesResenarService, private lsc: LoginService, private lscInfo: UsuarioServiceService) {
     this.locales = "";
@@ -106,11 +105,18 @@ export class ClienteOpinionesComponent implements OnInit {
   // coger todos comentarios hechos de este cliente, mostrar la info de la empresa.
   opinionesClienteSobreEmpresa() {
     let id = this.lsc.login.id_usuario_cliente;
-    this.opinionesService.getEmpresaOpiniones(id).subscribe((date: any) => {
+    this.opinionesService.getOpinionesACliente(11).subscribe((date: any) => {
       console.log(date)
       return this.opiniones = date;
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.lsc.login.id_usuario_cliente=11 // al final se quita
+    this.opinionesService.getEmpresaVisitadasDeCliente(this.lsc.login.id_usuario_cliente).subscribe((date:any)=>{
+      console.log(date[0])
+      console.log(this.locales)
+      return  this.locales = date
+    })
+  }
 }
