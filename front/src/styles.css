@@ -12,3 +12,7 @@ body  {
     top:0;
 }
 
+.fijoAbajo  {
+    position:fixed;
+    bottom:0;
+}

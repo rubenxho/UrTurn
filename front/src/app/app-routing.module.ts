@@ -14,11 +14,12 @@ import { ClienteRegistroComponent } from './pages/cliente-registro/cliente-regis
 import { EmpresaRegistroComponent } from './pages/empresa-registro/empresa-registro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ClienteTarjetasComponent } from './pages/cliente-tarjetas/cliente-tarjetas.component';
+import { LoginService } from './services/login.service';
 
 const routes: Routes = [
   { path: 'cliente-perfil-empresa', component: ClientePerfilEmpresaComponent },
   // {path: "cliente-colas", component: ClienteColasComponent },
-  { path: 'clienteHome', component: ClienteHomeComponent },
+  { path: 'clienteHome', component: ClienteHomeComponent},
   { path: 'empresaHome', component: EmpresaHomeComponent },
   { path: 'clienteColas', component: ClienteColasComponent },
   { path: 'empresaCola', component: EmpresaColaComponent },
@@ -27,13 +28,13 @@ const routes: Routes = [
   { path: 'clienteFav', component: ClienteFavoritosComponent },
   { path: 'empresaPerfil', component: EmpresaPerfilComponent },
   { path: 'clientePerfil', component: ClientePerfilComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate:[LoginService] },
   { path: 'cliente-perfil-empresa', component: ClientePerfilEmpresaComponent },
   { path: 'cliente-colas', component: ClienteColasComponent },
-  { path: 'cliente-registro', component: ClienteRegistroComponent },
-  { path: 'empresa-registro', component: EmpresaRegistroComponent },
+  { path: 'cliente-registro', component: ClienteRegistroComponent, canActivate:[LoginService] },
+  { path: 'empresa-registro', component: EmpresaRegistroComponent, canActivate:[LoginService] },
   { path: 'clienteTarjetas', component: ClienteTarjetasComponent },
-  { path: '', component: LoginComponent },
+  // { path: '', component: LoginComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
