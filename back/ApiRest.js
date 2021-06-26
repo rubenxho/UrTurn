@@ -867,7 +867,7 @@ app.post("/empresa-registro", (request, response) => {
   let params1 = [request.body.nombre_empresa, request.body.telefono];
   let params3 = [0, request.body.email, request.body.password];
 
-  let sql1 = `INSERT INTO usuario_empresa (nombre_empresa,telefono) VALUES (?,?);`;
+  let sql1 = `INSERT INTO usuario_empresa (nombre_empresa,telefono,estado_turno) VALUES (?,?,'Turno Activo');`;
   let sql2 = `SELECT id_usuario_empresa FROM usuario_empresa WHERE nombre_empresa = ? AND telefono = ?;`;
   let sql3 = `INSERT INTO login (id_usuario_empresa, email, contraseña) VALUES (?,?,?);`;
 

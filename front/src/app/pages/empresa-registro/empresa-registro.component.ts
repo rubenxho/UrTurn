@@ -91,8 +91,15 @@ export class EmpresaRegistroComponent implements OnInit {
       let empresa:UsuarioEmpresa = new UsuarioEmpresa(0, rsocial, '', telefono, 0, '', '', '', null, null, 0, '', [], email, password);
       
       this.rs.postNuevoUsuario(empresa).subscribe((data:any) => {
+
         console.log(data.mensaje);
-        this.redirigir(`login`);
+
+        this.rs.mandarEmail(rsocial,email).subscribe((data2:any) => {
+          alert(`Correo enviado a la dirección ${email}`);
+          console.log(data2);
+          
+          this.redirigir(`login`);
+        })
       });
     }
   }
@@ -104,5 +111,10 @@ export class EmpresaRegistroComponent implements OnInit {
   ngOnInit(): void {
     this.ls.estado = false;
   }
-
 }
+
+// <form action="https://formspree.io/f/xvodqzrz" method="post">
+//   <label for="email">Your Email</label>
+//   <input name="Email" id="email" type="email">
+//   <button type="submit">Submit</button>
+// </form>
