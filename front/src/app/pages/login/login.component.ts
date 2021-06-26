@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { Login } from 'src/app/models/login';
@@ -106,8 +106,10 @@ export class LoginComponent implements OnInit {
     this.navigation.navigate([componente]);
   }
 
+  
+
   ngOnInit(): void {
-    this.ls.estado = false;
+    
   }
 
 }
