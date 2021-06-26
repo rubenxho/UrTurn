@@ -1,4 +1,98 @@
-<!--El controlador no esta preparado. falta el id de userE,,,, espera el service de empresa-->
+<!--
 <ng-container *ngFor="let opinionEmpresa of opinionEmpresas">
     <app-empresa-opiniones [opinionHijo]="opinionEmpresa"></app-empresa-opiniones>
+</ng-container>
+-->
+
+<!-- Desktop -->
+<ng-container *ngFor="let opinion of opiniones">
+    <div class="global one">
+
+        <div class="conteiner">
+            <!-- caja de reseñas -->
+
+            <div class="group">
+                <!-- <div class="user"> -->
+                <!-- <div class="pic-profile"> -->
+
+                <div class="container">
+                    <div class="div-img">
+                        <img class="img" src="{{opinion.imagen_url}}" title="cliente" alt="Foto10">
+                        <div class="text">{{opinion.nombre_cliente}}</div>
+                    </div>
+                </div>
+                <!-- </div> -->
+                <!-- <p class="user-name"> david </p> -->
+                <!-- </div> -->
+
+                <div class="comment">
+                    <p class="comment-user">{{opinion.opinion}}</p>
+                </div>
+
+                <div class="stars">
+                    <div class="valoracion">
+                        <form (input)=handleStar($event)>
+                            <p class="clasificacion">
+                                <input id="radio1" type="radio" name="estrellas" value="5">
+                                <label for="radio1">★</label>
+                                <input id="radio2" type="radio" name="estrellas" value="4">
+                                <label for="radio2">★</label>
+                                <input id="radio3" type="radio" name="estrellas" value="3">
+                                <label for="radio3">★</label>
+                                <input id="radio4" type="radio" name="estrellas" value="2">
+                                <label for="radio4">★</label>
+                                <input id="radio5" type="radio" name="estrellas" value="1">
+                                <label for="radio5">★</label>
+                            </p>
+                        </form>
+                        <p class="fechaDeOpinion">{{opinion.fecha}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ********************Mobile********************  -->
+    <div class="global two">
+        <!-- reseñas movil -->
+        <div class="group">
+            <!-- Foto, nombre y estrellas -->
+            <div class="user">
+
+                <div class="pic-profile">
+                    <img class="img" src="{{opinion.imagen_url}}" alt="foto de cliente">
+                </div>
+                <!-- Estrellas -->
+                <div class="stars">
+
+                    <div class="valoracion">
+                        <p class="user-name"> {{opinion.nombre_cliente}} </p>
+                        <form>
+                            <p class="clasificacion">
+                                <input id="radio1" type="radio" name="estrellas" value="5">
+                                <label for="radio1">★</label>
+                                <input id="radio2" type="radio" name="estrellas" value="4">
+                                <label for="radio2">★</label>
+                                <input id="radio3" type="radio" name="estrellas" value="3">
+                                <label for="radio3">★</label>
+                                <input id="radio4" type="radio" name="estrellas" value="2">
+                                <label for="radio4">★</label>
+                                <input id="radio5" type="radio" name="estrellas" value="1">
+                                <label for="radio5">★</label>
+                            </p>
+                        </form>
+                        <p class="fechaDeOpinion">{{opinion.fecha}}</p>
+                    </div>
+
+                </div>
+            </div>
+            <!--Are Comentario -->
+            <div class="comment">
+                <!-- Comenteario -->
+                <p class="comment-user">{{opinion.opinion}}</p>
+            </div>
+
+        </div>
+    </div>
 </ng-container>

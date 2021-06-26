@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Opiniones } from 'src/app/models/opiniones';
 
 @Component({
   selector: 'app-empresa-opiniones',
@@ -7,14 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class EmpresaOpinionesComponent implements OnInit {
 
-  @Input() opinionHijo:any
+  @Input() opinionHijo:any;
   
   public data:any = {
     estrellas:0
   }
   constructor() {
-   this.opinionHijo = {img:"", nombre:"", opinion:"", nota: 0, fecha:""}
-    
+   //this.opinionHijo = {img:"", nombre:"", opinion:"", nota: 0, fecha:""}
    }
 
   ngOnInit(): void {

@@ -902,7 +902,7 @@ app.post("/empresa-registro", (request, response) => {
 app.get("/opiniones", (req, res) => {
   let paramsEmpresa = [req.query.id_usuario_empresa];
   const sqlCliente = `  
-  SELECT op.id_opiniones, userC.id_usuario_cliente ,userC.nombre_cliente, userC.imagen_url,  op.nota, op.opinion, op.fecha
+  SELECT op.id_opiniones, userC.id_usuario_cliente ,userC.nombre_cliente, userC.imagen_url, op.nota, op.opinion, DATE_FORMAT(fecha,'%Y-%m-%d') fecha 
   FROM urturn.opiniones AS op
   JOIN urturn.usuario_cliente AS userC 
   ON op.id_usuario_cliente = userC.id_usuario_cliente
@@ -914,7 +914,7 @@ app.get("/opiniones", (req, res) => {
 
   let paramsCliente = [req.query.id_usuario_cliente];
   const sqlEmpresa = `
-  SELECT op.id_opiniones, userE.id_usuario_empresa ,userE.nombre_empresa, userE.imagen_url,  op.nota, op.opinion, op.fecha
+  SELECT op.id_opiniones, userE.id_usuario_empresa ,userE.nombre_empresa, userE.imagen_url, op.nota, op.opinion, DATE_FORMAT(fecha,'%Y-%m-%d') fecha 
   FROM urturn.opiniones AS op
   JOIN urturn.usuario_empresa AS userE 
   ON op.id_usuario_empresa = userE.id_usuario_empresa
@@ -953,7 +953,7 @@ let paramsCliente2 = [req.query.id_usuario_cliente];
   ON uE.id_usuario_empresa = opinion.id_usuario_empresa  
   WHERE 
   turns.id_usuario_cliente = 11
-  and (turns.fecha_cierre_turno < NOW()) and turns.estado = "activo"
+  and (turns.fecha_cierre_turno < CURDATE()) and turns.estado = "activo"
   GROUP BY uE.id_usuario_empresa  
   `;
   connection.query(sqlAll, paramsCliente2, (err, dbres) => {
@@ -975,7 +975,7 @@ app.post("/opiniones", (req, res) => {
     req.body.fecha,
   ];
   const sql = `
-  INSERT INTO opiniones (id_usuario_cliente, id_usuario_empresa, nota, opinion, fecha) VALUES (?,?,?,?,NOW())
+  INSERT INTO opiniones (id_usuario_cliente, id_usuario_empresa, nota, opinion, fecha) VALUES (?,?,?,?,CURDATE())
   `;
   connection.query(sql, params, (err, dbres) => {
     if (err) {

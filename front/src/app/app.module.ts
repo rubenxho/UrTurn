@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalCambioComponent } from './pages/modal-cambio/modal-cambio.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NotaComponent } from './pages/nota/nota.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderEmpresaComponent,
     ModalComponent,
     ModalCambioComponent,
+    NotaComponent,
     // RegistroEmpresaService
   ],
   imports: [

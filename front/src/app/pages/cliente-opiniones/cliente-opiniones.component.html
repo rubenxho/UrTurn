@@ -10,7 +10,7 @@
                 comentarios</button>
         </div>
     </div>
-    <button (click)="empresaVistadas()">hhh</button>
+
     <!--campo de resenar-->
     <ng-container *ngIf="comentar">
         <div class="container resenas">
@@ -117,7 +117,12 @@
     <!--campo de resenado-->
     <ng-container *ngIf="comentarios">
         <ng-container *ngFor="let opinion of opiniones">
+
+
+
             <app-empresa-opiniones [opinionHijo]="opinion"></app-empresa-opiniones>
+
+
         </ng-container>
     </ng-container>
 
