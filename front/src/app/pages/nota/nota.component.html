@@ -1,1 +1,7 @@
-<p>nota works!</p>
+<div>
+    <p class="clasificacion">
+      <ng-container *ngFor="let estrella of estrellas">
+          <span [ngClass]="{colorido: estrella.color, star: true}" >★</span>
+      </ng-container>
+    </p>
+</div>

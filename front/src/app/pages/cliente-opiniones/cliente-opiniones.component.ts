@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Opiniones } from 'src/app/models/opiniones';
 import { ClienteOpinionesResenarService } from 'src/app/services/cliente-opiniones-resenar.service';
 import { LoginService } from 'src/app/services/login.service';
-import { UsuarioCliente} from 'src/app/models/usuario-cliente'
+import { UsuarioCliente } from 'src/app/models/usuario-cliente';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { UsuarioServiceService } from 'src/app/services/usuario-service.service';
 
@@ -23,15 +23,21 @@ export class ClienteOpinionesComponent implements OnInit {
   public comentarAzul: boolean;
   // para el corazon de favorito
   public favorito: boolean;
-  // mesajes para modal
-  public quitarTarjeta: boolean;
   // estrellas valor
-  public estrellas:number;
+  public estrellas: number;
+  // la empresa que estamos comentando
+  private empresaComentando: any;
+  // la empresa que estamos quitando, sin comentar
+  private empresaSinComentar: any;
 
-  public lscInfoPintar:any
-  constructor(private opinionesService: ClienteOpinionesResenarService, private lsc: LoginService, private lscInfo: UsuarioServiceService) {
-    this.locales = "";
-    this.opiniones = "";
+  public lscInfoPintar: any;
+  constructor(
+    private opinionesService: ClienteOpinionesResenarService,
+    private lsc: LoginService,
+    private lscInfo: UsuarioServiceService
+  ) {
+    this.locales = '';
+    this.opiniones = '';
     // dos campos
     this.comentar = true;
     this.comentarios = false;
@@ -39,84 +45,107 @@ export class ClienteOpinionesComponent implements OnInit {
     this.comentarAzul = true;
     //para el corazon de favorito
     this.favorito = false;
-    this.quitarTarjeta = false;
     // valor estrella defecto
-    this.estrellas=0
-    //
-    this.lscInfoPintar=""
-  }
-  // guardar a favorito
-  fav() {
-    this.favorito = !this.favorito;
+    this.estrellas = 0;
+    this.lscInfoPintar = '';
   }
   // abandonar a comentar
-  dejarOpinar() {
-    this.quitarTarjeta = true;
+  dejarOpinar(local: any) {
+    this.empresaSinComentar = local;
   }
-  //funcion de boton de comentar
-  comentarCampo() {
-    this.comentar = true;
-    this.comentarios = false;
-    this.comentarAzul = true;
+
+  comentarLocal(local: any) {
+    this.empresaComentando = local;
   }
+
   //funcion de boton de comentarios
   comentariosCampo() {
     this.comentarios = true;
     this.comentar = false;
     this.comentarAzul = false;
   }
-
   //Agarrar estrellas
-  handleStar(event:any){
-  // const index:string = event.target.name
-    const value:string = event.target.value
-    this.estrellas = parseInt(value)
-    console.log(this.estrellas)
-    return this.estrellas
+  handleStar(event: any) {
+    // const index:string = event.target.name
+    const value: string = event.target.value;
+    this.estrellas = parseInt(value);
+    console.log(this.estrellas);
+    return this.estrellas;
   }
-  /******************************************* CAMPO 1 comentar **************************************************/ 
-  // mostrar las colas que ha terminado de este cliente
-  empresaVistadas(){
-    this.lsc.login.id_usuario_cliente=11 // al final se quita
-    this.opinionesService.getEmpresaVisitadasDeCliente(this.lsc.login.id_usuario_cliente).subscribe((date:any)=>{
-      console.log(date[0])
-      console.log(this.locales)
-      return  this.locales = date
-    })
+  /******************************************* CAMPO 1 comentar **************************************************/
+  //funcion de boton de comentar
+  comentarCampo() {
+    this.comentar = true;
+    this.comentarios = false;
+    this.comentarAzul = true;
+    
+    this.actualizarDatos();
+  }
+
+  actualizarDatos(){
+    // actual 
+    this.opinionesService
+      .getEmpresaVisitadasDeCliente(this.lsc.login.id_usuario_cliente)
+      .subscribe((date: any) => {
+        return (this.locales = date);
+      });
   }
 
   // crear un comentario nuevo
-  crearComentario(textoOpinion:string){
-    let nota = this.estrellas
-
-    this.lscInfo.obtenerUserClienteId(this.lsc.login.id_usuario_cliente).subscribe((date:any)=>{
-      this.lscInfoPintar = date
-    console.log(this.lscInfoPintar)
-    })
-
-    let opinionNuevo = new Opiniones(0,this.lsc.login.id_usuario_cliente,"this.lscInfoPintar. ","clienteImagen",29,"empresaNombre","empresaImagen",nota,textoOpinion); // falta id de usuario empresa que el cliente ha terminado turno.
-    this.opinionesService.postOpinion(opinionNuevo).subscribe((date:any)=>{
-    })
-    this.quitarTarjeta = true;
-  }
-
-
-  /******************************************* CAMPO 2 comentarios **************************************************/ 
-  // coger todos comentarios hechos de este cliente, mostrar la info de la empresa.
-  opinionesClienteSobreEmpresa() {
-    let id = this.lsc.login.id_usuario_cliente;
-    this.opinionesService.getOpinionesACliente(11).subscribe((date: any) => {
-      console.log(date)
-      return this.opiniones = date;
+  crearComentario(textoOpinion: string) {
+    let nota = this.estrellas;
+    // this.lscInfo
+    //   .obtenerUserClienteId(this.lsc.login.id_usuario_cliente)
+    //   .subscribe((date: any) => {
+    //     this.lscInfoPintar = date;
+    //     console.log(this.lscInfoPintar);
+    //   });
+    let opinionNuevo = Opiniones.create(
+      this.lsc.login.id_usuario_cliente,
+      this.empresaComentando.id_usuario_empresa,
+      nota,
+      textoOpinion
+    ); // falta id de usuario empresa que el cliente ha terminado turno.
+    this.opinionesService.postOpinion(opinionNuevo).subscribe((date: any) => {
+      this.locales = this.locales.filter((local: any) => {
+        return (
+          local.id_usuario_empresa != this.empresaComentando.id_usuario_empresa
+        );
+      });
     });
   }
 
+  // Cuando envie un comentario, se borra esta tarjeta.
+  rechazarOpinion() {
+    this.opinionesService
+      .postOpinionRechaza(
+        this.lsc.login.id_usuario_cliente,
+        this.empresaSinComentar.id_usuario_empresa
+      )
+      .subscribe((data) => {
+        this.locales = this.locales.filter((local: any) => {
+          return (
+            local.id_usuario_empresa !=
+            this.empresaSinComentar.id_usuario_empresa
+          );
+        });
+      });
+  }
+
+  /******************************************* CAMPO 2 comentarios **************************************************/
+  // coger todos comentarios hechos de este cliente, mostrar la info de la empresa.
+  opinionesClienteSobreEmpresa() {
+    this.opinionesService
+      .getOpinionesACliente(this.lsc.login.id_usuario_cliente)
+      .subscribe((date: any) => {
+        console.log(date);
+        return (this.opiniones = date);
+      });
+  }
+
   ngOnInit(): void {
-    this.lsc.login.id_usuario_cliente=11 // al final se quita
-    this.opinionesService.getEmpresaVisitadasDeCliente(this.lsc.login.id_usuario_cliente).subscribe((date:any)=>{
-      console.log(date[0])
-      console.log(this.locales)
-      return  this.locales = date
-    })
+    /******************************************* CAMPO 1 comentar **************************************************/
+    // Por defecto mostrar los turnos que ha terminado.
+     this.actualizarDatos();
   }
 }

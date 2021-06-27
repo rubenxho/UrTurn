@@ -1,0 +1,14 @@
+.star {
+  cursor: pointer;
+  color: #c1b8b8;
+}
+
+.star.colorido {
+  color: #ffff00;
+  font-size: 30px;
+
+}
+.clasificacion{
+  margin-top:0px;
+  font-size: 30px;
+}

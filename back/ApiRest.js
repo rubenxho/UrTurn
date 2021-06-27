@@ -943,28 +943,55 @@ app.get("/opiniones", (req, res) => {
 });
 
 app.get("/opiniones/empresa_visitada",(req,res)=>{
-let paramsCliente2 = [req.query.id_usuario_cliente];
+  let id=req.query.id_usuario_cliente
+  let params = [id, id,id];
   const sqlAll = `
-  SELECT uE.id_usuario_empresa, uE.nombre_empresa, uE.imagen_url
-  FROM urturn.usuario_empresa AS uE
-  INNER JOIN urturn.turnos AS turns
-  ON uE.id_usuario_empresa = turns.id_usuario_empresa 
-  INNER JOIN urturn.opiniones AS opinion
-  ON uE.id_usuario_empresa = opinion.id_usuario_empresa  
+  SELECT
+    DISTINCT(t.id_usuario_empresa ),
+    t.fecha_cierre_turno,
+    now(),
+    ue.*
+  FROM turnos as t 
+  INNER JOIN usuario_empresa AS ue 
+  ON t.id_usuario_empresa = ue.id_usuario_empresa 
   WHERE 
-  turns.id_usuario_cliente = 11
-  and (turns.fecha_cierre_turno < CURDATE()) and turns.estado = "activo"
-  GROUP BY uE.id_usuario_empresa  
+  t.id_usuario_cliente = ?
+  AND t.fecha_cierre_turno < NOW()
+  AND LOWER(t.estado) = "activo"
+  AND t.id_usuario_empresa not in (
+    select o.id_usuario_empresa from opiniones o where o.id_usuario_cliente = ?
+  )
+  AND t.id_usuario_empresa not in (
+	  select o.id_usuario_empresa from opiniones_rechazadas as o where o.id_usuario_cliente = ?
+  )
+  ORDER BY t.fecha_cierre_turno DESC
+  ;
   `;
-  connection.query(sqlAll, paramsCliente2, (err, dbres) => {
-      if (err) {
-        res.status(400).send({ error: true });
-      } else {
-        console.log(dbres);
-        res.status(200).send(dbres);
-      }
-    }); 
+  connection.query(sqlAll, params, (err, dbres) => {
+    if (err) {
+      res.status(400).send({ error: true });
+    } else {
+      console.log(dbres);
+      res.status(200).send(dbres);
+    }
+  }); 
 })
+
+app.post("/opiniones_rechazadas", (req, res) => {
+  let { id_cliente, id_empresa } = req.body;
+  let params = [id_cliente, id_empresa];
+  const sql = ` INSERT INTO opiniones_rechazadas VALUES (0, ?, ?);`
+  connection.query(sql, params, (err, dbres) => {
+    if (err) {
+
+      console.log(err);
+      res.status(400).send({ error: true });
+    } else {
+      console.log(dbres);
+      res.status(201).send(dbres);
+    }
+  });
+});
 
 app.post("/opiniones", (req, res) => {
   const params = [

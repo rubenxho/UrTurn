@@ -13,8 +13,11 @@
 
     <!--campo de resenar-->
     <ng-container *ngIf="comentar">
+        <p class="fraseDefecta" *ngIf="locales.length===0">
+            ¡ No tienes locales pendientes de comentar aún !
+        </p>
         <div class="container resenas">
-            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1" *ngIf="!quitarTarjeta">
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
                 <ng-container *ngFor="let local of locales">
                     <div class="col">
                         <div class="card">
@@ -28,18 +31,16 @@
 
                                 <div>
                                     <button type="button" class="btn btn-primary botonResena" data-toggle="modal"
+                                        (click)="comentarLocal(local)"
                                         data-target="#resenaModal">
                                         <i class="far fa-edit"></i>
                                     </button>
                                     <button type="button" class="btn btn-secondary " data-toggle="modal"
+                                        (click)="dejarOpinar(local)"
                                         data-target="#quitarResenaModal">
                                         <i class="far fa-window-close"></i>
                                     </button>
-                                    <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
-                                        <i class="fas fa-heart" (click)="fav()"></i>
-                                    </span>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -82,7 +83,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
-                            data-target="#enviarModal" (click)=" crearComentario(textoOpinion.value)">
+                            data-target="#enviarModal" (click)="crearComentario(textoOpinion.value)">
                             <i class="far fa-edit"></i>
                         </button>
                     </div>
@@ -106,7 +107,7 @@
                     <h5 class="modal-title">¿Dejas opinar este lugar?</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="dejarOpinar()"
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="rechazarOpinion()"
                         data-toggle="modal" data-target="#enviarModal">Sí</button>
                     <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
                 </div>

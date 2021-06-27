@@ -1,241 +1,173 @@
 /* Desktop */
-label {
-  cursor:pointer;
+.global {
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
 }
-.global{
-    display: flex;
-    flex-direction: column;
-    /* text-align: center; */
+.two {
+  display: none;
 }
-.two{
-    display: none;
-}
-/* Valoraciones */
-#form {
-    width: 250px;
-    margin: 0 auto;
-    height: 50px;
-  }
-  #form p {
-    text-align: center;
-  }
-  #form label {
-    font-size: 20px;
-  }
-  input[type="radio"] {
-    display: none;
-  } 
-  label {
-    color: grey;
-  }
-  .clasificacion {
-    direction: rtl;
-    unicode-bidi: bidi-override;
-  }
-  label:hover,
-  label:hover ~ label {
-    color:rgb(235, 235, 57)
-    /* color: #f1cf0b; */
-  }
-  input[type="radio"]:checked ~ label {
-    color: yellow;
-  }
-/* Tarjeta comentario */
-/* Animacion para foto y nombre */
-
 @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/opensans/v20/mem8YaGs126MiZpBA-UFVZ0e.ttf) format('truetype');
-  }
-  /* .transition {
-    -webkit-transition: all 500ms ease-in-out;
-    -moz-transition: all 500ms ease-in-out;
-    -ms-transition: all 500ms ease-in-out;
-    -o-transition: all 500ms ease-in-out;
-  } */
-  .container {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    left: 0;
-    right: 0;
-    margin: 0 0;
-    top: 20px;
-  }
-  /* Propio x-d */
-  img{
-      border-radius: 5%;
-  }
-  /* end x-d */
-  .div-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 150px;
-    height: 150px;
-  }
-  .div-img .img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: 100%;
-    -webkit-transform: 0px 0px 1;
-    -moz-transform: 0px 0px 1;
-    -ms-transform: 0px 0px 1;
-    -o-transform: 0px 0px 1;
-    transform: 0px 0px 1;
-    transform: translate(0px, 0px) scale(1);
-    -webkit-transform: translate(0px, 0px) scale(1);
-    -moz-transform: translate(0px, 0px) scale(1);
-    -o-transform: translate(0px, 0px) scale(1);
-    -ms-transform: translate(0px, 0px) scale(1);
-    -webkit-transition: all 0s ease 0s;
-    -moz-transition: all 0s ease 0s;
-    -o-transition: all 0s ease 0s;
-    transition: all 0s ease 0s;
-    -webkit-transition: all 500ms ease-in-out;
-    -moz-transition: all 500ms ease-in-out;
-    -ms-transition: all 500ms ease-in-out;
-    -o-transition: all 500ms ease-in-out;
-  }
-  .text{ 
-    font-family: Titillium Web;
-    display: flex;
-    margin-top: -30px;
-  }
-  .div-img .text {
-    font-family: 'Open Sans';
-    position: relative;
-    z-index: -1;
-    display: block;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-    -webkit-transform: 0px 0px 1;
-    -moz-transform: 0px 0px 1;
-    -ms-transform: 0px 0px 1;
-    -o-transform: 0px 0px 1;
-    transform: 0px 0px 1;
-    transform: translate(0px, 0px) scale(1);
-    -webkit-transform: translate(0px, 0px) scale(1);
-    -moz-transform: translate(0px, 0px) scale(1);
-    -o-transform: translate(0px, 0px) scale(1);
-    -ms-transform: translate(0px, 0px) scale(1);
-    -webkit-transition: all 0s ease 0s;
-    -moz-transition: all 0s ease 0s;
-    -o-transition: all 0s ease 0s;
-    transition: all 0s ease 0s;
-    -webkit-transition: all 500ms ease-in-out;
-    -moz-transition: all 500ms ease-in-out;
-    -ms-transition: all 500ms ease-in-out;
-    -o-transition: all 500ms ease-in-out;
-  }
-  .div-img:hover .img {
-    -webkit-transform: 0px -30px 0.5;
-    -moz-transform: 0px -30px 0.5;
-    -ms-transform: 0px -30px 0.5;
-    -o-transform: 0px -30px 0.5;
-    transform: 50px -30px 0.5;
-    transform: translate(0px, -30px) scale(0.5);
-    -webkit-transform: translate(0px, -30px) scale(0.5);
-    -moz-transform: translate(0px, -30px) scale(0.5);
-    -o-transform: translate(0px, -30px) scale(0.5);
-    -ms-transform: translate(0px, -30px) scale(0.5);
-    border-radius: 50%;
-  }
-  .div-img:hover .text {
-    font-size: 10px;
-    -webkit-transform: 0px 0px 2;
-    -moz-transform: 0px 0px 2;
-    -ms-transform: 0px 0px 2;
-    -o-transform: 0px 0px 2;
-    transform: 0px 0px 2;
-    transform: translate(0px, 0px) scale(2);
-    -webkit-transform: translate(0px, 0px) scale(2);
-    -moz-transform: translate(0px, 0px) scale(2);
-    -o-transform: translate(0px, 0px) scale(2);
-    -ms-transform: translate(0px, 0px) scale(2);
-  }
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/opensans/v20/mem8YaGs126MiZpBA-UFVZ0e.ttf)
+    format("truetype");
+}
+.container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  left: 0;
+  right: 0;
+  margin: 0 0;
+  top: 20px;
+}
+/* Propio x-d */
+img {
+  border-radius: 5%;
+}
+/* end x-d */
+.div-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 150px;
+}
+.div-img .img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: 0px 0px 1;
+  -moz-transform: 0px 0px 1;
+  -ms-transform: 0px 0px 1;
+  -o-transform: 0px 0px 1;
+  transform: 0px 0px 1;
+  transform: translate(0px, 0px) scale(1);
+  -webkit-transform: translate(0px, 0px) scale(1);
+  -moz-transform: translate(0px, 0px) scale(1);
+  -o-transform: translate(0px, 0px) scale(1);
+  -ms-transform: translate(0px, 0px) scale(1);
+  -webkit-transition: all 0s ease 0s;
+  -moz-transition: all 0s ease 0s;
+  -o-transition: all 0s ease 0s;
+  transition: all 0s ease 0s;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+}
+.text {
+  font-family: Titillium Web;
+  display: flex;
+  margin-top: -30px;
+}
+.div-img .text {
+  font-family: "Open Sans";
+  position: relative;
+  z-index: -1;
+  display: block;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  -webkit-transform: 0px 0px 1;
+  -moz-transform: 0px 0px 1;
+  -ms-transform: 0px 0px 1;
+  -o-transform: 0px 0px 1;
+  transform: 0px 0px 1;
+  transform: translate(0px, 0px) scale(1);
+  -webkit-transform: translate(0px, 0px) scale(1);
+  -moz-transform: translate(0px, 0px) scale(1);
+  -o-transform: translate(0px, 0px) scale(1);
+  -ms-transform: translate(0px, 0px) scale(1);
+  -webkit-transition: all 0s ease 0s;
+  -moz-transition: all 0s ease 0s;
+  -o-transition: all 0s ease 0s;
+  transition: all 0s ease 0s;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+}
+.div-img:hover .img {
+  -webkit-transform: 0px -30px 0.5;
+  -moz-transform: 0px -30px 0.5;
+  -ms-transform: 0px -30px 0.5;
+  -o-transform: 0px -30px 0.5;
+  transform: 50px -30px 0.5;
+  transform: translate(0px, -30px) scale(0.5);
+  -webkit-transform: translate(0px, -30px) scale(0.5);
+  -moz-transform: translate(0px, -30px) scale(0.5);
+  -o-transform: translate(0px, -30px) scale(0.5);
+  -ms-transform: translate(0px, -30px) scale(0.5);
+  border-radius: 50%;
+}
+.div-img:hover .text {
+  font-size: 10px;
+  -webkit-transform: 0px 0px 2;
+  -moz-transform: 0px 0px 2;
+  -ms-transform: 0px 0px 2;
+  -o-transform: 0px 0px 2;
+  transform: 0px 0px 2;
+  transform: translate(0px, 0px) scale(2);
+  -webkit-transform: translate(0px, 0px) scale(2);
+  -moz-transform: translate(0px, 0px) scale(2);
+  -o-transform: translate(0px, 0px) scale(2);
+  -ms-transform: translate(0px, 0px) scale(2);
+}
 /* Tarjetas donde estan las reñeñas */
-.conteiner{
-    margin-top: 30px; 
-    margin-left: 20%;
-    margin-right: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.conteiner {
+  margin-top: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 /* la reseña */
-.group{
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-    background-color: #b6b6b690;
-    width: 100%;
-    margin-bottom: 10px;
-    border-radius: 5px;
+.group {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  background-color: #b6b6b690;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
-/* .user{
-    border-style: solid;
-    margin-top: 20px;
-    margin-left: 5px;
-    margin-right: 15px;
-
-} */
-/* .user-name{
-    display: flex;
-    margin-left: 30px;
-    justify-content: center;
-    font-family: Titillium Web;
-    font-size:large;
-    color: #000000;
-    word-wrap: break-word;
-} */
-/*
-.pic-profile{
-    display: flex;
-    margin: 10px;
-    justify-content: center;
-    border-radius: 50%;
-    overflow: hidden;
-    width: 100px;
-    height: 100px;
-} */
-.comment-user{
-    font-family: Titillium Web;
-    font-weight: bolder;
-    font-size: 20px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    width:580px;
+.comment-user {
+  font-family: Titillium Web;
+  font-weight: bolder;
+  font-size: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 580px;
 }
-.comment{
-    margin-top: 15px;
-    margin-left: 20px;
-    width: 600px;
-    word-break: normal;
+.comment {
+  margin-top: 15px;
+  margin-left: 20px;
+  width: 600px;
+  word-break: normal;
 }
 /* ESTRELLAS */
-.valoracion{
-    width: 100%;
-    margin-right: 20px; 
+.valoracion {
+  width: 100%;
+  margin-right: 20px;
 }
-.clasificacion{  
-    display: flex;
+.clasificacion {
+  display: flex;
 }
-.stars{
-    width: 30%;
-    display: flex;
-    text-align: end;
-    font-size: 30px;
-    cursor:pointer;
+.stars {
+  width: 30%;
+  display: flex;
+  text-align: end;
+  font-size: 30px;
+  cursor: pointer;
 }
 
-/**********************************************************************************************************/
-.fechaDeOpinion{
+.fechaDeOpinion {
   font-family: Titillium Web;
   font-weight: bolder;
   font-size: 15px;
@@ -245,83 +177,88 @@ label {
 /**********************************************************************************************************/
 
 /* Mobile */
-@media  only screen and (max-width: 475px){
-    .global{        
-        width: 100%;
-        padding: 10px 10px 10px 10px;
-    }
-    .two{
-        display: flex;
-    }
-    .one{
-        display: none;
-    }
-    .group{
-        display: flex;
-        flex-direction: column;
-        width: 85%;
-        justify-content: center;
-        align-items: center;
-        text-align:center;
-        margin:auto;
-        margin-top: 10px;
-    }
-    .user{
-        display: flex;
-        flex-direction: row;
-        margin-top: 10px;
-        width: 100%;
-    }
-    .user-name{
-        font-weight:bolder;
-        margin-top: 0px;
-        margin-left: 0px;
-        width: 100%;
-        
-    }
-    .pic-profile{
-        width: 100px;
-        height: 70px;
-        margin-top: 5px;
-        margin-left: 50px;
-    }
-    img{
-        border-radius: 50%;
-        overflow: hidden;
-        width: 80px;
-        height: 80px;
-        margin-left: -55px;
-        margin-top: 0px;
-    }
-    .comment{
-        width: 100%;
-        padding:10px;
-        align-content: center;
-        margin-top: -8px;
-        word-break: normal;
-    }
-    .comment-user{
-        width: 100%;
+@media only screen and (max-width: 475px) {
+  .global {
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+  }
+  .two {
+    display: flex;
+  }
+  .one {
+    display: none;
+  }
+  .group {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+  }
+  .main{
+    margin-bottom: 65px;
+  }
+  .user {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    width: 100%;
+  }
+  .user-name {
+    font-weight:bolder;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    width: 130px;
+    font-family: Titillium Web;
+    font-size: 20px; 
+    text-align: end;  
+  }
+  .pic-profile {
+    width: 100px;
+    height: 70px;
+    margin-top: 5px;
+    margin-left: 50px;
+  }
+  img {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    margin-left: -80px;
+    margin-top: 0px;
+  }
+  .comment {
+    width: 100%;
+    padding: 10px;
+    align-content: center;
+    margin-top: -8px;
+    word-break: break-all;
+  }
+  .comment-user {
+         width: 100%;
         text-align: left;
-    }
-    .valoracion{
-        width: 100%;
-    }
-    .clasificacion{
-      margin-right: -2px;
-      margin-top: -25px;
-    }
-    .stars{
-        display: flex;
-        align-content: flex-end;
-        width: 100%;
-        font-size: 25px;
-    } 
-    .fechaDeOpinion{
-        font-family: Titillium Web;
-        font-weight: bolder;
-        font-size: 15px;
-        margin-top: -25px;
+        font-size: 20px;
+        align-content: left;
+        margin-right: -5px;
+  }
+  .clasificacion {
+    margin-right: -2px;
+    margin-top: -25px;
+  }
+  .stars{
+     margin-top: 0px;
+     margin-top: -10px;
+  }
+  .fechaDeOpinion{
+    font-family: Titillium Web;
+    font-weight: bolder;
+    font-size: 15px;
+    margin-top: -22px;
+    width: 130px;
+    text-align: end;
+  }
 }
-}
-

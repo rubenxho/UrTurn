@@ -52,8 +52,8 @@
   font-size: 20px;
   position: absolute;
   top: 280px;
-  width: 90px;
-  margin-left: 5%;
+  width: 110px;
+  margin-left: 3%;
 }
 
 .botonEviar {
@@ -66,8 +66,14 @@
   font-size: 20px;
   position: absolute;
   top: 280px;
-  width: 60px;
-  margin-left: 40%;
+  width: 110px;
+  margin-left: 50%;
+}
+.btn-primary{
+  width: 110px;
+}
+.btn-info{
+   width: 110px;
 }
 
 .input-group{
@@ -163,6 +169,15 @@
   color: white;
 }
 
+.fraseDefecta{
+  text-align: center;
+  font-family: Titillium Web;
+  font-weight: bolder;
+  font-size: 2rem;
+  opacity: 0.5;
+  margin-top: 20%;
+}
+
 @media screen and (max-width: 375px) {
   .card {
     margin-bottom: 5px;
@@ -194,6 +209,15 @@
     font-size: 18px;
     font-weight: bolder;
   }
+
+  .fraseDefecta{
+  text-align: center;
+  font-family: Titillium Web;
+  font-weight: bolder;
+  font-size: 1rem;
+  opacity: 0.5;
+  margin-top: 30%;
+}
 }
 
 

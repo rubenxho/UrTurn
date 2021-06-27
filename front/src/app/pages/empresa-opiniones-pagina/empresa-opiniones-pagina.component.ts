@@ -11,46 +11,26 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./empresa-opiniones-pagina.component.css']
 })
 export class EmpresaOpinionesPaginaComponent implements OnInit {
-  //public opinionEmpresa={img:"", name:"", comment:"", estrellas: 1}
-  public opiniones:any;
-    public data:any = {
-    estrellas:0
-  }
-  public stars:any;
+  public opiniones: any[];
 
   constructor(private opinionesService: ClienteOpinionesResenarService, private lse: LoginService) { 
-   this.opiniones="";
-   this.stars=0
-  }
-
-
-  handleStar(event:any){
-    const index:string = event.target.name
-    const value:String = event.target.value;
-    this.data[ index ] = value;
-    console.log(this.data)
+   this.opiniones=[];
   }
 
   getOpiniones(){
     // this.lse.login.id_usuario_empresa
     let id = this.lse.login.id_usuario_empresa
-    this.opinionesService.getOpinionesAEmpresa(30).subscribe((date:any)=>{
-    console.log(date)
-    return this.opiniones = date;
+    this.opinionesService.getOpinionesAEmpresa(30).subscribe((data:any)=>{
+      console.log(data)
+      return this.opiniones = data;
     })
   }
 
-  //mostrarEstrella(){
-  //  this.opiniones.
-  //}
-
-
   ngOnInit(): void {
-// this.lse.login.id_usuario_empresa
     let id = this.lse.login.id_usuario_empresa
-    this.opinionesService.getOpinionesAEmpresa(30).subscribe((date:any)=>{
-    console.log(date)
-    return this.opiniones = date;
+    this.opinionesService.getOpinionesAEmpresa(30).subscribe((data:any)=>{
+      console.log(data)
+      return this.opiniones = data;
     })
-}
+  }
 }
