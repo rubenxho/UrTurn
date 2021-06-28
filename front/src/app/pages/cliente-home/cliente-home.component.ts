@@ -23,6 +23,8 @@ export class ClienteHomeComponent implements OnInit {
   muestraLocal(){
     this.localService.getTop().subscribe((data: any) => {
       this.localService.locales= data;
+      //para mostrar otra vez el carrusel, volvemos a poner la variable mostrarTarjeta a false
+      this.localService.mostrarTarjetas = false;
     })
     
     // console.log(this.usuarioEmpresa);

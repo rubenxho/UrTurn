@@ -16,7 +16,8 @@
         <p class="fraseDefecta" *ngIf="locales.length===0">
             ¡ No tienes locales pendientes de comentar aún !
         </p>
-        <div class="container resenas">
+
+        <div class="container">
             <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
                 <ng-container *ngFor="let local of locales">
                     <div class="col">
@@ -47,6 +48,7 @@
                 </ng-container>
             </div>
         </div>
+
     </ng-container>
 
     <!--modal de dar una resena-->
