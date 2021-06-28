@@ -34,7 +34,7 @@ export class LocalServiceService {
 
     if(categoria != '' || codigo_postal != 0){
 
-      return this.http.get(`${this.url}?categoria=${categoria}&codigo_postal=${codigo_postal}`);
+      return this.http.get(`${this.url}?categoria=${categoria}?codigo_postal=${codigo_postal}`);
 
     }else{
 

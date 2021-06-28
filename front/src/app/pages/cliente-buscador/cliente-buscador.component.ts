@@ -20,6 +20,8 @@ export class ClienteBuscadorComponent implements OnInit {
   {
 
     this.localService.getLocales(categoria, parseInt(cp)).subscribe((data: any) => {
+      console.log(data);
+      
       this.localService.locales = data;
       this.localService.mostrarTarjetas = true;
     })
