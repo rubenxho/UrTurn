@@ -75,7 +75,7 @@ export class EmpresaPerfilComponent implements OnInit {
       }
     }
     console.log("antes", this.user.tiempo_espera)
-    this.user = new UsuarioEmpresa(this.owner, this.profileData.nombre_empresa, this.profileData.categoria, this.profileData.telefono, this.profileData.codigo_postal, this.profileData.direccion , this.profileData.imagen_url, this.profileData.descripcion ,this.profileData.apertura, this.profileData.cierre, this.profileData.tiempo_espera, this.profileData.logo, this.profileData.estado_turno, "", this.profileData.password);
+    this.user = new UsuarioEmpresa(this.owner, this.profileData.nombre_empresa, this.profileData.categoria, this.profileData.telefono, this.profileData.codigo_postal, this.profileData.direccion , this.profileData.imagen_url, this.profileData.descripcion ,this.profileData.apertura, this.profileData.cierre, this.profileData.tiempo_espera, this.profileData.logo, this.profileData.estado_turno, this.profileData.password);
     console.log("despues",this.user)
   }
   

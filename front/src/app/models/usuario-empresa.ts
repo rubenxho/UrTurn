@@ -17,6 +17,7 @@ export class UsuarioEmpresa {
     public opiniones:Opiniones[];
     public email:string;
     public password:string;
+    public nota_media:number
 
     constructor(id_usuario_empresa:number=0, 
                 nombre_empresa:string='', 
@@ -51,6 +52,7 @@ export class UsuarioEmpresa {
         this.opiniones = opiniones;
         this.email = email;
         this.password = password;
+        this.nota_media;
     }  
 
     public calcularCalificacion():number    {

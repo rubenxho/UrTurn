@@ -195,6 +195,7 @@
   }
   .row {
     margin-top: 10px;
+    padding-bottom: 50px;
   }
   .botones {
     align-content: center;
@@ -218,6 +219,11 @@
   opacity: 0.5;
   margin-top: 30%;
 }
+}
+
+.row {
+  justify-content: center;
+  padding-bottom: 55px;
 }
 
 

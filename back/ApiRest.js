@@ -961,56 +961,142 @@ app.post("/puntuacion", (req, res) => {
 
 /*********************************************************************************************************/
 /********************************ENDPOINT LOCALES*********************************************************/
+app.get("/local",
+    function(request, response){
+        let categoria = request.query.categoria
+        let cp = request.query.cp
+        let id = request.query.id
+        let params = []
+        let sql=``
 
-app.get("/local", (req, res) => {
-  let sqlByID = `SELECT *
-                    FROM usuario_empresa
-                    WHERE id_usuario_empresa = ?`;
-  let sqlAll = `SELECT nombre_empresa, tiempo_espera, imagen_url FROM usuario_empresa
-                    WHERE (categoria = ? OR codigo_postal = ?)`;
-  let sqlTop = `SELECT userE.nombre_empresa, userE.imagen_url, AVG(nota) AS valoracion FROM usuario_empresa AS userE 
-                LEFT JOIN opiniones AS op ON userE.id_usuario_empresa = op.id_usuario_empresa
-                WHERE op.nota <> "null"
-                GROUP BY userE.id_usuario_empresa ORDER BY valoracion DESC LIMIT 5`;
-  let id = req.query.id;
-  let busqueda = [req.query.categoria, req.query.codigo_postal];
-  let top = "";
-  if (id) {
-    connection.query(sqlByID, [id, id], (err, result) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else{
-        res.json(result);
-      } 
-    });
-  } else if (busqueda[0]!=undefined) {
-    connection.query(sqlAll, busqueda, (err, result) => {
-      if (err) {
-        console.log(err);
-        res.send(err);
-      } else{
-        res.json(result);
-      } 
-    });
-  }else{
-    connection.query(sqlTop, top, (err, result) => {
+        if(cp==null && categoria==null ){
+            params = [id]
+            sql=`SELECT userE.nombre_empresa, userE.imagen_url, AVG(nota) AS valoracion FROM usuario_empresa AS userE 
+            LEFT JOIN opiniones AS op ON userE.id_usuario_empresa = op.id_usuario_empresa
+            WHERE op.nota <> "null"
+            GROUP BY userE.id_usuario_empresa ORDER BY valoracion DESC LIMIT 5`
 
-      if (err) {
+        }
+        else if(cp==null){
+            params = [categoria]
+            sql = `SELECT e.*, AVG(nota) AS nota_media FROM  urturn.usuario_empresa AS e 
+            JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) 
+            WHERE categoria =? GROUP BY e.id_usuario_empresa`
+        }
+        else if(categoria==null){
+            params = [cp]
+            console.log(cp)
+            sql = `SELECT e.*, AVG(nota) AS nota_media FROM  urturn.usuario_empresa AS e 
+            JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) 
+            WHERE codigo_postal =? GROUP BY e.id_usuario_empresa`
+        }
+        else {
+            params = [categoria, cp]
+            sql = `SELECT e.*, AVG(nota) AS nota_media FROM  urturn.usuario_empresa AS e 
+            JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) 
+            WHERE e.categoria =? AND e.codigo_postal =? GROUP BY e.id_usuario_empresa`
+        }
+        connection.query(sql,params,
+            function(err,res){
+                if(err){
+                    console.log(err);
+                }
+                else {
+                    console.log(res)
+                    response.send(res);
+                }
+        })
+    }
+)
 
-        console.log(err);
-        res.send(err);
 
-      } else{
 
-        // console.log(result)
-        res.json(result);
-        
-      }
-    });
-  }
+
+// app.get("/local", (req, res) => {
+//   let sqlByID = `SELECT e.id_usuario_empresa, nombre_empresa, categoria, direccion, tiempo_espera, descripcion, apertura, cierre, imagen_url, estado_turno, AVG(nota) AS nota_media
+//                   FROM urturn.usuario_empresa AS e INNER JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa)
+//                   WHERE e.id_usuario_empresa = ?`;
+//   let sqlCp = `SELECT e.*, AVG(nota) AS nota_media FROM  urturn.usuario_empresa AS e 
+//                   JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) 
+//                   WHERE (codigo_postal =COALESCE(?,codigo_postal)) GROUP BY e.id_usuario_empresa`;
+//   let sqlCatg = `SELECT e.*, AVG(nota) AS nota_media FROM  urturn.usuario_empresa AS e 
+//                   JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) 
+//                   WHERE (categoria =COALESCE(?,categoria) OR codigo_postal =COALESCE(?,codigo_postal)) GROUP BY e.id_usuario_empresa`'
   
-});
+//                   let sqlBoth = `SELECT e.*, AVG(nota) AS nota_media FROM  urturn.usuario_empresa AS e 
+//   JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) 
+//   WHERE (categoria = ? AND codigo_postal = ?) GROUP BY e.id_usuario_empresa`;
+                  
+                 
+//   let sqlTop = `SELECT userE.nombre_empresa, userE.imagen_url, AVG(nota) AS valoracion FROM usuario_empresa AS userE 
+//                 LEFT JOIN opiniones AS op ON userE.id_usuario_empresa = op.id_usuario_empresa
+//                 WHERE op.nota <> "null"
+//                 GROUP BY userE.id_usuario_empresa ORDER BY valoracion DESC LIMIT 5`;
+//   let id = req.query.id;
+//   let busqueda = [req.query.categoria, req.query.codigo_postal];
+//   let top = "";
+
+
+//   if (busqueda[0]==null && busqueda[1]==null) {
+//     connection.query(sqlByID, [id, id], (err, result) => {
+//       if (err) {
+//         console.log(err);
+//         res.send(err);
+//       } else{
+//         res.json(result);
+//       } 
+//     });
+//   } else if (busqueda[0]!=undefined) {
+//     console.log(busqueda)
+//     connection.query(sqlAll, busqueda, (err, result) => {
+//       if (err) {
+//         console.log(err);
+//         res.send(err);
+//       } else{
+//         res.json(result);
+//       } 
+//     });
+
+//   }else if (busqueda[1]!=undefined) {
+//     connection.query(sqlAll, busqueda, (err, result) => {
+//       if (err) {
+//         console.log(err);
+//         res.send(err);
+//       } else{
+//         res.json(result);
+//       } 
+//     });
+
+//   }else if (busqueda[0]!=undefined && busqueda[1]!=undefined) {
+//     console.log(busqueda)
+//     connection.query(sqlBoth, busqueda, (err, result) => {
+//       if (err) {
+//         console.log(err);
+//         res.send(err);
+//       } else{
+//         res.json(result);
+//       } 
+//     });
+    
+//   }else{
+//     connection.query(sqlTop, top, (err, result) => {
+
+//       if (err) {
+
+//         console.log(err);
+//         res.send(err);
+
+//       } else{
+
+//         // console.log(result)
+//         res.json(result);
+        
+//       }
+//     });
+
+//   }
+  
+// });
 
 /************************************************************************************/
 
