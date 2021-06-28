@@ -47,11 +47,18 @@ export class ClienteTarjetasComponent implements OnInit {
   //method para guardar a favorito
   
   fav( ) {
-    // id_usuario_empresa:any
-    // this.favorito = !this.favorito;
+    
+    this.favorito = !this.favorito;
+  }
+
+  añadirFav(){
+    if(this.favorito==false){
+      this.FavService.anyadirFav( this.loginService.login.id_usuario_cliente)
+    }
+    // else{
+    //   this.FavService.eliminarFav()
+    // }
    
-    // id_usuario_empresa
-    // this.FavService.anyadirFav( this.loginService.login.id_usuario_cliente, id_usuario_empresa)
   }
 
   // confirma hacer la cola

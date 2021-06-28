@@ -27,6 +27,7 @@ export class ClienteFavoritosComponent implements OnInit {
 
 //evento para mostrar en detalle los favoritos pinchando en su imagen
   muestraLocal(id: number){
+    console.log("favoritos");
     
     this.localService.getLocal(id).subscribe( (data: any) => {
       this.favoritos = data;
@@ -39,18 +40,16 @@ export class ClienteFavoritosComponent implements OnInit {
   filtrar(filtro:string[]){
    console.log(filtro)
     console.log(this.loginService.login.id_usuario_cliente )
-    this.favoritoService.obtenerFav(filtro[0], filtro[1], this.loginService.login.id_usuario_cliente ).subscribe((data:UsuarioEmpresa[])=>{
+    this.favoritoService.obtenerFav(filtro[0], filtro[1] ).subscribe((data:UsuarioEmpresa[])=>{
         this.favoritos = data;
         console.log(data);
-        
-
-      })
+      }
+    )
     
   }
   
-    
- 
-  
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.filtrar(["",""])
+  }
 
 }

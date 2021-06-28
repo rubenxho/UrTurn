@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Favoritos } from '../models/favoritos';
 import { UsuarioEmpresa } from '../models/usuario-empresa';
+import { LoginService } from './login.service';
 
 
 @Injectable({
@@ -10,29 +11,34 @@ import { UsuarioEmpresa } from '../models/usuario-empresa';
 export class FavoritoServiceService {
 private url:string
 public favoritos: UsuarioEmpresa[];
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private loginService: LoginService) {
     this.url="http://localhost:3000/favoritos"
     this.favoritos = []
   }
 
-  obtenerFav(categoria:string, cp:string, id_usuario_cliente:number){
+  obtenerFav(categoria:string, cp:string){
     let codigo:any
     console.log("flag")
     if(cp=="" && categoria=="" ){
       console.log("hola")
-     codigo = this.http.get(this.url + `?id=` + id_usuario_cliente)
+     codigo = this.http.get(this.url + `?id=` + this.loginService.login.id_usuario_cliente)
     }
 
     else if(cp==""){
-      codigo= this.http.get(this.url + `?categoria=` + categoria + `&` + `?id=` + id_usuario_cliente)
+      console.log("hola2")
+      codigo= this.http.get(this.url + `?categoria=` + categoria + `&` + `?id=` + this.loginService.login.id_usuario_cliente)
     }
 
     else if(categoria==""){
-      codigo = this.http.get(this.url + `?cp=` + cp + `&` + `?id=` + id_usuario_cliente)
+      console.log("hola3")
+      codigo = this.http.get(this.url + `?cp=` + cp + `&` + `?id=` + this.loginService.login.id_usuario_cliente)
     }
 
     else{
-      codigo = this.http.get(this.url +`?categoria=`+ categoria + `&` + `?cp=` + cp + `&` + `?id=` + id_usuario_cliente)
+      console.log("hola4")
+      codigo = this.http.get(this.url +`?categoria=`+ categoria + `&` + `?cp=` + cp + `&` + `?id=` + this.loginService.login.id_usuario_cliente)
+      console.log(categoria + cp);
+      
     }
 
     return codigo
@@ -40,9 +46,14 @@ public favoritos: UsuarioEmpresa[];
 
   
 
-  anyadirFav(id_usuario_cliente:number, id_usuario_empresa:number){
-    let nuevoFav:Favoritos= new Favoritos (id_usuario_cliente, id_usuario_empresa)
+  anyadirFav( id_usuario_empresa:number){
+    let nuevoFav:Favoritos= new Favoritos (this.loginService.login.id_usuario_cliente, id_usuario_empresa)
     return this.http.post(this.url ,nuevoFav )
+  }
+
+  eliminarFav( id_usuario_empresa:number){
+    
+    return this.http.delete(this.url + id_usuario_empresa )
   }
 }
 
