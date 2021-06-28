@@ -21,6 +21,7 @@ export class EmpresaHomeComponent implements OnInit {
   public input:string
 
   constructor(private datosGeneralesService: DatosgeneralesService, private id_usuario: LoginService, private empresaService: UsuarioServiceService ) {
+    this.datosEmpresa=new Array()
     this.datosGenerales= new DatosGenerales(0,0,"",0)
     this.mensajeModal=["modalModificar","Confirmar nuevo tiempo de espera","Confirmar","Cancelar","Tiempo modificado correctamente!","","4"]
     // Array(pos0: etiqueta modal, pos1: pregunta, pos2: op1 pregunta, pos3:op2 pregunta, pos4: estadocola, pos5: flag para pos4)

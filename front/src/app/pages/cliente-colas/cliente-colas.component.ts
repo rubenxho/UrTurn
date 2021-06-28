@@ -17,9 +17,9 @@ export class ClienteColasComponent implements OnInit {
 
   constructor(private turnoService: TurnoService, private id_usuario: LoginService) { 
     this.clienteCola = ['modalModificar','¿Desea dejar su turno?', 'Sí', 'No', 'Su turno se ha cancelado','','5'];
-    this.turnoService.postHacerCola(7,66).subscribe((data:any)=>{
-      console.log("Nuevo cliente en cola")
-    })
+    // this.turnoService.postHacerCola(7,66).subscribe((data:any)=>{
+    //   console.log("Nuevo cliente en cola")
+    // })
   }
 
   botonCancelar(index:number){

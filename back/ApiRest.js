@@ -24,6 +24,7 @@ connection.connect(function (err, res) {
 });
 
 let salida = ""
+let port=process.env.PORT || 300
 
 app.get("/favoritos",
     function(request, response){
@@ -39,7 +40,6 @@ app.get("/favoritos",
             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
             WHERE f.id_usuario_cliente=?`
-
         }
         else if(cp==null){
             params = [categoria, id]
