@@ -18,17 +18,14 @@ export class EmpresaOpinionesPaginaComponent implements OnInit {
   }
 
   getOpiniones(){
-    // this.lse.login.id_usuario_empresa
-    let id = this.lse.login.id_usuario_empresa
-    this.opinionesService.getOpinionesAEmpresa(30).subscribe((data:any)=>{
+    this.opinionesService.getOpinionesAEmpresa(this.lse.login.id_usuario_empresa).subscribe((data:any)=>{
       console.log(data)
       return this.opiniones = data;
     })
   }
 
   ngOnInit(): void {
-    let id = this.lse.login.id_usuario_empresa
-    this.opinionesService.getOpinionesAEmpresa(30).subscribe((data:any)=>{
+    this.opinionesService.getOpinionesAEmpresa(this.lse.login.id_usuario_empresa).subscribe((data:any)=>{
       console.log(data)
       return this.opiniones = data;
     })

@@ -3,36 +3,26 @@
 
     <div class="conteiner">
 
-        <!-- caja de reseñas -->
-
         <div class="group">
 
-            <!-- <div class="user"> -->
-
-            <!-- <div class="pic-profile"> -->
             <div class="container">
                 <div class="div-img">
                     <img class="img" src="{{opinionHijo.imagen_url}}" title="cliente" alt="Foto10">
                     <div class="text">{{opinionHijo.nombre_empresa}}</div>
-
                 </div>
             </div>
-            <!-- </div> -->
-            <!-- <p class="user-name"> david </p> -->
-            <!-- </div> -->
 
             <div class="comment">
                 <p class="comment-user">{{opinionHijo.opinion}}</p>
             </div>
 
             <div class="stars">
-
                 <div class="valoracion">
                     <app-nota [nota]="opinionHijo.nota"></app-nota>
                     <p class="fechaDeOpinion">{{opinionHijo.fecha}}</p>
                 </div>
-
             </div>
+
         </div>
     </div>
 </div>
@@ -41,31 +31,25 @@
 
 <div class="global two">
 
-    <!-- reseñas movil -->
-
     <div class="group">
-        <!-- Foto, nombre y estrellas -->
+
         <div class="user">
-            <!-- Foto -->
+
             <div class="pic-profile">
                 <img src="{{opinionHijo.imagen_url}}" alt="foto de cliente">
             </div>
-            <!-- Nombre -->
 
-            <!-- Estrellas -->
             <div class="stars">
-
                 <div class="valoracion">
                     <p class="user-name"> {{opinionHijo.nombre_empresa}} </p>
                 <app-nota [nota]="opinionHijo.nota"></app-nota>
                     <p class="fechaDeOpinion">{{opinionHijo.fecha}}</p>
                 </div>
-
             </div>
+
         </div>
-        <!--Are Comentario -->
+
         <div class="comment">
-            <!-- Comenteario -->
             <p class="comment-user">{{opinionHijo.opinion}}</p>
         </div>
 

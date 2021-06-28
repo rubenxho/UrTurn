@@ -13,9 +13,6 @@ export class Opiniones {
   public nota: number;
   public opinion: string;
   public fecha: Date;
-  // usuario_empresa_imagen
-  // usuario_cliente_imagen
-  // imagen_url
 
   constructor(
     id_opiniones: number = 0,

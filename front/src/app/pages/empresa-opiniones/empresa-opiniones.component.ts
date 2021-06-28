@@ -13,9 +13,7 @@ export class EmpresaOpinionesComponent implements OnInit {
   public data:any = {
     estrellas:0
   }
-  constructor() {
-   //this.opinionHijo = {img:"", nombre:"", opinion:"", nota: 0, fecha:""}
-   }
+  constructor() {}
 
   ngOnInit(): void {
   }
