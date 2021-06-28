@@ -26,8 +26,13 @@ export class UsuarioServiceService {
   }
 
   public actualizarUserEmpresa(clue:UsuarioEmpresa):any{
+    console.log(clue)
     return this.http.put(`${this.url}/userE`, clue)
   } 
+
+  public actualizarPerfilEmp(changes:UsuarioEmpresa):any{
+    return this.http.put(`${this.url}/userEP`, changes)
+  }
 
   public eliminarUserEmpresa(id:any):any{
     return this.http.delete(`${this.url}/deleteUserE`, id)
@@ -45,6 +50,10 @@ export class UsuarioServiceService {
   public actualizarUserCliente(clue:UsuarioCliente):any{
     console.log(clue)
     return this.http.put(`${this.url}/userC`, clue)
+  }
+
+  public actualizarUserPerfilClt(changes:UsuarioCliente):any{
+    return this.http.put(`${this.url}/userCP`, changes)
   }
 
   public eliminarUserCliente(id:any):any{

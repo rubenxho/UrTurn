@@ -3,6 +3,7 @@ import { UsuarioCliente } from 'src/app/models/usuario-cliente';
 import { UsuarioServiceService } from 'src/app/services/usuario-service.service'
 import { LoginService } from 'src/app/services/login.service';
 import { Login } from 'src/app/models/login';
+import { combineLatest, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cliente-perfil',
@@ -17,20 +18,23 @@ export class ClientePerfilComponent implements OnInit {
   // [k: string]: any;
   
   public profileData: any = {
-    name:"",
-    lastName:"",
-    phone:"",
-    img:"",
+    nombre_cliente:"",
+    apellidos_cliente:"",
+    telefono:"",
+    imagen_url:"",
     password:"",
+    repeatPassword:""
   }
- 
+
+ public status;
+ public show;
   public guardarModal: string[]
 
   public owner:number;
   
-  public me: UsuarioCliente = new UsuarioCliente(0, "", "", "", "");
+  // public me: UsuarioCliente = new UsuarioCliente(0, "", "", "", "");
   
-  public user: UsuarioCliente = new UsuarioCliente(0, "", "", "", "");
+  public user: UsuarioCliente = new UsuarioCliente(0, "", "", "", "","","");
 
   constructor(private apiUserService:UsuarioServiceService,  private lsowner:LoginService)  {
     
@@ -45,15 +49,15 @@ export class ClientePerfilComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.owner)
+    this.userDataBase()
+  }
 
+  userDataBase(){
     this.apiUserService.obtenerUserClienteId(this.owner)
     .subscribe((data:any)=>{
-      console.log(data)
-      this.me = data[0]
-      console.log(this.me)
-      return this.me
+      this.user = new UsuarioCliente (this.owner, data[0].nombre_cliente, data[0].apellidos_cliente, data[0].telefono, data[0].imagen_url,  "", "" )
+      // console.log(this.user)
     }) 
-
   }
 
   handleChange(event:any){
@@ -62,31 +66,41 @@ export class ClientePerfilComponent implements OnInit {
     this.profileData[ index ] = value;
   }
 
-  handleClick(){
-    console.log(this.profileData);
-     this.user = new UsuarioCliente(this.owner, this.profileData.name, this.profileData.lastname, this.profileData.phone, this.profileData.img);
-     console.log(this.user)
-     return this.user
-  }
+  // request.body.nombre_cliente == "" ? null : request.body.nombre_cliente
+  saveData(copyUser){
+    
+    for(let key in this.profileData){
+      // console.log(this.profileData.password)ta ben
+      if(this.profileData[key] === '' || this.profileData == undefined){
+        this.profileData[key] = copyUser[key];
+      }
+    }
+    console.log('profile', this.profileData);
+     this.user = new UsuarioCliente(this.owner, this.profileData.nombre_cliente, this.profileData.apellidos_cliente, this.profileData.telefono, this.profileData.imagen_url, "" , this.profileData.password);
+    console.log(this.user)
+    }
 
   subirCambios(guardar:boolean){
     // console.log("guardar")
     if(guardar == true){
-      // console.log(this.user)
-      // console.log("flag after")
-      this.apiUserService.actualizarUserCliente(this.user)
-      .subscribe((data:any)=>{
-        // console.log(data)
-        return data = this.user;
-      })
-
-      this.apiUserService.obtenerUserClienteId(this.owner)
+      const copyUser = {...this.user};
+      this.saveData(copyUser);
+      console.log('user update',this.user)
+      this.apiUserService.actualizarUserPerfilClt(this.user)
       .subscribe((data:any)=>{
         console.log(data)
-        this.me = data[0]
-        console.log(this.me)
-        return this.me
-      }) 
+      })
+
+    }
+  }
+
+  confirmPassword(){
+    if (this.profileData.zzz == this.profileData.repeatPassword){
+      this.status = "Correcto"
+      this.show = true;
+    }else{
+      this.show =false;
+      this.status="Incorretos"
     }
   }
 

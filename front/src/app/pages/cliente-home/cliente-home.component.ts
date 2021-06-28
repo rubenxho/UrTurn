@@ -35,7 +35,7 @@ export class ClienteHomeComponent implements OnInit {
 
     this.localService.getTop().subscribe((data: any) => {
       this.locales= data;
-      console.log(this.locales)
+      // console.log(this.locales)
     })
     
     // console.log(this.usuarioEmpresa);
