@@ -269,3 +269,12 @@ i {
         margin-top: 19px;
     }
 }
+
+.fraseDefecta{
+    text-align: center;
+    font-family: Titillium Web;
+    font-weight: bolder;
+    font-size: 2rem;
+    opacity: 0.5;
+    margin-top: 10%;
+  }

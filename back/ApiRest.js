@@ -886,19 +886,9 @@ app.post("/puntuacion", (req, res) => {
 /********************************ENDPOINT LOCALES*********************************************************/
 
 app.get("/local", (req, res) => {
-  let sqlByID = `
-    SELECT 
-      nombre_empresa,
-      direccion,
-      tiempo_espera,
-      descripcion,
-      apertura,
-      cierre,
-      imagen_url,
-      (SELECT  avg(COALESCE (nota, 0)) from opiniones o where id_usuario_empresa  = ?) as nota
-    FROM usuario_empresa
-    WHERE id_usuario_empresa = ?`;
-
+  let sqlByID = `SELECT *
+                    FROM usuario_empresa
+                    WHERE id_usuario_empresa = ?`;
   let sqlAll = `SELECT nombre_empresa, tiempo_espera, imagen_url FROM usuario_empresa
                     WHERE (categoria = ? OR codigo_postal = ?)`;
   let sqlTop = `SELECT userE.nombre_empresa, userE.imagen_url, AVG(nota) AS valoracion FROM usuario_empresa AS userE 

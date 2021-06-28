@@ -4,7 +4,7 @@
 </div>
 
  
-<div class="col" *ngIf="mostrarTarjetas==false ;else tarjetas" >
+<div class="col" *ngIf="!this.localService.mostrarTarjetas; else tarjetas" >
 
     <div class="container-fluid">
         <div class="row ">
@@ -22,37 +22,37 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item carusel active">
-                                <img  src="{{locales[0].imagen_url}}" class="d-block w-100" alt="...">
+                                <img  src="{{this.localService.locales[0].imagen_url}}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                <h5 class="titulo">{{locales[0].nombre_empresa}}</h5>
+                                <h5 class="titulo">{{this.localService.locales[0].nombre_empresa}}</h5>
                                 <p > </p>
                                 </div>
                             </div>
                             <div class="carousel-item carusel">
-                                <img src="{{locales[1].imagen_url}}" class="d-block w-100" alt="...">
+                                <img src="{{this.localService.locales[1].imagen_url}}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                <h5 class="titulo">{{locales[1].nombre_empresa}}</h5>
+                                <h5 class="titulo">{{this.localService.locales[1].nombre_empresa}}</h5>
                                 <p> </p>
                                 </div>
                             </div>
                             <div class="carousel-item carusel">
-                                <img src="{{locales[2].imagen_url}}" class="d-block w-100" alt="...">
+                                <img src="{{this.localService.locales[2].imagen_url}}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                <h5 class="titulo">{{locales[2].nombre_empresa}}</h5>
+                                <h5 class="titulo">{{this.localService.locales[2].nombre_empresa}}</h5>
                                 <p> </p>
                                 </div>
                             </div>
                             <div class="carousel-item carusel">
-                                <img src="{{locales[3].imagen_url}}" class="d-block w-100" alt="...">
+                                <img src="{{this.localService.locales[3].imagen_url}}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                <h5 class="titulo">{{locales[3].nombre_empresa}}</h5>
+                                <h5 class="titulo">{{this.localService.locales[3].nombre_empresa}}</h5>
                                 <p> </p>
                                 </div>
                             </div>
                             <div class="carousel-item carusel">
-                                <img src="{{locales[4].imagen_url}}" class="d-block w-100" alt="...">
+                                <img src="{{this.localService.locales[4].imagen_url}}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                <h5 class="titulo">{{locales[4].nombre_empresa}}</h5>
+                                <h5 class="titulo">{{this.localService.locales[4].nombre_empresa}}</h5>
                                 <p> </p>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
 <ng-template #tarjetas>
            
     <!-- <app-cliente-tarjetas></app-cliente-tarjetas>  -->
-    <ng-container *ngFor="let local of locales">
+    <ng-container *ngFor="let local of this.localService.locales">
         <app-cliente-tarjetas [usuarioEmpresa]="local"></app-cliente-tarjetas>
     </ng-container>     
 
