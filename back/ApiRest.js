@@ -886,7 +886,7 @@ app.post("/puntuacion", (req, res) => {
 /********************************ENDPOINT LOCALES*********************************************************/
 
 app.get("/local", (req, res) => {
-  let sqlByID = `SELECT nombre_empresa, direccion, tiempo_espera, descripcion, apertura, cierre, imagen_url
+  let sqlByID = `SELECT *
                     FROM usuario_empresa
                     WHERE id_usuario_empresa = ?`;
   let sqlAll = `SELECT nombre_empresa, tiempo_espera, imagen_url FROM usuario_empresa

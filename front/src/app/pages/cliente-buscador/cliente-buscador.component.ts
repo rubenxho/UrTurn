@@ -1,5 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { Component, OnInit, Output } from '@angular/core';
+import { LocalServiceService } from 'src/app/services/local-service.service';
 
 
 @Component({
@@ -8,27 +9,20 @@ import { Component, OnInit, Output } from '@angular/core';
   styleUrls: ['./cliente-buscador.component.css']
 })
 export class ClienteBuscadorComponent implements OnInit {
-  @Output() eventoMostrar= new EventEmitter<boolean>();
-  @Output() eventoFiltrar= new EventEmitter<string[]>();
   
+    
 
-  public sustituir:boolean=true
-  
-  constructor() { 
-    this.sustituir
-  }
-
-
-  mostrarTarjetas(){
-    console.log("funciion mostrarTarjetas");
-    this.eventoMostrar.emit(this.sustituir)
+  constructor(public localService: LocalServiceService) { 
     
   }
 
-  buscar(categoria:string, cp:string)
+  buscarLocal(categoria:string, cp:string)
   {
-    console.log(categoria, cp);
-    this.eventoFiltrar.emit([categoria, cp]) 
+
+    this.localService.getLocales(categoria, parseInt(cp)).subscribe((data: any) => {
+      this.localService.locales = data;
+      this.localService.mostrarTarjetas = true;
+    })
   }
 
   
