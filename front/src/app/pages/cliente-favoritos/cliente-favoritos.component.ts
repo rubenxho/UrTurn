@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { LocalServiceService } from 'src/app/services/local-service.service';
 import { FavoritoServiceService } from 'src/app/services/favorito-service.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-cliente-favoritos',
@@ -22,21 +23,21 @@ export class ClienteFavoritosComponent implements OnInit {
   // public locales: UsuarioEmpresa[];
   
 
-  constructor(private localService: LocalServiceService,private favoritoService:FavoritoServiceService ) {
+  constructor(private localService: LocalServiceService,private favoritoService:FavoritoServiceService, private loginService: LoginService ) {
 
     this.locales = [];
     this.favoritos=[]
   }
 
 //evento para mostrar en detalle los favoritos pinchando en su imagen
-  muestraLocal(id: number){
+  // muestraLocal(){
     
-    this.localService.getLocal(id).subscribe( (data: any) => {
-      this.favoritos = data;
+  //   this.localService.getLocal(this.loginService.login.id_usuario_cliente).subscribe( (data: any) => {
+  //     this.favoritos = data;
       
-    })
+  //   })
     
-  }
+  // }
 
 //evento para filtrar la búsqueda de locales favoritos
   filtrar(filtro:string[]){
@@ -52,5 +53,5 @@ export class ClienteFavoritosComponent implements OnInit {
  
   
   ngOnInit(): void {}
-
+    
 }

@@ -33,6 +33,7 @@ export class ClienteHomeComponent implements OnInit {
 
   muestraLocal(){
 
+    
     this.localService.getTop().subscribe((data: any) => {
       this.locales= data;
       console.log(this.locales)

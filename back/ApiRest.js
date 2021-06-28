@@ -786,9 +786,10 @@ app.get("/local", (req, res) => {
                     FROM usuario_empresa
                     WHERE id_usuario_empresa = ?`;
   let sqlAll = `SELECT nombre_empresa, tiempo_espera, imagen_url FROM usuario_empresa
-                    WHERE (categoria = ? AND codigo_postal = ?)`;
+                    WHERE (categoria = ? OR codigo_postal = ?)`;
   let sqlTop = `SELECT userE.nombre_empresa, userE.imagen_url, AVG(nota) AS valoracion FROM usuario_empresa AS userE 
                 LEFT JOIN opiniones AS op ON userE.id_usuario_empresa = op.id_usuario_empresa
+                WHERE op.nota <> "null"
                 GROUP BY userE.id_usuario_empresa ORDER BY valoracion DESC LIMIT 5`;
   let id = req.query.id;
   let busqueda = [req.query.categoria, req.query.codigo_postal];
@@ -821,7 +822,7 @@ app.get("/local", (req, res) => {
 
       } else{
 
-        console.log(result)
+        // console.log(result)
         res.json(result);
         
       }
