@@ -85,7 +85,7 @@ app.get("/turnos/cliente",
 
         let cliente=request.query.id_usuario_cliente;
         let params=[hoy,hoy,cliente,"Activo",hoy];
-        let sql= "SELECT t.id_turno, t.id_usuario_empresa, e.nombre_empresa,e.logo, TRUNCATE((TO_SECONDS(fecha_apertura_turno)-TO_SECONDS(?))/60,0) AS tiempo_espera FROM turnos AS t INNER JOIN usuario_empresa AS e ON (t.id_usuario_empresa=e.id_usuario_empresa) WHERE DAY(fecha_apertura_turno)= DAY(?) AND id_usuario_cliente= ? AND estado=? AND fecha_apertura_turno > ? "
+        let sql= "SELECT t.id_turno, t.id_usuario_empresa, e.nombre_empresa,e.logo, TRUNCATE((TO_SECONDS(fecha_apertura_turno)-TO_SECONDS(?))/60,0) AS tiempo_espera FROM turnos AS t INNER JOIN usuario_empresa AS e ON (t.id_usuario_empresa=e.id_usuario_empresa) WHERE DAY(fecha_apertura_turno)= DAY(?) AND id_usuario_cliente= ? AND estado=? AND fecha_apertura_turno > ?  ORDER BY tiempo_espera ASC"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -101,8 +101,112 @@ app.get("/turnos/cliente",
     }
 )   
 
-
 app.post("/turnos/cliente",
+    function (request,response) 
+    {
+        // FECHA ACTUAL
+        let hoy = new Date(Date.now());
+
+        // Recibo como parametros id_cliente e id_empresa
+        let cliente= request.body.id_usuario_cliente
+        let empresa= request.body.id_usuario_empresa
+        // Varibales que voy a evaluar y usar en el insert
+        let t_espera;
+        let f_solicitud=new Date(Date.now());
+        let f_apertura=new Date();
+        let f_cierre=new Date();
+        let params=[hoy,hoy,empresa,"Turno Activo"]
+        // VERIFICO QUE EL LOCAL ESTE ABIERTO(HORARIO APUERTURA-CIERRE) Y QUE SU TURNO ESTE TURNO_ACTIVO
+        let sql='SELECT * FROM usuario_empresa WHERE apertura<date_format(?, "%H:%i:%s")  AND cierre>date_format(?, "%H:%i:%s") AND id_usuario_empresa= ? AND estado_turno=?'
+        connection.query(sql,params, 
+          function(err, res){
+              if(err){
+               console.log(err);
+               }
+              else{
+                console.log(res)
+                // Caso que no se pueda hacer turno en el local
+                if(res.length==0){
+                response.send({mensaje: 'No disponible'}) 
+                }
+                // Caso que se pueda hacer turno
+                else{
+                  console.log(res[0].tiempo_espera)
+                  t_espera=res[0].tiempo_espera;
+                  let params2=[hoy,empresa,"Activo"];
+                  let sql ="SELECT MAX(fecha_cierre_turno) AS ultima_fecha_cierre, e.tiempo_espera FROM turnos AS t INNER JOIN usuario_empresa AS e ON (t.id_usuario_empresa= e.id_usuario_empresa) WHERE Day(fecha_cierre_turno) = Day(?) AND t.id_usuario_empresa= ? AND estado=?";
+                  connection.query(sql,params2, 
+                    function(err, res){
+                        if(err){
+                         console.log(err);
+                         response.send({error: true, codigo: 200, mensaje: 'Error en select turnos'})
+                         }
+                        else{
+                          console.log(res)
+                          // CASO 1: Primer cliente del dia
+                          if(res[0].ultima_fecha_cierre==null){
+                            f_apertura=new Date(f_solicitud);
+                            f_cierre=new Date(f_apertura);
+                            f_cierre.setMinutes(f_cierre.getMinutes() + t_espera);
+                            // Inserto en la BD primer cliente 
+                            let params3=[cliente,empresa,f_solicitud,f_apertura,f_cierre,"Activo"];
+                            let sql='INSERT INTO turnos (id_usuario_cliente,id_usuario_empresa,fecha_solicitud_turno,fecha_apertura_turno,fecha_cierre_turno,estado) VALUES(?,?,?,?,?,?)' 
+                            connection.query(sql,params3, 
+                                function(err, res){
+                                    if(err){
+                                     console.log(err);
+                                     response.send({error: true, codigo: 200, mensaje: "Error en INSERT turnos SELECT empresa"})
+                                     }
+                                    else{
+                                     console.log(res)
+                                     response.send({error: false, codigo: 200, mensaje: 'Turno agregado correctamente primero del dia'})
+                                    }
+                                }
+                            )
+                          }
+                          // CASO 2: Ya tengo clientes en fila
+                          else{
+                            // CASO 2.1: mismo dia pero no hay nadie en fila
+                            if(res[0].ultima_fecha_cierre <hoy){
+                                console.log("CASO 2 mismo dia pero no hay nadie en fila")
+                                f_apertura=new Date(f_solicitud);
+                            }
+                            // CASO 2.2: mismo dia hay persona en fila
+                            else{
+                                console.log("CASO 3 mismo hay fila")
+                                f_apertura=new Date(res[0].ultima_fecha_cierre)
+                            }
+                            console.log(t_espera)
+                            f_cierre=new Date(f_apertura);
+                            f_cierre.setMinutes(f_cierre.getMinutes() + t_espera);
+                            // Inserto en la BD no hay nadie en fila o clientes en cola  
+                            let param4=[cliente,empresa,f_solicitud,f_apertura,f_cierre,"Activo"];
+                            let sql='INSERT INTO turnos (id_usuario_cliente,id_usuario_empresa,fecha_solicitud_turno,fecha_apertura_turno,fecha_cierre_turno,estado) VALUES(?,?,?,?,?,?)' 
+                            connection.query(sql,param4, 
+                                function(err, res){
+                                    if(err){
+                                     console.log(err);
+                                     response.send({error: true, codigo: 200, mensaje: "Error en INSERT turnos SELECT empresa"})
+                                     }
+                                    else{
+                                     console.log(res)
+                                     response.send({error: false, codigo: 200, mensaje: 'Turno agregado correctamente con personas dentro de la fila'})
+                                    }
+                                }
+                            )
+                          }
+                        }
+                    }
+                  )
+                }
+                
+              }
+          }
+        )
+    }
+)
+
+app.post("/turnos/cliente2",
     function (request,response) 
     {
         // FECHA ACTUAL
@@ -119,7 +223,6 @@ app.post("/turnos/cliente",
         let cliente= request.body.id_usuario_cliente
         let empresa= request.body.id_usuario_empresa
         // let sql="SELECT tiempo_espera FROM usuario_empresa WHERE id_usuario_empresa=? AND estado_turno=?, AND apertura MAKETIME(?,?,?) "
-        
         let params2=[hoy,empresa,"Activo"];
         let sql ="SELECT MAX(fecha_cierre_turno) AS ultima_fecha_cierre, e.tiempo_espera FROM turnos AS t INNER JOIN usuario_empresa AS e ON (t.id_usuario_empresa= e.id_usuario_empresa) WHERE Day(fecha_cierre_turno) = Day(?) AND t.id_usuario_empresa= ? AND estado=?";
         //let sql='SELECT id_turno,now(),MAX(fecha_cierre_turno),e.tiempo_espera, DATEDIFF(MAX(fecha_cierre_turno),CURRENT_TIME()) AS dia, TO_SECONDS(now())-TO_SECONDS(MAX(fecha_cierre_turno)) AS diferencia, MAX(fecha_cierre_turno) AS ultima_fecha FROM turnos AS t INNER JOIN usuario_empresa AS e ON (t.id_usuario_empresa= e.id_usuario_empresa) WHERE t.id_usuario_empresa= ? AND estado=? GROUP BY t.fecha_cierre_turno ORDER BY t.fecha_cierre_turno DESC LIMIT 1'

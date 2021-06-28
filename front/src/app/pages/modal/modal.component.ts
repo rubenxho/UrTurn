@@ -8,10 +8,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ModalComponent implements OnInit {
   
-  @Input() mensajeModal: string[];
+  @Input() mensajeModal: any[];
   @Output() eventoCola = new EventEmitter<boolean>();
   @Output() eventoGuardarPerfil = new EventEmitter<boolean>();
   @Output() eventoAvanzarCola = new EventEmitter<boolean>();
+  @Output() eventoModificarTiempo = new EventEmitter<boolean>();
+  @Output() eventoCancelarCola = new EventEmitter<boolean>();
 
   constructor(private toastr: ToastrService) {
     // Array mensajeModal(pos0: etiqueta modal, pos2: op1 pregunta, pos3:op2 pregunta, siguientes posiciones eventos)
@@ -21,8 +23,9 @@ export class ModalComponent implements OnInit {
   //Funcion para modificar cambios de estados en el home-empresa (Iniciar/detener)
   modificar(mensajeToast: string) {
     // Evento home-empresa
+    console.log(this.mensajeModal)
     if (this.mensajeModal[6]=="1") {
-      if (this.mensajeModal[5]) {
+      if (this.mensajeModal[5]==true) {
         this.llamarEventoCola(true);
       } else {
         this.llamarEventoCola(false);
@@ -35,6 +38,13 @@ export class ModalComponent implements OnInit {
     // Evento Boton Avanzar cola
     if(this.mensajeModal[6]=="3"){
       this.llamarEventoAvanzarCola(true)
+    }
+    //Evento modificar T.E empresa
+    if(this.mensajeModal[6]=="4"){
+      this.llamarEventoModificarTiempo(true)
+    }
+    if(this.mensajeModal[6]=="5"){
+      this.llamarEventoCancelarCola(true)
     }
 
     this.showSuccess(mensajeToast);
@@ -63,6 +73,16 @@ export class ModalComponent implements OnInit {
   //Evento para home-empresa
   llamarEventoCola(cola: boolean) {
     this.eventoCola.emit(cola);
+  }
+
+  //Evento para home-empresa
+  llamarEventoModificarTiempo(cola: boolean) {
+    this.eventoModificarTiempo.emit(cola);
+  }
+
+  //Evento para cliente-cancelar cola
+  llamarEventoCancelarCola(cola: boolean) {
+    this.eventoCancelarCola.emit(cola);
   }
 
   ngOnInit(): void {}

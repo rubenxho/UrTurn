@@ -13,6 +13,7 @@ export class UsuarioEmpresa {
     public cierre:any;
     public tiempo_espera:number; //en minutos
     public logo:string;
+    public estado_turno: string;
     public opiniones:Opiniones[];
     public email:string;
     public password:string;
@@ -29,6 +30,7 @@ export class UsuarioEmpresa {
                 cierre:any=null,
                 tiempo_espera:number=0,
                 logo:string='',
+                estado_turno:string='',
                 opiniones:Opiniones[]=[],
                 email:string='',
                 password:string='') {
@@ -45,6 +47,7 @@ export class UsuarioEmpresa {
         this.cierre = cierre;
         this.tiempo_espera = tiempo_espera;
         this.logo = logo;
+        this.estado_turno;
         this.opiniones = opiniones;
         this.email = email;
         this.password = password;

@@ -5,6 +5,7 @@ export class UsuarioEncola {
     public apellidos_cliente: string;
     public telefono: string;
     public imagen_url: string;
+    public karma:string
 
     constructor(id_turno:number,id_usuario_cliente:number, nombre_cliente:string, apellido_cliente:string, telefono:string, imagen_url: string){
 
@@ -14,5 +15,6 @@ export class UsuarioEncola {
         this.apellidos_cliente=apellido_cliente;
         this.telefono=telefono;
         this.imagen_url=imagen_url;
+        this.karma="green"
     }
 }
