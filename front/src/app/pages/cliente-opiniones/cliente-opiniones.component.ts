@@ -16,15 +16,16 @@ export class ClienteOpinionesComponent implements OnInit {
 
   public locales: any;
   public opiniones: any;
+
   // para mostrar dos campos
   public comentar: boolean;
   public comentarios: boolean;
+
   // para campo de comentar
   public comentarAzul: boolean;
-  // para el corazon de favorito
-  public favorito: boolean;
   // estrellas valor
   public estrellas: number;
+
   // la empresa que estamos comentando
   private empresaComentando: any;
   // la empresa que estamos quitando, sin comentar
@@ -36,6 +37,7 @@ export class ClienteOpinionesComponent implements OnInit {
     private lsc: LoginService,
     private lscInfo: UsuarioServiceService
   ) {
+
     this.locales = '';
     this.opiniones = '';
     // dos campos
@@ -43,17 +45,15 @@ export class ClienteOpinionesComponent implements OnInit {
     this.comentarios = false;
     // campo de comentar
     this.comentarAzul = true;
-    //para el corazon de favorito
-    this.favorito = false;
     // valor estrella defecto
     this.estrellas = 0;
     this.lscInfoPintar = '';
   }
+
   // abandonar a comentar
   dejarOpinar(local: any) {
     this.empresaSinComentar = local;
   }
-
   comentarLocal(local: any) {
     this.empresaComentando = local;
   }
@@ -72,13 +72,14 @@ export class ClienteOpinionesComponent implements OnInit {
     console.log(this.estrellas);
     return this.estrellas;
   }
+
   /******************************************* CAMPO 1 comentar **************************************************/
   //funcion de boton de comentar
   comentarCampo() {
     this.comentar = true;
     this.comentarios = false;
     this.comentarAzul = true;
-    
+    // Para actualizar otra vez
     this.actualizarDatos();
   }
 
@@ -94,19 +95,13 @@ export class ClienteOpinionesComponent implements OnInit {
   // crear un comentario nuevo
   crearComentario(textoOpinion: string) {
     let nota = this.estrellas;
-    // this.lscInfo
-    //   .obtenerUserClienteId(this.lsc.login.id_usuario_cliente)
-    //   .subscribe((date: any) => {
-    //     this.lscInfoPintar = date;
-    //     console.log(this.lscInfoPintar);
-    //   });
     let opinionNuevo = Opiniones.create(
       this.lsc.login.id_usuario_cliente,
       this.empresaComentando.id_usuario_empresa,
       nota,
       textoOpinion
-    ); // falta id de usuario empresa que el cliente ha terminado turno.
-    this.opinionesService.postOpinion(opinionNuevo).subscribe((date: any) => {
+    ); 
+    this.opinionesService.postOpinion(opinionNuevo).subscribe((data: any) => {
       this.locales = this.locales.filter((local: any) => {
         return (
           local.id_usuario_empresa != this.empresaComentando.id_usuario_empresa
@@ -115,7 +110,7 @@ export class ClienteOpinionesComponent implements OnInit {
     });
   }
 
-  // Cuando envie un comentario, se borra esta tarjeta.
+  // Cuando envie un comentario, se borra esta tarjeta. el endpoint es "post"
   rechazarOpinion() {
     this.opinionesService
       .postOpinionRechaza(
