@@ -1,15 +1,15 @@
 <div class="col">
     <div class="card">
-        <img src="{{local.imagen_url}}" class="card-img-top" alt="" data-bs-toggle="tooltip"
+        <img src="{{usuarioEmpresa.imagen_url}}" class="card-img-top" alt="" data-bs-toggle="tooltip"
             data-bs-placement="top" title="Más información" routerLink="/cliente-perfil-empresa"
             (click)="muestraLocal()">
             
         <div class="card-body">
             <div clase="carde-title-color ">
-                <h4 class="card-title">{{local.nombre_empresa}}</h4>
+                <h4 class="card-title">{{usuarioEmpresa.nombre_empresa}}</h4>
             </div>
 
-            <p class="card-text">Tiempo Aprox: {{local.tiempo_espera}} Mins</p>
+            <p class="card-text">Tiempo Aprox: {{usuarioEmpresa.tiempo_espera}} Mins</p>
             <div class="valoracion">
 
                 <input id="radio1" type="radio" name="estrellas" value="5">

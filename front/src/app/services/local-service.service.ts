@@ -12,6 +12,9 @@ export class LocalServiceService {
   public localesTop: UsuarioEmpresa [];
   public localElegido: UsuarioEmpresa;
   public localesGrupo: UsuarioEmpresa [];
+  public locales: UsuarioEmpresa [];
+  public mostrarTarjetas: boolean;
+
   
 
   constructor(private http: HttpClient) {
@@ -19,15 +22,19 @@ export class LocalServiceService {
     this.localesTop = [];
     this.localElegido = new UsuarioEmpresa();
     this.localesGrupo = [];
+      //inicializar locales
+      this.locales = [];
+      //*************************/
+      this.mostrarTarjetas=false
 
     
   }
 
   getLocales(categoria: string, codigo_postal: number){
 
-    if(categoria != '' && codigo_postal != 0){
+    if(categoria != '' || codigo_postal != 0){
 
-      return this.http.get(`${this.url}?categoria=${categoria}&codigo_postal=${codigo_postal}`);
+      return this.http.get(`${this.url}?categoria=${categoria}?codigo_postal=${codigo_postal}`);
 
     }else{
 

@@ -2,8 +2,6 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { LocalServiceService } from 'src/app/services/local-service.service';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { Opiniones } from 'src/app/models/opiniones';
-import { FavoritoServiceService } from 'src/app/services/favorito-service.service';
-import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-cliente-tarjetas',
@@ -11,8 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./cliente-tarjetas.component.css'],
 })
 export class ClienteTarjetasComponent implements OnInit {
-  @Input() usuarioEmpresa:UsuarioEmpresa;
-  
+  @Input() usuarioEmpresa: any;
   //public usuarioEmpresa: UsuarioEmpresa;
 
   //atributo para hacer favorito
@@ -23,22 +20,13 @@ export class ClienteTarjetasComponent implements OnInit {
   public usuarioEmpresas:any
 
   // para localEmpresa
-
-  public local: UsuarioEmpresa;
-  
-
   /*********************************/
 
-  constructor(private localService: LocalServiceService, private FavService: FavoritoServiceService, private loginService: LoginService) {
-    this.usuarioEmpresas = [];
-    this.usuarioEmpresa = new UsuarioEmpresa ();
-
-
-    //inicializar local
-    this.local = this.usuarioEmpresa
-  
+  constructor(private localService: LocalServiceService) {
     
     //*************************/
+
+    this.usuarioEmpresa = null;
 
     this.ticket = 1150;
   //atributo para hacer favorito
@@ -47,42 +35,28 @@ export class ClienteTarjetasComponent implements OnInit {
   }
   //method para guardar a favorito
   
-  fav( ) {
-    
+  fav() {
     this.favorito = !this.favorito;
   }
 
-  añadirFav(){
-    if(this.favorito==false){
-      this.FavService.anyadirFav( this.loginService.login.id_usuario_cliente)
-    }
-    // else{
-    //   this.FavService.eliminarFav()
-    // }
-   
-  }
-
-  // confirma hacer la cola
+  // confirma hace la cola
   comfirmadoCola() {
     this.enCola = true;
   }
 
   // obtenerLocalAll() {
-  //   return this.localService.
-  //   connectar con LocalServiceService de David
+    // return this.localService.
+    // connectar con LocalServiceService de David
   // }
 
 
   //funcion mostrar datos del local según los endpoints
   muestraLocal(){
-    
-    this.localService.localElegido = this.local;
-    
+    console.log(this.usuarioEmpresa)
+    this.localService.localElegido = this.usuarioEmpresa
   }
     
 
 
-  ngOnInit(): void {
-    this.muestraLocal()
-  }
+  ngOnInit(): void {}
 }
