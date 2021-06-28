@@ -63,7 +63,7 @@
         height: fit-content;/*ajusta el tamaño al contenido de la caja*/
         padding: 1px 3px;
         color: #5C74F6;
-        font-size: 25px;
+        font-size: 20px;
         width: 250px;
         display: flex;
         justify-content: center;
@@ -102,7 +102,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    color: #28a745;
+    color: #5C74F6;
 }
 
 p {
@@ -243,13 +243,13 @@ h2 {
         margin-top: -2px;
         display: flex;
         font-size: 20px;
-        color: #28a745;
+        color: #5C74F6;
     }
 
     .parrafoP {
         display: flex;
         font-size: 20px;
-        color: #28a745;
+        color: #5C74F6;
         margin-top: 19px;
     }
 }

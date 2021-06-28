@@ -88,7 +88,7 @@ export class EmpresaRegistroComponent implements OnInit {
     this.validarTelefono();
 
     if(this.myForm.valid) {
-      let empresa:UsuarioEmpresa = new UsuarioEmpresa(0, rsocial, '', telefono, 0, '', '', '', null, null, 0, '', [], email, password);
+      let empresa:UsuarioEmpresa = new UsuarioEmpresa(0, rsocial, '', telefono, 0, '', '', '', null, null, 0, '','', [], email, password);
       
       this.rs.postNuevoUsuario(empresa).subscribe((data:any) => {
 

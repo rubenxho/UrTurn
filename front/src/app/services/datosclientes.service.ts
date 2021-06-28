@@ -9,11 +9,11 @@ export class DatosclientesService {
   private url:string;
 
   constructor(private http: HttpClient) { 
-    this.url='http://localhost:3000/turnos/empresa/datos_clientes?id_usuario_empresa=29'
+    this.url='http://localhost:3000/turnos/empresa/datos_clientes?id_usuario_empresa='
   }
 
-  getDatosClientes(){
-    return this.http.get(this.url)
+  getDatosClientes(id:number){
+    return this.http.get(`${this.url}${id}`)
   }
 
   

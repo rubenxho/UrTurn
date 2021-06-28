@@ -8,6 +8,17 @@
     max-width: min(1200px, calc(100vw - 40px));
     min-width: min(1200px, calc(100vw - 40px));
 } */
+.circulo{
+    color: rgb(3, 255, 3);;
+}
+
+.circulo2{
+    color: red;
+}
+
+.circulo3{
+    color: rgb(243, 243, 0);
+}
 
 .separador{
     height: 50px;
@@ -176,6 +187,7 @@
     width: 250px;
     box-sizing: border-box;
     max-height: 310px;
+    min-height: 310px;
 }
 
 .contenedor-2{
@@ -201,6 +213,21 @@
     flex-wrap: wrap; 
 }
 
+.foto3{
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    display: flex;
+    max-width: 120px;
+    min-width: 120px;
+    max-height: 120px;
+    min-height: 120px;
+    justify-content: center;
+    align-items: center;   
+    border: solid rgb(243, 243, 0);
+    padding: 50px;
+}
+
 .foto{
     border-radius: 50%;
     overflow: hidden;
@@ -212,6 +239,23 @@
     min-height: 120px;
     justify-content: center;
     align-items: center;   
+    border: solid rgb(3, 255, 3);
+    padding: 50px;
+}
+
+.foto2{
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    display: flex;
+    max-width: 120px;
+    min-width: 120px;
+    max-height: 120px;
+    min-height: 120px;
+    justify-content: center;
+    align-items: center;   
+    border: solid rgb(255, 0, 0);
+    padding: 50px;
 }
 
 .imagen{
@@ -219,6 +263,7 @@
     height: 100%;
     width: auto;
     max-height: 120px;
+    
 }
 
 
@@ -336,6 +381,7 @@
 
     .ruben-input{
         width: 50px;
+        font-size: 14px;
     }
 
     .contenedor-2{

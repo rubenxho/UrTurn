@@ -1,129 +1,84 @@
 <div class="global">
-    <section class="container">    
+    <div *ngIf="empresasCola.length>0 else sinColas">
+        <section class="container" *ngFor="let empresa of empresasCola let i=index">    
 
-        <article class="col-2 col1">
-    
-            <img class="img" src="./assets/mcdonalds.png" alt="gym">
-        </article>
-
-        <div class="sobreFoto">
-    
-            <h2 class="nombre">EMPRESA</h2>
-
-        </div>
-    
-        <div class="centro">
-
-            <article class="col-3 col2"> 
-                <div class="fila">
-    
-                    <i class="fa fa-hourglass-half tiempo" aria-hidden="true">(min.)</i>
-    
-                </div>  
-                
-                <div class="fila">                    
-    
-                    <p class="parrafo">25</p>
-    
-                </div>
-                    
+            <article class="col-2 col1">
+            
+                <img class="img" src="{{empresa.logo}}" alt="gym">
             </article>
 
+            <div class="sobreFoto">
             
-    
-            <article class="col-3 col2"> 
-    
-                <div class="fila">                    
-    
-                    <i class="fa fa-ticket tiempo" aria-hidden="true"></i>
-    
-                </div>   
-                
-                <div class="fila">                    
-    
-                    <p class="parrafo">5</p>
-    
-                </div>
-                    
-            </article>
-    
-        </div>
-    
-        <article class="col-2 col3">
-    
-            <div>
-                <button class="boton" data-toggle="modal" data-target="#modalModificar">Cancelar</button>
-            </div>
-            <app-modal [mensajeModal]="clienteCola"></app-modal>
-    
-        </article>
-    
-    </section>
-
-
-<!-- --------------------------------------segunda linea. Borrar. Va con ngFor -->
-
-<section class="container">    
-
-    <article class="col-2 col1">
-
-        <img class="img" src="./assets/starbucks.png" alt="gym">
-    </article>
-
-    <div class="sobreFoto">
-
-        <h2 class="nombre">EMPRESA</h2>
-
-    </div>
-
-    <div class="centro">
-
-        <article class="col-3 col2"> 
-
-            <div class="fila">
-
-                <i class="fa fa-hourglass-half tiempo" aria-hidden="true">(min.)</i>
-
-            </div>  
-            
-            <div class="fila">                    
-
-                <p class="parrafo">25</p>
+                <h2 class="nombre">{{empresa.nombre_empresa}}</h2>
 
             </div>
-                
-        </article>
-
         
+            <div class="centro">
 
-        <article class="col-3 col2"> 
+                <article class="col-3 col2"> 
+                    <div class="fila">
+                    
+                        <i class="fa fa-hourglass-half tiempo" aria-hidden="true">(min.)</i>
+                    
+                    </div>  
 
-            <div class="fila">                    
+                    <div class="fila">                    
+                    
+                        <p class="parrafo">{{empresa.tiempo_espera}}</p>
+                    
+                    </div>
 
-                <i class="fa fa-ticket tiempo" aria-hidden="true"></i>
+                </article>
 
-            </div>   
+
             
-            <div class="fila">                    
-
-                <p class="parrafo">5</p>
-
-            </div>
+                <article class="col-3 col2"> 
                 
-        </article>
+                    <div class="fila" >                    
+                        <i class="fa fa-ticket-alt tiempo" aria-hidden="true"></i>
+                    
+                    </div>   
 
-        </div>
+                    <div class="fila">                    
+                    
+                        <p class="parrafo">{{empresa.id_turno}}</p>
+                    
+                    </div>
 
-        <article class="col-2 col3">
-
-            <div>
-                <button class="boton" data-toggle="modal" data-target="#modalModificar">Cancelar</button>
+                </article>
+            
             </div>
+        
+            <article class="col-2 col3">
+            
+                <div>
+                    <button class="boton" data-toggle="modal" data-target="#modalModificar" (click)="botonCancelar(i)">Cancelar</button>
+                </div>
+                <app-modal [mensajeModal]="clienteCola" (eventoCancelarCola)="cancelarCola($event)"></app-modal>
+            
+            </article>
+        
+        </section>
+    </div>  
+    <!-- Caso no hay ningna cola -->
+    <ng-template #sinColas>
+        <section class="container" >    
 
-            <app-modal [mensajeModal]="clienteCola"></app-modal>
+            <article class="col-2 col1">
+            
+                <img class="img" src="" alt="gym">
+            </article>
 
-    </article>
+            <div class="sobreFoto">
+            
+                <h2 class="nombre"><i class="fa fa-hourglass-half tiempo" aria-hidden="true">NO TIENES NINGUN TURNO ACTIVO</i></h2>
 
-    </section>
+            </div>
+            
+
+        </section>
+    </ng-template>
+
+
 
 </div>

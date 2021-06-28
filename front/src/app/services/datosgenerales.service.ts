@@ -10,14 +10,10 @@ export class DatosgeneralesService {
 
 
   constructor(private http: HttpClient) {
-    this.url='http://localhost:3000/turnos/empresa/datos_generales?id_usuario_empresa=29'
-    // this.http.get(this.url).subscribe((data)=>{
-    //   console.log("flag service")
-    //   console.log(data);
-    // })
+    this.url='http://localhost:3000/turnos/empresa/datos_generales?id_usuario_empresa='
   }
 
-  getDatosGenerales(){
-    return this.http.get(this.url)
+  getDatosGenerales(id_empresa:number){
+    return this.http.get(`${this.url}${id_empresa}`)
   }
 }

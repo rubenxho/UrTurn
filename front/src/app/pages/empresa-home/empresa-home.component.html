@@ -2,14 +2,14 @@
     <div class="ruben-col">
         <div class="ruben-row ruben-formulario">
             <form class="ruben-formulario2"> 
-                <label for="fname" class="ruben-label" >Tiempo de espera:</label>
-                <input class="ruben-input" placeholder="20 minutos/persona" type="text" id="user" style="text-align: center;">
+                <label for="fname" class="ruben-label" >Tiempo de espera:</label> 
+                <input class="ruben-input" placeholder="{{datosEmpresa[0]?.tiempo_espera}}minutos/persona" type="text" id="user" style="text-align: center;" #inputLeido>
                 <!-- Boton modal modificar -->
-                <button type="button" class="boton-modificar" data-toggle="modal" data-target="#modalModificar">
+                <button type="reset" class="boton-modificar" data-toggle="modal" data-target="#modalModificar" (click)=mostrarInput(inputLeido.value)>
                     Modificar
                 </button>
                 <!-- Modal boton modificar-->
-                <app-modal [mensajeModal]='mensajeModal'></app-modal> 
+                <app-modal [mensajeModal]='mensajeModal' (eventoModificarTiempo)=modificarTiempo($event)></app-modal> 
             </form>
             <div class="separador"></div>
             <div class="ruben-avanzar-cola">
@@ -68,17 +68,17 @@
                     <p class="cuadros-texto numero" >{{datosGenerales.numero_clientes_cola}}</p>                        
                 </div>
                 <div class="cuadros">
+                    <p class="cuadros-texto" style="margin-bottom: 5px;">Proximo Cliente:</p>
+                    <p class="cuadros-texto numero" >{{datosGenerales.proximo_cliente}}</p>
+                </div> 
+                <div class="cuadros">
                     <p class="cuadros-texto" style="margin-bottom: 5px;">Numero de Cliente:</p>
                     <p class="cuadros-texto numero" >{{datosGenerales.numero_ticket}}</p>
                 </div>
                 <div class="cuadros">
                     <p class="cuadros-texto" style="margin-bottom: 5px;">Clientes Atendidos:</p>
-                    <p class="cuadros-texto numero" >{{datosGenerales.proximo_cliente}}</p>
-                </div>
-                <div class="cuadros">
-                    <p class="cuadros-texto" style="margin-bottom: 5px;">Proximo Cliente:</p>
                     <p class="cuadros-texto numero" >{{datosGenerales.clientes_atendidos}}</p>
-                </div>      
+                </div>     
         </div>
 
     </div>
