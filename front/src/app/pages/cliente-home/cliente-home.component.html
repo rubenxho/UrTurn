@@ -1,4 +1,8 @@
-<app-cliente-buscador></app-cliente-buscador>
+
+<div class="buscador">
+    <app-cliente-buscador></app-cliente-buscador>
+</div>
+
  
 <div class="col" *ngIf="mostrarTarjetas==false ;else tarjetas" >
 
@@ -17,41 +21,41 @@
                         <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
                         </ol>
                         <div class="carousel-inner">
-                        <div class="carousel-item carusel active">
-                            <img  src="{{local.imagen_url}}" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                            <h5 class="titulo">{{local.nombre_empresa}}</h5>
-                            <p > </p>
+                            <div class="carousel-item carusel active">
+                                <img  src="{{locales[0].imagen_url}}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5 class="titulo">{{locales[0].nombre_empresa}}</h5>
+                                <p > </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-item carusel">
-                            <img src="{{local.imagen_url}}" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                            <h5 class="titulo">Alta fit</h5>
-                            <p> </p>
+                            <div class="carousel-item carusel">
+                                <img src="{{locales[1].imagen_url}}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5 class="titulo">{{locales[1].nombre_empresa}}</h5>
+                                <p> </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-item carusel">
-                            <img src="{{local.imagen_url}}" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                            <h5 class="titulo">Ikea</h5>
-                            <p> </p>
+                            <div class="carousel-item carusel">
+                                <img src="{{locales[2].imagen_url}}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5 class="titulo">{{locales[2].nombre_empresa}}</h5>
+                                <p> </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-item carusel">
-                            <img src="{{local.imagen_url}}" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                            <h5 class="titulo">Spa +Aqua</h5>
-                            <p> </p>
+                            <div class="carousel-item carusel">
+                                <img src="{{locales[3].imagen_url}}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5 class="titulo">{{locales[3].nombre_empresa}}</h5>
+                                <p> </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-item carusel">
-                            <img src="{{local.imagen_url}}" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                            <h5 class="titulo">Cinesa</h5>
-                            <p> </p>
+                            <div class="carousel-item carusel">
+                                <img src="{{locales[4].imagen_url}}" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5 class="titulo">{{locales[4].nombre_empresa}}</h5>
+                                <p> </p>
+                                </div>
                             </div>
-                        </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

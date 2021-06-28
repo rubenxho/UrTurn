@@ -115,5 +115,13 @@ img {
     margin-top: 5px;
     font-size: 4vw;
   }
- 
+
+  .buscador {
+    margin-top: 100px !important;
+  }
+
+  .row {
+    margin-top: 30px;
+  }
+
 }

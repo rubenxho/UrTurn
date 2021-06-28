@@ -11,11 +11,15 @@ export class LocalServiceService {
 
   public localesTop: UsuarioEmpresa [];
   public localElegido: UsuarioEmpresa;
+  public localesGrupo: UsuarioEmpresa [];
+  
 
   constructor(private http: HttpClient) {
     
     this.localesTop = [];
     this.localElegido = new UsuarioEmpresa();
+    this.localesGrupo = [];
+
     
   }
 

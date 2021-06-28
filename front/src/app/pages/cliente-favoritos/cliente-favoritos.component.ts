@@ -29,7 +29,7 @@ export class ClienteFavoritosComponent implements OnInit {
   muestraLocal(id: number){
     console.log("favoritos");
     
-    this.localService.getLocal(id).subscribe( (data: any) => {
+    this.localService.getLocal(this.loginService.login.id_usuario_cliente).subscribe( (data: any) => {
       this.favoritos = data;
       
     })
