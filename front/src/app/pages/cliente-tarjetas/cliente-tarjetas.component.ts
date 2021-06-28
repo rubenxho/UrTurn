@@ -35,7 +35,7 @@ export class ClienteTarjetasComponent implements OnInit {
 
 
     //inicializar local
-    this.local = new UsuarioEmpresa ();
+    this.local = this.usuarioEmpresa
   
     
     //*************************/
@@ -76,10 +76,7 @@ export class ClienteTarjetasComponent implements OnInit {
   //funcion mostrar datos del local según los endpoints
   muestraLocal(){
     
-    this.localService.getLocal(this.localService.localElegido.id_usuario_empresa).subscribe((data: any) => {
-      this.local= data;
-      console.log(this.local)
-    })
+    this.localService.localElegido = this.local;
     
   }
     
