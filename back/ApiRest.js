@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mysql = require("mysql2");
+const { request, response } = require("express");
 
 //Creo un servidor
 app.use(express.urlencoded({ extended: false }));
@@ -639,9 +640,13 @@ app.get("/userE",(request,response)=>{
     let id = request.query.id
     let params = [id];
 
+    //seeders ayudan en esto
+
+
     if(id>0){ 
         let sql = `SELECT userE.*  FROM urturn.usuario_empresa AS userE
-        WHERE userE.id_usuario_empresa = ?;`       
+        WHERE userE.id_usuario_empresa = ?;`  
+        console.log(sql)     
         
         connection.query(sql, params, (err,res)=>{
             if(err){
@@ -694,7 +699,10 @@ app.put("/userE",(request,response)=>{
 
 	let params = [name,catg,tlf,cp,address,img,desc,open,close,time,logo,status, id];
   console.log(params)
-	let sql='UPDATE urturn.usuario_empresa AS userE SET userE.nombre_empresa=COALESCE(?,userE.nombre_empresa), userE.categoria=COALESCE(?,userE.categoria), userE.telefono=COALESCE(?,userE.telefono), userE.codigo_postal=COALESCE(?,userE.codigo_postal), userE.direccion=COALESCE(?,userE.direccion), userE.imagen_url=COALESCE(?,userE.imagen_url), userE.descripcion=COALESCE(?,userE.descripcion), userE.apertura=COALESCE(?,userE.apertura), userE.cierre=COALESCE(?,userE.cierre), userE.tiempo_espera=COALESCE(?,userE.tiempo_espera), userE.logo=COALESCE(?,userE.logo), userE.estado_turno=COALESCE(?,userE.estado_turno) WHERE userE.id_usuario_empresa = ?'
+	let sql=`UPDATE urturn.usuario_empresa AS userE SET userE.nombre_empresa=COALESCE(?,userE.nombre_empresa), userE.categoria=COALESCE(?,userE.categoria), userE.telefono=COALESCE(?,userE.telefono), 
+  userE.codigo_postal=COALESCE(?,userE.codigo_postal), userE.direccion=COALESCE(?,userE.direccion), userE.imagen_url=COALESCE(?,userE.imagen_url), userE.descripcion=COALESCE(?,userE.descripcion), 
+  userE.apertura=COALESCE(?,userE.apertura), userE.cierre=COALESCE(?,userE.cierre), userE.tiempo_espera=COALESCE(?,userE.tiempo_espera), userE.logo=COALESCE(?,userE.logo), 
+  userE.estado_turno=COALESCE(?,userE.estado_turno) WHERE userE.id_usuario_empresa = ?`
 
     connection.query(sql, params, (err,res)=>{
         if(err){
@@ -710,6 +718,46 @@ app.put("/userE",(request,response)=>{
 
 });
 
+app.put("/userEP",(request,response)=>{
+	let id = request.body.id_usuario_empresa;
+	let name = (request.body.nombre_empresa == "" ? null : request.body.nombre_empresa);
+	let catg= (request.body.categoria == "" ? null : request.body.categoria);
+	let tlf= (request.body.telefono == "" ? null : request.body.telefono);
+	let cp= (request.body.codigo_postal == ""  ? null : request.body.codigo_postal);
+	let address = (request.body.direccion == "" ? null : request.body.direccion);
+	let img = (request.body.imagen_url == "" ? null : request.body.imagen_url);
+	let desc = (request.body.descripcion == "" ? null : request.body.descripcion);
+	let open = (request.body.apertura == "" ? null : request.body.apertura);
+	let close= (request.body.cierre == "" ? null : request.body.cierre);
+	let time = (request.body.tiempo_espera == "" ? null : request.body.tiempo_espera);
+	let logo = (request.body.logo == "" ? null : request.body.logo);
+  let status =(request.body.estado_turno == "" ? null : request.body.estado_turno);
+  let password = (request.body.password == "" ? null: request.body.password);
+  
+  let params = [name,catg,tlf,cp,address,img,desc,open,close,time,logo,status, password,id]
+  console.log("body",request.body)
+  console.log(password)
+  let  sql=`UPDATE urturn.usuario_empresa AS userE JOIN urturn.login AS lg ON lg.id_usuario_empresa = userE.id_usuario_empresa
+  SET userE.nombre_empresa=COALESCE(?,userE.nombre_empresa), userE.categoria=COALESCE(?,userE.categoria), userE.telefono=COALESCE(?,userE.telefono), 
+  userE.codigo_postal=COALESCE(?,userE.codigo_postal), userE.direccion=COALESCE(?,userE.direccion), userE.imagen_url=COALESCE(?,userE.imagen_url), userE.descripcion=COALESCE(?,userE.descripcion), 
+  userE.apertura=COALESCE(?,userE.apertura), userE.cierre=COALESCE(?,userE.cierre), userE.tiempo_espera=COALESCE(?,userE.tiempo_espera), userE.logo=COALESCE(?,userE.logo), 
+  userE.estado_turno=COALESCE(?,userE.estado_turno), lg.contraseña=COALESCE(?,lg.contraseña) WHERE userE.id_usuario_empresa = ?`
+  
+  console.log(sql)
+    connection.query(sql, params, (err,res)=>{
+        if(err){
+            console.log(params)
+            console.log(err)
+            sending={error: true, codigo: 200, mensaje: 'Ha ocurrido un error putUserEP'}
+            response.send(sending)
+        }else{
+            console.log(res)
+            sending=res  
+            response.send(sending)
+        }
+    })
+
+});
 
 app.delete("/deleteUserE", (request, response)=>{
     
@@ -791,12 +839,41 @@ app.put("/userC",(request,response)=>{
 	let img = (request.body.imagen_url == "" ? null : request.body.imagen_url);
 
 	let params = [name,lastName, tlf, img, id];
-    console.log(params)
+    // console.log(params)
 	let sql='UPDATE urturn.usuario_cliente AS userC SET userC.nombre_cliente=COALESCE(?,userC.nombre_cliente), userC.apellidos_cliente=COALESCE(?,userC.apellidos_cliente), userC.telefono=COALESCE(?,userC.telefono), userC.imagen_url=COALESCE(?,userC.imagen_url) WHERE userC.id_usuario_cliente =?'  
   connection.query(sql, params, (err,res)=>{
         if(err){
             console.log(err)
             sending={error: true, codigo: 200, mensaje: 'Ha ocurrido un error putUserC'}
+            response.send(sending)
+        }else{
+            console.log(res)
+            sending=res  
+            response.send(sending)
+        }
+    })
+
+});
+
+app.put("/userCP",(request,response)=>{
+
+  let nombre_cliente = request.body.nombre_cliente;
+  let apellidos_cliente = request.body.apellidos_cliente;
+  let telefono = request.body.telefono;
+  let imagen_url = request.body.imagen_url;
+  let password = request.body.password;
+  let id_usuario_cliente = request.body.id_usuario_cliente;
+
+  let  sql=`UPDATE urturn.usuario_cliente AS clnt
+  JOIN urturn.login AS lg ON lg.id_usuario_cliente = clnt.id_usuario_cliente SET clnt.nombre_cliente=COALESCE("${nombre_cliente}",clnt.nombre_cliente),
+  clnt.apellidos_cliente=COALESCE("${apellidos_cliente}",clnt.apellidos_cliente), clnt.telefono=COALESCE("${telefono}",clnt.telefono), 
+  clnt.imagen_url=COALESCE("${imagen_url}",clnt.imagen_url), lg.contraseña=COALESCE("${password}",lg.contraseña) WHERE clnt.id_usuario_cliente = "${id_usuario_cliente}"`
+  
+  console.log(sql)
+    connection.query(sql, (err,res)=>{
+        if(err){
+            console.log(err)
+            sending={error: true, codigo: 200, mensaje: 'Ha ocurrido un error putUserCP'}
             response.send(sending)
         }else{
             console.log(res)

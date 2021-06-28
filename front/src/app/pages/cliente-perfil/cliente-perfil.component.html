@@ -9,7 +9,7 @@
             <div class="pic-perfil">
                 
                 <div class="foto">
-                    <img class="imagen" name=img  src="{{me.imagen_url}}" alt=" Not Found ">
+                    <img class="imagen" name=img  src="{{user.imagen_url}}" alt=" Not Found ">
                     
                     <!-- <div>
                         <button type="button" class="exit"> Cerrar Sesion </button>
@@ -20,23 +20,23 @@
 
                 <!-- Fin foto perfil -->
             
-                <form class="formulario" #userForm="ngForm" (input)=handleChange($event)>
+                <form class="formulario" (input)=handleChange($event)>
 
-                    <input class="input2" type="text" name="img" placeholder="Imagen"  alter="photo">  <br/><br/>
+                    <input class="input2" type="text" name="imagen_url" placeholder="Imagen"  alter="photo">  <br/><br/>
 
-                    <input class="input2" type="text" name="name" placeholder="{{me.nombre_cliente}}">  <br/><br/>
+                    <input class="input2" type="text" name="nombre_cliente" placeholder="{{user.nombre_cliente}}">  <br/><br/>
 
-                    <input class="input2" type="text" name="lastName" placeholder="{{me.apellidos_cliente   }}">  <br/><br/>
+                    <input class="input2" type="text" name="apellidos_cliente" placeholder="{{user.apellidos_cliente   }}">  <br/><br/>
 
                     <input class="input2" type="password" name="password" placeholder="Contraseña"> <br/><br/>
                             
                     <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña">  <br/><br/>
 
-                    <input class="input2" type="text" name="phone" placeholder="{{me.telefono}}">  <br/><br/>
+                    <input class="input2" type="text" name="telefono" placeholder="{{user.telefono}}">  <br/><br/>
                 
                     <div class="btn-container">
 
-                    <button class="boton" type="button" data-toggle="modal" data-target="#modalModificar" (click)="handleClick()">Enviar</button>            
+                    <button class="boton" type="button" data-toggle="modal" data-target="#modalModificar" >Enviar</button>            
 
                     </div>
                 </form>    

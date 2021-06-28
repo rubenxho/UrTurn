@@ -8,12 +8,12 @@
             <div class="pic-perfil" (input)="handelChange($event)">
                 
                 <div class="foto">
-                    <img class="imagen" src="{{this.me.imagen_url}}"  alt=" Not Found ">
+                    <img class="imagen" src="{{user.imagen_url}}"  alt=" Not Found ">
                     
                     <div  class="categoria">
                     
-                            <select class="etiquetas" name="{{this.me.categoria}}" type="text">
-                                <option value="">Categoria</option>
+                            <select class="etiquetas" name="categoria" type="text">
+                                <option value="">{{user.categoria}}</option>
                             <option value="Belleza">Belleza</option>
                             <option value="Deporte">Deporte</option>
                             <option value="Moda">Moda</option>
@@ -34,28 +34,28 @@
             
                 <form class="formulario">
 
-                    <input class="input2" type="text" nathis.me="nathis.me" placeholder="{{this.me.nombre_empresa}}">  <br/><br/>
-                    <input class="input2" type="text" nathis.me="address" placeholder="{{this.me.direccion}}"> <br><br/>
-                    <input class="input2" type="password" nathis.me="password" placeholder="Contraseña">  <br/><br/>
-                    <input class="input2" type="password" nathis.me="repeatPassword" placeholder="Confirmar Contraseña">  <br/><br/>
-                    <input class="input2" type="text" nathis.me="phone" placeholder="{{this.me.telefono}}">  <br/><br/>
-                    <input class="input2" type="url" nathis.me="img" placeholder="Imagen">  <br/><br/>
-                    <input class="input2" type="url" nathis.me="logo" placeholder="Lsogo">  <br/><br/>
+                    <input class="input2" type="text" name="nombre_empresa" placeholder="{{user.nombre_empresa}}">  <br/><br/>
+                    <input class="input2" type="text" name="direccion" placeholder="{{user.direccion}}"> <br><br/>
+                    <input class="input2" type="password" name="password" placeholder="Contraseña">  <br/><br/>
+                    <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña">  <br/><br/>
+                    <input class="input2" type="text" name="telefono" placeholder="{{user.telefono}}">  <br/><br/>
+                    <input class="input2" type="url" name="imagen_url" placeholder="Imagen">  <br/><br/>
+                    <input class="input2" type="url" name="logo" placeholder="Logo">  <br/><br/>
 
                     <div class="horario">
-                    <p class="tithis.me-nathis.me left"> Apertura {{me.apertura}}: </p> 
-                    <input class="input2-time" type="time" name="open" placeholder="apertura">  <br/><br/>
-                    <p class="time-name rigth">Cierre {{me.cierre}}: </p> 
-                    <input class="input2-time" type="time" name="close" placeholder="cierre">  <br/><br/>
+                    <p class="tithis.me-nathis.me left"> Apertura: </p> 
+                    <input class="input2-time" type="time" name="apertura" placeholder="apertura">  <br/><br/>
+                    <p class="time-name rigth">Cierre: </p> 
+                    <input class="input2-time" type="time" name="cierre" placeholder="cierre">  <br/><br/>
                     </div>
 
-                    <input class="input2" type="text" name="timeWait" placeholder="{{me.tiempo_espera}}">  <br/><br/>
+                    <input class="input2" type="text" name="tiempo_es   pera" placeholder="{{user.tiempo_espera}}">  <br/><br/>
 
-                    <textarea class="descripcion input2" name="txt" placeholder="{{me.descripcion}}"></textarea> <br/><br/>
+                    <textarea class="descripcion input2" name="descripcion" placeholder="{{user.descripcion}}"></textarea> <br/><br/>
                 
                     <div class="btn-container">
 
-                    <button class="boton" data-toggle="modal" data-target="#modalModificar" (click)="handelClick()">Enviar</button>            
+                    <button class="boton" data-toggle="modal" data-target="#modalModificar">Enviar</button>            
 
                     </div>
                 </form>    

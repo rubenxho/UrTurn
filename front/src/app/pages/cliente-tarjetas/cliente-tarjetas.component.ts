@@ -21,6 +21,7 @@ export class ClienteTarjetasComponent implements OnInit {
   public enCola: boolean;
   public ticket: number;
   public usuarioEmpresas:any
+  public i = 0;
 
   // para localEmpresa
 
