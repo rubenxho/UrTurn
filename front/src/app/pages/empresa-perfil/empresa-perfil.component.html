@@ -14,12 +14,12 @@
                     
                             <select class="etiquetas" name="categoria" type="text">
                                 <option value="">{{user.categoria}}</option>
-                            <option value="Belleza">Belleza</option>
-                            <option value="Deporte">Deporte</option>
-                            <option value="Moda">Moda</option>
-                            <option value="Ocio">Ocio</option>
-                            <option value="Restauración">Restauración</option>
-                            <option value="Salud">Salud</option>
+                                <option value="belleza">Belleza</option>
+                                <option value="deporte">Deporte</option>
+                                <option value="moda">Moda</option>
+                                <option value="ocio">Ocio</option>
+                                <option value="restauración">Restauración</option>
+                                <option value="salud">Salud</option>
                         </select>
                     
                     </div>
@@ -34,24 +34,45 @@
             
                 <form class="formulario">
 
-                    <input class="input2" type="text" name="nombre_empresa" placeholder="{{user.nombre_empresa}}">  <br/><br/>
-                    <input class="input2" type="text" name="direccion" placeholder="{{user.direccion}}"> <br><br/>
-                    <input class="input2" type="password" name="password" placeholder="Contraseña">  <br/><br/>
-                    <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña">  <br/><br/>
-                    <input class="input2" type="text" name="telefono" placeholder="{{user.telefono}}">  <br/><br/>
-                    <input class="input2" type="url" name="imagen_url" placeholder="Imagen">  <br/><br/>
-                    <input class="input2" type="url" name="logo" placeholder="Logo">  <br/><br/>
+                    <p class="input-name" >Imagen de perfil:</p>
+                    <input class="input2" type="url" name="imagen_url" placeholder="Imagen">  <br/>
+                    
+                    <p class="input-name" >Nombre:</p>
+                    <input class="input2" type="text" name="nombre_empresa" placeholder="{{user.nombre_empresa}}">  <br/>
+                    
+                    <p class="input-name" >Direccion:</p>
+                    <input class="input2" type="text" name="direccion" placeholder="{{user.direccion}}"> <br>
+                    
+                    <p class="input-name" >Contraseña:</p><label *ngIf='nombre_cliente && telefonoValid && !passwordValid' class='input-name' style="color:red"> El password debe tener como mínimo 6 carateres </label>
+                    <input class="input2" type="password" name="password" placeholder="Contraseña"
+                    [ngClass]="{'is-invalid':passwordValid==false}" on-keyup = validarPassword()> <br/>
+                    
+                    <p class="input-name" >Confirmar contraseña:</p>
+                    <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña"
+                    [ngClass]="{'is-invalid':!validarRepeat(this.profileData.password.value, this.profileData.repeatPassword.value)}" on-keyup = "validarRepeat(this.profileData.password.value, this.profileData.repeatPassword.value)"> <br/>
+                    
+                    <p class="input-name" >Numero de telefono:</p>
+                    <input class="input2" type="text" name="telefono" placeholder="{{user.telefono}}"
+                    [ngClass]="{'is-invalid':!telefonoValid}" on-keyup = validarTelefono()> <br/>
+                    
+                    <p class="input-name" >Logo:</p>
+                    <input class="input2" type="url" name="logo" placeholder="Logo">  <br/>
 
                     <div class="horario">
-                    <p class="tithis.me-nathis.me left"> Apertura: </p> 
-                    <input class="input2-time" type="time" name="apertura" placeholder="apertura">  <br/><br/>
-                    <p class="time-name rigth">Cierre: </p> 
-                    <input class="input2-time" type="time" name="cierre" placeholder="cierre">  <br/><br/>
+                    
+                        <p class="time-name"> Apertura: </p>     
+                        <input class="input2-time" type="time" name="apertura" placeholder="apertura" value="{{user.apertura}}">  <br/>
+                    
+                        <p class="time-name">Cierre: </p> 
+                        <input class="input2-time" type="time" name="cierre" placeholder="cierre" value="{{user.cierre}}">  <br/>
+                    
                     </div>
 
-                    <input class="input2" type="text" name="tiempo_es   pera" placeholder="{{user.tiempo_espera}}">  <br/><br/>
-
-                    <textarea class="descripcion input2" name="descripcion" placeholder="{{user.descripcion}}"></textarea> <br/><br/>
+                    <p class="input-name" >Tiempo de espera:</p>
+                    <input class="input2" type="text" name="tiempo_espera" placeholder="{{user.tiempo_espera}}">  <br/>
+                    
+                    <p class="time-name" >Descripcion:</p>
+                    <textarea class="descripcion input2" name="descripcion" placeholder="{{user.descripcion}}"></textarea> <br/>
                 
                     <div class="btn-container">
 

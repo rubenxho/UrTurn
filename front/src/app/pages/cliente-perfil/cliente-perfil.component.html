@@ -20,25 +20,43 @@
 
                 <!-- Fin foto perfil -->
             
-                <form class="formulario" (input)=handleChange($event)>
+                <form class="formulario"  [formGroup]="myForm"  (input)=handleChange($event)>
+                    
+                    <p class="input-name" >Imagen de perfil:</p>
+                    <input class="input2" type="text" name="imagen_url" formControlName="imagen_url" placeholder="Imagen"  alter="photo"> <br/>
+                    
+                    <p class="input-name" >Nombre:</p><label *ngIf='!nombre_cliente' class='input-name' style="color:red"> El campo nombre es obligatorio </label>
+                    <input class="input2" type="text" name="nombre_cliente"  formControlName="nombre_cliente" placeholder="{{user.nombre_cliente}}"
+                    [ngClass]="{'is-invalid' : !nombre_cliente}" on-keyup = validarUsername()> <br/>
+                    
+                    
+                    <p class="input-name" >Apellido:</p>
+                    <input class="input2" type="text" name="apellidos_cliente"  placeholder="{{user.apellidos_cliente}}"><br/>
+                    
+                    <p class="input-name" >Contraseña:</p><label *ngIf='nombre_cliente && telefonoValid && !passwordValid' class='input-name' style="color:red"> El password debe tener como mínimo 6 carateres </label>
+                    <input class="input2" type="password" name="password"  formControlName="password" placeholder="Contraseña"
+                    [ngClass]="{'is-invalid':passwordValid==false}" on-keyup = validarPassword()> <br/>
+                    
+                    <p class="input-name" >Confirmar contraseña:</p>
+                    <input class="input2" type="password" name="repeatPassword"  formControlName="repeatPassword" placeholder="Confirmar Contraseña"
+                    [ngClass]="{'is-invalid':!validarRepeat(this.profileData.password.value, this.profileData.repeatPassword.value)}" on-keyup = "validarRepeat(this.profileData.password.value, this.profileData.repeatPassword.value)"> <br/>
+                    
+                    <p class="input-name" >Numero de telefono:</p><label *ngIf='nombre_cliente  && !telefonoValid' class='input-name' style="color:red"> El teléfono debe contener 9 números </label>
+                    <input class="input2" type="text" name="telefono" formControlName="telefono" placeholder="{{user.telefono}}"  pattern=".{12,}"
+                    [ngClass]="{'is-invalid':!telefonoValid}" on-keyup = validarTelefono()> <br/>
 
-                    <input class="input2" type="text" name="imagen_url" placeholder="Imagen"  alter="photo">  <br/><br/>
+                    <!-- <label *ngIf='!nombre_cliente' class='input-name'> El campo nombre es obligatorio </label> -->
+            
+                    <!-- <label *ngIf='nombre_cliente  && !telefonoValid' class='error'> El teléfono debe contener 9 números </label> -->
+            
+                    <!-- <label *ngIf='nombre_cliente && telefonoValid && !passwordValid' class='error'> El password debe tener como mínimo 6 carateres </label> -->
 
-                    <input class="input2" type="text" name="nombre_cliente" placeholder="{{user.nombre_cliente}}">  <br/><br/>
-
-                    <input class="input2" type="text" name="apellidos_cliente" placeholder="{{user.apellidos_cliente   }}">  <br/><br/>
-
-                    <input class="input2" type="password" name="password" placeholder="Contraseña"> <br/><br/>
-                            
-                    <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña">  <br/><br/>
-
-                    <input class="input2" type="text" name="telefono" placeholder="{{user.telefono}}">  <br/><br/>
-                
                     <div class="btn-container">
 
-                    <button class="boton" type="button" data-toggle="modal" data-target="#modalModificar" >Enviar</button>            
+                    <button class="boton" type="button" data-toggle="modal" data-target="#modalModificar" (click)=validar()>Enviar</button>            
 
                     </div>
+
                 </form>    
 
                 

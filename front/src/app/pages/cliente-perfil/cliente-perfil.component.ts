@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioCliente } from 'src/app/models/usuario-cliente';
 import { UsuarioServiceService } from 'src/app/services/usuario-service.service'
 import { LoginService } from 'src/app/services/login.service';
-import { Login } from 'src/app/models/login';
-import { combineLatest, Observable } from 'rxjs';
+import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-cliente-perfil',
@@ -17,6 +16,13 @@ export class ClientePerfilComponent implements OnInit {
 
   // [k: string]: any;
   
+  public myForm: FormGroup;
+
+  public nombre_cliente:boolean;
+  public passwordValid:boolean;
+  public telefonoValid:boolean;
+
+
   public profileData: any = {
     nombre_cliente:"",
     apellidos_cliente:"",
@@ -26,23 +32,32 @@ export class ClientePerfilComponent implements OnInit {
     repeatPassword:""
   }
 
- public status;
- public show;
   public guardarModal: string[]
 
-  public owner:number;
-  
-  // public me: UsuarioCliente = new UsuarioCliente(0, "", "", "", "");
-  
+  public owner:number;  
   public user: UsuarioCliente = new UsuarioCliente(0, "", "", "", "","","");
 
-  constructor(private apiUserService:UsuarioServiceService,  private lsowner:LoginService)  {
+
+  constructor(private formBuilder:FormBuilder, private apiUserService:UsuarioServiceService,  private lsowner:LoginService)  {
     
     this.guardarModal = ["modalModificar","Realizar cambios","Si", "Cancelar","Cambios guardados", "", "2"]
+    
     this.owner = this.lsowner.login.id_usuario_cliente;
 
+    this.myForm = this.buildForm();
+    this.nombre_cliente = true;
+    this.passwordValid = true;
+    this.telefonoValid = true;
 
+    // this.myForm= new FormGroup({
+    //   nombre_cliente: new FormControl ('',[Validators.minLength(3)]),
+    //   password: new FormControl ('',[Validators.minLength(6)]),
+    //   telefono: new FormControl ('',[Validators.pattern("[9]{9}")])
+    // });
   }
+
+
+
 
 
   //RECORRER EL OBJETO SI ES x == "" x then x = x (se mantiene el valor), SOLO una mclase de UsuarioCliente  
@@ -55,7 +70,7 @@ export class ClientePerfilComponent implements OnInit {
   userDataBase(){
     this.apiUserService.obtenerUserClienteId(this.owner)
     .subscribe((data:any)=>{
-      this.user = new UsuarioCliente (this.owner, data[0].nombre_cliente, data[0].apellidos_cliente, data[0].telefono, data[0].imagen_url,  "", "" )
+      this.user = new UsuarioCliente (this.owner, data[0].nombre_cliente, data[0].apellidos_cliente, data[0].telefono, data[0].imagen_url, "", "" )
       // console.log(this.user)
     }) 
   }
@@ -65,7 +80,6 @@ export class ClientePerfilComponent implements OnInit {
     const value:String = event.target.value;
     this.profileData[ index ] = value;
   }
-
   // request.body.nombre_cliente == "" ? null : request.body.nombre_cliente
   saveData(copyUser){
     
@@ -77,31 +91,83 @@ export class ClientePerfilComponent implements OnInit {
     }
     console.log('profile', this.profileData);
      this.user = new UsuarioCliente(this.owner, this.profileData.nombre_cliente, this.profileData.apellidos_cliente, this.profileData.telefono, this.profileData.imagen_url, "" , this.profileData.password);
-    console.log(this.user)
+    console.log('user a actualizar',this.user)
     }
 
-  subirCambios(guardar:boolean){
+  subirCambios(guardar){
     // console.log("guardar")
     if(guardar == true){
       const copyUser = {...this.user};
+      this.validar();
       this.saveData(copyUser);
       console.log('user update',this.user)
       this.apiUserService.actualizarUserPerfilClt(this.user)
       .subscribe((data:any)=>{
-        console.log(data)
+        console.log('el data',data)
       })
-
-    }
-  }
-
-  confirmPassword(){
-    if (this.profileData.zzz == this.profileData.repeatPassword){
-      this.status = "Correcto"
-      this.show = true;
     }else{
-      this.show =false;
-      this.status="Incorretos"
+      alert("Campos Incorrectors")
+    }
+  }
+//******************************VALIDACION*****************************************/ 
+
+  private buildForm():FormGroup {
+
+    const minPasswordLength = 6;
+    const minName = 3;
+    const minTlf = 9;
+    const maxTlf = 9;
+
+    let myForm = this.formBuilder.group({
+      nombre_cliente: [,Validators.minLength(minName)],
+      password:[,Validators.minLength(minPasswordLength)],
+      telefono:[, Validators.pattern("[0-9]{9}")]
+    });
+    return myForm;
+   }
+   
+  public validarUsername():void{
+    if(this.myForm.get('nombre_cliente')?.invalid){
+      this.nombre_cliente = false;
+    }else{
+      this.nombre_cliente = true;
     }
   }
 
+  public validarPassword(){
+    if(this.myForm.get('password')?.invalid) {
+      this.passwordValid=false
+    }else{
+      this.passwordValid= true;
+    }
+  }
+
+  public validarRepeat(password:String, repeat:String){
+    if(password === repeat){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  // confirmPassword(){
+  //   if (this.profileData.password === this.profileData.repeatPassword){
+  //     return true
+  //   }else{
+  //     return false
+  //   }
+  // }
+
+  public validarTelefono(){
+    if(this.myForm.get('telefono')?.invalid) {
+      this.telefonoValid = false; 
+    }else{
+      this.telefonoValid = true;
+    }
+  }
+
+  public validar(){
+    this.validarUsername();
+    this.validarPassword();
+    this.validarTelefono();
+  }
 }

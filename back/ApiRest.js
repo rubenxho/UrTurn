@@ -931,7 +931,7 @@ app.put("/userCP",(request,response)=>{
   let apellidos_cliente = request.body.apellidos_cliente;
   let telefono = request.body.telefono;
   let imagen_url = request.body.imagen_url;
-  let password = request.body.password;
+  let password = (request.body.password == "" ? null: request.body.password);
   let id_usuario_cliente = request.body.id_usuario_cliente;
 
   let  sql=`UPDATE urturn.usuario_cliente AS clnt
