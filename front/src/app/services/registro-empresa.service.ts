@@ -18,13 +18,13 @@ export class RegistroEmpresaService {
     return this.http.post(this.url, empresa);
   }
 
-  public mandarEmail(usuario:string, email:string):any  {
-    alert('mandando email');
+  // public mandarEmail(usuario:string, email:string):any  {
+  //   alert('mandando email');
 
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post('https://formspree.io/f/xvodqzrz',
-        { name: usuario, replyto: email, message: `Hola! ${usuario}!\n\nBienvenid@ a UrTurn!` },
-        { 'headers': headers });
-  }
+  //   return this.http.post('https://formspree.io/f/xvodqzrz',
+  //       { name: usuario, replyto: email, message: `Hola! ${usuario}!\n\nBienvenid@ a UrTurn!` },
+  //       { 'headers': headers });
+  // }
 }

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { RegistroEmpresaService } from 'src/app/services/registro-empresa.service';
 import { LoginService } from 'src/app/services/login.service';
+import * as nodemailer from 'nodemailer'
 
 @Component({
   selector: 'app-empresa-registro',
@@ -91,15 +92,8 @@ export class EmpresaRegistroComponent implements OnInit {
       let empresa:UsuarioEmpresa = new UsuarioEmpresa(0, rsocial, '', telefono, 0, '', '', '', null, null, 0, '','', [], email, password);
       
       this.rs.postNuevoUsuario(empresa).subscribe((data:any) => {
-
         console.log(data.mensaje);
-
-        this.rs.mandarEmail(rsocial,email).subscribe((data2:any) => {
-          alert(`Correo enviado a la dirección ${email}`);
-          console.log(data2);
-          
-          this.redirigir(`login`);
-        })
+        this.redirigir(`login`);
       });
     }
   }
@@ -107,6 +101,32 @@ export class EmpresaRegistroComponent implements OnInit {
   redirigir(componente:string) {
     this.navigation.navigate([componente]);
   }
+
+  // public async sendMail(email:string) {
+    
+  //   let testAccount = await nodemailer.createTestAccount();
+  
+  //   let transporter = nodemailer.createTransport({
+  //     host: "smtp.ethereal.email",
+  //     port: 465,
+  //     secure: true, // true for 465, false for other ports
+  //     auth: {
+  //     user: testAccount.user, // generated ethereal user
+  //     pass: testAccount.pass, // generated ethereal password
+  //     },
+  //   });
+
+  //   let info = await transporter.sendMail({
+  //     from: '"Fred Foo 👻" <fjramos13@hotmail.com>',
+  //     to: `${email}`,
+  //     subject: "Listo para pedir turno??? ✔", 
+  //     text: "Bienvenido a UrTurn?", 
+  //     html: "<b>Bienvenido a UrTurn?</b>", 
+  //   });
+    
+  //   console.log("Message sent: %s", info.messageId);
+  //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  // }
 
   ngOnInit(): void {
     this.ls.estado = false;

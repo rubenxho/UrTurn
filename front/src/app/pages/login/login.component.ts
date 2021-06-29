@@ -3,6 +3,7 @@ import { CanActivate, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { Login } from 'src/app/models/login';
+//import * as crypto from 'crypto-js'
 
 @Component({
   selector: 'app-login',
@@ -64,7 +65,9 @@ export class LoginComponent implements OnInit {
     
     if(this.myForm.valid) {
       let login = new Login();
+
       login.email = email;
+      //login.contraseña = this.encriptar(password);
       login.contraseña = password;
 
       this.ls.getIdUsuario(login).subscribe((data:any) => {
@@ -95,6 +98,13 @@ export class LoginComponent implements OnInit {
       });
     }
   }
+
+  // public encriptar(password:string):string {
+  //   let key = crypto.enc.Hex.parse("0123456789012345");
+  //   let ive  = crypto.enc.Hex.parse("0123456789012345");
+
+  //   return crypto.AES.encrypt(password, key, {iv: ive}).toString();
+  // }
 
   public cambiarEstado()  {
     this.ls.tipoUsuario = this.tipoUsuario;
