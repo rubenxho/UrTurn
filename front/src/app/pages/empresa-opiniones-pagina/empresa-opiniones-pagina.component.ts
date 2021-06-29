@@ -5,29 +5,39 @@ import { ClienteOpinionesResenarService } from 'src/app/services/cliente-opinion
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { LoginService } from 'src/app/services/login.service';
 
+
 @Component({
   selector: 'app-empresa-opiniones-pagina',
   templateUrl: './empresa-opiniones-pagina.component.html',
   styleUrls: ['./empresa-opiniones-pagina.component.css']
 })
 export class EmpresaOpinionesPaginaComponent implements OnInit {
-  public opiniones: any[];
+  public opinionesParaEmpresa: Opiniones[];
 
   constructor(private opinionesService: ClienteOpinionesResenarService, private lse: LoginService) { 
-   this.opiniones=[];
+   this.opinionesParaEmpresa=[];
   }
 
   getOpiniones(){
-    this.opinionesService.getOpinionesAEmpresa(this.lse.login.id_usuario_empresa).subscribe((data:any)=>{
-      console.log(data)
-      return this.opiniones = data;
-    })
+    this.opinionesService.getOpinionesAEmpresa(this.lse.login.id_usuario_empresa).subscribe((data:any):void=>{
+      for (let i = 0; i < data.length; i++) {
+        this.opinionesParaEmpresa.push( new Opiniones(
+          data[i].id_opiniones,
+          data[i].id_usuario_cliente,
+          data[i].nombre_cliente,
+          data[i].imagen_url,
+          this.lse.login.id_usuario_empresa,
+          "",
+          "",
+          data[i].nota,
+          data[i].opinion,
+          data[i].fecha
+      ))
+    }})
   }
 
+
   ngOnInit(): void {
-    this.opinionesService.getOpinionesAEmpresa(this.lse.login.id_usuario_empresa).subscribe((data:any)=>{
-      console.log(data)
-      return this.opiniones = data;
-    })
+    this.getOpiniones()
   }
 }
