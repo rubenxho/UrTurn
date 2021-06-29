@@ -25,14 +25,14 @@
             </div>
 
             <div>
-                <ng-container *ngIf="!enCola; else posicion">
-                    <button type="button" onclick="confirmarCola()" class="btn btn-primary botonCola" id=""
+                <ng-container *ngIf="!usuarioEmpresa.id_turno; else posicion">
+                    <button type="button" class="btn btn-primary botonCola" id=""
                         data-toggle="modal" data-target="#comfirmarColaModal">Hacer la cola
                     </button>
                 </ng-container>
 
                 <ng-template #posicion>
-                    <button class="btn btn-primary botonCola " id="numPosicion"> Ticket:{{ticket}}</button>
+                    <button class="btn btn-primary botonCola " id="numPosicion"> Ticket:{{usuarioEmpresa.id_turno}}</button>
                 </ng-template>
 
                 <span class="corazonGris" [ngClass]="{corazonRed: favorito}">

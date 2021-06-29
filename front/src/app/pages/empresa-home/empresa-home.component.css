@@ -391,7 +391,7 @@
     .responsive-movil{
         display: initial;
         margin-top: 0px;
-        margin-left: 60px;
+        margin-left: 42px;
     }
 
     .texto-cuadro2{
@@ -407,7 +407,7 @@
 
     .cuadros{
         height: 100px;
-        width: 260px;
+        width: 300px;
         background-color: white;
         border: solid #5C74F6;
     }
