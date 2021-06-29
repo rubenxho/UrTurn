@@ -10,7 +10,7 @@ export class RegistroEmpresaService {
   private url:string;
 
   constructor(private http:HttpClient) { 
-    this.url = 'http://localhost:3000/empresa-registro';
+    this.url = 'http://apiurturn.herokuapp.com/empresa-registro';
   }
 
   public postNuevoUsuario(empresa:UsuarioEmpresa):any  {
