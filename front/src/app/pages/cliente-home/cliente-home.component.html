@@ -9,53 +9,25 @@
     <div class="container-fluid">
         <div class="row ">
             <div class="col centrado">
-                <div >
-                    
-    
+                <div>
                     <div id="carouselExampleCaptions" class="carousel slide carusel " data-ride="carousel">
                         <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+                            <ng-container *ngFor="let local of this.localService.locales; let i = index">
+                                <li data-target="#carouselExampleCaptions" data-slide-to="i"
+                                    [ngClass]="{'active': i == 0}">
+                                </li>
+                            </ng-container>
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item carusel active">
-                                <img  src="{{this.localService.locales[0].imagen_url}}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                <h5 class="titulo">{{this.localService.locales[0].nombre_empresa}}</h5>
-                                <p > </p>
+                            <ng-container *ngFor="let local of this.localService.locales; let i = index">
+                                <div class="carousel-item carusel" [ngClass]="{'active': i == 0}">
+                                    <img  src="{{local.imagen_url}}" class="d-block w-100" alt="...">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5 class="titulo">{{local.nombre_empresa}}</h5>
+                                        <p></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="carousel-item carusel">
-                                <img src="{{this.localService.locales[1].imagen_url}}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                <h5 class="titulo">{{this.localService.locales[1].nombre_empresa}}</h5>
-                                <p> </p>
-                                </div>
-                            </div>
-                            <div class="carousel-item carusel">
-                                <img src="{{this.localService.locales[2].imagen_url}}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                <h5 class="titulo">{{this.localService.locales[2].nombre_empresa}}</h5>
-                                <p> </p>
-                                </div>
-                            </div>
-                            <div class="carousel-item carusel">
-                                <img src="{{this.localService.locales[3].imagen_url}}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                <h5 class="titulo">{{this.localService.locales[3].nombre_empresa}}</h5>
-                                <p> </p>
-                                </div>
-                            </div>
-                            <div class="carousel-item carusel">
-                                <img src="{{this.localService.locales[4].imagen_url}}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                <h5 class="titulo">{{this.localService.locales[4].nombre_empresa}}</h5>
-                                <p> </p>
-                                </div>
-                            </div>
+                            </ng-container>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

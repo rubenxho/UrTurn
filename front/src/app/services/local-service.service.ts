@@ -14,6 +14,7 @@ export class LocalServiceService {
   public localesGrupo: UsuarioEmpresa [];
   public locales: UsuarioEmpresa [];
   public mostrarTarjetas: boolean;
+  public buscaLocal: string;
 
   
 
@@ -22,26 +23,10 @@ export class LocalServiceService {
     this.localesTop = [];
     this.localElegido = new UsuarioEmpresa();
     this.localesGrupo = [];
-      //inicializar locales
-      this.locales = [];
-      //*************************/
-      this.mostrarTarjetas=false
+    this.locales = [new UsuarioEmpresa(0,"","","",0,"","","","","",0,"","",[],"","")];  
+    this.mostrarTarjetas = false;
 
     
-  }
-
-  getLocales(categoria: string, codigo_postal: number){
-
-    if(categoria != '' || codigo_postal != 0){
-
-      return this.http.get(`${this.url}?categoria=${categoria}?codigo_postal=${codigo_postal}`);
-
-    }else{
-
-      return this.http.get(this.url);
-
-    }
-
   }
 
   getLocal(id: number){
@@ -62,6 +47,29 @@ export class LocalServiceService {
 
     return this.http.get(this.url);
 
+  }
+
+  getLocales(categoria: string, codigo_postal: number){
+    
+    let toReturn:any;
+    if(categoria == "" && !codigo_postal){
+      toReturn = this.http.get(this.url);            
+      console.log("Dntro1");
+      
+    }else if (categoria != null && !codigo_postal){      
+
+      toReturn = this.http.get(`${this.url}?categoria=${categoria}`);
+      console.log("Dntro2");
+    }else if (categoria == "" && codigo_postal != null){
+
+      toReturn = this.http.get(`${this.url}?cp=${codigo_postal}`);
+      console.log("Dntro3");
+    }else{
+
+      toReturn = this.http.get(`${this.url}?categoria=${categoria}&cp=${codigo_postal}`);
+      console.log("Dntro1");
+    }
+    return toReturn;
   }
 
 }

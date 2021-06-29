@@ -20,23 +20,23 @@ public favoritos: UsuarioEmpresa[];
     let codigo:any
     console.log("flag")
     if(cp=="" && categoria=="" ){
-      console.log("hola")
+      console.log("sin campos")
      codigo = this.http.get(this.url + `?id=` + this.loginService.login.id_usuario_cliente)
     }
 
-    else if(cp==""){
-      console.log("hola2")
-      codigo= this.http.get(this.url + `?categoria=` + categoria + `&` + `?id=` + this.loginService.login.id_usuario_cliente)
+    else if(categoria !== "" && cp == ""){
+      console.log("con categoeria")
+      codigo= this.http.get(this.url + `?categoria=` + categoria + `&id=` + this.loginService.login.id_usuario_cliente)
     }
 
-    else if(categoria==""){
-      console.log("hola3")
-      codigo = this.http.get(this.url + `?cp=` + cp + `&` + `?id=` + this.loginService.login.id_usuario_cliente)
+    else if(categoria=="" && cp != ""){
+      console.log("con codigo postal")
+      codigo = this.http.get(this.url + `?cp=` + cp + `&id=` + this.loginService.login.id_usuario_cliente)
     }
 
-    else{
-      console.log("hola4")
-      codigo = this.http.get(this.url +`?categoria=`+ categoria + `&` + `?cp=` + cp + `&` + `?id=` + this.loginService.login.id_usuario_cliente)
+    else if(categoria!=="" && cp!==""){
+      console.log("con cat y cp")
+      codigo = this.http.get(this.url +`?categoria=`+ categoria + `&cp=` + cp + `&id=` + this.loginService.login.id_usuario_cliente)
       console.log(categoria + cp);
       
     }

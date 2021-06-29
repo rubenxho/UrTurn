@@ -22,7 +22,9 @@ export class ClienteHomeComponent implements OnInit {
 
   muestraLocal(){
     this.localService.getTop().subscribe((data: any) => {
-      this.localService.locales= data;
+      this.localService.locales = data;
+      console.log("getTop()", data);
+      
       //para mostrar otra vez el carrusel, volvemos a poner la variable mostrarTarjeta a false
       this.localService.mostrarTarjetas = false;
     })
@@ -32,6 +34,7 @@ export class ClienteHomeComponent implements OnInit {
     
   }
   ngOnInit(): void {
-    this.muestraLocal()
+    this.muestraLocal();
+    this.localService.buscaLocal = "home";
   }
 }

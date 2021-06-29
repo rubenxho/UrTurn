@@ -15,6 +15,7 @@ import { EmpresaRegistroComponent } from './pages/empresa-registro/empresa-regis
 import { LoginComponent } from './pages/login/login.component';
 import { ClienteTarjetasComponent } from './pages/cliente-tarjetas/cliente-tarjetas.component';
 import { LoginService } from './services/login.service';
+import { ClienteBuscaFavoritosComponent } from './pages/cliente-busca-favoritos/cliente-busca-favoritos.component';
 
 const routes: Routes = [
   { path: 'cliente-perfil-empresa', component: ClientePerfilEmpresaComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'clienteTarjetas', component: ClienteTarjetasComponent },
   // { path: '', component: LoginComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'buscaFav', component: ClienteBuscaFavoritosComponent }
 ];
 
 @NgModule({

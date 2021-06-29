@@ -23,7 +23,7 @@ export class ClienteTarjetasComponent implements OnInit {
   // para localEmpresa
   /*********************************/
 
-  constructor(private localService: LocalServiceService) {
+  constructor(public localService: LocalServiceService) {
     
     //*************************/
 
@@ -54,7 +54,7 @@ export class ClienteTarjetasComponent implements OnInit {
   //funcion mostrar datos del local según los endpoints
   muestraLocal(){
     console.log(this.usuarioEmpresa)
-    this.localService.localElegido = this.usuarioEmpresa
+    this.localService.localElegido = this.usuarioEmpresa;
   }
     
 
