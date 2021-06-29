@@ -4,6 +4,7 @@ import { UsuarioServiceService } from 'src/app/services/usuario-service.service'
 import { LoginService } from 'src/app/services/login.service';
 import { Login } from 'src/app/models/login';
 import { combineLatest, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-perfil',
@@ -36,7 +37,7 @@ export class ClientePerfilComponent implements OnInit {
   
   public user: UsuarioCliente = new UsuarioCliente(0, "", "", "", "","","");
 
-  constructor(private apiUserService:UsuarioServiceService,  private lsowner:LoginService)  {
+  constructor(private apiUserService:UsuarioServiceService, private lsowner:LoginService, private navigation:Router)  {
     
     this.guardarModal = ["modalModificar","Realizar cambios","Si", "Cancelar","Cambios guardados", "", "2"]
     this.owner = this.lsowner.login.id_usuario_cliente;
@@ -104,4 +105,8 @@ export class ClientePerfilComponent implements OnInit {
     }
   }
 
+  cerrarSesion()  {
+    this.lsowner.estado = false;
+    this.navigation.navigate(['login']);
+  }
 }
