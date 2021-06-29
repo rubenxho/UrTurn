@@ -20,7 +20,7 @@ export class ClienteTarjetasComponent implements OnInit {
   // para modal
   public enCola: boolean;
   public ticket: number;
-  public usuarioEmpresas:UsuarioEmpresa
+  public usuarioEmpresas:UsuarioEmpresa[]
   public i = 0;
   public id_cliente: number
 
@@ -50,6 +50,9 @@ export class ClienteTarjetasComponent implements OnInit {
   comfirmadoCola() {
     this.enCola = true;
     console.log("aqui")
+    console.log(this.id_cliente)
+    console.log(this.usuarioEmpresa.id_usuario_empresa)
+    console.log(this.usuarioEmpresa)
     this.turnoService.postHacerCola(this.id_cliente,this.usuarioEmpresa.id_usuario_empresa).subscribe((data:any)=>{
         console.log(data)
         // Ya el cliente esta haciendo la cola en el local
