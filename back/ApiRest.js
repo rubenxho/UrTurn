@@ -2,6 +2,17 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mysql = require("mysql2");
+const crypto = require('crypto-js');
+const nodemailer = require('nodemailer');
+
+//Transporter para nodemailer
+const transporter = nodemailer.createTransport({
+  service:'Gmail',
+  auth: {
+    user:'urturnapplication@gmail.com',
+    pass:'nodemailer'
+  }
+})
 
 //Creo un servidor
 app.use(express.urlencoded({ extended: false }));
@@ -23,7 +34,9 @@ connection.connect(function (err, res) {
   else console.log("Conectado!");
 });
 
-let salida = ""
+let salida = "";
+let key = crypto.enc.Hex.parse("0123456789012345");
+let ive  = crypto.enc.Hex.parse("0123456789012345");
 
 app.get("/favoritos",
     function(request, response){
@@ -834,21 +847,18 @@ app.get("/local", (req, res) => {
 /************************************************************************************/
 
 app.get("/login", (request, response) => {
+
+  let contra = crypto.AES.encrypt(request.query.contraseña, key, {iv: ive}).toString();
+  console.log(contra);
+  console.log(`select id_usuario_cliente, id_usuario_empresa from login where email=${request.query.email} and contraseña=${contra};`);
+
   let params = [
     request.query.email,
-    request.query.contraseña,
-    request.query.email,
-    request.query.contraseña,
+    // request.query.contraseña,
+    contra
   ];
 
-  // let sql = `SELECT uc.id_usuario_cliente FROM usuario_cliente AS uc 
-  //               INNER JOIN login as l on (uc.id_usuario_cliente = l.id_usuario_cliente) 
-  //               WHERE l.email = ? and l.contraseña = ?
-  //               UNION
-  //               SELECT ue.id_usuario_empresa FROM usuario_empresa AS ue 
-  //               INNER JOIN login as l on (ue.id_usuario_empresa = l.id_usuario_empresa) 
-  //               WHERE l.email = ? and l.contraseña = ?;`;
-
+  
   let sql = `select id_usuario_cliente, id_usuario_empresa from login where email=? and contraseña=?;`
 
   connection.query(sql, params, (error, rs) => {
@@ -864,8 +874,17 @@ app.get("/login", (request, response) => {
 
 app.post("/empresa-registro", (request, response) => {
 
+  encPassword = crypto.AES.encrypt(request.body.password, key, {iv: ive}).toString();
+
+  let mailOptions = {
+    from: 'UrTurn',
+    to: request.body.email,
+    subject:'Bienvenido a UrTurn!',
+    text: `Hola, ${request.body.email} \nYa puedes gestionar los turnos de tus clientes de la forma más fácil!`
+  };
+
   let params1 = [request.body.nombre_empresa, request.body.telefono];
-  let params3 = [0, request.body.email, request.body.password];
+  let params3 = [0, request.body.email, encPassword];
 
   let sql1 = `INSERT INTO usuario_empresa (nombre_empresa,telefono,estado_turno) VALUES (?,?,'Turno Activo');`;
   let sql2 = `SELECT id_usuario_empresa FROM usuario_empresa WHERE nombre_empresa = ? AND telefono = ?;`;
@@ -879,8 +898,17 @@ app.post("/empresa-registro", (request, response) => {
 
           connection.query(sql3, params3, (error3, rs3) => {
             if (!error3) {
-              salida = { error: false, code: 200, mensaje: rs3 };
-              response.send(salida);
+
+              transporter.sendMail(mailOptions, (error4, rs4) =>  {
+                if(!error4) {
+                  console.log(`Email enviado a ${request.body.email}`);
+                  salida = { error: false, code: 200, mensaje: rs3, rs4 };
+                  response.send(salida);
+                }else {
+                  salida = { error: true, code: 200, mensaje: error4 };
+                  response.send(salida);
+                }
+              })
             } else {
               salida = { error: true, code: 200, mensaje: error3 };
               response.send(salida);
@@ -1034,8 +1062,17 @@ app.delete("/opiniones", (req, res) => {
 
 app.post("/cliente-registro", (request, response) => {
 
+  let mailOptions = {
+    from: 'UrTurn',
+    to: request.body.email,
+    subject:'Bienvenido a UrTurn!',
+    text: `Hola, ${request.body.email} \n No pierdas ni un segundo y pide tu turno allá donde quieras!`
+  };
+
+  encPassword = crypto.AES.encrypt(request.body.password, key, {iv: ive}).toString();
+
   let params1 = [request.body.nombre_cliente, request.body.telefono];
-  let params3 = [0, request.body.email, request.body.password];
+  let params3 = [0, request.body.email, encPassword];
 
   let sql1 = `INSERT INTO usuario_cliente (nombre_cliente,telefono) VALUES (?,?);`;
   let sql2 = `SELECT id_usuario_cliente FROM usuario_cliente WHERE nombre_cliente = ? AND telefono = ?;`;
@@ -1049,8 +1086,17 @@ app.post("/cliente-registro", (request, response) => {
 
           connection.query(sql3, params3, (error3, rs3) => {
             if (!error3) {
-              salida = { error: false, code: 200, mensaje: rs3 };
-              response.send(salida);
+              transporter.sendMail(mailOptions, (error4, rs4) =>  {
+                if(!error4) {
+                  console.log(`Email enviado a ${request.body.email}`);
+                  salida = { error: false, code: 200, mensaje: rs3, rs4 };
+                  response.send(salida);
+                  
+                }else {
+                  salida = { error: true, code: 200, mensaje: error4 };
+                  response.send(salida);
+                }
+              })
             } else {
               salida = { error: true, code: 200, mensaje: error3 };
               response.send(salida);

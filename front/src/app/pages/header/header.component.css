@@ -78,4 +78,14 @@
     .ruben-color-blaL{
         font-size: 35px;
     }    
+
+    .logoImagen   {
+        margin-left:15px;
+        margin-right:30px;
+        height:80px;
+        background-image:url("../../../assets/logoInvertido.png");
+   	    background-repeat:no-repeat;
+        background-size:100% 80%;
+        margin-top:18px;
+    }
 }
