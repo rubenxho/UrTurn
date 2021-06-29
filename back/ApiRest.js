@@ -129,9 +129,9 @@ app.post("/turnos/cliente",
         let f_solicitud=new Date(Date.now());
         let f_apertura=new Date();
         let f_cierre=new Date();
-        let params7=[cliente,empresa,hoy,hoy]
+        let params7=[cliente,empresa,hoy,hoy,"Activo"]
         // Verifico que el cliente ya no este en cola en este local
-        let sql= 'SELECT * FROM turnos WHERE id_usuario_cliente=? AND id_usuario_empresa=? AND fecha_cierre_turno > ? AND DAY(fecha_cierre_turno)= DAY(?)'
+        let sql= 'SELECT * FROM turnos WHERE id_usuario_cliente=? AND id_usuario_empresa=? AND fecha_cierre_turno > ? AND DAY(fecha_cierre_turno)= DAY(?) AND estado=?'
         connection.query(sql,params7, 
             function(err, res){
                 if(err){

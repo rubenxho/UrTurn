@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { RegistroEmpresaService } from 'src/app/services/registro-empresa.service';
 import { LoginService } from 'src/app/services/login.service';
-import * as nodemailer from 'nodemailer'
+
 
 @Component({
   selector: 'app-empresa-registro',
