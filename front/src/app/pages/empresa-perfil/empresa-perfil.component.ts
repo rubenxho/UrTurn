@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { UsuarioServiceService } from 'src/app/services/usuario-service.service';
 import { LoginService } from 'src/app/services/login.service';
-import { type } from 'jquery';
+import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 
@@ -33,14 +33,25 @@ export class EmpresaPerfilComponent implements OnInit {
   }
   public owner:number;
 
-  // public me:UsuarioEmpresa = new UsuarioEmpresa(0, "", "", "", 0, "", "", "", "", "", 0, "");
+  public myForm: FormGroup;
+
+  public nombre_cliente:boolean;
+  public passwordValid:boolean;
+  public telefonoValid:boolean;
+
 
   public user:UsuarioEmpresa = new UsuarioEmpresa(0, "", "", "", 0, "", "", "", "", "", 0, "");
 
-  constructor(private apiUserService:UsuarioServiceService, private lsowner:LoginService) { 
+  constructor(private formBuilder:FormBuilder, private apiUserService:UsuarioServiceService, private lsowner:LoginService) { 
 
     this.empresaPerfil = ["modalModificar","¿Seguro que desea enviar su perfil?", "Sí", "No", "Perfil enviado, gracias", "", "2"];
     this.owner = this.lsowner.login.id_usuario_empresa;
+
+    
+    this.myForm = this.buildForm();
+    this.nombre_cliente = true;
+    this.passwordValid = true;
+    this.telefonoValid = true;
 
   }
 
@@ -75,7 +86,7 @@ export class EmpresaPerfilComponent implements OnInit {
       }
     }
     console.log("antes", this.user.tiempo_espera)
-    this.user = new UsuarioEmpresa(this.owner, this.profileData.nombre_empresa, this.profileData.categoria, this.profileData.telefono, this.profileData.codigo_postal, this.profileData.direccion , this.profileData.imagen_url, this.profileData.descripcion ,this.profileData.apertura, this.profileData.cierre, this.profileData.tiempo_espera, this.profileData.logo, this.profileData.estado_turno, this.profileData.password);
+    this.user = new UsuarioEmpresa(this.owner, this.profileData.nombre_empresa, this.profileData.categoria, this.profileData.telefono, this.profileData.codigo_postal, this.profileData.direccion , this.profileData.imagen_url,this.profileData.descripcion ,this.profileData.apertura, this.profileData.cierre, this.profileData.tiempo_espera, this.profileData.logo, this.profileData.estado_turno, [], "" ,this.profileData.password);
     console.log("despues",this.user)
   }
   
@@ -90,5 +101,67 @@ export class EmpresaPerfilComponent implements OnInit {
         console.log(data)
       })
     }
+  }
+
+  //******************************VALIDACION*****************************************/ 
+
+  private buildForm():FormGroup {
+
+    const minPasswordLength = 6;
+    const minName = 3;
+    const minTlf = 9;
+    const maxTlf = 9;
+
+    let myForm = this.formBuilder.group({
+      nombre_cliente: [,Validators.minLength(minName)],
+      password:[,Validators.minLength(minPasswordLength)],
+      telefono:[, Validators.pattern("[0-9]{9}")]
+    });
+    return myForm;
+   }
+   
+  public validarUsername():void{
+    if(this.myForm.get('nombre_cliente')?.invalid){
+      this.nombre_cliente = false;
+    }else{
+      this.nombre_cliente = true;
+    }
+  }
+
+  public validarPassword(){
+    if(this.myForm.get('password')?.invalid) {
+      this.passwordValid=false
+    }else{
+      this.passwordValid= true;
+    }
+  }
+
+  public validarRepeat(password:String, repeat:String){
+    if(password === repeat){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  // confirmPassword(){
+  //   if (this.profileData.password === this.profileData.repeatPassword){
+  //     return true
+  //   }else{
+  //     return false
+  //   }
+  // }
+
+  public validarTelefono(){
+    if(this.myForm.get('telefono')?.invalid) {
+      this.telefonoValid = false; 
+    }else{
+      this.telefonoValid = true;
+    }
+  }
+
+  public validar(){
+    this.validarUsername();
+    this.validarPassword();
+    this.validarTelefono();
   }
 }
