@@ -1,0 +1,33 @@
+<div class="container rowb "  >
+
+    <div class="colb">
+        <select type="text" name="Local"  #categoria>
+            <option value="">Categoría</option>
+            <option value="Belleza">Belleza</option>
+            <option value="Deporte">Deporte</option>
+            <option value="Hogar">Hogar</option>
+            <option value="Moda">Moda</option>
+            <option value="Ocio">Ocio</option>
+            <option value="Restauración">Restauración</option>
+            <option value="Salud">Salud</option>
+        </select>
+    </div>
+    
+    <h1 style="font-size: 25px;  color:rgba(114, 111, 97, 1);">|</h1>
+
+    
+    <div class="colb ">
+        <input type="text" name="Código Postal" placeholder="C. Postal" #cp>
+    </div>
+
+    <div class="colb" >
+        <button (click)="buscarFavoritos(categoria.value, cp.value)">    
+            <i class="fas fa-search lupa" ></i>
+        </button> 
+    </div>
+   
+  
+    
+
+        
+</div>

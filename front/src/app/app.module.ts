@@ -29,6 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ModalCambioComponent } from './pages/modal-cambio/modal-cambio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NotaComponent } from './pages/nota/nota.component';
+import { ClienteBuscaFavoritosComponent } from './pages/cliente-busca-favoritos/cliente-busca-favoritos.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { NotaComponent } from './pages/nota/nota.component';
     ModalComponent,
     ModalCambioComponent,
     NotaComponent,
+    ClienteBuscaFavoritosComponent,
     // RegistroEmpresaService
   ],
   imports: [

@@ -69,12 +69,12 @@ app.get("/favoritos",
             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
             WHERE codigo_postal=? AND f.id_usuario_cliente=?`
         }
-        else {
-            params4 = [categoria, cp, id]
-            sql = `SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f
+        else{
+            params = [categoria, cp, id]
+            sql = `SELECT e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f
             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
-            WHERE e.categoria=? AND codigo_postal=? AND f.id_usuario_cliente=?`
+            WHERE (e.categoria=? AND codigo_postal=? AND f.id_usuario_cliente=?)`
         }
         connection.query(sql,params,
             function(err,res){
@@ -1039,7 +1039,7 @@ app.get("/local",
         let params = []
         let sql=``
 
-        if(cp==null && categoria==null ){
+        if(cp == null && categoria == null ){
             params = [id]
             sql=`SELECT userE.nombre_empresa, userE.imagen_url, AVG(nota) AS valoracion FROM usuario_empresa AS userE 
             LEFT JOIN opiniones AS op ON userE.id_usuario_empresa = op.id_usuario_empresa
@@ -1047,13 +1047,13 @@ app.get("/local",
             GROUP BY userE.id_usuario_empresa ORDER BY valoracion DESC LIMIT 5`
 
         }
-        else if(cp==null){
+        else if(cp == null){
             params = [categoria]
             sql = `SELECT e.*, AVG(nota) AS nota_media FROM  urturn.usuario_empresa AS e 
             JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) 
             WHERE categoria =? GROUP BY e.id_usuario_empresa`
         }
-        else if(categoria==null){
+        else if(categoria == null && cp != null){
             params = [cp]
             console.log(cp)
             sql = `SELECT e.*, AVG(nota) AS nota_media FROM  urturn.usuario_empresa AS e 
