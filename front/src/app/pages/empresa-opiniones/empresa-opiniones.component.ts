@@ -7,21 +7,22 @@ import { Opiniones } from 'src/app/models/opiniones';
   styleUrls: ['./empresa-opiniones.component.css']
 })
 export class EmpresaOpinionesComponent implements OnInit {
-
-  @Input() opinionHijo:any;
+  // opinionHijo es la comunicacion con la pagina cliente-opinion que mostrar todas opiniones de empresa al cliente.
+  @Input() opinionHijo:Opiniones;
+  // opinionDeCliente es la comunicacion con la pagina empresa-opinion que mostrar todas opiniones de cliente a la empresa.
+  @Input() isEmpresa: boolean;
+  @Input() isCliente: boolean;
   
   public data:any = {
     estrellas:0
   }
+
   constructor() {}
 
   ngOnInit(): void {
+    console.log(this.opinionHijo);
+    console.log(this.opinionHijo.usuario_imagen_empresa)
   }
 
-  handleStar(event:any){
-    const index:string = event.target.name
-    const value:String = event.target.value;
-    this.data[ index ] = value;
-    console.log(this.data)
-  }
+  
 }

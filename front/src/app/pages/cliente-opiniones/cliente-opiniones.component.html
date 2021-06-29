@@ -120,7 +120,7 @@
     <!--campo de resenado-->
     <ng-container *ngIf="comentarios">
         <ng-container *ngFor="let opinion of opiniones">
-            <app-empresa-opiniones [opinionHijo]="opinion"></app-empresa-opiniones>
+            <app-empresa-opiniones [opinionHijo]="opinion" [isEmpresa]="false" [isCliente]="true"></app-empresa-opiniones>
         </ng-container>
     </ng-container>
 

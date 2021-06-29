@@ -82,6 +82,10 @@
 
 </div>
 
-<app-empresa-opiniones></app-empresa-opiniones>
+
+<ng-container *ngFor="let opinionParaEmpresaPerfil of opinionParaEmpresaPerfiles">
+    <app-empresa-opiniones [opinionHijo]="opinionParaEmpresaPerfil" [isEmpresa]="true"></app-empresa-opiniones>
+</ng-container>
+
 
 <app-modal [mensajeModal]="clienteCola"></app-modal>

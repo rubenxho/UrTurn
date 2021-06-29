@@ -15,7 +15,7 @@ export class ClienteOpinionesComponent implements OnInit {
   @Input() usuarioEmpresa: any;
 
   public locales: any;
-  public opiniones: any;
+  public opiniones: Opiniones[];
 
   // para mostrar dos campos
   public comentar: boolean;
@@ -39,7 +39,7 @@ export class ClienteOpinionesComponent implements OnInit {
   ) {
 
     this.locales = '';
-    this.opiniones = '';
+    this.opiniones = [];
     // dos campos
     this.comentar = true;
     this.comentarios = false;
@@ -128,14 +128,22 @@ export class ClienteOpinionesComponent implements OnInit {
   }
 
   /******************************************* CAMPO 2 comentarios **************************************************/
-  // coger todos comentarios hechos de este cliente, mostrar la info de la empresa.
-  opinionesClienteSobreEmpresa() {
-    this.opinionesService
-      .getOpinionesACliente(this.lsc.login.id_usuario_cliente)
-      .subscribe((date: any) => {
-        console.log(date);
-        return (this.opiniones = date);
-      });
+    opinionesClienteSobreEmpresa(){
+    this.opinionesService.getOpinionesACliente(this.lsc.login.id_usuario_cliente).subscribe((data:any):void=>{
+      for (let i = 0; i < data.length; i++) {
+        this.opiniones.push( new Opiniones(
+          data[i].id_opiniones,
+          this.lsc.login.id_usuario_cliente,
+          "",
+          "",
+          data[i].id_usuario_empresa,
+          data[i].nombre_empresa,
+          data[i].imagen_url,
+          data[i].nota,
+          data[i].opinion,
+          data[i].fecha
+      ))
+    }})
   }
 
   ngOnInit(): void {

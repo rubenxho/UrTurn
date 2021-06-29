@@ -1,14 +1,17 @@
+<ng-container *ngFor="let opinionParaEmpresa of opinionesParaEmpresa">
+    <app-empresa-opiniones [opinionHijo]="opinionParaEmpresa" [isEmpresa]="true" [isCliente]="false"></app-empresa-opiniones>
+</ng-container>
+
+
+<!--
 <div class="main">
-<!-- Desktop -->
+
 <ng-container *ngFor="let opinion of opiniones">
     <div class="global one">
 
         <div class="conteiner">
-            <!-- caja de reseñas -->
 
             <div class="group">
-                <!-- <div class="user"> -->
-                <!-- <div class="pic-profile"> -->
 
                 <div class="container">
                     <div class="div-img">
@@ -16,9 +19,6 @@
                         <div class="text">{{opinion.nombre_cliente}}</div>
                     </div>
                 </div>
-                <!-- </div> -->
-                <!-- <p class="user-name"> david </p> -->
-                <!-- </div> -->
 
                 <div class="comment">
                     <p class="comment-user">{{opinion.opinion}}</p>
@@ -34,17 +34,17 @@
         </div>
     </div>
 
-    <!-- ********************Mobile********************  -->
+
     <div class="global two">
-        <!-- reseñas movil -->
+
         <div class="group">
-            <!-- Foto, nombre y estrellas -->
+
             <div class="user">
 
                 <div class="pic-profile">
                     <img class="img" src="{{opinion.imagen_url}}" alt="foto de cliente">
                 </div>
-                <!-- Estrellas -->
+          
                 <div class="stars">
                     <div class="valoracion">
                         <p class="user-name"> {{opinion.nombre_cliente}} </p>
@@ -53,9 +53,9 @@
                     </div>
                 </div>
             </div>
-            <!--Are Comentario -->
+        
             <div class="comment">
-                <!-- Comenteario -->
+
                 <p class="comment-user">{{opinion.opinion}}</p>
             </div>
 
@@ -64,3 +64,5 @@
 
 </ng-container>
 </div>
+
+-->

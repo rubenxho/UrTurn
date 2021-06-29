@@ -13,7 +13,7 @@ export class NotaComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    const estrellasColor = this.nota;
+    const estrellasColor = Math.round(this.nota);
     const estrellasSincolor = this.totalEstrellas - estrellasColor;
     
     for (let i = 0; i < estrellasColor; i++) {

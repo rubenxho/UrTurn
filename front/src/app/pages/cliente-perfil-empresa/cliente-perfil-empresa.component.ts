@@ -4,6 +4,9 @@ import { ToastrService } from 'ngx-toastr';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { LocalServiceService } from 'src/app/services/local-service.service';
 import {Location} from '@angular/common';
+import { Opiniones } from 'src/app/models/opiniones';
+import { ClienteOpinionesResenarService } from 'src/app/services/cliente-opiniones-resenar.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-cliente-perfil-empresa',
@@ -11,6 +14,7 @@ import {Location} from '@angular/common';
   styleUrls: ['./cliente-perfil-empresa.component.css']
 })
 export class ClientePerfilEmpresaComponent implements OnInit {
+  public opinionParaEmpresaPerfiles:Opiniones[];
 
   //favoritos
 
@@ -30,8 +34,13 @@ export class ClientePerfilEmpresaComponent implements OnInit {
   /**********************************/
 
   constructor(
-                private router: Router, private toastr: ToastrService,
-                private localServive: LocalServiceService, private _location: Location
+                private router: Router, 
+                private toastr: ToastrService,
+                private localServive: LocalServiceService, 
+                private _location: Location,
+                private opinionesService: ClienteOpinionesResenarService,
+                private lse: LoginService
+
               ) 
               { 
 
@@ -65,12 +74,37 @@ export class ClientePerfilEmpresaComponent implements OnInit {
     this._location.back();
   }
   /*******************************/
-
   showSucces(){
     this.toastr.success(this.frase);
   }
 
-  ngOnInit(): void {
+  /**********llamar el service para traer los datos de opiniones*********************/
+    getOpiniones(){
+    this.opinionesService.getOpinionesAEmpresa(this.local.id_usuario_empresa).subscribe((data:any):void=>{
+      for (let i = 0; i < data.length; i++) {
+        this.opinionParaEmpresaPerfiles.push( new Opiniones(
+          data[i].id_opiniones,
+          data[i].id_usuario_cliente,
+          data[i].nombre_cliente,
+          data[i].imagen_url,
+          this.local.id_usuario_empresa,
+          "",
+          "",
+          data[i].nota,
+          data[i].opinion,
+          data[i].fecha
+      ))
+       console.log("this.opinionParaEmpresaPerfiles>>>>>>>>>>>>>>",this.opinionParaEmpresaPerfiles) // undefined
+    console.log("this.localServive.localElegido>>>>>>>>>>>>>>",this.localServive.localElegido)  // direccion: null
+    }})
   }
 
+  ngOnInit(): void {
+    this.getOpiniones()
+   
+    //imagen_url: "https://www.buenasnuevas.live/wp-content/uploads/2020/12/Starbucks.jpg"
+    //nombre_empresa: "Starbucks"
+    //tiempo_espera: 7
+    console.log("this.local.id_usuario_empresa>>>>>>>>>>>>>>", this.local.id_usuario_empresa) // undefined
+  }
 }
