@@ -14,7 +14,7 @@ export class LoginService implements CanActivate {
   public login:Login;
 
   constructor(private http:HttpClient, private router:Router) { 
-    this.url = 'http://apiurturn.herokuapp.com/login';
+    this.url = 'https://apiurturn.herokuapp.com/login';
     this.estado = false;
     this.tipoUsuario = '';
     this.login = new Login();

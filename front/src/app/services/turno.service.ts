@@ -9,7 +9,7 @@ export class TurnoService {
   private url:string;
   
   constructor(private http: HttpClient) {
-    this.url='http://apiurturn.herokuapp.com/turnos/cliente'
+    this.url='https://apiurturn.herokuapp.com/turnos/cliente'
   }
 
   getDatosTurnos(id:number){

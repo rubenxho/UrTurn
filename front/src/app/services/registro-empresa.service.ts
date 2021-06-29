@@ -10,7 +10,7 @@ export class RegistroEmpresaService {
   private url:string;
 
   constructor(private http:HttpClient) { 
-    this.url = 'http://apiurturn.herokuapp.com/empresa-registro';
+    this.url = 'https://apiurturn.herokuapp.com/empresa-registro';
   }
 
   public postNuevoUsuario(empresa:UsuarioEmpresa):any  {

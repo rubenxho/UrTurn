@@ -7,7 +7,7 @@ import { Puntuacion } from '../models/puntuacion';
 })
 export class PuntuacionService {
 
-  private url = 'http://apiurturn.herokuapp.com/strike?id_usuario_cliente=';
+  private url = 'https://apiurturn.herokuapp.com/strike?id_usuario_cliente=';
 
   constructor(private http: HttpClient) { 
 

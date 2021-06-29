@@ -10,7 +10,7 @@ export class DatosgeneralesService {
 
 
   constructor(private http: HttpClient) {
-    this.url='http://apiurturn.herokuapp.com/turnos/empresa/datos_generales?id_usuario_empresa='
+    this.url='https://apiurturn.herokuapp.com/turnos/empresa/datos_generales?id_usuario_empresa='
   }
 
   getDatosGenerales(id_empresa:number){
