@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { UsuarioCliente } from 'src/app/models/usuario-cliente';
 import { RegistroClienteService } from 'src/app/services/registro-cliente.service';
 import { LoginService } from 'src/app/services/login.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cliente-registro',
@@ -18,7 +19,7 @@ export class ClienteRegistroComponent implements OnInit {
   public emailValid:boolean;
   public telefonoValid:boolean
 
-  constructor(private navigation:Router, private formBuilder:FormBuilder, public rs:RegistroClienteService, private ls:LoginService) { 
+  constructor(private navigation:Router, private formBuilder:FormBuilder, public rs:RegistroClienteService, private ls:LoginService, private toastr: ToastrService) { 
     this.myForm = this.buildForm();
     this.rsocialValid = true;
     this.passValid = true;
@@ -91,10 +92,10 @@ export class ClienteRegistroComponent implements OnInit {
       let cliente:UsuarioCliente = new UsuarioCliente(0, nombre, '', telefono, '', email, password);
 
       this.rs.postNuevoUsuario(cliente).subscribe((data:any) => {
+        this.showInfo(data.error);
         console.log(data.mensaje);
         this.redirigir(`login`);
       });
-      
     }
   }
 
@@ -102,8 +103,16 @@ export class ClienteRegistroComponent implements OnInit {
     this.navigation.navigate([componente]);
   }
 
+  showInfo(error:boolean) {
+
+    if(!error) {
+      this.toastr.success("¡Te has registrado correctamente!");
+    }else {
+      this.toastr.error("Ha ocurrido un error");
+    }
+  }
+
   ngOnInit(): void {
     this.ls.estado = false;
   }
-
 }
