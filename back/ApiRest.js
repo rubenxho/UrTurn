@@ -804,6 +804,8 @@ app.post("/favoritos",
     function(request, response){
         id_usuario_cliente = request.body.id_usuario_cliente
         id_usuario_empresa = request.body.id_usuario_empresa
+        console.log(id_usuario_cliente)
+        console.log(id_usuario_empresa)
         fecha= new Date(Date.now())
         params = [ id_usuario_cliente, id_usuario_empresa, fecha]
         sql = `INSERT INTO urturn.favoritos ( id_usuario_cliente, id_usuario_empresa, fecha)

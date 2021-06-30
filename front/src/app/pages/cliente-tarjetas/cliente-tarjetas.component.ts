@@ -54,7 +54,6 @@ export class ClienteTarjetasComponent implements OnInit {
       
     }
     else{
-      console.log("flag fav")
       this.favService.eliminarFav(this.usuarioEmpresa.id_usuario_empresa).subscribe((data:any)=>{
 
       })

@@ -47,7 +47,7 @@ public favoritos: UsuarioEmpresa[];
   
 
   anyadirFav( id_usuario_empresa:number){
-    let nuevoFav:Favoritos= new Favoritos (this.loginService.login.id_usuario_cliente, id_usuario_empresa)
+    let nuevoFav:Favoritos= new Favoritos (0,this.loginService.login.id_usuario_cliente, id_usuario_empresa)
     return this.http.post(this.url ,nuevoFav )
   }
 
