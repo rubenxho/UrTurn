@@ -25,7 +25,7 @@
                     <button class="btn btn-primary botonCola " id="numPosicion"> Ticket:{{usuarioEmpresa.id_turno}}</button>
                 </ng-template>
 
-                <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
+                <span class="corazonGris" [ngClass]="{corazonRed: usuarioEmpresa.favorito}">
                     <i class="fas fa-heart" (click)="fav()"></i>
                 </span>
             </div>
