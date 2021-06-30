@@ -17,7 +17,7 @@ export class UsuarioEmpresa {
     public opiniones:Opiniones[];
     public email:string;
     public password:string;
-    public nota_media:number
+    public valoracion:number
     public id_turno:number
 
     constructor(id_usuario_empresa:number=0, 
@@ -53,7 +53,7 @@ export class UsuarioEmpresa {
         this.opiniones = opiniones;
         this.email = email;
         this.password = password;
-        this.nota_media;
+        this.valoracion;
         this.id_turno=null;
     }  
 

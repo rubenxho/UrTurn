@@ -88,6 +88,6 @@ export class ClienteTarjetasComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.usuarioEmpresa.locales)
+
   }
 }

@@ -35,7 +35,7 @@ export class Opiniones {
     this.usuario_imagen_empresa = usuario_imagen_empresa;
     this.nota = nota;
     this.opinion = opinion;
-    this.fecha = new Date(Date.now());
+    this.fecha = fecha;
   }
 
   static create(
