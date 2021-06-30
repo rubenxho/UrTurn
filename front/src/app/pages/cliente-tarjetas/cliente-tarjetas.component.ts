@@ -64,10 +64,8 @@ export class ClienteTarjetasComponent implements OnInit {
 
 
 
-  showInfo(id:number) {
-    if(id==2){this.toastr.error("Local no disponible");}
-    else if(id==1){this.toastr.warning("Ya tiene un turno activo en este local")}
-  }
+  
+
   //funcion mostrar datos del local según los endpoints
   muestraLocal(usuarioEmpresa: UsuarioEmpresa){
     this.localService.localElegido = usuarioEmpresa;
@@ -78,28 +76,35 @@ export class ClienteTarjetasComponent implements OnInit {
     this.turnoService.empresaElegida = this.usuarioEmpresa;
 
   }
-    // confirma hace la cola
-    comfirmadoCola() {
-      this.enCola = true;
-      console.log("aqui")
-      console.log(this.turnoService.empresaElegida.id_usuario_empresa)
-      this.turnoService.postHacerCola(this.id_cliente,this.turnoService.empresaElegida.id_usuario_empresa).subscribe((data:any)=>{
-          console.log(data)
-          // Ya el cliente esta haciendo la cola en el local
-          if(data[0].id_turno==0){
-            this.showInfo(1);
-          }
-          // El local no esta disponible
-          else if(data[0].id_turno==1){
-            this.showInfo(2);
-          }
-          // Turno agarrado, regresa el numero de turno
-          else{
-            this.turnoService.empresaElegida.id_turno= data[0].id_turno
-          }
-          
-      })
-    }
+
+  // confirma hace la cola
+  comfirmadoCola() {
+    this.enCola = true;
+    console.log("aqui")
+    console.log(this.turnoService.empresaElegida.id_usuario_empresa)
+    this.turnoService.postHacerCola(this.id_cliente,this.turnoService.empresaElegida.id_usuario_empresa).subscribe((data:any)=>{
+        console.log(data)
+        // Ya el cliente esta haciendo la cola en el local
+        if(data[0].id_turno==0){
+          this.showInfo(1);
+        }
+        // El local no esta disponible
+        else if(data[0].id_turno==1){
+          this.showInfo(2);
+        }
+        // Turno agarrado, regresa el numero de turno
+        else{
+          this.turnoService.empresaElegida.id_turno= data[0].id_turno
+        }
+        
+    })
+  }
+
+  showInfo(id:number) {
+    if(id==2){
+      this.toastr.success("Local no disponible");}
+    else if(id==1){this.toastr.warning("Ya tiene un turno activo en este local")}
+  }
 
   ngOnInit(): void {
     this.elId = this.usuarioEmpresa.id_usuario_empresa;

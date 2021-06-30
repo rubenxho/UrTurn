@@ -180,12 +180,25 @@ app.get("/favoritos",
                        }
                       // Array de colas activas del cliente 
                       else{
+                        console.log(favoritos)
+                        console.log("otra")
+                        console.log(res)
+                        
                         // Comparo mis arrays, y si hay un turno activo, se lo asigno al array favoritos
-                        for(let i=0;i<res.length;i++){
-                            if(favoritos[i].id_usuario_empresa==res[i].id_usuario_empresa){
-                              favoritos[i].id_turno=res[i].id_turno
+                        // for(let i=0;i<res.length;i++){
+                        //     if(favoritos[i].id_usuario_empresa==res[i].id_usuario_empresa){
+                        //       favoritos[i].id_turno=res[i].id_turno
+                        //     }
+                        // }
+
+                        for(let i=0;i<favoritos.length;i++){
+                          for(let j=0;j<res.length;j++){
+                            if(favoritos[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                              favoritos[i].id_turno=res[j].id_turno
                             }
+                          }
                         }
+
                         response.send(favoritos)
                       }
                     }
