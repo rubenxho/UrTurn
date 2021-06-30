@@ -3,16 +3,16 @@ export class OpinionRechazada {
 }
 
 export class Opiniones {
-  public id_opiniones: number;
-  public id_usuario_cliente: number;
-  public usuario_nombre_cliente: string;
-  public usuario_imagen_cliente: string;
-  public id_usuario_empresa: number;
-  public usuario_nombre_empresa: string;
-  public usuario_imagen_empresa: string;
-  public nota: number;
-  public opinion: string;
-  public fecha: Date;
+   public id_opiniones: number;
+   public id_usuario_cliente: number;
+   public usuario_nombre_cliente: string;
+   public usuario_imagen_cliente: string;
+   public id_usuario_empresa: number;
+   public usuario_nombre_empresa: string;
+   public usuario_imagen_empresa: string;
+   public nota: number;
+   public opinion: string;
+   public fecha: Date;
 
   constructor(
     id_opiniones: number = 0,
