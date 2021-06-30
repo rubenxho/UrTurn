@@ -68,7 +68,7 @@
                                 <p style="color: black; font-size: 17px; ">Apellido: {{cliente.apellidos_cliente}}</p>
                                 <p style="color: black; font-size: 17px; ">Telefono: {{cliente.telefono}}</p>
                                 <div>   
-                                    <p >Fama: <i class="fas fa-circle" [ngClass]="{circulo2: cliente.karma=='red', circulo3: cliente.karma=='yellow', circulo: !cliente.karma || cliente.karma=='green'}"></i></p>
+                                    <p >Fama: <i class="fas fa-circle" style="border:solid black; border-radius: 100%;" [ngClass]="{circulo2: cliente.karma=='red', circulo3: cliente.karma=='yellow', circulo: !cliente.karma || cliente.karma=='green'}"></i></p>
                                 </div>
                             </div>
                         </div>

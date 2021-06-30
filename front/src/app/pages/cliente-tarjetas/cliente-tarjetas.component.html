@@ -6,18 +6,18 @@
             
         <div class="card-body">
             <div clase="carde-title-color ">
-                <h4 class="card-title">{{usuarioEmpresa.nombre_empresa}}</h4>
+                <h4 class="card-title">{{usuarioEmpresa.id_usuario_empresa}}</h4>
             </div>
 
             <p class="card-text">Tiempo Aprox: {{usuarioEmpresa.tiempo_espera}} Mins</p>
             <div class="valoracion">
-                <app-nota [nota]="usuarioEmpresa.valoracion"></app-nota>
+                <app-nota [nota]="usuarioEmpresa.nota_media"></app-nota>
             </div>
 
             <div>
                 <ng-container *ngIf="!usuarioEmpresa.id_turno; else posicion">
                     <button type="button" class="btn btn-primary botonCola" id=""
-                        data-toggle="modal" data-target="#comfirmarColaModal">Hacer la cola
+                        data-toggle="modal" data-target="#comfirmarColaModal" (click)="guardarEmpresa()">Hacer la cola
                     </button>
                 </ng-container>
 

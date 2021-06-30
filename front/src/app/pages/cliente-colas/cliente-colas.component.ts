@@ -16,6 +16,7 @@ export class ClienteColasComponent implements OnInit {
   
 
   constructor(private turnoService: TurnoService, private id_usuario: LoginService) { 
+    this.empresasCola=new Array()
     this.clienteCola = ['modalModificar','¿Desea dejar su turno?', 'Sí', 'No', 'Su turno se ha cancelado','','5'];
     // this.turnoService.postHacerCola(7,66).subscribe((data:any)=>{
     //   console.log("Nuevo cliente en cola")
@@ -40,7 +41,9 @@ export class ClienteColasComponent implements OnInit {
   ngOnInit(): void {
     this.turnoService.getDatosTurnos(this.id_usuario.login.id_usuario_cliente).subscribe((data:any)=>{
       this.empresasCola=data;
-      console.log(data)
+      console.log(typeof(this.empresasCola[0].tiempo_espera))
+      // console.log(this.empresasCola.tiempo_espera)
+      // console.log(typeof(this.empresasCola.tiempo_espera))
     })
   }
 

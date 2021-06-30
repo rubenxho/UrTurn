@@ -21,7 +21,7 @@ export class ClienteBuscadorComponent implements OnInit {
 
   buscarLocal(categoria: string, cp: string){ 
     if (this.localService.buscaLocal == "home"){
-
+      console.log(categoria)
       this.localService.getLocales(categoria, parseInt(cp)).subscribe((data: any) => {
         //data es variable para inyectarsela a las tarjetas.
         this.localService.locales = data;

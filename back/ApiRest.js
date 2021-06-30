@@ -39,7 +39,61 @@ let salida = "";
 let key = crypto.enc.Hex.parse("0123456789012345");
 let ive  = crypto.enc.Hex.parse("0123456789012345");
 
-app.get("/favoritos",
+app.get("/favoritos3",
+    function(request, response){
+        let categoria = request.query.categoria
+        let cp = request.query.cp
+        let id = request.query.id
+        let params = []
+        let sql=``
+        let hoy = new Date(Date.now());
+        console.log("aqui")
+        if(cp==null && categoria==null ){
+            params = [id,id,"Activo",hoy,hoy]
+            sql=`SELECT e.*, t.id_turno, AVG(o.nota) AS nota_media, true AS favorito FROM urturn.favoritos AS f 
+            INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
+            INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
+            INNER JOIN urturn.turnos AS t ON (t.id_usuario_empresa= e.id_usuario_empresa)
+            LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa)
+            WHERE t.id_usuario_cliente=? AND f.id_usuario_cliente=? AND t.estado=?   AND DAY(t.fecha_apertura_turno)= DAY(?) AND t.fecha_apertura_turno > ?
+            GROUP BY e.id_usuario_empresa`
+
+        }
+        else if(cp==null){
+            params = [categoria, id]
+            sql = `SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
+            JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
+            JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
+            WHERE e.categoria=? AND f.id_usuario_cliente=?`
+        }
+        else if(categoria==null){
+            params = [cp, id]
+            sql = `SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
+            JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
+            JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
+            WHERE codigo_postal=? AND f.id_usuario_cliente=?`
+        }
+        else{
+            params = [categoria, cp, id]
+            sql = `SELECT e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f
+            JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
+            JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
+            WHERE (e.categoria=? AND codigo_postal=? AND f.id_usuario_cliente=?)`
+        }
+        connection.query(sql,params,
+            function(err,res){
+                if(err){
+                    console.log(err);
+                }
+                else {
+                    console.log(res)
+                    response.send(res);
+                }
+        })
+    }
+)
+
+app.get("/favoritos2",
     function(request, response){
         let categoria = request.query.categoria
         let cp = request.query.cp
@@ -88,6 +142,59 @@ app.get("/favoritos",
         })
     }
 )
+
+/*FAVORITOS MODIFICADOOOOOOOOOOOOOO */
+app.get("/favoritos",
+    function(request,response)
+    {
+
+        // FECHA ACTUAL
+        let hoy = new Date(Date.now());
+        // Arrays de querys
+        let favoritos= new Array()
+
+
+        let cliente=request.query.id;
+        console.log(cliente)
+        let params=[cliente];
+        // Obtengo favoritos del cliente
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa)WHERE f.id_usuario_cliente=? GROUP BY e.id_usuario_empresa"
+        connection.query(sql,params, 
+            function(err, res){
+                if(err){
+                 console.log(err);
+                 response.send({error: true, codigo: 200, mensaje: 'Error Select favortios'})
+                }
+                // Favoritos del cliente los guardo en la variable FAVORITOS
+                else{
+                  console.log("favoritos")
+                  favoritos=res 
+                  // Query para obtener colas activas de cliente
+                  let params2=[hoy,cliente,"Activo",hoy];
+                  let sql= "SELECT * FROM urturn.turnos AS t INNER JOIN urturn.usuario_empresa AS e ON (t.id_usuario_empresa=e.id_usuario_empresa) WHERE DAY(fecha_apertura_turno)= DAY(?) AND id_usuario_cliente=? AND estado=? AND fecha_apertura_turno > ?"
+                  connection.query(sql,params2, 
+                    function(err, res){
+                      if(err){
+                       console.log(err);
+                       response.send({error: true, codigo: 200, mensaje: 'Error select colas activas'})
+                       }
+                      // Array de colas activas del cliente 
+                      else{
+                        // Comparo mis arrays, y si hay un turno activo, se lo asigno al array favoritos
+                        for(let i=0;i<res.length;i++){
+                            if(favoritos[i].id_usuario_empresa==res[i].id_usuario_empresa){
+                              favoritos[i].id_turno=res[i].id_turno
+                            }
+                        }
+                        response.send(favoritos)
+                      }
+                    }
+                  )
+                }
+            }
+        )
+    }
+)  
 
 
 /* <----------------------------------------Endpoint Turnos/Cliente --------------------------------------->  */  
@@ -1042,10 +1149,10 @@ app.get("/local",
         if(cp == null && categoria == null ){
             params = [id]
             sql=`
-SELECT userE.*, AVG(nota) AS valoracion FROM usuario_empresa AS userE 
-LEFT JOIN opiniones AS op ON userE.id_usuario_empresa = op.id_usuario_empresa
-WHERE op.nota is not null
-GROUP BY userE.id_usuario_empresa ORDER BY valoracion DESC LIMIT 5`
+            SELECT userE.*, AVG(nota) AS nota_media FROM usuario_empresa AS userE 
+            LEFT JOIN opiniones AS op ON userE.id_usuario_empresa = op.id_usuario_empresa
+            WHERE op.nota is not null
+            GROUP BY userE.id_usuario_empresa ORDER BY nota_media DESC LIMIT 5`
 
         }
         else if(cp == null){
