@@ -33,7 +33,6 @@ export class ClienteTarjetasComponent implements OnInit {
     this.id_cliente=this.id_usuario.login.id_usuario_cliente 
     //*************************/
 
-    this.usuarioEmpresa = null;
 
     this.ticket = 1150;
   //atributo para hacer favorito
@@ -81,12 +80,14 @@ export class ClienteTarjetasComponent implements OnInit {
 
 
   //funcion mostrar datos del local según los endpoints
-  muestraLocal(){
-    console.log(this.usuarioEmpresa)
-    this.localService.localElegido = this.usuarioEmpresa;
+  muestraLocal(usuarioEmpresa:UsuarioEmpresa){
+     this.localService.localElegido = usuarioEmpresa;
+     
   }
     
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.usuarioEmpresa.locales)
+  }
 }

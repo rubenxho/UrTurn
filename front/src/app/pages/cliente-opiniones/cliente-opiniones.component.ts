@@ -142,7 +142,9 @@ export class ClienteOpinionesComponent implements OnInit {
           data[i].nota,
           data[i].opinion,
           data[i].fecha
+         
       ))
+       console.log("fecha", data[0].fecha)
     }})
   }
 
