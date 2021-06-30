@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Favoritos } from '../models/favoritos';
 import { UsuarioEmpresa } from '../models/usuario-empresa';
 import { LoginService } from './login.service';
@@ -12,7 +12,7 @@ export class FavoritoServiceService {
 private url:string
 public favoritos: UsuarioEmpresa[];
   constructor(private http:HttpClient, private loginService: LoginService) {
-    this.url="https://apiurturn.herokuapp.com/favoritos"
+    this.url="http://localhost:3000/favoritos"
     this.favoritos = []
   }
 
@@ -21,7 +21,7 @@ public favoritos: UsuarioEmpresa[];
     console.log("flag")
     if(cp=="" && categoria=="" ){
       console.log("sin campos")
-     codigo = this.http.get(this.url + `?id=` + this.loginService.login.id_usuario_cliente)
+      codigo = this.http.get(this.url + `?id=` + this.loginService.login.id_usuario_cliente)
     }
 
     else if(categoria !== "" && cp == ""){
@@ -52,8 +52,16 @@ public favoritos: UsuarioEmpresa[];
   }
 
   eliminarFav( id_usuario_empresa:number){
-    
-    return this.http.delete(this.url + id_usuario_empresa )
+    // let dlete:any = {"id_usuario_empresa":id_usuario_empresa, "id_usuario_cliente":this.loginService.login.id_usuario_cliente}
+    // console.log(dlete)
+    let options= {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+            id_usuario_empresa: id_usuario_empresa,
+            id_usuario_cliente: this.loginService.login.id_usuario_cliente
+          },
   }
-}
-
+    return this.http.delete(this.url, options)
+  }}

@@ -69,7 +69,7 @@ export class ClienteOpinionesComponent implements OnInit {
     // const index:string = event.target.name
     const value: string = event.target.value;
     this.estrellas = parseInt(value);
-    console.log(this.estrellas);
+    //console.log(this.estrellas);
     return this.estrellas;
   }
 
@@ -130,6 +130,7 @@ export class ClienteOpinionesComponent implements OnInit {
   /******************************************* CAMPO 2 comentarios **************************************************/
     opinionesClienteSobreEmpresa(){
     this.opinionesService.getOpinionesACliente(this.lsc.login.id_usuario_cliente).subscribe((data:any):void=>{
+      this.opiniones=[];
       for (let i = 0; i < data.length; i++) {
         this.opiniones.push( new Opiniones(
           data[i].id_opiniones,
@@ -144,7 +145,6 @@ export class ClienteOpinionesComponent implements OnInit {
           data[i].fecha
          
       ))
-       console.log("fecha", data[0].fecha)
     }})
   }
 

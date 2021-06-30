@@ -44,7 +44,7 @@
                     [ngClass]="{'is-invalid':!validarRepeat(this.profileData.password.value, this.profileData.repeatPassword.value)}" on-keyup = "validarRepeat(this.profileData.password.value, this.profileData.repeatPassword.value)"> <br/>
                     
                     <p class="input-name" >Numero de telefono:</p><label *ngIf='nombre_cliente  && !telefonoValid' class='input-name' style="color:red"> El teléfono debe contener 9 números </label>
-                    <input class="input2" type="text" name="telefono" formControlName="telefono" placeholder="{{user.telefono}}"  pattern=".{12,}"
+                    <input class="input2" type="text" name="telefono" formControlName="telefono" placeholder="{{user.telefono}}" 
                     [ngClass]="{'is-invalid':!telefonoValid}" on-keyup = validarTelefono()> <br/>
 
                     <!-- <label *ngIf='!nombre_cliente' class='input-name'> El campo nombre es obligatorio </label> -->

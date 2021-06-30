@@ -10,8 +10,7 @@
     justify-content: space-between;    
     width: 790px;
     height: 150px;
-    margin: 30px auto 30px auto;
-    /* margin-top: 50px; */
+    margin: 150px auto 30px auto;
 }
 
 @media screen and (max-width: 376px) {
@@ -25,12 +24,12 @@
         align-items: center;    
         width: 100%;
         height: min-content;
-        margin: 30px 100px auto 0px;
-        /* padding-bottom: 50px; */
+        margin: 150px 100px auto 0px;
     }
 
     .global {
-        padding-bottom: 80px;
+        /* padding-bottom: 80px; */
+        margin-bottom: 100px;
     }
 }
 
@@ -151,7 +150,7 @@ i {
         align-items: center;
         margin-top: -15%;
         margin-bottom: -25%;
-        margin-left: 42px;
+        margin-left: 10px;
         /* margin-right: 10%; */
     }
     .fila {
@@ -196,6 +195,9 @@ i {
     color: white;
     width: 120px;
     height: 50px;
+}
+.boton:focus{
+    outline: none;
 }
 
 @media screen and (max-width: 376px) {
@@ -276,5 +278,5 @@ i {
     font-weight: bolder;
     font-size: 2rem;
     opacity: 0.5;
-    margin-top: 10%;
+    margin-top: 150px;
   }

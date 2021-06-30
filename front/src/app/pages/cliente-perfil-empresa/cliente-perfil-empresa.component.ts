@@ -60,7 +60,7 @@ export class ClientePerfilEmpresaComponent implements OnInit {
               }
 
   fav() {
-    console.log(this.favorito);
+    //console.log(this.favorito);
     this.favorito = !this.favorito;
     if (this.frase === 'Has guardado este lugar a favorito!') {
       this.frase = 'Has cancelado el favorito';
@@ -84,6 +84,8 @@ export class ClientePerfilEmpresaComponent implements OnInit {
   getOpiniones(){
     this.local=  this.localService.localElegido
     this.opinionesService.getOpinionesAEmpresa(this.local.id_usuario_empresa).subscribe((data:any):void=>{
+      this.opinionParaEmpresaPerfiles=[]
+      
       for (let i = 0; i < data.length; i++) {
         this.opinionParaEmpresaPerfiles.push( new Opiniones(
           data[i].id_opiniones,
@@ -97,7 +99,7 @@ export class ClientePerfilEmpresaComponent implements OnInit {
           data[i].opinion,
           data[i].fecha
       ))
-    console.log("this.opinionParaEmpresaPerfiles>>>>>>>>>>>>>>",this.opinionParaEmpresaPerfiles) // undefined
+    //console.log("this.opinionParaEmpresaPerfiles>>>>>>>>>>>>>>",this.opinionParaEmpresaPerfiles) // undefined
     //console.log("this.localServive.localElegido>>>>>>>>>>>>>>",this.localService.localElegido)  // direccion: null
     }})
   }
@@ -108,6 +110,6 @@ export class ClientePerfilEmpresaComponent implements OnInit {
     //imagen_url: "https://www.buenasnuevas.live/wp-content/uploads/2020/12/Starbucks.jpg"
     //nombre_empresa: "Starbucks"
     //tiempo_espera: 7
-    console.log("this.local.id_usuario_empresa>>>>>>>>>>>>>>", this.local.id_usuario_empresa) // undefined
+    //console.log("this.local.id_usuario_empresa>>>>>>>>>>>>>>", this.local.id_usuario_empresa) // undefined
   }
 }

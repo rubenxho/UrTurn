@@ -55,8 +55,8 @@
                 <div class="ruben-col contenedor-cola responsive-movil"  >
                     <hr style="margin-top: -40px; border:0.01px solid rgba(2, 2, 2, 0.13); width: 100%; margin-left: -26px;">
                     <div *ngIf="clientesEnCola.length!=0; else sinClientesMovil" style="margin-top: -15px; margin-bottom: 80px;">
-                    <div class="card" style="width: 300px; background-color: white; text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: -58px; margin-bottom: 7px;" *ngFor="let cliente of clientesEnCola let i=index" (click)="mostrarUsuario(i)">
-                        <h5 class="card-header" >
+                    <div class="card" style="width: 300px;  text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: -58px; margin-bottom: 7px;" *ngFor="let cliente of clientesEnCola let i=index" (click)="mostrarUsuario(i)">
+                        <h5 class="card-header" style="background-color: white;" >
                             <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ; "data-toggle="collapse" href="#collapse-collapsed{{i}}" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
                                 {{cliente.nombre_cliente}} {{cliente.apellidos_cliente}}
                             </a>
@@ -68,7 +68,7 @@
                                 <p style="color: black; font-size: 17px; ">Apellido: {{cliente.apellidos_cliente}}</p>
                                 <p style="color: black; font-size: 17px; ">Telefono: {{cliente.telefono}}</p>
                                 <div>   
-                                    <p >Fama: <i class="fas fa-circle" [ngClass]="{circulo2: cliente.karma=='red', circulo3: cliente.karma=='yellow', circulo: !cliente.karma || cliente.karma=='green'}"></i></p>
+                                    <p >Fama: <i class="fas fa-circle" style="border:solid black; border-radius: 100%;" [ngClass]="{circulo2: cliente.karma=='red', circulo3: cliente.karma=='yellow', circulo: !cliente.karma || cliente.karma=='green'}"></i></p>
                                 </div>
                             </div>
                         </div>

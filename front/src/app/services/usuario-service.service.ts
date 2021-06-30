@@ -17,46 +17,46 @@ export class UsuarioServiceService {
   
   /************EMPRESA**************/ 
         
-  public obtenerUserEmpresaId(id:number):any{
+  public obtenerUserEmpresaId(id:number){
       return this.http.get(`${this.url}/userE?id=${id}`)
   }
 
-  public obtenerUserEmpresa():any{
+  public obtenerUserEmpresa(){
     return this.http.get(`${this.url}/userE`)
   }
 
-  public actualizarUserEmpresa(clue:UsuarioEmpresa):any{
+  public actualizarUserEmpresa(clue:UsuarioEmpresa){
     console.log(clue)
     return this.http.put(`${this.url}/userE`, clue)
   } 
 
-  public actualizarPerfilEmp(changes:UsuarioEmpresa):any{
+  public actualizarPerfilEmp(changes:UsuarioEmpresa){
     return this.http.put(`${this.url}/userEP`, changes)
   }
 
-  public eliminarUserEmpresa(id:any):any{
+  public eliminarUserEmpresa(id){
     return this.http.delete(`${this.url}/deleteUserE`, id)
   }
 
   /************CLIENTE**************/
 
-  public obtenerUserCliente():any{
+  public obtenerUserCliente(){
       return this.http.get(`${this.url}/userC`)
   }
 
-  public obtenerUserClienteId(id:number):any{
+  public obtenerUserClienteId(id:number){
     return this.http.get(`${this.url}/userC?id=${id}`)
   }
-  public actualizarUserCliente(clue:UsuarioCliente):any{
+  public actualizarUserCliente(clue:UsuarioCliente){
     console.log(clue)
     return this.http.put(`${this.url}/userC`, clue)
   }
 
-  public actualizarUserPerfilClt(changes:UsuarioCliente):any{
+  public actualizarUserPerfilClt(changes:UsuarioCliente){
     return this.http.put(`${this.url}/userCP`, changes)
   }
 
-  public eliminarUserCliente(id:any):any{
+  public eliminarUserCliente(id){
     return this.http.delete(`${this.url}/deleteUserC`, id)
   }
 
