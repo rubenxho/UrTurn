@@ -44,12 +44,13 @@ app.get("/favoritos",
         let categoria = request.query.categoria
         let cp = request.query.cp
         let id = request.query.id
+        
         let params = []
         let sql=``
 
         if(cp==null && categoria==null ){
             params = [id]
-            sql=`SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
+            sql=`SELECT f.id_favoritos, e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
             WHERE f.id_usuario_cliente=?`
@@ -57,21 +58,21 @@ app.get("/favoritos",
         }
         else if(cp==null){
             params = [categoria, id]
-            sql = `SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
+            sql = `SELECT f.id_favoritos, e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
             WHERE e.categoria=? AND f.id_usuario_cliente=?`
         }
         else if(categoria==null){
             params = [cp, id]
-            sql = `SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
+            sql = `SELECT f.id_favoritos, e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
             WHERE codigo_postal=? AND f.id_usuario_cliente=?`
         }
         else{
             params = [categoria, cp, id]
-            sql = `SELECT e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f
+            sql = `SELECT f.id_favoritos, e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f
             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
             WHERE (e.categoria=? AND codigo_postal=? AND f.id_usuario_cliente=?)`
@@ -983,8 +984,8 @@ app.delete("/deleteUserC", (request, response)=>{
 
 app.delete("/favoritos",
     function(request,response){
-        params=[request.body.id_favoritos]
-        sql=`DELETE  FROM urturn.favoritos WHERE (id_favoritos=?)`
+        params=[request.body.id_usuario_empresa, request.body.id_usuario_cliente]
+        sql=`DELETE  FROM urturn.favoritos WHERE (id_usuario_empresa=? AND id_usuario_cliente=?)`
 
         connection.query(sql,params,
             function(err,res){
