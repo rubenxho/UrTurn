@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { UsuarioEmpresa } from '../models/usuario-empresa';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { Injectable } from '@angular/core';
 export class TurnoService {
 
   private url:string;
+  public empresaElegida: UsuarioEmpresa;
   
   constructor(private http: HttpClient) {
     this.url='https://apiurturn.herokuapp.com/turnos/cliente'

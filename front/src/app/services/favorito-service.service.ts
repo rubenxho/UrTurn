@@ -12,7 +12,7 @@ export class FavoritoServiceService {
 private url:string
 public favoritos: UsuarioEmpresa[];
   constructor(private http:HttpClient, private loginService: LoginService) {
-    this.url="https://apiurturn.herokuapp.com/favoritos"
+    this.url="http://localhost:3000/favoritos"
     this.favoritos = []
   }
 
@@ -21,7 +21,7 @@ public favoritos: UsuarioEmpresa[];
     console.log("flag")
     if(cp=="" && categoria=="" ){
       console.log("sin campos")
-     codigo = this.http.get(this.url + `?id=` + this.loginService.login.id_usuario_cliente)
+      codigo = this.http.get(this.url + `?id=` + this.loginService.login.id_usuario_cliente)
     }
 
     else if(categoria !== "" && cp == ""){

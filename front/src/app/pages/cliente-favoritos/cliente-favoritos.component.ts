@@ -12,7 +12,11 @@ import { LoginService } from 'src/app/services/login.service';
 export class ClienteFavoritosComponent implements OnInit {
 
   constructor(public localService: LocalServiceService, public favoritoService: FavoritoServiceService) { 
-    
+    this.favoritoService.obtenerFav('','').subscribe((data: any) => {
+      this.favoritoService.favoritos = data;
+      console.log("obtenerFav", data);
+      
+    })
   }
 
   muestraLocal(){
