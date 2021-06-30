@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
@@ -15,6 +15,8 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class ClientePerfilEmpresaComponent implements OnInit {
   public opinionParaEmpresaPerfiles:Opiniones[]=[];
+
+ 
 
   //favoritos
 
