@@ -1041,10 +1041,11 @@ app.get("/local",
 
         if(cp == null && categoria == null ){
             params = [id]
-            sql=`SELECT userE.nombre_empresa, userE.imagen_url, AVG(nota) AS valoracion FROM usuario_empresa AS userE 
-            LEFT JOIN opiniones AS op ON userE.id_usuario_empresa = op.id_usuario_empresa
-            WHERE op.nota <> "null"
-            GROUP BY userE.id_usuario_empresa ORDER BY valoracion DESC LIMIT 5`
+            sql=`
+SELECT userE.*, AVG(nota) AS valoracion FROM usuario_empresa AS userE 
+LEFT JOIN opiniones AS op ON userE.id_usuario_empresa = op.id_usuario_empresa
+WHERE op.nota is not null
+GROUP BY userE.id_usuario_empresa ORDER BY valoracion DESC LIMIT 5`
 
         }
         else if(cp == null){

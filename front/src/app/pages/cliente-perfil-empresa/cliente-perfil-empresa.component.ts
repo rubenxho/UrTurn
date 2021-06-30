@@ -14,7 +14,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./cliente-perfil-empresa.component.css']
 })
 export class ClientePerfilEmpresaComponent implements OnInit {
-  public opinionParaEmpresaPerfiles:Opiniones[];
+  public opinionParaEmpresaPerfiles:Opiniones[]=[];
 
   //favoritos
 
@@ -36,20 +36,20 @@ export class ClientePerfilEmpresaComponent implements OnInit {
   constructor(
                 private router: Router, 
                 private toastr: ToastrService,
-                private localServive: LocalServiceService, 
+                private localService: LocalServiceService, 
                 private _location: Location,
                 private opinionesService: ClienteOpinionesResenarService,
                 private lse: LoginService
 
               ) 
               { 
-
                 this.favorito = false;
                 this.frase = "";
 
                 //empresa
 
-                this.local = this.localServive.localElegido;
+                this.local = this.localService.localElegido;
+                console.log("this.localService.localElegido>>>>>>>>>>>>>>>>",this.localService.localElegido)
 
                 /*****************/
                 this.ColaPosicion = 5;
@@ -79,7 +79,8 @@ export class ClientePerfilEmpresaComponent implements OnInit {
   }
 
   /**********llamar el service para traer los datos de opiniones*********************/
-    getOpiniones(){
+  getOpiniones(){
+    this.local=  this.localService.localElegido
     this.opinionesService.getOpinionesAEmpresa(this.local.id_usuario_empresa).subscribe((data:any):void=>{
       for (let i = 0; i < data.length; i++) {
         this.opinionParaEmpresaPerfiles.push( new Opiniones(
@@ -94,8 +95,8 @@ export class ClientePerfilEmpresaComponent implements OnInit {
           data[i].opinion,
           data[i].fecha
       ))
-       console.log("this.opinionParaEmpresaPerfiles>>>>>>>>>>>>>>",this.opinionParaEmpresaPerfiles) // undefined
-    console.log("this.localServive.localElegido>>>>>>>>>>>>>>",this.localServive.localElegido)  // direccion: null
+    console.log("this.opinionParaEmpresaPerfiles>>>>>>>>>>>>>>",this.opinionParaEmpresaPerfiles) // undefined
+    //console.log("this.localServive.localElegido>>>>>>>>>>>>>>",this.localService.localElegido)  // direccion: null
     }})
   }
 

@@ -7,7 +7,7 @@ import { UsuarioEmpresa } from '../models/usuario-empresa';
 })
 export class LocalServiceService {
 
-  private url = 'https://apiurturn.herokuapp.com/local';
+  private url = 'http://localhost:3000/local';
 
   public localesTop: UsuarioEmpresa [];
   public localElegido: UsuarioEmpresa;
@@ -23,7 +23,7 @@ export class LocalServiceService {
     this.localesTop = [];
     this.localElegido = new UsuarioEmpresa();
     this.localesGrupo = [];
-    this.locales = [new UsuarioEmpresa(0,"","","",0,"","","","","",0,"","",[],"","")];  
+    this.locales = [new UsuarioEmpresa()];  
     this.mostrarTarjetas = false;
 
     
