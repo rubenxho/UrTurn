@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
@@ -11,6 +11,8 @@ import {Location} from '@angular/common';
   styleUrls: ['./cliente-perfil-empresa.component.css']
 })
 export class ClientePerfilEmpresaComponent implements OnInit {
+
+ 
 
   //favoritos
 
@@ -31,7 +33,7 @@ export class ClientePerfilEmpresaComponent implements OnInit {
 
   constructor(
                 private router: Router, private toastr: ToastrService,
-                private localServive: LocalServiceService, private _location: Location
+                public localService: LocalServiceService, private _location: Location
               ) 
               { 
 
@@ -40,7 +42,7 @@ export class ClientePerfilEmpresaComponent implements OnInit {
 
                 //empresa
 
-                this.local = this.localServive.localElegido;
+                this.local = this.localService.localElegido;
 
                 /*****************/
                 this.ColaPosicion = 5;
@@ -71,6 +73,7 @@ export class ClientePerfilEmpresaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.localService.localElegido)
   }
 
 }

@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./cliente-tarjetas.component.css'],
 })
 export class ClienteTarjetasComponent implements OnInit {
-  @Input() usuarioEmpresa: any;
+  @Input() usuarioEmpresa: UsuarioEmpresa;
   //public usuarioEmpresa: UsuarioEmpresa;
 
   //atributo para hacer favorito
@@ -23,17 +23,17 @@ export class ClienteTarjetasComponent implements OnInit {
   public usuarioEmpresas:UsuarioEmpresa
   public i = 0;
   public id_cliente: number
+  
 
   // para localEmpresa
   /*********************************/
 
-  constructor(private localService: LocalServiceService, private id_usuario: LoginService, private turnoService: TurnoService, private toastr: ToastrService) {
+  constructor(public localService: LocalServiceService, private id_usuario: LoginService, private turnoService: TurnoService, private toastr: ToastrService) {
     
     /*ID_CLIENTE*/
     this.id_cliente=this.id_usuario.login.id_usuario_cliente 
     //*************************/
 
-    this.usuarioEmpresa = null;
 
     this.ticket = 1150;
   //atributo para hacer favorito
@@ -74,19 +74,11 @@ export class ClienteTarjetasComponent implements OnInit {
     
   }
 
-  // obtenerLocalAll() {
-    // return this.localService.
-    // connectar con LocalServiceService de David
-  // }
-
-
-  //funcion mostrar datos del local según los endpoints
-  muestraLocal(){
-    console.log(this.usuarioEmpresa)
-    this.localService.localElegido = this.usuarioEmpresa;
+  muestraLocal(usuarioEmpresa: UsuarioEmpresa){
+    this.localService.localElegido = usuarioEmpresa;
   }
-    
 
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.localService.locales)
+  }
 }
