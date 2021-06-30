@@ -1,13 +1,14 @@
 /*****Estilos*****/
 .padre {
-    background-color: rgba(242, 241, 237, 1);
+    background-color: rgba(242, 241, 237, 0.3);
     border-width: 15px;
     border-color: rgba(242, 241, 237, 1);
     border-radius: 5px;
     box-shadow: 0px 4px 8px 3px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
-    max-width: min(720px, calc(100vw - 40px));
+    max-width: min(790px, calc(100vw - 40px));
+    height: auto;
     margin: 0 auto;
     margin-top: 5px;
 }
@@ -34,9 +35,9 @@
 
 .imagenD {
     width: 100%;
-    max-height: 100%;
-    min-height: 100px;
-    min-width: min(720px, calc(100vw - 40px));
+    height: 200px;
+    /* min-height: 100px;
+    min-width: min(720px, calc(100vw - 40px)); */
     border-radius: 5px;    
 }
 
@@ -59,7 +60,7 @@
 }
 
 .nombre {
-    background-color: rgba(0, 0, 0, .6);
+    background-color: rgba(0, 0, 0, .2);
     height: fit-content;/*ajusta el tamaño al contenido de la caja*/
     padding: 10px 20px;
     color: #ffff;
@@ -69,7 +70,7 @@
 
 @media screen and (max-width: 813px) {
     .nombre {
-        background-color: rgba(0, 0, 0, .9);
+        background-color: rgba(0, 0, 0, .2);
         height: fit-content;/*ajusta el tamaño al contenido de la caja*/
         /* padding: 5px 10px; */
         color: #ffff;
@@ -80,7 +81,7 @@
 }
 
 .botones {
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .2);
     height: fit-content;
     padding: 5px;
     min-width: max-content;/*la caja tiene un width definido, no se mueve, es el mínimo del máximo*/
@@ -89,7 +90,7 @@
 
 @media screen and (max-width: 813px) {
     .botones {
-        background-color: rgba(0, 0, 0, .6);
+        background-color: rgba(0, 0, 0, .2);
         margin-right: 99px;
         margin-bottom: 14px;
         min-width: max-content
@@ -319,6 +320,16 @@
     .descripccion    {
         display:none;
     }
+
+    .global {
+        padding-top: 100px;
+        padding-bottom: 65px;
+    }
+}
+
+.global {
+    padding-top: 150px;
+    margin-bottom: 15px;
 }
 
 
