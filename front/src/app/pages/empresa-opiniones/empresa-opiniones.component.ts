@@ -20,8 +20,8 @@ export class EmpresaOpinionesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.opinionHijo);
-    console.log(this.opinionHijo.usuario_imagen_empresa)
+    //console.log(this.opinionHijo);
+    //console.log(this.opinionHijo.usuario_imagen_empresa)
   }
 
   

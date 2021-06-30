@@ -69,7 +69,7 @@ export class ClienteOpinionesComponent implements OnInit {
     // const index:string = event.target.name
     const value: string = event.target.value;
     this.estrellas = parseInt(value);
-    console.log(this.estrellas);
+    //console.log(this.estrellas);
     return this.estrellas;
   }
 
@@ -145,7 +145,6 @@ export class ClienteOpinionesComponent implements OnInit {
           data[i].fecha
          
       ))
-       console.log("fecha", data[0].fecha)
     }})
   }
 

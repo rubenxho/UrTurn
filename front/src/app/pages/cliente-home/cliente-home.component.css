@@ -94,7 +94,13 @@ img {
   margin-top: 30px;
 }
 
+
+
 @media screen and (max-width: 375px) {
+  .tarjetaComponente{
+    margin-left: 23px;
+  }
+
   .carusel {
     width: 100vw;
     max-height: 250px;
@@ -130,6 +136,9 @@ img {
 
   .row {
     margin-top: 30px;
+  }
+  .container{
+    padding-bottom: 70px;
   }
 
 }
