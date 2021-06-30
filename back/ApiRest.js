@@ -147,7 +147,6 @@ app.get("/favoritos2",
 app.get("/favoritos",
     function(request,response)
     {
-
         // FECHA ACTUAL
         let hoy = new Date(Date.now());
         // Arrays de querys
@@ -179,18 +178,8 @@ app.get("/favoritos",
                        response.send({error: true, codigo: 200, mensaje: 'Error select colas activas'})
                        }
                       // Array de colas activas del cliente 
-                      else{
-                        console.log(favoritos)
-                        console.log("otra")
-                        console.log(res)
-                        
-                        // Comparo mis arrays, y si hay un turno activo, se lo asigno al array favoritos
-                        // for(let i=0;i<res.length;i++){
-                        //     if(favoritos[i].id_usuario_empresa==res[i].id_usuario_empresa){
-                        //       favoritos[i].id_turno=res[i].id_turno
-                        //     }
-                        // }
-
+                      else{  
+                        // Verifico si tiene algun turno activo lo coloco en mi array de respuesta
                         for(let i=0;i<favoritos.length;i++){
                           for(let j=0;j<res.length;j++){
                             if(favoritos[i].id_usuario_empresa==res[j].id_usuario_empresa){
@@ -209,6 +198,79 @@ app.get("/favoritos",
     }
 )  
 
+/*LOCAL FUNCIONA*/ 
+app.get("/local2",
+    function(request,response)
+    {
+        // FECHA ACTUAL
+        let hoy = new Date(Date.now());
+        // Arrays de querys
+        let top5= new Array()
+
+
+        let cliente=request.query.id;
+        console.log(cliente)
+        let params=[];
+        // Obtengo top5
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) GROUP BY e.id_usuario_empresa ORDER BY nota_media DESC LIMIT 5"
+        connection.query(sql,params, 
+            function(err, res){
+                if(err){
+                 console.log(err);
+                 response.send({error: true, codigo: 200, mensaje: 'Error Select top5'})
+                }
+                // top5 lo guardo en variable top5
+                else{
+                  console.log("top5")
+                  top5=res 
+                  // Query para obtener colas activas de cliente
+                  let params2=[hoy,cliente,"Activo",hoy];
+                  let sql= "SELECT * FROM urturn.turnos AS t INNER JOIN urturn.usuario_empresa AS e ON (t.id_usuario_empresa=e.id_usuario_empresa) WHERE DAY(fecha_apertura_turno)= DAY(?) AND id_usuario_cliente=? AND estado=? AND fecha_apertura_turno > ?"
+                  connection.query(sql,params2, 
+                    function(err, res){
+                      if(err){
+                       console.log(err);
+                       response.send({error: true, codigo: 200, mensaje: 'Error select colas activas'})
+                       }
+                      // Array de colas activas del cliente 
+                      else{  
+                        // Verifico si tiene algun turno activo lo coloco en mi array de top5
+                        for(let i=0;i<top5.length;i++){
+                          for(let j=0;j<res.length;j++){
+                            if(top5[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                              top5[i].id_turno=res[j].id_turno
+                            }
+                          }
+                        }
+                        let params=[cliente];
+                        let sql= "SELECT * FROM urturn.favoritos WHERE id_usuario_cliente=?;"
+                        connection.query(sql,params, 
+                            function(err, res){
+                                if(err){
+                                 console.log(err);
+                                 response.send({error: true, codigo: 200, mensaje: 'El disco no existe'})
+                                 }
+                                else{
+                                 console.log(res)
+                                  for(let i=0;i<top5.length;i++){
+                                    for(let j=0;j<res.length;j++){
+                                      if(top5[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                                        top5[i].favorito=1
+                                      }
+                                    }
+                                  }
+                                response.send(top5)                                  
+                                }
+                            }
+                        )
+                      }
+                    }
+                  )
+                }
+            }
+        )
+    }
+)  
 
 /* <----------------------------------------Endpoint Turnos/Cliente --------------------------------------->  */  
 app.get("/turnos/cliente",

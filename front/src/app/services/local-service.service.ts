@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioEmpresa } from '../models/usuario-empresa';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,7 @@ export class LocalServiceService {
 
   
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private loginService: LoginService ) {
     
     this.localesTop = [];
     this.localElegido = new UsuarioEmpresa();
