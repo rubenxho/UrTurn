@@ -16,7 +16,7 @@
     
 }
 .container{
-    margin-top: 30px;
+    margin-top: 120px;
     align-items: center;
 }
 .colb{
@@ -24,10 +24,14 @@
     flex-direction: column;
 }
 
-
+button:focus{
+    outline-color: #5C74F6;
+}
+input:focus{
+    outline: none;
+}
 
 .lupa{
-    
     color:rgba(114, 111, 97, 1)
 }
 
