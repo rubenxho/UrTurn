@@ -3,6 +3,7 @@ import { UsuarioEmpresa } from 'src/app/models/usuario-empresa';
 import { UsuarioServiceService } from 'src/app/services/usuario-service.service';
 import { LoginService } from 'src/app/services/login.service';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -42,7 +43,7 @@ export class EmpresaPerfilComponent implements OnInit {
 
   public user:UsuarioEmpresa = new UsuarioEmpresa(0, "", "", "", 0, "", "", "", "", "", 0, "");
 
-  constructor(private formBuilder:FormBuilder, private apiUserService:UsuarioServiceService, private lsowner:LoginService) { 
+  constructor(private formBuilder:FormBuilder, private apiUserService:UsuarioServiceService, private lsowner:LoginService, private navigation:Router) { 
 
     this.empresaPerfil = ["modalModificar","¿Seguro que desea enviar su perfil?", "Sí", "No", "Perfil enviado, gracias", "", "2"];
     this.owner = this.lsowner.login.id_usuario_empresa;
@@ -163,5 +164,10 @@ export class EmpresaPerfilComponent implements OnInit {
     this.validarUsername();
     this.validarPassword();
     this.validarTelefono();
+  }
+
+  public cerrarSesion()  {
+    this.lsowner.estado = false;
+    this.navigation.navigate(['login']);
   }
 }

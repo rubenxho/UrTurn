@@ -30,6 +30,20 @@ input:focus{
     width: 200px;
 }
 
+.exit   {
+    margin-bottom:22px;
+    padding:3px;
+}
+
+.imagen {
+    margin-top:56px;
+    margin-bottom:-10px;
+}
+
+.cierre {
+    margin-top:15%;
+}
+
 @media screen and (max-width:475px) {
     .etiquetas{
         justify-content: center;
@@ -57,6 +71,21 @@ input:focus{
     }
     .input-name{
         margin-top: 20px;
+    }
+
+    .centrado {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align:center;
+    }
+
+    .exit   {
+        margin-left:0;
+    }
+
+    .cierre {
+        margin-top:70%;
     }
 }
 

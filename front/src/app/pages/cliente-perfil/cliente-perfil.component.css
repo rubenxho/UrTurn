@@ -19,6 +19,31 @@ input:focus{
     margin-bottom: 1px;
     margin-top: 10px;
 }
+
+.centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+}
+
+.ruben{
+    margin-top:15%;
+}
+
+.exit   {
+    margin-left:-138px;
+    padding:3px;
+}
+
+.imagen {
+    margin-top:50px;
+    margin-bottom:-80px;
+}
+
+
+
+/* Reponsive */
 @media screen and (max-width:475px) {
     .container{
         display: flex;
@@ -38,6 +63,19 @@ input:focus{
     }
     .input2 {
         margin-bottom: -25px;
+    }
+
+    .ruben{
+        margin-top:90%;
+    }
+
+    .exit   {
+        margin-left:-100px;
+        background-color: #5C74F6;
+    }
+
+    .imagen {
+        margin-left:18px;
     }
 }
 

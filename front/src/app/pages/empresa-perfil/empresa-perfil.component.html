@@ -8,7 +8,14 @@
             <div class="pic-perfil" (input)="handelChange($event)">
                 
                 <div class="foto">
-                    <img class="imagen" src="{{user.imagen_url}}"  alt=" Not Found ">
+                    <!-- <img class="imagen" src="{{user.imagen_url}}"  alt=" Not Found "> -->
+                    <img class="imagen" name=img  src="../../../assets/mcdonalds.png" alt=" Not Found ">
+
+                    <div class='centrado'>
+                        <button type="button" class="exit" data-toggle="modal" data-target="#exampleModalCenter">
+                           Cerrar sesión 
+                        </button>
+                    </div>
                     
                     <div  class="categoria">
                     
@@ -21,7 +28,6 @@
                                 <option value="restauración">Restauración</option>
                                 <option value="salud">Salud</option>
                         </select>
-                    
                     </div>
 
                     <!-- <div>
@@ -86,3 +92,17 @@
 </div>
 
 <app-modal [mensajeModal]="empresaPerfil" (eventoGuardarPerfil)="subirCambios($event)"></app-modal>
+
+<div class="modal fade ruben cierre" tabindex="-1" role="dialog" id='exampleModalCenter' aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-body" id="desplegable">
+            <p style="text-align: center; font-size: 20px;">¿Seguro que quieres cerrar sesión?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal" on-click='cerrarSesion()'>Cerrar sesión</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+        </div>
+        </div>
+    </div>
+</div>
