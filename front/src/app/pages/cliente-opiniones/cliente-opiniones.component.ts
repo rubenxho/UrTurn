@@ -130,6 +130,7 @@ export class ClienteOpinionesComponent implements OnInit {
   /******************************************* CAMPO 2 comentarios **************************************************/
     opinionesClienteSobreEmpresa(){
     this.opinionesService.getOpinionesACliente(this.lsc.login.id_usuario_cliente).subscribe((data:any):void=>{
+      this.opiniones=[];
       for (let i = 0; i < data.length; i++) {
         this.opiniones.push( new Opiniones(
           data[i].id_opiniones,
