@@ -52,8 +52,6 @@ public favoritos: UsuarioEmpresa[];
   }
 
   eliminarFav( id_usuario_empresa:number){
-    
-    return this.http.delete(this.url + id_usuario_empresa )
-  }
-}
-
+    let dlete:any = {id_usuario_empresa:id_usuario_empresa, id_usuario_cliente:this.loginService.login.id_usuario_cliente}
+    return this.http.delete(this.url, dlete)
+  }}

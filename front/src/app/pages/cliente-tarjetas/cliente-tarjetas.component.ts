@@ -5,6 +5,7 @@ import { Opiniones } from 'src/app/models/opiniones';
 import { LoginService } from 'src/app/services/login.service';
 import { TurnoService } from 'src/app/services/turno.service';
 import { ToastrService } from 'ngx-toastr';
+import { FavoritoServiceService } from 'src/app/services/favorito-service.service';
 
 @Component({
   selector: 'app-cliente-tarjetas',
@@ -15,12 +16,10 @@ export class ClienteTarjetasComponent implements OnInit {
   @Input() usuarioEmpresa: UsuarioEmpresa;
   //public usuarioEmpresa: UsuarioEmpresa;
 
-  //atributo para hacer favorito
-  public favorito: boolean;
+
   // para modal
   public enCola: boolean;
   public ticket: number;
-  public usuarioEmpresas:UsuarioEmpresa
   public i = 0;
   public id_cliente: number
   
@@ -28,7 +27,12 @@ export class ClienteTarjetasComponent implements OnInit {
   // para localEmpresa
   /*********************************/
 
-  constructor(public localService: LocalServiceService, private id_usuario: LoginService, private turnoService: TurnoService, private toastr: ToastrService) {
+  constructor(
+    public localService: LocalServiceService, 
+    private id_usuario: LoginService, 
+    private turnoService: TurnoService, 
+    private toastr: ToastrService,
+    private favService: FavoritoServiceService) {
     
     /*ID_CLIENTE*/
     this.id_cliente=this.id_usuario.login.id_usuario_cliente 
@@ -38,12 +42,23 @@ export class ClienteTarjetasComponent implements OnInit {
     this.ticket = 1150;
   //atributo para hacer favorito
     this.enCola = false;
-    this.favorito = false;
   }
   //method para guardar a favorito
   
   fav() {
-    this.favorito = !this.favorito;
+   
+    if(!this.usuarioEmpresa.favorito){
+      this.favService.anyadirFav(this.usuarioEmpresa.id_usuario_empresa).subscribe((data:any)=>{
+        
+      })
+      
+    }
+    else{
+      this.favService.eliminarFav(this.usuarioEmpresa.id_usuario_empresa).subscribe((data:any)=>{
+
+      })
+    }
+    this.usuarioEmpresa.favorito = !this.usuarioEmpresa.favorito;
   }
 
   // confirma hace la cola
@@ -81,3 +96,4 @@ export class ClienteTarjetasComponent implements OnInit {
   ngOnInit(): void {
   }
 }
+

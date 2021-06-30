@@ -684,7 +684,7 @@ app.post("/favoritos",
     function(request, response){
         id_usuario_cliente = request.body.id_usuario_cliente
         id_usuario_empresa = request.body.id_usuario_empresa
-        fecha= new date(Date.now())
+        fecha= new Date(Date.now())
         params = [ id_usuario_cliente, id_usuario_empresa, fecha]
         sql = `INSERT INTO urturn.favoritos ( id_usuario_cliente, id_usuario_empresa, fecha)
         VALUES (?,?,?)`
@@ -983,8 +983,8 @@ app.delete("/deleteUserC", (request, response)=>{
 
 app.delete("/favoritos",
     function(request,response){
-        params=[request.body.id_favoritos]
-        sql=`DELETE  FROM urturn.favoritos WHERE (id_favoritos=?)`
+        params=[request.body.id_usuario_empresa, request.body.id_usuario_cliente]
+        sql=`DELETE  FROM urturn.favoritos WHERE (id_usuario_empresa=? AND id_usuario_cliente=?)`
 
         connection.query(sql,params,
             function(err,res){
