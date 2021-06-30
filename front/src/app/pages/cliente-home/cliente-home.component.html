@@ -61,8 +61,12 @@
 <ng-template #tarjetas>
            
     <!-- <app-cliente-tarjetas></app-cliente-tarjetas>  -->
+    <div class="tarjetax">
     <ng-container *ngFor="let local of this.localService.locales">
         <app-cliente-tarjetas [usuarioEmpresa]="local"></app-cliente-tarjetas>
-    </ng-container>     
+    </ng-container> 
+
+    </div>
+    
 
 </ng-template>

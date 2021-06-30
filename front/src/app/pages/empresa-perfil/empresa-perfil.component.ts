@@ -63,7 +63,7 @@ export class EmpresaPerfilComponent implements OnInit {
   userDataBase(){
     console.log(this.owner)
     this.apiUserService.obtenerUserEmpresaId(this.owner) 
-    .subscribe((data:any)=>{
+    .subscribe((data:UsuarioEmpresa)=>{
       console.log(data)
       this.user =  new UsuarioEmpresa (this.owner, data[0].nombre_empresa, data[0].categoria, data[0].telefono, data[0].codigo_postal, data[0].direccion, data[0].imagen_url, data[0].descripcion, data[0].apertura, data[0].cierre, data[0].tiempo_espera) 
       // console.log(this.user)
@@ -109,8 +109,6 @@ export class EmpresaPerfilComponent implements OnInit {
 
     const minPasswordLength = 6;
     const minName = 3;
-    const minTlf = 9;
-    const maxTlf = 9;
 
     let myForm = this.formBuilder.group({
       nombre_cliente: [,Validators.minLength(minName)],

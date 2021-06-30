@@ -268,7 +268,7 @@
 
 
 .global{
-    margin-top: 60px;
+    margin-top: 150px;
     margin-left: 20%;
     margin-right: 20%;
 }
@@ -310,9 +310,6 @@
 
 @media screen and (max-width:390px){
 
-    *{
-
-    }
     
     .prueba{
         display:none;
@@ -331,7 +328,7 @@
     }
 
     .global{
-        margin-top: 30px;
+        margin-top: 150px;
         margin-left: 0;
         margin-right: 0;
     }

@@ -118,10 +118,17 @@
     </div>
 
     <!--campo de resenado-->
-    <ng-container *ngIf="comentarios">
-        <ng-container *ngFor="let opinion of opiniones">
-            <app-empresa-opiniones [opinionHijo]="opinion" [isEmpresa]="false" [isCliente]="true"></app-empresa-opiniones>
+
+    <div class="tarjetax-comentarios">
+
+        <ng-container *ngIf="comentarios">
+            <ng-container *ngFor="let opinion of opiniones">
+                <app-empresa-opiniones [opinionHijo]="opinion" [isEmpresa]="false" [isCliente]="true"></app-empresa-opiniones>
+            </ng-container>
         </ng-container>
-    </ng-container>
+
+    </div>
+
+
 
 </div>

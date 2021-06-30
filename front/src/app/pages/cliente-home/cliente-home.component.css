@@ -7,6 +7,14 @@
 
 }
 
+.tarjetax{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 80px;
+}
+
 .hijo1{
   background-color: #5c73f693;
   color: white;
@@ -62,9 +70,9 @@
 .titulo2 {
   font-family: Black Han Sans;
   font-weight: bolder;
-  display: flex;
+  position: absolute;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: -400px;
   color: white;
   font-size: 2vw;
 }
@@ -112,7 +120,7 @@ img {
   }
 
   .titulo2 {
-    margin-top: 5px;
+    margin-top: -240px;
     font-size: 4vw;
   }
 
