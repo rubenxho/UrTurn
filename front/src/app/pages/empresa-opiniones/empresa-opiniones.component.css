@@ -119,6 +119,7 @@ img {
   -moz-transform: translate(0px, 0px) scale(2);
   -o-transform: translate(0px, 0px) scale(2);
   -ms-transform: translate(0px, 0px) scale(2);
+  
 }
 /* Tarjetas donde estan las reñeñas */
 .conteiner {
@@ -147,7 +148,8 @@ img {
   font-size: 20px;
   overflow-y: auto;
   overflow-x: hidden;
-  width: 580px;
+  width: 450px;
+  padding-right: 10px;
 }
 .comment {
   margin-top: 15px;
