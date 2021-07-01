@@ -1,4 +1,5 @@
 <!--************************************************ Desktop ************************************************-->
+
 <div class="global one">
 
     <div class="conteiner">
@@ -79,13 +80,15 @@
                         <p class="user-name"> {{opinionHijo.usuario_nombre_empresa}} </p>
                     </ng-container>
 
-                    <ng-container >
-                        <app-nota [nota]="opinionHijo.nota"></app-nota>
-                    </ng-container>
-
                     <ng-container > 
                         <p class="fechaDeOpinion">{{opinionHijo.fecha}}</p>
                     </ng-container>
+
+                    <div class="estrellaComentario">
+                    <ng-container>
+                        <app-nota [nota]="opinionHijo.nota"></app-nota>
+                    </ng-container>
+                    </div>
 
                 </div>
             </div>
