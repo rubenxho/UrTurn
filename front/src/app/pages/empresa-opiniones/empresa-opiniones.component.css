@@ -134,7 +134,9 @@ img {
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  background-color: #e2e2e2d5;
+  background-color: white;
+  border: solid #5C74F6;
+  /* background-color: #e2e2e2d5; */
   width: 100%;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -193,13 +195,13 @@ img {
   .group {
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 90%;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin: auto;
-    margin-top: 10px;
-    margin-bottom: 65px;
+    /* margin-top: 10px;
+    margin-bottom: 65px; */
   }
   .main{
     margin-bottom: 65px;
