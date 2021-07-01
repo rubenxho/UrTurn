@@ -37,9 +37,9 @@ export class EmpresaColaComponent implements OnInit {
     this.infoUsuario = 'usuario1';
     
     this.empresaService.obtenerUserEmpresaId(this.id_usuario.login.id_usuario_empresa).subscribe((data:any)=>{
-      console.log(data);
+      // console.log(data);
       this.datosEmpresa=data
-      console.log(this.datosEmpresa)
+      // console.log(this.datosEmpresa)
     })
 
   }
@@ -88,8 +88,8 @@ export class EmpresaColaComponent implements OnInit {
     // Servicio datosClientes
     this.datosclientesService.getDatosClientes(this.id_usuario.login.id_usuario_empresa).subscribe((data:any)=>{
       this.clientesEnCola=data
-      console.log(data);
-      console.log(this.clientesEnCola)
+      // console.log(data);
+      // console.log(this.clientesEnCola)
     })
     
 
