@@ -3,7 +3,7 @@
 .global{
     display: flex;
     flex-direction: column;
-    margin-top: 150px;
+    margin-top: 120px;
 }
 .two{
     display: none;
@@ -179,7 +179,8 @@
 @media  only screen and (max-width: 475px){
     .global{        
         width: 100%;
-        padding: 10px 10px 10px 10px;
+      padding-bottom: 50px;
+
     }
     .two{
         display: flex;

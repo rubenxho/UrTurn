@@ -65,7 +65,7 @@ export class EmpresaPerfilComponent implements OnInit {
     console.log(this.owner)
     this.apiUserService.obtenerUserEmpresaId(this.owner) 
     .subscribe((data:UsuarioEmpresa)=>{
-      console.log(data)
+      // console.log(data)
       this.user =  new UsuarioEmpresa (this.owner, data[0].nombre_empresa, data[0].categoria, data[0].telefono, data[0].codigo_postal, data[0].direccion, data[0].imagen_url, data[0].descripcion, data[0].apertura, data[0].cierre, data[0].tiempo_espera) 
       // console.log(this.user)
     })
@@ -75,11 +75,11 @@ export class EmpresaPerfilComponent implements OnInit {
     const index:string = event.target.name;
     const value:string = event.target.value;
     this.profileData[index] = value;
-    console.log(this.profileData)
+    // console.log(this.profileData)
   }
 
   saveData(copyUser){
-    console.log(this.profileData)
+    // console.log(this.profileData)
     for(let key in this.profileData){
       if(this.profileData[key] === '' || this.profileData == undefined){
         this.profileData[key] = copyUser[key];
@@ -94,13 +94,16 @@ export class EmpresaPerfilComponent implements OnInit {
   subirCambios(guardar:boolean){
     if(guardar == true){
       const copyUser = {...this.user};
+      this.validar();
       this.saveData(copyUser);
       console.log("Usuario con cambios")
       console.log(this.user)
       this.apiUserService.actualizarPerfilEmp(this.user) 
       .subscribe((data:any)=>{
-        console.log(data)
+        // console.log(data)
       })
+    }else{
+      alert("Campos Incorrectors")
     }
   }
 
@@ -135,20 +138,14 @@ export class EmpresaPerfilComponent implements OnInit {
     }
   }
 
-  public validarRepeat(password:String, repeat:String){
-    if(password === repeat){
+  public validarRepeat(){
+    if(this.profileData.password === this.profileData.repeatPassword){
       return true;
     }else{
       return false;
     }
   }
-  // confirmPassword(){
-  //   if (this.profileData.password === this.profileData.repeatPassword){
-  //     return true
-  //   }else{
-  //     return false
-  //   }
-  // }
+
 
   public validarTelefono(){
     if(this.myForm.get('telefono')?.invalid) {

@@ -10,7 +10,7 @@
     justify-content: space-between;    
     width: 790px;
     height: 150px;
-    margin: 150px auto 30px auto;
+    margin: 120px auto 30px auto;
 }
 
 @media screen and (max-width: 376px) {
@@ -24,7 +24,7 @@
         align-items: center;    
         width: 100%;
         height: min-content;
-        margin: 150px 100px auto 0px;
+        margin: 120px 100px auto 0px;
     }
 
     .global {
@@ -278,5 +278,5 @@ i {
     font-weight: bolder;
     font-size: 2rem;
     opacity: 0.5;
-    margin-top: 150px;
+    margin-top: 120px;
   }

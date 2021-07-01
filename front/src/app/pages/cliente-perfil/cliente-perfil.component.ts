@@ -72,7 +72,7 @@ export class ClientePerfilComponent implements OnInit {
 
   userDataBase(){
     this.apiUserService.obtenerUserClienteId(this.owner)
-    .subscribe((data:any)=>{
+    .subscribe((data:UsuarioCliente)=>{
       this.user = new UsuarioCliente (this.owner, data[0].nombre_cliente, data[0].apellidos_cliente, data[0].telefono, data[0].imagen_url, "", "" )
       // console.log(this.user)
     }) 
@@ -92,9 +92,9 @@ export class ClientePerfilComponent implements OnInit {
         this.profileData[key] = copyUser[key];
       }
     }
-    console.log('profile', this.profileData);
+    // console.log('profile', this.profileData);
      this.user = new UsuarioCliente(this.owner, this.profileData.nombre_cliente, this.profileData.apellidos_cliente, this.profileData.telefono, this.profileData.imagen_url, "" , this.profileData.password);
-    console.log('user a actualizar',this.user)
+    // console.log('user a actualizar',this.user)
     }
 
   subirCambios(guardar){
@@ -106,7 +106,7 @@ export class ClientePerfilComponent implements OnInit {
       console.log('user update',this.user)
       this.apiUserService.actualizarUserPerfilClt(this.user)
       .subscribe((data:any)=>{
-        console.log('el data',data)
+        // console.log('el data',data)
       })
     }else{
       alert("Campos Incorrectors")
@@ -118,8 +118,6 @@ export class ClientePerfilComponent implements OnInit {
 
     const minPasswordLength = 6;
     const minName = 3;
-    const minTlf = 9;
-    const maxTlf = 9;
 
     let myForm = this.formBuilder.group({
       nombre_cliente: [,Validators.minLength(minName)],
@@ -152,13 +150,7 @@ export class ClientePerfilComponent implements OnInit {
       return false;
     }
   }
-  // confirmPassword(){
-  //   if (this.profileData.password === this.profileData.repeatPassword){
-  //     return true
-  //   }else{
-  //     return false
-  //   }
-  // }
+
 
   public validarTelefono(){
     if(this.myForm.get('telefono')?.invalid) {
