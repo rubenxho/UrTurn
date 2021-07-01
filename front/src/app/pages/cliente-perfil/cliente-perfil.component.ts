@@ -92,7 +92,7 @@ export class ClientePerfilComponent implements OnInit {
         this.profileData[key] = copyUser[key];
       }
     }
-    // console.log('profile', this.profileData);
+    console.log('profile', this.profileData);
      this.user = new UsuarioCliente(this.owner, this.profileData.nombre_cliente, this.profileData.apellidos_cliente, this.profileData.telefono, this.profileData.imagen_url, "" , this.profileData.password);
     // console.log('user a actualizar',this.user)
     }
@@ -145,6 +145,7 @@ export class ClientePerfilComponent implements OnInit {
 
   public validarRepeat(password:String, repeat:String){
     if(password === repeat){
+      console.log("validar", password, repeat)
       return true;
     }else{
       return false;

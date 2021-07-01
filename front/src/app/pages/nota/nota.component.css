@@ -9,6 +9,8 @@
 
 }
 .clasificacion{
-  margin-top:0px;
+  margin-top: 0px;
   font-size: 30px;
+  display: flex;
+  flex-direction: row-reverse;
 }
