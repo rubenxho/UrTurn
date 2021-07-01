@@ -3,7 +3,7 @@ import { CanActivate, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { Login } from 'src/app/models/login';
-//import * as crypto from 'crypto-js'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   public estado:boolean;
   @Output() eventoIniciarSesion= new EventEmitter<string>();
 
-  constructor(private navigation:Router, private formBuilder:FormBuilder, private ls:LoginService) { 
+  constructor(private navigation:Router, private formBuilder:FormBuilder, private ls:LoginService, private toastr: ToastrService) { 
     this.myForm = this.buildForm();
     this.emailValid = true;
     this.passValid = true;
@@ -67,7 +67,6 @@ export class LoginComponent implements OnInit {
       let login = new Login();
 
       login.email = email;
-      //login.contraseña = this.encriptar(password);
       login.contraseña = password;
 
       this.ls.getIdUsuario(login).subscribe((data:any) => {
@@ -77,34 +76,24 @@ export class LoginComponent implements OnInit {
           this.tipoUsuario = 'empresa';
 
           login.id_usuario_empresa = this.id_usuario;
-          // alert('es una empresa');
           
         }else if(data.mensaje.length>0 && data.mensaje[0].id_usuario_empresa==null)  {
           this.id_usuario = data.mensaje[0].id_usuario_cliente;
           this.tipoUsuario = 'cliente';
 
           login.id_usuario_cliente = this.id_usuario;
-          // alert('es un cliente');
 
         }else {
-          alert('El usuario o password introducidos no son correctos');
+          this.toastr.error("El usuario o password introducidos no son correctos");
           return;
         }
 
         this.ls.login = login;
-        alert(this.ls.login.id_usuario_cliente + ' - ' + this.ls.login.id_usuario_empresa);
         this.cambiarEstado();
         this.redirigir(`${this.tipoUsuario}Home`);
       });
     }
   }
-
-  // public encriptar(password:string):string {
-  //   let key = crypto.enc.Hex.parse("0123456789012345");
-  //   let ive  = crypto.enc.Hex.parse("0123456789012345");
-
-  //   return crypto.AES.encrypt(password, key, {iv: ive}).toString();
-  // }
 
   public cambiarEstado()  {
     this.ls.tipoUsuario = this.tipoUsuario;
@@ -121,7 +110,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
 }
 
 // {'is-invalid':(myForm.get('username')?.touched && myForm.get('username')?.invalid)

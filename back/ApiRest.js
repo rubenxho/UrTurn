@@ -1370,7 +1370,8 @@ app.put("/userEP",(request,response)=>{
 	let time = (request.body.tiempo_espera == "" ? null : request.body.tiempo_espera);
 	let logo = (request.body.logo == "" ? null : request.body.logo);
   let status =(request.body.estado_turno == "" ? null : request.body.estado_turno);
-  let password = (request.body.password == "" ? null: request.body.password);
+  let password = crypto.AES.encrypt(request.body.password, key, {iv: ive}).toString();
+  //let password = (request.body.password == "" ? null: request.body.password);
   
   let params = [name,catg,tlf,cp,address,img,desc,open,close,time,logo,status, password,id]
   console.log("body",request.body)
@@ -1499,7 +1500,8 @@ app.put("/userCP",(request,response)=>{
   let apellidos_cliente = request.body.apellidos_cliente;
   let telefono = request.body.telefono;
   let imagen_url = request.body.imagen_url;
-  let password = (request.body.password == "" ? null: request.body.password);
+  //let password = (request.body.password == "" ? null: request.body.password);
+  let password = crypto.AES.encrypt(request.body.password, key, {iv: ive}).toString();
   let id_usuario_cliente = request.body.id_usuario_cliente;
 
   let  sql=`UPDATE urturn.usuario_cliente AS clnt
@@ -1743,7 +1745,6 @@ app.get("/local2",
 app.get("/login", (request, response) => {
 
   let contra = crypto.AES.encrypt(request.query.contraseña, key, {iv: ive}).toString();
-  console.log(contra);
   console.log(`select id_usuario_cliente, id_usuario_empresa from login where email=${request.query.email} and contraseña=${contra};`);
 
   let params = [
