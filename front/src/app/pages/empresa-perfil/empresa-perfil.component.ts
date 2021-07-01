@@ -43,7 +43,7 @@ export class EmpresaPerfilComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder, private apiUserService:UsuarioServiceService, private lsowner:LoginService, private navigation:Router) { 
 
-    this.empresaPerfil = ["modalModificar","¿Seguro que desea enviar su perfil?", "Sí", "No", "Perfil enviado, gracias", "", "2"];
+    this.empresaPerfil = ["modalModificar","Realizar cambios", "Sí", "No", "Cambios guardados", "", "2"];
     this.owner = this.lsowner.login.id_usuario_empresa;
 
     this.myForm = this.buildForm();

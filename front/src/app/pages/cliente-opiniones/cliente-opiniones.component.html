@@ -14,7 +14,7 @@
     <!--campo de resenar-->
     <ng-container *ngIf="comentar">
         <p class="fraseDefecta" *ngIf="locales.length===0">
-            ¡ No tienes locales pendientes de comentar aún !
+            ¡ Aún no tienes locales disponibles para comentar !
         </p>
 
         <div class="container">
@@ -57,7 +57,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Escribe tu opinión</h5>
+                    <h5 class="modal-title">Deja tu reseña</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -106,7 +106,7 @@
                     </button>
                 </div>
                 <div class="modal-body" id="desplegable">
-                    <h5 class="modal-title">¿Dejas opinar este lugar?</h5>
+                    <h5 class="modal-title">¿Deseas eliminar este local?</h5>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="rechazarOpinion()"
