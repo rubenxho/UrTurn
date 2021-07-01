@@ -6,10 +6,9 @@ import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-empresa-perfil',
-  templateUrl: './empresa-perfil.component.html',
+  templateUrl:'./empresa-perfil.component.html',
   styleUrls: ['./empresa-perfil.component.css']
 })
 export class EmpresaPerfilComponent implements OnInit {
@@ -36,10 +35,9 @@ export class EmpresaPerfilComponent implements OnInit {
 
   public myForm: FormGroup;
 
-  public nombre_cliente:boolean;
+  public nombre_empresa:boolean;
   public passwordValid:boolean;
   public telefonoValid:boolean;
-
 
   public user:UsuarioEmpresa = new UsuarioEmpresa(0, "", "", "", 0, "", "", "", "", "", 0, "");
 
@@ -48,9 +46,8 @@ export class EmpresaPerfilComponent implements OnInit {
     this.empresaPerfil = ["modalModificar","¿Seguro que desea enviar su perfil?", "Sí", "No", "Perfil enviado, gracias", "", "2"];
     this.owner = this.lsowner.login.id_usuario_empresa;
 
-    
     this.myForm = this.buildForm();
-    this.nombre_cliente = true;
+    this.nombre_empresa = true;
     this.passwordValid = true;
     this.telefonoValid = true;
 
@@ -123,10 +120,10 @@ export class EmpresaPerfilComponent implements OnInit {
    }
    
   public validarUsername():void{
-    if(this.myForm.get('nombre_cliente')?.invalid){
-      this.nombre_cliente = false;
+    if(this.myForm.get('nombre_empresa')?.invalid){
+      this.nombre_empresa = false;
     }else{
-      this.nombre_cliente = true;
+      this.nombre_empresa = true;
     }
   }
 
@@ -165,4 +162,5 @@ export class EmpresaPerfilComponent implements OnInit {
     this.lsowner.estado = false;
     this.navigation.navigate(['login']);
   }
+
 }

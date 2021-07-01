@@ -145,6 +145,7 @@ img {
   width: 100%;
   margin-bottom: 10px;
   border-radius: 5px;
+  /* z-index: -1; */
 }
 .comment-user {
   font-family: Titillium Web;
