@@ -117,7 +117,7 @@
 }
 
 .valoracion input:checked ~ label {
-  color: #ffff00;
+  color: rgb(236, 194, 6);
 }
 
 .fa-heart {
