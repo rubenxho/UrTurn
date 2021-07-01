@@ -158,7 +158,7 @@ app.get("/favoritos",
         console.log(cliente)
         let params=[cliente];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa)WHERE f.id_usuario_cliente=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? GROUP BY e.id_usuario_empresa"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -211,7 +211,7 @@ app.get("/favoritos/categoria",
         console.log(cliente)
         let params=[cliente,categoria];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa)WHERE f.id_usuario_cliente=? AND categoria=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? AND categoria=? GROUP BY e.id_usuario_empresa"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -264,7 +264,7 @@ app.get("/favoritos/cp",
         console.log(cliente)
         let params=[cliente,cp];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa)WHERE f.id_usuario_cliente=? AND codigo_postal=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? AND codigo_postal=? GROUP BY e.id_usuario_empresa"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
