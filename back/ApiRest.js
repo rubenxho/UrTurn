@@ -158,7 +158,7 @@ app.get("/favoritos",
         console.log(cliente)
         let params=[cliente];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? GROUP BY e.id_usuario_empresa"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -187,7 +187,28 @@ app.get("/favoritos",
                             }
                           }
                         }
-                        response.send(favoritos)
+                        let params3=[hoy,hoy,"Turno Activo"];
+                        let sql= 'SELECT * FROM urturn.usuario_empresa WHERE apertura <date_format(?, "%H:%i:%s") AND cierre>date_format(?, "%H:%i:%s") AND estado_turno=?'
+                        connection.query(sql,params3, 
+                          function(err, res){
+                              if(err){
+                               console.log(err);
+                               response.send({error: true, codigo: 200, mensaje: 'Error select disponible'})
+                               }
+                              else{
+                               console.log("disponible") 
+                               console.log(res)
+                                for(let i=0;i<favoritos.length;i++){
+                                 for(let j=0;j<res.length;j++){
+                                   if(favoritos[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                                     favoritos[i].disponible=true
+                                    }
+                                 }
+                                }
+                                response.send(favoritos)
+                              }
+                          }
+                        )  
                       }
                     }
                   )
@@ -211,7 +232,7 @@ app.get("/favoritos/categoria",
         console.log(cliente)
         let params=[cliente,categoria];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? AND categoria=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? AND categoria=? GROUP BY e.id_usuario_empresa"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -240,7 +261,30 @@ app.get("/favoritos/categoria",
                             }
                           }
                         }
-                        response.send(favoritos)
+                        console.log("aqui")
+                        console.log(favoritos)
+                        let params3=[hoy,hoy,"Turno Activo"];
+                        let sql= 'SELECT * FROM urturn.usuario_empresa WHERE apertura <date_format(?, "%H:%i:%s") AND cierre>date_format(?, "%H:%i:%s") AND estado_turno=?'
+                        connection.query(sql,params3, 
+                          function(err, res){
+                              if(err){
+                               console.log(err);
+                               response.send({error: true, codigo: 200, mensaje: 'Error select disponible'})
+                               }
+                              else{
+                               console.log("disponible") 
+                               console.log(res)
+                                for(let i=0;i<favoritos.length;i++){
+                                 for(let j=0;j<res.length;j++){
+                                   if(favoritos[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                                     favoritos[i].disponible=true
+                                    }
+                                 }
+                                }
+                                response.send(favoritos)
+                              }
+                          }
+                        )
                       }
                     }
                   )
@@ -264,7 +308,7 @@ app.get("/favoritos/cp",
         console.log(cliente)
         let params=[cliente,cp];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? AND codigo_postal=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? AND codigo_postal=? GROUP BY e.id_usuario_empresa"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -293,7 +337,28 @@ app.get("/favoritos/cp",
                             }
                           }
                         }
-                        response.send(favoritos)
+                        let params3=[hoy,hoy,"Turno Activo"];
+                        let sql= 'SELECT * FROM urturn.usuario_empresa WHERE apertura <date_format(?, "%H:%i:%s") AND cierre>date_format(?, "%H:%i:%s") AND estado_turno=?'
+                        connection.query(sql,params3, 
+                          function(err, res){
+                              if(err){
+                               console.log(err);
+                               response.send({error: true, codigo: 200, mensaje: 'Error select disponible'})
+                               }
+                              else{
+                               console.log("disponible") 
+                               console.log(res)
+                                for(let i=0;i<favoritos.length;i++){
+                                 for(let j=0;j<res.length;j++){
+                                   if(favoritos[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                                     favoritos[i].disponible=true
+                                    }
+                                 }
+                                }
+                                response.send(favoritos)
+                              }
+                          }
+                        )
                       }
                     }
                   )
@@ -318,7 +383,7 @@ app.get("/favoritos/busqueda",
         console.log(cliente)
         let params=[cliente,cp,categoria];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa)WHERE f.id_usuario_cliente=? AND codigo_postal=? AND categoria=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa)WHERE f.id_usuario_cliente=? AND codigo_postal=? AND categoria=? GROUP BY e.id_usuario_empresa"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -347,7 +412,28 @@ app.get("/favoritos/busqueda",
                             }
                           }
                         }
-                        response.send(favoritos)
+                        let params3=[hoy,hoy,"Turno Activo"];
+                        let sql= 'SELECT * FROM urturn.usuario_empresa WHERE apertura <date_format(?, "%H:%i:%s") AND cierre>date_format(?, "%H:%i:%s") AND estado_turno=?'
+                        connection.query(sql,params3, 
+                          function(err, res){
+                              if(err){
+                               console.log(err);
+                               response.send({error: true, codigo: 200, mensaje: 'Error select disponible'})
+                               }
+                              else{
+                               console.log("disponible") 
+                               console.log(res)
+                                for(let i=0;i<favoritos.length;i++){
+                                 for(let j=0;j<res.length;j++){
+                                   if(favoritos[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                                     favoritos[i].disponible=true
+                                    }
+                                 }
+                                }
+                                response.send(favoritos)
+                              }
+                          }
+                        )
                       }
                     }
                   )
@@ -372,7 +458,7 @@ app.get("/local",
         console.log(cliente)
         let params=[];
         // Obtengo top5
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) GROUP BY e.id_usuario_empresa ORDER BY nota_media DESC LIMIT 5"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno, null As disponible FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) GROUP BY e.id_usuario_empresa ORDER BY nota_media DESC LIMIT 5"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -402,9 +488,9 @@ app.get("/local",
                             }
                           }
                         }
-                        let params=[cliente];
+                        let params3=[cliente];
                         let sql= "SELECT * FROM urturn.favoritos WHERE id_usuario_cliente=?;"
-                        connection.query(sql,params, 
+                        connection.query(sql,params3, 
                             function(err, res){
                                 if(err){
                                  console.log(err);
@@ -419,7 +505,28 @@ app.get("/local",
                                       }
                                     }
                                   }
-                                response.send(top5)                                  
+                                  let params4=[hoy,hoy,"Turno Activo"];
+                                  let sql= 'SELECT * FROM urturn.usuario_empresa WHERE apertura <date_format(?, "%H:%i:%s") AND cierre>date_format(?, "%H:%i:%s") AND estado_turno=?'
+                                  connection.query(sql,params4, 
+                                    function(err, res){
+                                        if(err){
+                                         console.log(err);
+                                         response.send({error: true, codigo: 200, mensaje: 'Error select disponible'})
+                                         }
+                                        else{
+                                         console.log("disponible") 
+                                         console.log(res)
+                                          for(let i=0;i<top5.length;i++){
+                                           for(let j=0;j<res.length;j++){
+                                             if(top5[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                                               top5[i].disponible=true
+                                              }
+                                           }
+                                          }
+                                          response.send(top5)
+                                        }
+                                    }
+                                  )                                   
                                 }
                             }
                         )
@@ -445,7 +552,7 @@ app.get("/local/categoria",
         console.log(cliente)
         let params=[categoria];
         // Obtengo top5
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE categoria=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno, null As disponible FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE categoria=? GROUP BY e.id_usuario_empresa"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -475,9 +582,9 @@ app.get("/local/categoria",
                             }
                           }
                         }
-                        let params=[cliente];
+                        let params3=[cliente];
                         let sql= "SELECT * FROM urturn.favoritos WHERE id_usuario_cliente=?;"
-                        connection.query(sql,params, 
+                        connection.query(sql,params3, 
                             function(err, res){
                                 if(err){
                                  console.log(err);
@@ -492,7 +599,28 @@ app.get("/local/categoria",
                                       }
                                     }
                                   }
-                                response.send(top5)                                  
+                                  let params4=[hoy,hoy,"Turno Activo"];
+                                  let sql= 'SELECT * FROM urturn.usuario_empresa WHERE apertura <date_format(?, "%H:%i:%s") AND cierre>date_format(?, "%H:%i:%s") AND estado_turno=?'
+                                  connection.query(sql,params4, 
+                                    function(err, res){
+                                        if(err){
+                                         console.log(err);
+                                         response.send({error: true, codigo: 200, mensaje: 'Error select disponible'})
+                                         }
+                                        else{
+                                         console.log("disponible") 
+                                         console.log(res)
+                                          for(let i=0;i<top5.length;i++){
+                                           for(let j=0;j<res.length;j++){
+                                             if(top5[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                                               top5[i].disponible=true
+                                              }
+                                           }
+                                          }
+                                          response.send(top5)
+                                        }
+                                    }
+                                  )                                   
                                 }
                             }
                         )
@@ -520,7 +648,7 @@ app.get("/local/cp",
         console.log(cliente)
         let params=[cp];
         // Obtengo top5
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE codigo_postal=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno, null As disponible FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE codigo_postal=? GROUP BY e.id_usuario_empresa"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -550,9 +678,9 @@ app.get("/local/cp",
                             }
                           }
                         }
-                        let params=[cliente];
+                        let params3=[cliente];
                         let sql= "SELECT * FROM urturn.favoritos WHERE id_usuario_cliente=?;"
-                        connection.query(sql,params, 
+                        connection.query(sql,params3, 
                             function(err, res){
                                 if(err){
                                  console.log(err);
@@ -567,7 +695,28 @@ app.get("/local/cp",
                                       }
                                     }
                                   }
-                                response.send(top5)                                  
+                                  let params4=[hoy,hoy,"Turno Activo"];
+                                  let sql= 'SELECT * FROM urturn.usuario_empresa WHERE apertura <date_format(?, "%H:%i:%s") AND cierre>date_format(?, "%H:%i:%s") AND estado_turno=?'
+                                  connection.query(sql,params4, 
+                                    function(err, res){
+                                        if(err){
+                                         console.log(err);
+                                         response.send({error: true, codigo: 200, mensaje: 'Error select disponible'})
+                                         }
+                                        else{
+                                         console.log("disponible") 
+                                         console.log(res)
+                                          for(let i=0;i<top5.length;i++){
+                                           for(let j=0;j<res.length;j++){
+                                             if(top5[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                                               top5[i].disponible=true
+                                              }
+                                           }
+                                          }
+                                          response.send(top5)
+                                        }
+                                    }
+                                  )                                  
                                 }
                             }
                         )
@@ -596,7 +745,7 @@ app.get("/local/busqueda",
         console.log(cliente)
         let params=[cp,categoria];
         // Obtengo top5
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE codigo_postal=? AND categoria=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno, null As disponible FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE codigo_postal=? AND categoria=? GROUP BY e.id_usuario_empresa"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -643,7 +792,28 @@ app.get("/local/busqueda",
                                       }
                                     }
                                   }
-                                response.send(top5)                                  
+                                  let params4=[hoy,hoy,"Turno Activo"];
+                                  let sql= 'SELECT * FROM urturn.usuario_empresa WHERE apertura <date_format(?, "%H:%i:%s") AND cierre>date_format(?, "%H:%i:%s") AND estado_turno=?'
+                                  connection.query(sql,params4, 
+                                    function(err, res){
+                                        if(err){
+                                         console.log(err);
+                                         response.send({error: true, codigo: 200, mensaje: 'Error select disponible'})
+                                         }
+                                        else{
+                                         console.log("disponible") 
+                                         console.log(res)
+                                          for(let i=0;i<top5.length;i++){
+                                           for(let j=0;j<res.length;j++){
+                                             if(top5[i].id_usuario_empresa==res[j].id_usuario_empresa){
+                                               top5[i].disponible=true
+                                              }
+                                           }
+                                          }
+                                          response.send(top5)
+                                        }
+                                    }
+                                  )                                   
                                 }
                             }
                         )
