@@ -25,8 +25,8 @@ export class EmpresaHomeComponent implements OnInit {
     this.datosGenerales= new DatosGenerales(0,0,"",0)
     this.mensajeModal=["modalModificar","Confirmar nuevo tiempo de espera","Confirmar","Cancelar","Tiempo modificado correctamente!","","4"]
     // Array(pos0: etiqueta modal, pos1: pregunta, pos2: op1 pregunta, pos3:op2 pregunta, pos4: estadocola, pos5: flag para pos4)
-    this.mensajeModalIniciar=["modalIniciar","Confirmar si desea iniciar la cola","Confirmar","Cancelar","Se ha iniciado la cola",false,"1"]
-    this.mensajeModalDetener=["modalDetener","Confirmar si desea detener la cola","Confirmar","Cancelar","Se ha detenido la cola",true,"1"]
+    this.mensajeModalIniciar=["modalIniciar","Confirmar si desea iniciar el turno","Confirmar","Cancelar","Se ha iniciado el turno",false,"1"]
+    this.mensajeModalDetener=["modalDetener","Confirmar si desea detener el turno","Confirmar","Cancelar","Se ha detenido el turno",true,"1"]
     
     this.datosGeneralesService.getDatosGenerales(this.id_usuario.login.id_usuario_empresa).subscribe((data:any)=>{
       this.datosGenerales=data
