@@ -18,7 +18,7 @@
 hr {
     max-width: min(900px, calc(100vw - 40px));
     margin-top: 65px;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 813px) {
@@ -392,6 +392,10 @@ hr {
 .global {
     padding-top: 150px;
     margin-bottom: 15px;
+}
+
+.miContenedor {
+    padding-bottom: 55px;
 }
 
 
