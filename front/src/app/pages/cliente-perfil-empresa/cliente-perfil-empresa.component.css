@@ -1,18 +1,24 @@
 .global{
-    margin-top: 120px;
+    margin-top: 10px;
 }
 /*****Estilos*****/
 .padre {
-    background-color: #f2f1ed;
+    background-color: white;
     border-width: 15px;
-    border-color: rgba(242, 241, 237, 1);
+    border: solid #5C74F6;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    max-width: min(800px, calc(100vw - 40px));
+    max-width: min(808px, calc(100vw - 40px));
     height: auto;
     margin: 0 auto;
     margin-top: 5px;
+}
+
+hr {
+    max-width: min(900px, calc(100vw - 40px));
+    margin-top: 65px;
+    margin-bottom: 35px;
 }
 
 @media screen and (max-width: 813px) {
@@ -22,30 +28,50 @@
         max-width: min(720px, calc(100vw - 10px));
         margin-top: 10px;
     }
+
+    hr {
+        max-width: min(920px, calc(100vw - 40px));
+        margin-top: -70px;
+    }
+
+    .global{
+        margin-top: px;
+    }
 }
 
 /*******************imagen*****************************/
 
 .img-tarjeta {
-    background-repeat:no-repeat;
-   	background-size:100% 100%;
     width:auto;
-    max-height: 180px;
-    min-height: 180px;
+    max-height: 380px;
+    min-height: 380px;
     overflow-y: hidden;
+    border-radius: 3px; 
 }
 
 .imagenD {
-    width: 100%;
-    height: calc(100% - 20px);
-    object-fit: contain;  
-    border-radius: 5px;  
+    width:100%;
+    max-height: 380px;
+    min-height: 380px;
+    overflow-y: hidden;
+    border-radius: 3px;
 }
 
 @media screen and (max-width: 813px) {
     .imagenD {
-        max-height: 100%;
-        min-height: 100px;
+        width:100%;
+        max-height: 180px;
+        min-height: 180px;
+        overflow-y: hidden;
+        border-radius: 3px;
+    }
+
+    .img-tarjeta {
+        width:auto;
+        max-height: 180px;
+        min-height: 180px;
+        overflow-y: hidden;
+        border-radius: 3px; 
     }
 }
 
@@ -67,6 +93,7 @@
     color: #ffff;
     font-size: 22px;
     font-family: Abril Fatface;
+    margin-bottom: -400px;
 }
 
 @media screen and (max-width: 813px) {
@@ -76,8 +103,9 @@
         /* padding: 5px 10px; */
         color: #ffff;
         font-size: 22px;
-        margin-left: 43px;
+        margin-left: 15px;
         font-family: Abril Fatface;
+        margin-bottom: 0px;
     }
 }
 
@@ -178,7 +206,9 @@
 }
 
 .lineaLista {
-    font-weight: bold;
+    font-family: Titillium Web;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .horario {
@@ -198,11 +228,15 @@
 }
 
 .lineaHorario {
-    font-weight: bold;
+    font-family: Titillium Web;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .parrafoHora {
-    font-weight:lighter;
+    font-family: Titillium Web;
+    font-weight: normal;
+    font-size: 20px;
 }
 
 @media screen and (max-width: 813px) {
@@ -219,7 +253,9 @@
 }
 
 .titulo {
-    font-weight: bold;
+    font-family: Titillium Web;
+    font-weight: bolder;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -235,12 +271,16 @@
 
 .parrafo1 {
     margin: 10px 20px 10px 20px;
-    font-weight:lighter;
+    font-family: Titillium Web;
+    font-weight: normal;
+    font-size: 20px;
 }
 
 .parrafo {
     margin: 10px 20px 10px 20px;
-    font-weight:lighter;
+    font-family: Titillium Web;
+    font-weight: normal;
+    font-size: 20px;
 }
 
 @media screen and (max-width: 813px) {
