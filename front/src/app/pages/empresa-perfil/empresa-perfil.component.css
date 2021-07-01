@@ -31,6 +31,7 @@ input:focus{
     width: 740px;
     height: 45px;
     border:1px solid #ccc;
+    margin-bottom: 20px;
 }
 
 /* .exit   {
@@ -165,6 +166,9 @@ input:focus{
     color: white;
     margin-top: 10px;
     border-style: none;
+}
+.ruben{
+    margin-top:15%;
 }
 @media screen and (max-width:475px) {
     

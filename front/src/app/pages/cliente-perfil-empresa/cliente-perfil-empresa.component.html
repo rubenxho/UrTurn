@@ -1,93 +1,84 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<div class="global">
+<div class="miContenedor">
+    <div class="global">
 
-    <div class="regresar">
-        <button class="bton-regresar" (click)="backClicked()"><i class="fas fa-arrow-left"></i> VOLVER</button>
-        <!-- <button class="bton-regresar" routerLink="/clienteFav"><i class="fas fa-arrow-left"></i> Volver</button> -->
+        <div class="regresar">
+            <button class="bton-regresar" (click)="backClicked()"><i class="fas fa-arrow-left"></i> VOLVER</button>
+            <!-- <button class="bton-regresar" routerLink="/clienteFav"><i class="fas fa-arrow-left"></i> Volver</button> -->
+        </div>
+
+        <!-- <div><h6 class="titular">Información del Establecimiento</h6></div> -->
+
+        <section class="padre">
+
+            <article class="img-tarjeta">
+
+                <div class="sobreFoto">
+
+                    <h2 class="nombre">{{local.nombre_empresa}}</h2> 
+
+                </div>
+
+                <img class="imagenD" src={{local.imagen_url}} alt="gym">
+
+            </article>
+
+            <article class="hijo2">
+
+                <div class="agrupado">
+
+                    <div class="lista">
+
+                        <h6 class="lineaLista">Dirección:
+                            <p class="parrafo1">{{local.direccion}}</p>
+                        </h6>
+                        <h6 class="lineaLista">Tiempo de espera:
+                            <p class="parrafo1">{{local.tiempo_espera + " mins."}}</p>
+                        </h6>
+                        <!-- <h6 class="lineaLista">Número de personas en cola:
+                            <p class="parrafo1">Lorem ipsum dolor sit amet.</p>
+                        </h6>                 -->
+
+                    </div>
+
+                    <div class="horario">
+
+                        <h6 class="lineaHorario">Horario Apertura-Cierre:</h6>
+                        
+                            <p class="parrafoHora">{{local.apertura + " - " + local.cierre}}</p>
+                        
+                        
+                            <!-- <p class="parrafoHora">{{local.cierre}}</p> -->
+                        
+                        <!-- <h6 class="lineaHorario">S-D:
+                            <p class="parrafoHora">10:00-00:00</p>
+                        </h6> -->
+
+                    </div>
+
+                </div>
+
+                <div class="descripccion">
+
+                    <h6 class="titulo">Descripción:</h6>
+                    <p class="parrafo">{{local.descripcion}}</p>
+                    
+                </div> 
+                            
+            </article>    
+
+        </section>
+
     </div>
 
-    <!-- <div><h6 class="titular">Información del Establecimiento</h6></div> -->
+    <hr>
 
-    <section class="padre">
-
-        <article class="img-tarjeta">
-
-            <div class="sobreFoto">
-
-                <h2 class="nombre">{{local.nombre_empresa}}</h2> 
-
-                <!-- <div class="row botones">
-                    <div>
-                        <button class="boton" data-toggle="modal" data-target="#modalModificar">Hacer cola</button>
-                    </div>              
-
-                    <span class="corazonGris" [ngClass]="{corazonRed: favorito}">
-
-                        <i class="fas fa-heart showtoast boton2" (click)="fav()"></i>
-        
-                    </span>
-
-                </div> -->
-
-            </div>
-
-            <img class="imagenD" src={{local.imagen_url}} alt="gym">
-
-        </article>
-
-        <article class="hijo2">
-
-            <div class="agrupado">
-
-                <div class="lista">
-
-                    <h6 class="lineaLista">Dirección:
-                        <p class="parrafo1">{{local.direccion}}</p>
-                    </h6>
-                    <h6 class="lineaLista">Tiempo de espera:
-                        <p class="parrafo1">{{local.tiempo_espera + " mins."}}</p>
-                    </h6>
-                    <!-- <h6 class="lineaLista">Número de personas en cola:
-                        <p class="parrafo1">Lorem ipsum dolor sit amet.</p>
-                    </h6>                 -->
-
-                </div>
-
-                <div class="horario">
-
-                    <h6 class="lineaHorario">Horario Apertura-Cierre:</h6>
-                    <h6 class="lineaHorario">Apertura:
-                        <p class="parrafoHora">{{local.apertura}}</p>
-                    </h6>
-                    <h6 class="lineaHorario">Cierre:
-                        <p class="parrafoHora">{{local.cierre}}</p>
-                    </h6>
-                    <!-- <h6 class="lineaHorario">S-D:
-                        <p class="parrafoHora">10:00-00:00</p>
-                    </h6> -->
-
-                </div>
-
-            </div>
-
-            <div class="descripccion">
-
-                <h6 class="titulo">Descripción:</h6>
-                <p class="parrafo">{{local.descripcion}}</p>
-                
-            </div> 
-                        
-        </article>    
-
-    </section>
+    <ng-container *ngFor="let opinionParaEmpresaPerfil of opinionParaEmpresaPerfiles">
+        <app-empresa-opiniones [opinionHijo]="opinionParaEmpresaPerfil" [isEmpresa]="true"></app-empresa-opiniones>
+    </ng-container>
 
 </div>
-
-
-<ng-container *ngFor="let opinionParaEmpresaPerfil of opinionParaEmpresaPerfiles">
-    <app-empresa-opiniones [opinionHijo]="opinionParaEmpresaPerfil" [isEmpresa]="true"></app-empresa-opiniones>
-</ng-container>
 
 
 <app-modal [mensajeModal]="clienteCola"></app-modal>
