@@ -5,30 +5,12 @@
 
             <!-- photo perfil -->
 
-            <div class="pic-perfil" (input)="handelChange($event)">
+            <div class="pic-perfil">
                 
                 <div class="foto">
                     <!-- <img class="imagen" src="{{user.imagen_url}}"  alt=" Not Found "> -->
                     <img class="imagen" name=img  src="../../../assets/mcdonalds.png" alt=" Not Found ">
-
-                    <div class='centrado'>
-                        <button type="button" class="exit" data-toggle="modal" data-target="#exampleModalCenter">
-                           Cerrar sesión 
-                        </button>
-                    </div>
                     
-                    <div  class="categoria">
-                    
-                            <select class="etiquetas" name="categoria" type="text">
-                                <option value="">{{user.categoria}}</option>
-                                <option value="belleza">Belleza</option>
-                                <option value="deporte">Deporte</option>
-                                <option value="moda">Moda</option>
-                                <option value="ocio">Ocio</option>
-                                <option value="restauración">Restauración</option>
-                                <option value="salud">Salud</option>
-                        </select>
-                    </div>
 
                     <!-- <div>
                         <button type="button" class="exit"> Cerrar Sesion </button>
@@ -38,13 +20,27 @@
 
                 <!-- Fin foto perfil -->
             
-                <form class="formulario">
+                <form class="formulario" (input)="handelChange($event)">
+
+                    <div  class="categoria">
+                    
+                        <select class="etiquetas" name="categoria" type="text">
+                            <option value="">{{user.categoria}}</option>
+                            <option value="belleza">Belleza</option>
+                            <option value="deporte">Deporte</option>
+                            <option value="moda">Moda</option>
+                            <option value="ocio">Ocio</option>
+                            <option value="restauración">Restauración</option>
+                            <option value="salud">Salud</option>
+                        </select>
+                    </div>
 
                     <p class="input-name" >Imagen de perfil:</p>
                     <input class="input2" type="url" name="imagen_url" placeholder="Imagen">  <br/>
                     
-                    <p class="input-name" >Nombre:</p>
-                    <input class="input2" type="text" name="nombre_empresa" placeholder="{{user.nombre_empresa}}">  <br/>
+                    <p class="input-name" >Nombre:</p><label *ngIf='!nombre_cliente' class='input-name' style="color:red"> El campo nombre es obligatorio </label>
+                    <input class="input2" type="text" name="nombre_empresa" placeholder="{{user.nombre_empresa}}"
+                    [ngClass]="{'is-invalid' : !nombre_cliente}" on-keyup = validarUsername()> <br/>
                     
                     <p class="input-name" >Direccion:</p>
                     <input class="input2" type="text" name="direccion" placeholder="{{user.direccion}}"> <br>
@@ -53,9 +49,9 @@
                     <input class="input2" type="password" name="password" placeholder="Contraseña"
                     [ngClass]="{'is-invalid':passwordValid==false}" on-keyup = validarPassword()> <br/>
                     
-                    <p class="input-name" >Confirmar contraseña:</p>
+                    <p class="input-name" >Confirmar contraseña:</p><label *ngIf='nombre_cliente && telefonoValid && !passwordValid' class='input-name' style="color:red"> El password debe tener como mínimo 6 carateres </label>
                     <input class="input2" type="password" name="repeatPassword" placeholder="Confirmar Contraseña"
-                    [ngClass]="{'is-invalid':!validarRepeat(this.profileData.password.value, this.profileData.repeatPassword.value)}" on-keyup = "validarRepeat(this.profileData.password.value, this.profileData.repeatPassword.value)"> <br/>
+                    [ngClass]="{'is-invalid':!validarRepeat()}" on-keyup = "validarRepeat()"> <br/>
                     
                     <p class="input-name" >Numero de telefono:</p>
                     <input class="input2" type="text" name="telefono" placeholder="{{user.telefono}}"
@@ -66,8 +62,8 @@
 
                     <div class="horario">
                     
-                        <p class="time-name"> Apertura: </p>     
-                        <input class="input2-time" type="time" name="apertura" placeholder="apertura" value="{{user.apertura}}">  <br/>
+                        <p class="time-name "> Apertura: </p>     
+                        <input class="input2-time apertura" type="time" name="apertura" placeholder="apertura" value="{{user.apertura}}">  <br/>
                     
                         <p class="time-name">Cierre: </p> 
                         <input class="input2-time" type="time" name="cierre" placeholder="cierre" value="{{user.cierre}}">  <br/>
@@ -82,8 +78,12 @@
                 
                     <div class="btn-container">
 
-                    <button class="boton" data-toggle="modal" data-target="#modalModificar">Enviar</button>            
+                        <button class="boton" data-toggle="modal" data-target="#modalModificar">Enviar</button>            
+                        
+                    <hr>    
 
+                        <button type="button" class="exit" data-toggle="modal" data-target="#exampleModalCenter">  Cerrar sesión </button>
+                    
                     </div>
                 </form>    
             </div>
