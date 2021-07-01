@@ -20,6 +20,7 @@ export class UsuarioEmpresa {
     public nota_media:number
     public id_turno:number
     public favorito:boolean
+    public disponible:boolean
 
     constructor(id_usuario_empresa:number=0, 
                 nombre_empresa:string='', 
@@ -57,6 +58,7 @@ export class UsuarioEmpresa {
         this.nota_media;
         this.id_turno=null;
         this.favorito;
+        this.disponible;
     }  
 
     public calcularCalificacion():number    {
