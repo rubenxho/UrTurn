@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioEmpresa } from '../models/usuario-empresa';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,7 @@ export class LocalServiceService {
 
   
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient , private loginService: LoginService) {
     
     this.localesTop = [];
     this.localElegido = new UsuarioEmpresa();
@@ -37,7 +38,7 @@ export class LocalServiceService {
 
     }else{
 
-      return this.http.get(this.url);
+      return this.http.get(this.url+ `?id=` + this.loginService.login.id_usuario_cliente);
 
     } 
 
@@ -53,20 +54,20 @@ export class LocalServiceService {
     
     let toReturn:any;
     if(categoria == "" && !codigo_postal){
-      toReturn = this.http.get(this.url);            
+      toReturn = this.http.get(this.url+ `?id=` + this.loginService.login.id_usuario_cliente);            
       console.log("Dntro1");
       
     }else if (categoria != null && !codigo_postal){      
 
-      toReturn = this.http.get(`${this.url}?categoria=${categoria}`);
+      toReturn = this.http.get(`${this.url}/categoria?categoria=${categoria}&id=${this.loginService.login.id_usuario_cliente}`);
       console.log("Dntro2");
     }else if (categoria == "" && codigo_postal != null){
 
-      toReturn = this.http.get(`${this.url}?cp=${codigo_postal}`);
+      toReturn = this.http.get(`${this.url}/cp?cp=${codigo_postal}&id=${this.loginService.login.id_usuario_cliente}`);
       console.log("Dntro3");
     }else{
 
-      toReturn = this.http.get(`${this.url}?categoria=${categoria}&cp=${codigo_postal}`);
+      toReturn = this.http.get(`${this.url}/busqueda?categoria=${categoria}&cp=${codigo_postal}&id=${this.loginService.login.id_usuario_cliente}`);
       console.log("Dntro1");
     }
     return toReturn;

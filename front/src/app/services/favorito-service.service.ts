@@ -26,17 +26,17 @@ public favoritos: UsuarioEmpresa[];
 
     else if(categoria !== "" && cp == ""){
       console.log("con categoeria")
-      codigo= this.http.get(this.url + `?categoria=` + categoria + `&id=` + this.loginService.login.id_usuario_cliente)
+      codigo= this.http.get(this.url + `/categoria?categoria=` + categoria + `&id=` + this.loginService.login.id_usuario_cliente)
     }
 
     else if(categoria=="" && cp != ""){
       console.log("con codigo postal")
-      codigo = this.http.get(this.url + `?cp=` + cp + `&id=` + this.loginService.login.id_usuario_cliente)
+      codigo = this.http.get(this.url + `/cp?cp=` + cp + `&id=` + this.loginService.login.id_usuario_cliente)
     }
 
     else if(categoria!=="" && cp!==""){
       console.log("con cat y cp")
-      codigo = this.http.get(this.url +`?categoria=`+ categoria + `&cp=` + cp + `&id=` + this.loginService.login.id_usuario_cliente)
+      codigo = this.http.get(this.url +`/busqueda?categoria=`+ categoria + `&cp=` + cp + `&id=` + this.loginService.login.id_usuario_cliente)
       console.log(categoria + cp);
       
     }
