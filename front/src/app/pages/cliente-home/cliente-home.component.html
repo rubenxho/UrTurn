@@ -63,6 +63,8 @@
     <!-- <app-cliente-tarjetas></app-cliente-tarjetas>  -->
     <div class="tarjetaComponente">
         <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1" >
+            <p class="fraseDefecta" *ngIf="this.localService.locales.length===0">No existen coincidencias
+            </p>
             <ng-container *ngFor="let local of this.localService.locales">
                 <app-cliente-tarjetas [usuarioEmpresa]="local"></app-cliente-tarjetas>
             </ng-container> 

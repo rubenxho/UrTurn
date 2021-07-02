@@ -17,7 +17,9 @@
 
     
     <div class="colb ">
+        <!-- <label *ngIf='!cpValid' class='input-name' style="color:red"> El codigo postal debe contener 5 dígitos </label> -->
         <input type="text" name="Código Postal" placeholder="C. Postal" #cp>
+        <!-- [ngClass]="{'is-invalid':!cpValid}" on-keyup = validarCp()>     -->
     </div>
 
     <div class="colb" >
