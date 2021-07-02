@@ -127,11 +127,11 @@
   font-family: Titillium Web;
   font-weight: bolder;
   font-size: 20px;
-  margin-top: 80%;
+  margin-top: 15%;
 }
 
 /* responsive*/
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 376px) {
   .card {
     margin-bottom: 5px;
     align-content: center;
@@ -143,12 +143,15 @@
     margin-top: 10px;
   }
   #comfirmarColaModal {
-    margin-top: 70%;
+    margin-top: 90%;
     align-content: center;
   }
   .container{
     margin-top: 0px;
     margin-bottom: 70px;
+  }
+  .modalmovil{
+    margin-top:50%;
   }
 }
 
@@ -158,8 +161,15 @@
     overflow: hidden;
     text-overflow: Ellipsis;
     text-align: center;
-    
-
-
 }
-   
+
+/* .myModal {
+  position: fixed;
+  margin: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+  margin-top: 20%;
+} */
