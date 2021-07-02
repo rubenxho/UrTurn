@@ -105,7 +105,7 @@ img {
 
 
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 376px) {
   .tarjetaComponente{
     margin-left: 23px;
   }
@@ -151,7 +151,7 @@ img {
   }
 
   .fraseDefecta{
-    margin-left: 30px;
+    margin-left: 0px;
   }
 
 }

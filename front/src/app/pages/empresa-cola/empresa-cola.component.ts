@@ -32,10 +32,10 @@ export class EmpresaColaComponent implements OnInit {
     this.clientesEnCola=new Array();
     this.clienteVisto=new UsuarioEncola(0,0,"Sin Clientes","??????","??????","")
     this.mensajeModalCola = ['modalModificarCola','Confirmar nuevo tiempo de espera','Confirmar','Cancelar','Tiempo modificado correctamente!',"","4"];
-    this.mensajeModalAvanzar = ['modalAvanzar','¿Desea avanzar la cola?','Si','No','Cola avanzada correctamente',"","3"];
+    this.mensajeModalAvanzar = ['modalAvanzar','¿Desea avanzar el turno?','Si','No','Turno avanzado correctamente',"","3"];
     this.ampliarUsuario = true;
     this.infoUsuario = 'usuario1';
-    
+    this.datosEmpresa= new Array()
     this.empresaService.obtenerUserEmpresaId(this.id_usuario.login.id_usuario_empresa).subscribe((data:any)=>{
       // console.log(data);
       this.datosEmpresa=data
