@@ -39,109 +39,6 @@ let salida = "";
 let key = crypto.enc.Hex.parse("0123456789012345");
 let ive  = crypto.enc.Hex.parse("0123456789012345");
 
-// app.get("/favoritos3",
-//     function(request, response){
-//         let categoria = request.query.categoria
-//         let cp = request.query.cp
-//         let id = request.query.id
-//         let params = []
-//         let sql=``
-//         let hoy = new Date(Date.now());
-//         console.log("aqui")
-//         if(cp==null && categoria==null ){
-//             params = [id,id,"Activo",hoy,hoy]
-//             sql=`SELECT e.*, t.id_turno, AVG(o.nota) AS nota_media, true AS favorito FROM urturn.favoritos AS f 
-//             INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
-//             INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
-//             INNER JOIN urturn.turnos AS t ON (t.id_usuario_empresa= e.id_usuario_empresa)
-//             LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa)
-//             WHERE t.id_usuario_cliente=? AND f.id_usuario_cliente=? AND t.estado=?   AND DAY(t.fecha_apertura_turno)= DAY(?) AND t.fecha_apertura_turno > ?
-//             GROUP BY e.id_usuario_empresa`
-
-//         }
-//         else if(cp==null){
-//             params = [categoria, id]
-//             sql = `SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
-//             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
-//             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
-//             WHERE e.categoria=? AND f.id_usuario_cliente=?`
-//         }
-//         else if(categoria==null){
-//             params = [cp, id]
-//             sql = `SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
-//             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
-//             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
-//             WHERE codigo_postal=? AND f.id_usuario_cliente=?`
-//         }
-//         else{
-//             params = [categoria, cp, id]
-//             sql = `SELECT e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f
-//             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
-//             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
-//             WHERE (e.categoria=? AND codigo_postal=? AND f.id_usuario_cliente=?)`
-//         }
-//         connection.query(sql,params,
-//             function(err,res){
-//                 if(err){
-//                     console.log(err);
-//                 }
-//                 else {
-//                     console.log(res)
-//                     response.send(res);
-//                 }
-//         })
-//     }
-// )
-
-// app.get("/favoritos2",
-//     function(request, response){
-//         let categoria = request.query.categoria
-//         let cp = request.query.cp
-//         let id = request.query.id
-//         let params = []
-//         let sql=``
-
-//         if(cp==null && categoria==null ){
-//             params = [id]
-//             sql=`SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
-//             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
-//             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
-//             WHERE f.id_usuario_cliente=?`
-
-//         }
-//         else if(cp==null){
-//             params = [categoria, id]
-//             sql = `SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
-//             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
-//             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
-//             WHERE e.categoria=? AND f.id_usuario_cliente=?`
-//         }
-//         else if(categoria==null){
-//             params = [cp, id]
-//             sql = `SELECT e.id_usuario_empresa, e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f 
-//             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
-//             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
-//             WHERE codigo_postal=? AND f.id_usuario_cliente=?`
-//         }
-//         else{
-//             params = [categoria, cp, id]
-//             sql = `SELECT e.nombre_empresa, e.imagen_url, e.direccion, e.tiempo_espera FROM urturn.favoritos AS f
-//             JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) 
-//             JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) 
-//             WHERE (e.categoria=? AND codigo_postal=? AND f.id_usuario_cliente=?)`
-//         }
-//         connection.query(sql,params,
-//             function(err,res){
-//                 if(err){
-//                     console.log(err);
-//                 }
-//                 else {
-//                     console.log(res)
-//                     response.send(res);
-//                 }
-//         })
-//     }
-// )
 
 /*FAVORITOS MODIFICADOOOOOOOOOOOOOO */
 app.get("/favoritos",
@@ -1180,7 +1077,7 @@ app.get("/turnos/empresa/datos_generales",
                                             else{
                                                 console.log(res)
                                                 let id_turno=res[0].id_turno;
-                                                let proximo_cliente=res[0].nombre_cliente+" "+res[0].apellidos_cliente
+                                                let proximo_cliente=res[0].nombre_cliente[0]+". "+res[0].apellidos_cliente
                                                 let params3=[empresa,"Activo",hoy,hoy]
                                                 let sql='SELECT COUNT(*) AS clientes_atendidos FROM turnos WHERE id_usuario_empresa=? AND estado=? AND DAY(fecha_cierre_turno)= DAY(?) AND fecha_cierre_turno < ?'
                                                 connection.query(sql,params3, 

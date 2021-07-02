@@ -1,5 +1,5 @@
 <div class="global">
-    <div *ngIf="empresasCola.length>0 else sinColas">
+    <div *ngIf="!empresasCola else sinColas">
         <section class="container" *ngFor="let empresa of empresasCola let i=index">    
 
             <article class="col-2 col1">

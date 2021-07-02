@@ -3,7 +3,7 @@
         <div class="ruben-row ruben-formulario">
             <form class="ruben-formulario2"> 
                 <label for="fname" class="ruben-label" >Tiempo de espera:</label>
-                <input class="ruben-input" placeholder="{{datosEmpresa[0].tiempo_espera}}minutos/persona" type="text" id="user" style="text-align: center;" #inputLeido> 
+                <input class="ruben-input" placeholder="{{datosEmpresa[0]?.tiempo_espera}}minutos/persona" type="text" id="user" style="text-align: center;" #inputLeido> 
                 <!-- Boton modal modificar -->
                 <button type="reset" class="boton-modificar" data-toggle="modal" data-target="#modalModificarCola" (click)=mostrarInput(inputLeido.value)>
                     Modificar
@@ -29,7 +29,7 @@
         </div>
         
         <div *ngIf="clientesEnCola.length!=0">
-        <div class="ruben-row3 ticket" > <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<p> Proximo Cliente: {{clientesEnCola[0].nombre_cliente}} {{clientesEnCola[0].apellidos_cliente}}</p> </div>
+        <div class="ruben-row3 ticket" > <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<p> Proximo Cliente: {{clientesEnCola[0].nombre_cliente[0]}}. {{clientesEnCola[0].apellidos_cliente}}</p> </div>
         </div>
         <div *ngIf="clientesEnCola.length==0">
             <div class="ruben-row3 ticket" > <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<p> Sin clientes en cola</p> </div>
@@ -40,7 +40,7 @@
                 <!-- parte web -->
                 <div class="ruben-col contenedor-cola prueba" *ngIf="clientesEnCola.length!=0; else sinClientes">
                     <div class="cuadros" *ngFor="let cliente of clientesEnCola let i=index" (click)="mostrarUsuario(i)">
-                        <p class="cuadros-texto"><i class="fas fa-walking"></i> {{clientesEnCola[i].nombre_cliente}} {{clientesEnCola[i].apellidos_cliente}}</p>
+                        <p class="cuadros-texto"><i class="fas fa-walking"></i> {{clientesEnCola[i].nombre_cliente[0]}}. {{clientesEnCola[i].apellidos_cliente}}</p>
                     </div>
                 </div>
                 <ng-template #sinClientes>
@@ -58,7 +58,7 @@
                     <div class="card" style="width: 300px;  text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: -58px; margin-bottom: 7px;" *ngFor="let cliente of clientesEnCola let i=index" (click)="mostrarUsuario(i)">
                         <h5 class="card-header" style="background-color: white;" >
                             <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ; "data-toggle="collapse" href="#collapse-collapsed{{i}}" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
-                                {{cliente.nombre_cliente}} {{cliente.apellidos_cliente}}
+                                {{cliente.nombre_cliente[0]}}. {{cliente.apellidos_cliente}}
                             </a>
                         </h5>
                         <div id="collapse-collapsed{{i}}" class="collapse" aria-labelledby="heading-collapsed" style="background-color: rgba(0,0,0,.03)">
