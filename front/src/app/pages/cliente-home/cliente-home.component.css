@@ -55,6 +55,14 @@
   background-size: cover;
   background-position: center;
 }
+.fraseDefecta{
+  text-align: center;
+  font-family: Titillium Web;
+  font-weight: bolder;
+  font-size: 2rem;
+  opacity: 0.5;
+  margin-top: 12%;
+}
 .calendario {
   color: #5c74f6;
   margin: 0px;

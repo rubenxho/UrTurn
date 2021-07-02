@@ -125,7 +125,7 @@ export class ClientePerfilComponent implements OnInit {
       telefono:[, Validators.pattern("[0-9]{9}")]
     });
     return myForm;
-   }
+  }
    
   public validarUsername():void{
     if(this.myForm.get('nombre_cliente')?.invalid){

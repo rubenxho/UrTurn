@@ -4,6 +4,9 @@
     </div>
 
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+        <p class="fraseDefecta" *ngIf="this.favoritoService.favoritos.length===0">
+            ¡ Aún no tienes locales favoritos !
+        </p>
         <ng-container *ngFor="let favorito of this.favoritoService.favoritos">
             <app-cliente-tarjetas [usuarioEmpresa]="favorito"></app-cliente-tarjetas>
         </ng-container>

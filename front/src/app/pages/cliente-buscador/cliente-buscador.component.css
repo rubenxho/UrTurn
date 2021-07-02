@@ -15,6 +15,11 @@
      border:1px solid rgba(114, 111, 97, 1)
     
 }
+.input-name {
+    font-size:80%;
+    margin-bottom: 1px;
+    margin-top: 10px;
+}
 .container{
     margin-top: 150px;
     align-items: center;
