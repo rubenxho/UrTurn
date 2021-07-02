@@ -167,6 +167,11 @@ input:focus{
     margin-top: 10px;
     border-style: none;
 }
+
+.modal-content{
+    margin-top: 150px;
+}
+
 .ruben{
     margin-top:15%;
 }
