@@ -62,6 +62,7 @@
   font-size: 2rem;
   opacity: 0.5;
   margin-top: 12%;
+  margin-left: 370px;
 }
 .calendario {
   color: #5c74f6;
@@ -147,6 +148,10 @@ img {
   }
   .container{
     padding-bottom: 70px;
+  }
+
+  .fraseDefecta{
+    margin-left: 30px;
   }
 
 }
