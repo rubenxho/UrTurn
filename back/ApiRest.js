@@ -1989,10 +1989,10 @@ app.post("/opiniones", (req, res) => {
     req.body.id_usuario_empresa,
     req.body.nota,
     req.body.opinion,
-    req.body.fecha,
+    fecha= new Date(Date.now())
   ];
   const sql = `
-  INSERT INTO opiniones (id_usuario_cliente, id_usuario_empresa, nota, opinion, fecha) VALUES (?,?,?,?,CURDATE())
+  INSERT INTO opiniones (id_usuario_cliente, id_usuario_empresa, nota, opinion, fecha) VALUES (?,?,?,?,?)
   `;
   connection.query(sql, params, (err, dbres) => {
     if (err) {
