@@ -85,11 +85,11 @@ export class ClienteTarjetasComponent implements OnInit {
         console.log(data)
         // Ya el cliente esta haciendo la cola en el local
         if(data[0].id_turno==0){
-          this.showInfo(1);
+          // this.showInfo(1);
         }
         // El local no esta disponible
         else if(data[0].id_turno==1){
-          this.showInfo(2);
+          // this.showInfo(2);
         }
         // Turno agarrado, regresa el numero de turno
         else{
@@ -99,11 +99,11 @@ export class ClienteTarjetasComponent implements OnInit {
     })
   }
 
-  showInfo(id:number) {
-    if(id==2){
-      this.toastr.success("Local no disponible");}
-    else if(id==1){this.toastr.warning("Ya tiene un turno activo en este local")}
-  }
+  // showInfo(id:number) {
+  //   if(id==2){
+  //     this.toastr.success("Local no disponible");}
+  //   else if(id==1){this.toastr.warning("Ya tiene un turno activo en este local")}
+  // }
 
   ngOnInit(): void {
     this.elId = this.usuarioEmpresa.id_usuario_empresa;

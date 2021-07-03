@@ -8,7 +8,7 @@ import { LoginService } from './login.service';
 })
 export class LocalServiceService {
 
-  private url = 'http://localhost:3000/local';
+  private url = 'https://apiurturn.herokuapp.com/local';
 
   public localesTop: UsuarioEmpresa [];
   public localElegido: UsuarioEmpresa;

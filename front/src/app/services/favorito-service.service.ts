@@ -12,7 +12,7 @@ export class FavoritoServiceService {
 private url:string
 public favoritos: UsuarioEmpresa[];
   constructor(private http:HttpClient, private loginService: LoginService) {
-    this.url="http://localhost:3000/favoritos"
+    this.url="https://apiurturn.herokuapp.com/favoritos"
     this.favoritos = []
   }
 

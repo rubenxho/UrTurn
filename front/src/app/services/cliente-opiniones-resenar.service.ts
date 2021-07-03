@@ -6,7 +6,7 @@ import { Opiniones, OpinionRechazada } from '../models/opiniones';
   providedIn: 'root',
 })
 export class ClienteOpinionesResenarService {
-  private url = 'http://localhost:3000';
+  private url = 'https://apiurturn.herokuapp.com';
 
   constructor(private http: HttpClient) {}
   // Pagina cliente_opiniones : para pintar los lugares que el cliente ha terminado el turno. La info de empresa para pintar en la pantalla.

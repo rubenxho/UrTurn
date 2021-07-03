@@ -10,7 +10,7 @@ import { UsuarioEmpresa } from '../models/usuario-empresa';
 export class UsuarioServiceService {
 
   // private url ='https://apiurturn.herokuapp.com'
-  private url = 'http://localhost:3000';
+  private url = 'https://apiurturn.herokuapp.com';
   
    constructor(private http: HttpClient) {
 

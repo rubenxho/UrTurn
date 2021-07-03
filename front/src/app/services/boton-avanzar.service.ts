@@ -9,7 +9,7 @@ export class BotonAvanzarService {
   private url:string;
 
   constructor(private http: HttpClient) {
-    this.url='http://localhost:3000/turnos/empresa/strike'
+    this.url='https://apiurturn.herokuapp.com/turnos/empresa/strike'
   }
 
   updBotonAvanzar(body2:number){
