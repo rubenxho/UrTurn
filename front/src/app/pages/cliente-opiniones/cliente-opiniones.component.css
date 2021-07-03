@@ -181,20 +181,20 @@
   margin-top: 12%;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 376px) {
   .card {
     margin-bottom: 5px;
     align-content: center;
   }
   #resenaModal {
-    margin-top: 45%;
+    margin-top: 60%;
   }
   .clienteResenado {
     font-family: Titillium Web;
     font-weight: bolder;
   }
   #quitarResenaModal {
-    margin-top: 70%;
+    margin-top: 90%;
   }
   .row {
     margin-top: 10px;

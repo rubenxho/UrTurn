@@ -130,7 +130,7 @@
 }
 
 .boton-avanzar-cola{
-    background-color: #5C74F6;
+    background-color: rgb(238, 26, 26);
     border-radius: 5px;
     color:#fff;
     border: none;
@@ -293,6 +293,22 @@
 
 @media screen and (max-width:390px){
 
+    .ticket {
+        width: 300px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid #5C74F6;
+        background-color: white;
+        color: #5C74F6;
+        font-weight: bold;
+        position: relative;
+        animation: none;
+        margin-left: 8px;
+        margin-top: 30px;
+        border-radius: 5px;        
+    }
     
     .prueba{
         display:none;
@@ -306,9 +322,9 @@
         display: none;
     }
 
-    .ticket{
+    /* .ticket{
         display: none;
-    }
+    } */
 
     .global{
         margin-top: 120px;
