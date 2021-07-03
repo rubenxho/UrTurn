@@ -1437,10 +1437,17 @@ app.put("/userEP",(request,response)=>{
 	let time = (request.body.tiempo_espera == "" ? null : request.body.tiempo_espera);
 	let logo = (request.body.logo == "" ? null : request.body.logo);
   let status =(request.body.estado_turno == "" ? null : request.body.estado_turno);
-  let password = crypto.AES.encrypt(request.body.password, key, {iv: ive}).toString();
-  //let password = (request.body.password == "" ? null: request.body.password);
+  //let password = crypto.AES.encrypt(request.body.password, key, {iv: ive}).toString();
+  //let password = (request.body.password == "" ? null: crypto.AES.encrypt(request.body.password, key, {iv: ive}).toString());
+  console.log("body", request.body)
+  let password = '';
+  if(request.body.password != '') {
+    password =  crypto.AES.encrypt(request.body.password, key, {iv: ive}).toString();
+  }else {
+    password = null;
+  }
   
-  let params = [name,catg,tlf,cp,address,img,desc,open,close,time,logo,status, password,id]
+  let params = [name,catg,tlf,cp,address,img,desc,open,close,time,logo,status, password, id]
   console.log("body",request.body)
   console.log(password)
   let  sql=`UPDATE urturn.usuario_empresa AS userE JOIN urturn.login AS lg ON lg.id_usuario_empresa = userE.id_usuario_empresa
@@ -1568,7 +1575,7 @@ app.put("/userCP",(request,response)=>{
   let telefono = request.body.telefono;
   let imagen_url = request.body.imagen_url;
   //let password = (request.body.password == "" ? null: request.body.password);
-  let password = crypto.AES.encrypt(request.body.password, key, {iv: ive}).toString();
+  let password =(request.body.password = "" ? null : crypto.AES.encrypt(request.body.password, key, {iv: ive}).toString());
   let id_usuario_cliente = request.body.id_usuario_cliente;
 
   let  sql=`UPDATE urturn.usuario_cliente AS clnt

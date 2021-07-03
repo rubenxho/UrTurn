@@ -9,7 +9,8 @@ import { UsuarioEmpresa } from '../models/usuario-empresa';
 
 export class UsuarioServiceService {
 
-  private url ='https://apiurturn.herokuapp.com'
+  // private url ='https://apiurturn.herokuapp.com'
+  private url = 'http://localhost:3000';
   
    constructor(private http: HttpClient) {
 
@@ -31,6 +32,7 @@ export class UsuarioServiceService {
   } 
 
   public actualizarPerfilEmp(changes:UsuarioEmpresa){
+    console.log('he llegado al servcio')
     return this.http.put(`${this.url}/userEP`, changes)
   }
 
