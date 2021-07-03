@@ -47,7 +47,7 @@ export class ModalComponent implements OnInit {
       this.llamarEventoCancelarCola(true)
     }
 
-    this.showSuccess(mensajeToast);
+    // this.showSuccess(mensajeToast);
   }
 
 
@@ -55,9 +55,11 @@ export class ModalComponent implements OnInit {
     this.toastr.error(mensaje);
   }
 
-  showSuccess(mensaje: string) {
-    this.toastr.success(mensaje);
-  }
+  // showSuccess(mensaje: string) {
+  //   this.toastr.success(mensaje,mensaje,{
+  //     "positionClass": "toast-top-full-width"
+  //   });
+  // }
 
 
   // Evento para guardar-perfil

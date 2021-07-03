@@ -12,27 +12,27 @@
                 <app-modal [mensajeModal]='mensajeModalCola' (eventoModificarTiempo)=modificarTiempo($event)></app-modal> 
             </form>
             <div class="separador"></div>
-            <div class="ruben-avanzar-cola" *ngIf="clientesEnCola.length!=0 else botonDisable">
+            <div class="ruben-avanzar-cola" *ngIf="clienteActual.length!=0 else botonDisable">
                 <button type="button"  class="boton-avanzar-cola" data-toggle="modal" data-target="#modalAvanzar">
-                    Avanzar Cola
+                    Apuntar Strike
                 </button>
                 <!-- Modal boton Avanzar Cola -->
                 <app-modal [mensajeModal]='mensajeModalAvanzar' (eventoAvanzarCola)="botonAvanzarCola($event)"></app-modal> 
             </div>
             <ng-template #botonDisable>
                 <div class="ruben-avanzar-cola">
-                    <button type="button" disabled class="boton-avanzar-cola" data-toggle="modal" data-target="#modalAvanzar" style="background-color: #5c73f6c5;">
-                        Avanzar Cola
+                    <button type="button" disabled class="boton-avanzar-cola" data-toggle="modal" data-target="#modalAvanzar" style="background-color: rgba(238, 26, 26, 0.692);">
+                        Apuntar Strike
                     </button>
                 </div>
             </ng-template>
         </div>
         
-        <div *ngIf="clientesEnCola.length!=0">
-        <div class="ruben-row3 ticket" > <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<p> Proximo Cliente: {{clientesEnCola[0].nombre_cliente[0]}}. {{clientesEnCola[0].apellidos_cliente}}</p> </div>
+        <div *ngIf="clienteActual.length!=0">
+        <div class="ruben-row3 ticket" > <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<p> Cliente Actual: {{clienteActual[0]?.nombre_cliente[0]}}. {{clienteActual[0]?.apellidos_cliente}}</p> </div>
         </div>
-        <div *ngIf="clientesEnCola.length==0">
-            <div class="ruben-row3 ticket" > <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<p> Sin clientes en cola</p> </div>
+        <div *ngIf="clienteActual.length==0">
+            <div class="ruben-row3 ticket" > <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<p> Sin cliente en estos momentos</p> </div>
         </div>
 
 
@@ -52,9 +52,9 @@
                 </ng-template>
 
                 <!-- Parte movil -->
-                <div class="ruben-col contenedor-cola responsive-movil"  >
-                    <hr style="margin-top: -40px; border:0.01px solid rgba(2, 2, 2, 0.13); width: 100%; margin-left: -26px;">
-                    <div *ngIf="clientesEnCola.length!=0; else sinClientesMovil" style="margin-top: -15px; margin-bottom: 80px;">
+                <div class="ruben-col contenedor-cola responsive-movil">
+                    <hr style="margin-top: -50px; border:0.01px solid rgba(2, 2, 2, 0.13); width: 100%; margin-left: -26px;">
+                    <div *ngIf="clientesEnCola.length!=0; else sinClientesMovil" style="margin-top: -25px; margin-bottom: 80px;">
                     <div class="card" style="width: 300px;  text-align: center; border: solid #5C74F6; border-radius: 5px; margin-left: -58px; margin-bottom: 7px;" *ngFor="let cliente of clientesEnCola let i=index" (click)="mostrarUsuario(i)">
                         <h5 class="card-header" style="background-color: white;" >
                             <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ; "data-toggle="collapse" href="#collapse-collapsed{{i}}" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
@@ -78,13 +78,15 @@
 
                 <!-- Movil caso cuando no hay clientes -->
                 <ng-template #sinClientesMovil>
-                    <div class="card" style=" width: 250px; text-align: center; background-color:white;  border-radius: 5px; margin-left: -55px; margin-bottom: 7px; margin-top: -15px;">
-                        <h5 class="card-header">
-                            <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ;"data-toggle="collapse" href="#collapse-collapsed2" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
-                                Sin clientes
-                                
-                            </a>
-                        </h5>
+                    <div style="margin-top: -25px; margin-bottom: 80px;">
+                        <div class="card" style=" width: 300px; text-align: center; border: solid #5C74F6;  border-radius: 5px; margin-left: -58px; margin-bottom: 7px;">
+                            <h5 class="card-header">
+                                <a class="collapsed d-block" style="text-decoration: none; color:#5C74F6 ;"data-toggle="collapse" href="#collapse-collapsed2" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
+                                    Sin clientes
+                                    
+                                </a>
+                            </h5>
+                        </div>
                     </div>
                 </ng-template>
             
@@ -100,9 +102,10 @@
                     <p >Telefono: {{clienteVisto.telefono}}</p>
                     <h2 style="font-weight:bold;"><i class="fas fa-ticket-alt"></i> {{clienteVisto.id_turno}}</h2>
                     
-                </div>
+                    </div>
             
+                </div>
         </div>
     </div>
-</div>
+</div>    
 

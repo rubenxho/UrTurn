@@ -24,6 +24,7 @@ export class EmpresaColaComponent implements OnInit {
   public karma:string
   public datosEmpresa: UsuarioEmpresa []
   public input:string
+  public clienteActual: any[]
 
   //llamada servicio puntuacion
   public newPuntuacion: Puntuacion;
@@ -32,7 +33,7 @@ export class EmpresaColaComponent implements OnInit {
     this.clientesEnCola=new Array();
     this.clienteVisto=new UsuarioEncola(0,0,"Sin Clientes","??????","??????","")
     this.mensajeModalCola = ['modalModificarCola','Confirmar nuevo tiempo de espera','Confirmar','Cancelar','Tiempo modificado correctamente!',"","4"];
-    this.mensajeModalAvanzar = ['modalAvanzar','¿Desea avanzar el turno?','Si','No','Turno avanzado correctamente',"","3"];
+    this.mensajeModalAvanzar = ['modalAvanzar','¿Apuntar un strike al cliente?','Si','No','Turno avanzado correctamente',"","3"];
     this.ampliarUsuario = true;
     this.infoUsuario = 'usuario1';
     this.datosEmpresa= new Array()
@@ -41,7 +42,7 @@ export class EmpresaColaComponent implements OnInit {
       this.datosEmpresa=data
       // console.log(this.datosEmpresa)
     })
-
+    this.clienteActual=new Array()
   }
 
   mostrarUsuario(index: number) {
@@ -63,8 +64,8 @@ export class EmpresaColaComponent implements OnInit {
 
   botonAvanzarCola(click:boolean){
     if(click==true){
-      this.botonAvanzarService.updBotonAvanzar(this.id_usuario.login.id_usuario_empresa).subscribe(data=>{
-        this.clientesEnCola.splice(0, 1)
+      this.botonAvanzarService.addStrike(this.id_usuario.login.id_usuario_empresa).subscribe(data=>{
+        this.clienteActual.splice(0, 1)
         console.log(data)
       })
     }
@@ -88,10 +89,17 @@ export class EmpresaColaComponent implements OnInit {
     // Servicio datosClientes
     this.datosclientesService.getDatosClientes(this.id_usuario.login.id_usuario_empresa).subscribe((data:any)=>{
       this.clientesEnCola=data
-      // console.log(data);
-      // console.log(this.clientesEnCola)
+      console.log(this.clientesEnCola)
+    })
+
+    this.botonAvanzarService.obtenerClienteActual(this.id_usuario.login.id_usuario_empresa).subscribe((data:any)=>{
+      this.clienteActual=data
+      console.log(this.clienteActual)
     })
     
-
+    
+    console.log("flag2");
+    
+    
   }
 }

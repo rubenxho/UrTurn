@@ -55,7 +55,7 @@ app.get("/favoritos",
         console.log(cliente)
         let params=[cliente];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? GROUP BY e.id_usuario_empresa ORDER BY nota_media DESC "
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -129,7 +129,7 @@ app.get("/favoritos/categoria",
         console.log(cliente)
         let params=[cliente,categoria];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? AND categoria=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? AND categoria=? GROUP BY e.id_usuario_empresa ORDER BY nota_media DESC"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -205,7 +205,7 @@ app.get("/favoritos/cp",
         console.log(cliente)
         let params=[cliente,cp];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? AND codigo_postal=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa) WHERE f.id_usuario_cliente=? AND codigo_postal=? GROUP BY e.id_usuario_empresa ORDER BY nota_media DESC" 
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -280,7 +280,7 @@ app.get("/favoritos/busqueda",
         console.log(cliente)
         let params=[cliente,cp,categoria];
         // Obtengo favoritos del cliente
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa)WHERE f.id_usuario_cliente=? AND codigo_postal=? AND categoria=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, true AS favorito, null As id_turno, null As disponible FROM urturn.favoritos AS f INNER JOIN urturn.usuario_empresa AS e ON (f.id_usuario_empresa=e.id_usuario_empresa) INNER JOIN urturn.usuario_cliente AS c ON (f.id_usuario_cliente=c.id_usuario_cliente) LEFT JOIN urturn.opiniones AS o ON (o.id_usuario_empresa= e.id_usuario_empresa)WHERE f.id_usuario_cliente=? AND codigo_postal=? AND categoria=? GROUP BY e.id_usuario_empresa ORDER BY nota_media DESC"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -449,7 +449,7 @@ app.get("/local/categoria",
         console.log(cliente)
         let params=[categoria];
         // Obtengo top5
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno, null As disponible FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE categoria=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno, null As disponible FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE categoria=? GROUP BY e.id_usuario_empresa ORDER BY nota_media DESC"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -545,7 +545,7 @@ app.get("/local/cp",
         console.log(cliente)
         let params=[cp];
         // Obtengo top5
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno, null As disponible FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE codigo_postal=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno, null As disponible FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE codigo_postal=? GROUP BY e.id_usuario_empresa ORDER BY nota_media DESC"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -642,7 +642,7 @@ app.get("/local/busqueda",
         console.log(cliente)
         let params=[cp,categoria];
         // Obtengo top5
-        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno, null As disponible FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE codigo_postal=? AND categoria=? GROUP BY e.id_usuario_empresa"
+        let sql= "SELECT e.*, AVG(o.nota) AS nota_media, false AS favorito, null As id_turno, null As disponible FROM urturn.usuario_empresa AS e LEFT JOIN urturn.opiniones AS o ON (e.id_usuario_empresa=o.id_usuario_empresa) WHERE codigo_postal=? AND categoria=? GROUP BY e.id_usuario_empresa ORDER BY nota_media DESC"
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -732,7 +732,7 @@ app.get("/turnos/cliente",
 
         let cliente=request.query.id_usuario_cliente;
         let params=[hoy,hoy,cliente,"Activo",hoy];
-        let sql= "SELECT t.id_turno, t.id_usuario_empresa, e.nombre_empresa,e.logo, TRUNCATE((TO_SECONDS(fecha_apertura_turno)-TO_SECONDS(?))/60,0) AS tiempo_espera FROM turnos AS t INNER JOIN usuario_empresa AS e ON (t.id_usuario_empresa=e.id_usuario_empresa) WHERE DAY(fecha_apertura_turno)= DAY(?) AND id_usuario_cliente= ? AND estado=? AND fecha_apertura_turno > ?  ORDER BY tiempo_espera ASC"
+        let sql= "SELECT t.id_turno, t.id_usuario_empresa, e.nombre_empresa,e.logo, TRUNCATE((TO_SECONDS(fecha_apertura_turno)-TO_SECONDS(?))/60,0) AS tiempo_espera FROM turnos AS t INNER JOIN usuario_empresa AS e ON (t.id_usuario_empresa=e.id_usuario_empresa) WHERE DAY(fecha_apertura_turno)= DAY(?) AND id_usuario_cliente= ? AND estado=? AND fecha_apertura_turno > ?  ORDER BY tiempo_espera ASC "
         connection.query(sql,params, 
             function(err, res){
                 if(err){
@@ -1237,6 +1237,88 @@ app.put("/turnos/empresa/avanzar_cola",
         )
     }
 ) 
+
+app.post("/turnos/empresa/strike",
+    function(request,response)
+    {
+        // FECHA ACTUAL
+        let hoy = new Date(Date.now());
+        let cliente;
+        let turno;
+        let empresa=request.body.id_usuario_empresa;
+        let params=[hoy,hoy,empresa,"Activo"];
+        let sql= "SELECT * FROM urturn.turnos WHERE fecha_apertura_turno <= ? AND fecha_cierre_turno >= ? AND id_usuario_empresa=? AND estado=?"
+        connection.query(sql,params, 
+            function(err, res){
+                if(err){
+                 console.log(err);
+                 response.send({error: true, codigo: 200, mensaje: 'Error strike empresa'})
+                 }
+                else{
+                  console.log(res)
+                  turno=res[0].id_turno
+                  cliente=res[0].id_usuario_cliente
+                  let params2=["Cancelado",turno];
+                  let sql= "UPDATE turnos SET estado=? WHERE id_turno = ?"
+                  connection.query(sql,params2, 
+                      function(err, res){
+                          if(err){
+                           console.log(err);
+                           response.send({error: true, codigo: 200, mensaje: 'Error upd turno'})
+                           }
+                          else{
+                            console.log(res)
+                            let params2=[cliente,empresa,hoy];
+                            let sql= "INSERT INTO puntuacion (id_usuario_cliente,id_usuario_empresa,date) VALUES(?,?,?)"
+                            connection.query(sql,params2, 
+                                function(err, res){
+                                    if(err){
+                                     console.log(err);
+                                     response.send({error: true, codigo: 200, mensaje: 'Error post strike'})
+                                     }
+                                    else{
+                                     console.log(res)
+                                     response.send(res)
+                                    }
+                                }
+                            )       
+                          }
+                      }
+                  )
+                }
+            }
+        )
+    }
+) 
+
+app.get("/turnos/empresa/strike",
+    function(request,response)
+    {
+        // FECHA ACTUAL
+        let hoy = new Date(Date.now());
+        let empresa=request.query.id_usuario_empresa;
+        let params=[hoy,hoy,empresa,"Activo"];
+        let sql= "SELECT * FROM urturn.turnos t INNER JOIN urturn.usuario_cliente AS c ON (t.id_usuario_cliente=c.id_usuario_cliente) WHERE fecha_apertura_turno <= ? AND fecha_cierre_turno >= ? AND id_usuario_empresa=? AND estado=?"
+        connection.query(sql,params, 
+            function(err, res){
+                if(err){
+                 console.log(err);
+                 response.send({error: true, codigo: 200, mensaje: 'Error strike empresa'})
+                 }
+                else{
+                  console.log(res)
+                  response.send(res)
+                }
+            }
+        )
+    }
+) 
+
+
+
+
+
+
 /* <----------------------------------------FIN Turnos/EMPRESA/AvanzarCola --------------------------------------->  */
 
 /* <----------------------------------------Endpoint puntuacion --------------------------------------->  */ 
